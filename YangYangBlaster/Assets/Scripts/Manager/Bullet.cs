@@ -7,10 +7,13 @@ public class Bullet : MonoBehaviour
 {
     public void StartMove(Vector2 _createPos)
     {
+        gameObject.SetActive(true);
+        transform.position = _createPos;
+
         transform
             .DOMove(new Vector2(_createPos.x, 8f), 1f)
             .OnComplete(()=> {
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             });
     }
 }

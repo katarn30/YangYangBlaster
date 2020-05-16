@@ -115,6 +115,7 @@ public class GameManager : SingleTon<GameManager>
         UIManager.Instance.SetInGameUI();
         MonsterManager.Instance.SetInGameInit();
         PlayerManager.Instance.SetInGameInit();
+        BulletManager.Instance.SetInGameInit();
     }
 
     public void GameOver()

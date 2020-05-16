@@ -1134,6 +1134,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bullet: {fileID: 6135983443684274153, guid: 4a42bdb23f22f5046b7867c283865aba, type: 3}
+  bulletCount: 15
+  bulletParent: {fileID: 0}
+  bulletList: []
 --- !u!4 &1574255869
 Transform:
   m_ObjectHideFlags: 0
