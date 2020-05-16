@@ -10,7 +10,7 @@ public class GameManager : SingleTon<GameManager>
         Lobby,
         InGame
     }
-
+    [Header("Game State")]
     public GameState state = GameState.Lobby;
 
     [Header("InGame")]
@@ -18,6 +18,8 @@ public class GameManager : SingleTon<GameManager>
     public Vector2 minScreenPos;
     [HideInInspector]
     public Vector2 maxScreenPos;
+
+    public GameObject ingameController;
 
     public bool isGameOver = false;
     public bool isStageClear = false;
@@ -40,20 +42,29 @@ public class GameManager : SingleTon<GameManager>
     // Update is called once per frame
     void Update()
     {
-        if (isGameOver == true || isStageClear == true)
-            return;
-
-        MonsterManager.Instance.MonsterManagerUpdate();
-
-        if (Input.GetMouseButton(0))
+        if (state == GameState.InGame)
         {
-            Vector2 target = new Vector2(Input.mousePosition.x, 0);
-            target = Camera.main.ScreenToWorldPoint(target);
-            target.x = Mathf.Clamp(target.x, minScreenPos.x, maxScreenPos.x);
-            PlayerManager.Instance.transform.DOMove(new Vector2(target.x, -3.89f), 0.2f);
+            if (ingameController == null)
+            {
+                Debug.LogError("GameManager IngameController is Null");
+                return;
+            }
 
-            PlayerManager.Instance.PlayerShot();
-        }        
+            if (isGameOver == true || isStageClear == true)
+                return;
+
+            MonsterManager.Instance.MonsterManagerUpdate();
+
+            if (Input.GetMouseButton(0))
+            {
+                Vector2 target = new Vector2(Input.mousePosition.x, 0);
+                target = Camera.main.ScreenToWorldPoint(target);
+                target.x = Mathf.Clamp(target.x, minScreenPos.x, maxScreenPos.x);
+                PlayerManager.Instance.transform.DOMove(new Vector2(target.x, -3.89f), 0.2f);
+
+                PlayerManager.Instance.PlayerShot();
+            }
+        }
     }
 
     public void ChangeGameState(GameState _state)
@@ -74,6 +85,12 @@ public class GameManager : SingleTon<GameManager>
     #region INGAME
     public void SetInGame()
     {
+        Debug.Log("Set InGame");
+        if (ingameController.activeInHierarchy == false)
+        {
+            ingameController.SetActive(true);
+        }
+
         isGameOver = false;
 
         if (isStageClear == true)

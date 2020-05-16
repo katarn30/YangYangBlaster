@@ -6,7 +6,11 @@ using TMPro;
 using UnityEngine.UI;
 
 public class UIManager : SingleTon<UIManager>
-{    
+{
+    [Header("Create Prefab")]
+    public GameObject createlobbyUI;
+    public GameObject createIngameUI;
+
     public GameObject lobbyUI;
     public InGameUIController inGameUI;
 
@@ -17,13 +21,46 @@ public class UIManager : SingleTon<UIManager>
 
     public void SetLobbyUI()
     {
+        if (createlobbyUI == null)
+        {
+            Debug.LogError("UIManager CreateIngameUI is Null !!");
+            return;
+        }
+
+        if (lobbyUI == null)
+        {
+            GameObject go = Instantiate(createIngameUI, transform);
+            lobbyUI = go;
+        }
+
+        if (inGameUI != null)
+        {
+            inGameUI.gameObject.SetActive(false);
+        }
+
         lobbyUI.SetActive(true);
-        inGameUI.gameObject.SetActive(false);
+        
     }
 
     public void SetInGameUI()
     {        
-        lobbyUI.SetActive(false);
+        if (createIngameUI == null)
+        {
+            Debug.LogError("UIManager CreateIngameUI is Null !!");
+            return;
+        }
+
+        if (inGameUI == null)
+        {
+            GameObject go = Instantiate(createIngameUI, transform);
+            inGameUI = go.GetComponent<InGameUIController>();
+        }
+
+        if (lobbyUI != null)
+        {
+            lobbyUI.SetActive(false);
+        }
+
         inGameUI.gameObject.SetActive(true);
         inGameUI.OnInitialized();
     }    

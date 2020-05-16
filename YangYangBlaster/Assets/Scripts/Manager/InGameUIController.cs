@@ -50,6 +50,11 @@ public class InGameUIController : MonoBehaviour
         buyMercenaryButton.SetActive(true);
     }
 
+    public void ContinueButton()
+    {
+        GameManager.Instance.SetInGame();
+    }
+
     public void ChangeCatButton()
     {
         PlayerManager.Instance.ChangeCat();
