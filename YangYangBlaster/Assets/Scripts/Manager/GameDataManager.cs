@@ -32,6 +32,8 @@ public struct StageData
     public int minHp;
     public int maxHp;
     public int divideCount;
+    public int spawnTime;
+    public int spawnCount;
 }
 
 public class GameDataManager : SingleTon<GameDataManager>
@@ -54,7 +56,7 @@ public class GameDataManager : SingleTon<GameDataManager>
         userData.nickName = "멍뭉이는멍뭉";
         userData.gold = 0;
         userData.ruby = 0;
-        userData.stageNum = 0;
+        userData.stageNum = 1;
         userData.score = 0;
 
         int ran = Random.Range(0, ReadMercenaryDataList.Count);

@@ -97,7 +97,7 @@ public class GameManager : SingleTon<GameManager>
             
             MonsterManager.Instance.monsterStageCount = MonsterManager.Instance.monsterStageCount + 5;
             MonsterManager.Instance.regenTime = MonsterManager.Instance.regenTime - 0.01f;
-            MonsterManager.Instance.monsterHp = MonsterManager.Instance.monsterHp + 10;            
+            MonsterManager.Instance.monsterHp = MonsterManager.Instance.monsterHp + 2;            
         }
 
         isStageClear = false;

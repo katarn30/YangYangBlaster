@@ -816,8 +816,6 @@ MonoBehaviour:
   maxScreenPos: {x: 0, y: 0}
   isGameOver: 0
   isStageClear: 0
-  gameScore: 0
-  gameStage: 0
 --- !u!4 &722717183
 Transform:
   m_ObjectHideFlags: 0
@@ -924,7 +922,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &835267422
 Transform:
   m_ObjectHideFlags: 0
@@ -1085,10 +1083,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   userData:
     nickName: 
-    stage: 0
+    stageNum: 0
     score: 0
     gold: 0
     ruby: 0
+    leaderData:
+      name: 
+      damage: 0
+      moveSpeed: 0
+      attackSpeed: 0
+      catImage: {fileID: 0}
     mercenaryDataList: []
   ReadMercenaryDataList:
   - name: Cat1
@@ -1286,10 +1290,6 @@ MonoBehaviour:
   mercenaryPosList:
   - {fileID: 593539882}
   - {fileID: 1333456982}
-  catSpriteList:
-  - {fileID: 21300000, guid: 6d9744f12bdcc584cba80104c51f1c05, type: 3}
-  - {fileID: 21300000, guid: b4911ee06e40d1d4c8b7fa10cd118cdb, type: 3}
-  - {fileID: 21300000, guid: 32c4e6cdde238cf4e9cb0773bdac172f, type: 3}
   playerSprite: {fileID: 522267978}
   playerHp: 5
   attackSpeed: 0.1
