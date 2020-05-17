@@ -5,10 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerManager : SingleTon<PlayerManager>
 {
-    public List<SpriteRenderer> mercenaryList = new List<SpriteRenderer>();
-    public List<Sprite> catSpriteList = new List<Sprite>();
-    int catSpriteNum = 0;
-
+    public List<Transform> mercenaryPosList = new List<Transform>();
     public SpriteRenderer playerSprite;    
 
     public int playerHp = 0;
@@ -16,16 +13,26 @@ public class PlayerManager : SingleTon<PlayerManager>
     float bulletTime = 0.0f;
     public int originHp = 0;
 
-    public Slider hpBar;
+    public GameObject hpBarUI;
+    public Image hpBar;
 
     private void Awake()
     {
         DontDestroyOnLoad(this);
     }
 
+    //로비 상태로 바뀔떄
+    public void SetLobbyInit()
+    {
+        //playerSprite.gameObject.SetActive(false);
+        hpBarUI.gameObject.SetActive(false);
+    }
+
+    //인게임 상태로 바뀔때
     public void SetInGameInit()
     {        
         playerSprite.gameObject.SetActive(true);
+        hpBarUI.gameObject.SetActive(true);
 
         if (originHp == 0)
         {
@@ -38,7 +45,18 @@ public class PlayerManager : SingleTon<PlayerManager>
 
         transform.position = new Vector2(0, transform.position.y);
 
-        hpBar.value = playerHp / originHp;
+        UpdateHpBar(playerHp);
+    }
+
+    public void UpdateHpBar(float _playerHp)
+    {
+        if (hpBar == null)
+        {
+            Debug.LogError("PlayerManager HpBar UI Null");
+            return;
+        }
+
+        hpBar.fillAmount = _playerHp / originHp;
     }
 
     // Update is called once per frame
@@ -50,43 +68,13 @@ public class PlayerManager : SingleTon<PlayerManager>
         {
             bulletTime = 0;
 
-            BulletManager.Instance.CreateBullet(transform.position);
-
-            for (int i = 0; i < mercenaryList.Count; i++)
-            {
-                if (mercenaryList[i].gameObject.activeInHierarchy == true)
-                {
-                    BulletManager.Instance.CreateBullet(mercenaryList[i].transform.position);
-                }                
-            }                        
+            BulletManager.Instance.CreateBullet(transform.position);               
         }
     }
 
-    public void ChangeCat()
+    public void ChangeLeaderCat(Sprite _sprite)
     {
-        catSpriteNum++;
-        if (catSpriteNum >= catSpriteList.Count)
-        {
-            catSpriteNum = 0;
-        }
-
-        playerSprite.sprite = catSpriteList[catSpriteNum];
-    }
-
-    public void ActiveMercenary()
-    {
-        int rnd = Random.Range(0, catSpriteList.Count);
-
-        if (mercenaryList[0].gameObject.activeInHierarchy == false)
-        {            
-            mercenaryList[0].sprite = catSpriteList[rnd];
-            mercenaryList[0].gameObject.SetActive(true);
-        }
-        else
-        {
-            mercenaryList[1].sprite = catSpriteList[rnd];
-            mercenaryList[1].gameObject.SetActive(true);
-        }
+        playerSprite.sprite = _sprite;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -103,7 +91,7 @@ public class PlayerManager : SingleTon<PlayerManager>
                 GameManager.Instance.GameOver();
             }
 
-            hpBar.value = (float)playerHp / (float)originHp;
+            UpdateHpBar((float)playerHp);
 
             Handheld.Vibrate();
         }

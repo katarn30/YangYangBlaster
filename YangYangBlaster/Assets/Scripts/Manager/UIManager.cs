@@ -11,7 +11,7 @@ public class UIManager : SingleTon<UIManager>
     public GameObject createlobbyUI;
     public GameObject createIngameUI;
 
-    public GameObject lobbyUI;
+    public LobbyUIController lobbyUI;
     public InGameUIController inGameUI;
 
     private void Awake()
@@ -29,8 +29,8 @@ public class UIManager : SingleTon<UIManager>
 
         if (lobbyUI == null)
         {
-            GameObject go = Instantiate(createIngameUI, transform);
-            lobbyUI = go;
+            GameObject go = Instantiate(createlobbyUI, transform);
+            lobbyUI = go.GetComponent<LobbyUIController>();
         }
 
         if (inGameUI != null)
@@ -38,7 +38,7 @@ public class UIManager : SingleTon<UIManager>
             inGameUI.gameObject.SetActive(false);
         }
 
-        lobbyUI.SetActive(true);
+        lobbyUI.gameObject.SetActive(true);
         
     }
 
@@ -58,7 +58,7 @@ public class UIManager : SingleTon<UIManager>
 
         if (lobbyUI != null)
         {
-            lobbyUI.SetActive(false);
+            lobbyUI.gameObject.SetActive(false);
         }
 
         inGameUI.gameObject.SetActive(true);

@@ -111,7 +111,7 @@ public class Monster : MonoBehaviour
                     MonsterManager.Instance.CreateMonster(transform.position, isUp, spaawnCount - 1, originHp);
                 }
 
-                GameManager.Instance.GetScore();
+                GameManager.Instance.UpdateScore(100);
 
                 Destroy(gameObject);
             }

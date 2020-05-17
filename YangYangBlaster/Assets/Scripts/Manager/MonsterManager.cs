@@ -26,14 +26,17 @@ public class MonsterManager : SingleTon<MonsterManager>
         return (Number == 0 ? false : true);
     }
 
-    public void SetInGameInit()
+    public void SetLobbyInit()
     {
         if (MonsterParent != null)
         {
             Destroy(MonsterParent.gameObject);
             MonsterParent = null;
         }
+    }
 
+    public void SetInGameInit()
+    {        
         if (MonsterParent == null)
         {
             MonsterParent = new GameObject().transform;

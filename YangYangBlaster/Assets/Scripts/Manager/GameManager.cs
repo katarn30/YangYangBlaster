@@ -19,12 +19,8 @@ public class GameManager : SingleTon<GameManager>
     [HideInInspector]
     public Vector2 maxScreenPos;
 
-    public GameObject ingameController;
-
     public bool isGameOver = false;
     public bool isStageClear = false;
-    public int gameScore = 0;
-    public int gameStage = 0;
 
     private void Awake()
     {
@@ -34,7 +30,9 @@ public class GameManager : SingleTon<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-        Screen.sleepTimeout = SleepTimeout.NeverSleep;        
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+        GameDataManager.Instance.SetUserData();
 
         ChangeGameState(state);
     }
@@ -44,12 +42,6 @@ public class GameManager : SingleTon<GameManager>
     {
         if (state == GameState.InGame)
         {
-            if (ingameController == null)
-            {
-                Debug.LogError("GameManager IngameController is Null");
-                return;
-            }
-
             if (isGameOver == true || isStageClear == true)
                 return;
 
@@ -74,7 +66,7 @@ public class GameManager : SingleTon<GameManager>
         switch (state)
         {
             case GameState.Lobby:
-
+                SetLobby();
                 break;
             case GameState.InGame:
                 SetInGame();
@@ -82,28 +74,30 @@ public class GameManager : SingleTon<GameManager>
         }
     }
 
+    #region Lobby
+    public void SetLobby()
+    {
+        UIManager.Instance.SetLobbyUI();
+
+        PlayerManager.Instance.SetLobbyInit();
+        MonsterManager.Instance.SetLobbyInit();
+        BulletManager.Instance.SetLobbyInit();
+    }
+    #endregion
+
     #region INGAME
     public void SetInGame()
     {
         Debug.Log("Set InGame");
-        if (ingameController.activeInHierarchy == false)
-        {
-            ingameController.SetActive(true);
-        }
-
         isGameOver = false;
 
         if (isStageClear == true)
         {
-            gameStage++;
+            GameDataManager.Instance.userData.stageNum = GameDataManager.Instance.userData.stageNum + 1;       
+            
             MonsterManager.Instance.monsterStageCount = MonsterManager.Instance.monsterStageCount + 5;
             MonsterManager.Instance.regenTime = MonsterManager.Instance.regenTime - 0.01f;
             MonsterManager.Instance.monsterHp = MonsterManager.Instance.monsterHp + 10;            
-        }
-        else
-        {
-            gameScore = 0;
-            gameStage = 1;
         }
 
         isStageClear = false;
@@ -132,9 +126,9 @@ public class GameManager : SingleTon<GameManager>
         UIManager.Instance.inGameUI.StageClearUI();
     }
 
-    public void GetScore()
+    public void UpdateScore(int _score)
     {
-        gameScore = gameScore + 100;
+        GameDataManager.Instance.userData.score = GameDataManager.Instance.userData.score + _score;
 
         UIManager.Instance.inGameUI.SetScoreUI();
     }

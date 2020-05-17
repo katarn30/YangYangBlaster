@@ -17,17 +17,20 @@ public class BulletManager : SingleTon<BulletManager>
         DontDestroyOnLoad(this);
     }
 
-    public void SetInGameInit()
+    public void SetLobbyInit()
     {
-        Destroy(bulletParent.gameObject);
+        if (bulletParent != null)
+        {
+            Destroy(bulletParent.gameObject);
+        }
 
         activeBullet = 0;
         bulletList.Clear();
     }
 
-    public void CreateBullet(Vector2 _createPos)
+    public void SetInGameInit()
     {
-        if (bulletParent != null)
+        if (bulletParent == null)
         {
             GameObject go = new GameObject();
             go.transform.parent = transform;
@@ -37,6 +40,12 @@ public class BulletManager : SingleTon<BulletManager>
             bulletParent.name = "BulletParent";
         }
 
+        activeBullet = 0;
+        bulletList.Clear();
+    }
+
+    public void CreateBullet(Vector2 _createPos)
+    {        
         if (bulletList.Count < bulletCount)
         {
             GameObject go = Instantiate(bullet.gameObject, bulletParent);            
