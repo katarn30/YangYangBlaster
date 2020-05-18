@@ -22,13 +22,20 @@ public static partial class RpcServiceReflection {
   static RpcServiceReflection() {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
-          "ChFycGNfc2VydmljZS5wcm90byIwCgxMb2dpblJlcXVlc3QSDAoEbmFtZRgB",
-          "IAEoCRISCgpzZXJpYWxfa2V5GAIgASgJIhsKCkxvZ2luUmVwbHkSDQoFZXJy",
-          "b3IYASABKAkyMwoKUnBjU2VydmljZRIlCgVMb2dpbhINLkxvZ2luUmVxdWVz",
-          "dBoLLkxvZ2luUmVwbHkiAGIGcHJvdG8z"));
+          "ChFycGNfc2VydmljZS5wcm90byJgChhScGNTZXJ2aWNlRXhhbXBsZVJlcXVl",
+          "c3QSDAoEYXJnMRgBIAEoBRIMCgRhcmcyGAIgASgCEgwKBGFyZzMYAyABKAkS",
+          "DAoEYXJnNBgEIAEoCBIMCgRhcmc1GAUgAygFIicKFlJwY1NlcnZpY2VFeGFt",
+          "cGxlUmVwbHkSDQoFZXJyb3IYASABKAkiMAoMTG9naW5SZXF1ZXN0EgwKBG5h",
+          "bWUYASABKAkSEgoKc2VyaWFsX2tleRgCIAEoCSIbCgpMb2dpblJlcGx5Eg0K",
+          "BWVycm9yGAEgASgJMn4KClJwY1NlcnZpY2USSQoRUnBjU2VydmljZUV4YW1w",
+          "bGUSGS5ScGNTZXJ2aWNlRXhhbXBsZVJlcXVlc3QaFy5ScGNTZXJ2aWNlRXhh",
+          "bXBsZVJlcGx5IgASJQoFTG9naW4SDS5Mb2dpblJlcXVlc3QaCy5Mb2dpblJl",
+          "cGx5IgBiBnByb3RvMw=="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(typeof(global::RpcServiceExampleRequest), global::RpcServiceExampleRequest.Parser, new[]{ "Arg1", "Arg2", "Arg3", "Arg4", "Arg5" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::RpcServiceExampleReply), global::RpcServiceExampleReply.Parser, new[]{ "Error" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::LoginRequest), global::LoginRequest.Parser, new[]{ "Name", "SerialKey" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::LoginReply), global::LoginReply.Parser, new[]{ "Error" }, null, null, null)
         }));
@@ -37,9 +44,369 @@ public static partial class RpcServiceReflection {
 
 }
 #region Messages
-/// <summary>
-/// The request message
-/// </summary>
+public sealed partial class RpcServiceExampleRequest : pb::IMessage<RpcServiceExampleRequest> {
+  private static readonly pb::MessageParser<RpcServiceExampleRequest> _parser = new pb::MessageParser<RpcServiceExampleRequest>(() => new RpcServiceExampleRequest());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pb::MessageParser<RpcServiceExampleRequest> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::RpcServiceReflection.Descriptor.MessageTypes[0]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public RpcServiceExampleRequest() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public RpcServiceExampleRequest(RpcServiceExampleRequest other) : this() {
+    arg1_ = other.arg1_;
+    arg2_ = other.arg2_;
+    arg3_ = other.arg3_;
+    arg4_ = other.arg4_;
+    arg5_ = other.arg5_.Clone();
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public RpcServiceExampleRequest Clone() {
+    return new RpcServiceExampleRequest(this);
+  }
+
+  /// <summary>Field number for the "arg1" field.</summary>
+  public const int Arg1FieldNumber = 1;
+  private int arg1_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int Arg1 {
+    get { return arg1_; }
+    set {
+      arg1_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "arg2" field.</summary>
+  public const int Arg2FieldNumber = 2;
+  private float arg2_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public float Arg2 {
+    get { return arg2_; }
+    set {
+      arg2_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "arg3" field.</summary>
+  public const int Arg3FieldNumber = 3;
+  private string arg3_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string Arg3 {
+    get { return arg3_; }
+    set {
+      arg3_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  /// <summary>Field number for the "arg4" field.</summary>
+  public const int Arg4FieldNumber = 4;
+  private bool arg4_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool Arg4 {
+    get { return arg4_; }
+    set {
+      arg4_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "arg5" field.</summary>
+  public const int Arg5FieldNumber = 5;
+  private static readonly pb::FieldCodec<int> _repeated_arg5_codec
+      = pb::FieldCodec.ForInt32(42);
+  private readonly pbc::RepeatedField<int> arg5_ = new pbc::RepeatedField<int>();
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public pbc::RepeatedField<int> Arg5 {
+    get { return arg5_; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override bool Equals(object other) {
+    return Equals(other as RpcServiceExampleRequest);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool Equals(RpcServiceExampleRequest other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (Arg1 != other.Arg1) return false;
+    if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Arg2, other.Arg2)) return false;
+    if (Arg3 != other.Arg3) return false;
+    if (Arg4 != other.Arg4) return false;
+    if(!arg5_.Equals(other.arg5_)) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (Arg1 != 0) hash ^= Arg1.GetHashCode();
+    if (Arg2 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Arg2);
+    if (Arg3.Length != 0) hash ^= Arg3.GetHashCode();
+    if (Arg4 != false) hash ^= Arg4.GetHashCode();
+    hash ^= arg5_.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void WriteTo(pb::CodedOutputStream output) {
+    if (Arg1 != 0) {
+      output.WriteRawTag(8);
+      output.WriteInt32(Arg1);
+    }
+    if (Arg2 != 0F) {
+      output.WriteRawTag(21);
+      output.WriteFloat(Arg2);
+    }
+    if (Arg3.Length != 0) {
+      output.WriteRawTag(26);
+      output.WriteString(Arg3);
+    }
+    if (Arg4 != false) {
+      output.WriteRawTag(32);
+      output.WriteBool(Arg4);
+    }
+    arg5_.WriteTo(output, _repeated_arg5_codec);
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int CalculateSize() {
+    int size = 0;
+    if (Arg1 != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeInt32Size(Arg1);
+    }
+    if (Arg2 != 0F) {
+      size += 1 + 4;
+    }
+    if (Arg3.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(Arg3);
+    }
+    if (Arg4 != false) {
+      size += 1 + 1;
+    }
+    size += arg5_.CalculateSize(_repeated_arg5_codec);
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(RpcServiceExampleRequest other) {
+    if (other == null) {
+      return;
+    }
+    if (other.Arg1 != 0) {
+      Arg1 = other.Arg1;
+    }
+    if (other.Arg2 != 0F) {
+      Arg2 = other.Arg2;
+    }
+    if (other.Arg3.Length != 0) {
+      Arg3 = other.Arg3;
+    }
+    if (other.Arg4 != false) {
+      Arg4 = other.Arg4;
+    }
+    arg5_.Add(other.arg5_);
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(pb::CodedInputStream input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 8: {
+          Arg1 = input.ReadInt32();
+          break;
+        }
+        case 21: {
+          Arg2 = input.ReadFloat();
+          break;
+        }
+        case 26: {
+          Arg3 = input.ReadString();
+          break;
+        }
+        case 32: {
+          Arg4 = input.ReadBool();
+          break;
+        }
+        case 42:
+        case 40: {
+          arg5_.AddEntriesFrom(input, _repeated_arg5_codec);
+          break;
+        }
+      }
+    }
+  }
+
+}
+
+public sealed partial class RpcServiceExampleReply : pb::IMessage<RpcServiceExampleReply> {
+  private static readonly pb::MessageParser<RpcServiceExampleReply> _parser = new pb::MessageParser<RpcServiceExampleReply>(() => new RpcServiceExampleReply());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pb::MessageParser<RpcServiceExampleReply> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::RpcServiceReflection.Descriptor.MessageTypes[1]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public RpcServiceExampleReply() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public RpcServiceExampleReply(RpcServiceExampleReply other) : this() {
+    error_ = other.error_;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public RpcServiceExampleReply Clone() {
+    return new RpcServiceExampleReply(this);
+  }
+
+  /// <summary>Field number for the "error" field.</summary>
+  public const int ErrorFieldNumber = 1;
+  private string error_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string Error {
+    get { return error_; }
+    set {
+      error_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override bool Equals(object other) {
+    return Equals(other as RpcServiceExampleReply);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool Equals(RpcServiceExampleReply other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (Error != other.Error) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (Error.Length != 0) hash ^= Error.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void WriteTo(pb::CodedOutputStream output) {
+    if (Error.Length != 0) {
+      output.WriteRawTag(10);
+      output.WriteString(Error);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int CalculateSize() {
+    int size = 0;
+    if (Error.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(Error);
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(RpcServiceExampleReply other) {
+    if (other == null) {
+      return;
+    }
+    if (other.Error.Length != 0) {
+      Error = other.Error;
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(pb::CodedInputStream input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 10: {
+          Error = input.ReadString();
+          break;
+        }
+      }
+    }
+  }
+
+}
+
 public sealed partial class LoginRequest : pb::IMessage<LoginRequest> {
   private static readonly pb::MessageParser<LoginRequest> _parser = new pb::MessageParser<LoginRequest>(() => new LoginRequest());
   private pb::UnknownFieldSet _unknownFields;
@@ -48,7 +415,7 @@ public sealed partial class LoginRequest : pb::IMessage<LoginRequest> {
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::RpcServiceReflection.Descriptor.MessageTypes[0]; }
+    get { return global::RpcServiceReflection.Descriptor.MessageTypes[2]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -197,9 +564,6 @@ public sealed partial class LoginRequest : pb::IMessage<LoginRequest> {
 
 }
 
-/// <summary>
-/// The response message
-/// </summary>
 public sealed partial class LoginReply : pb::IMessage<LoginReply> {
   private static readonly pb::MessageParser<LoginReply> _parser = new pb::MessageParser<LoginReply>(() => new LoginReply());
   private pb::UnknownFieldSet _unknownFields;
@@ -208,7 +572,7 @@ public sealed partial class LoginReply : pb::IMessage<LoginReply> {
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::RpcServiceReflection.Descriptor.MessageTypes[1]; }
+    get { return global::RpcServiceReflection.Descriptor.MessageTypes[3]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

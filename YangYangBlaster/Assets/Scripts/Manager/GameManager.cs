@@ -82,6 +82,7 @@ public class GameManager : SingleTon<GameManager>
         PlayerManager.Instance.SetLobbyInit();
         MonsterManager.Instance.SetLobbyInit();
         BulletManager.Instance.SetLobbyInit();
+        RpcServiceManager.Instance.SetLobbyInit();
     }
     #endregion
 
