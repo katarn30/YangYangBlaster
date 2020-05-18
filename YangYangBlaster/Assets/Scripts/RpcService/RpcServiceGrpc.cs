@@ -14,8 +14,17 @@ public static partial class RpcService
 {
   static readonly string __ServiceName = "RpcService";
 
+  static readonly grpc::Marshaller<global::RpcServiceExampleRequest> __Marshaller_RpcServiceExampleRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RpcServiceExampleRequest.Parser.ParseFrom);
+  static readonly grpc::Marshaller<global::RpcServiceExampleReply> __Marshaller_RpcServiceExampleReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::RpcServiceExampleReply.Parser.ParseFrom);
   static readonly grpc::Marshaller<global::LoginRequest> __Marshaller_LoginRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::LoginRequest.Parser.ParseFrom);
   static readonly grpc::Marshaller<global::LoginReply> __Marshaller_LoginReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::LoginReply.Parser.ParseFrom);
+
+  static readonly grpc::Method<global::RpcServiceExampleRequest, global::RpcServiceExampleReply> __Method_RpcServiceExample = new grpc::Method<global::RpcServiceExampleRequest, global::RpcServiceExampleReply>(
+      grpc::MethodType.Unary,
+      __ServiceName,
+      "RpcServiceExample",
+      __Marshaller_RpcServiceExampleRequest,
+      __Marshaller_RpcServiceExampleReply);
 
   static readonly grpc::Method<global::LoginRequest, global::LoginReply> __Method_Login = new grpc::Method<global::LoginRequest, global::LoginReply>(
       grpc::MethodType.Unary,
@@ -34,12 +43,11 @@ public static partial class RpcService
   [grpc::BindServiceMethod(typeof(RpcService), "BindService")]
   public abstract partial class RpcServiceBase
   {
-    /// <summary>
-    /// Sends a greeting
-    /// </summary>
-    /// <param name="request">The request received from the client.</param>
-    /// <param name="context">The context of the server-side call handler being invoked.</param>
-    /// <returns>The response to send back to the client (wrapped by a task).</returns>
+    public virtual global::System.Threading.Tasks.Task<global::RpcServiceExampleReply> RpcServiceExample(global::RpcServiceExampleRequest request, grpc::ServerCallContext context)
+    {
+      throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+    }
+
     public virtual global::System.Threading.Tasks.Task<global::LoginReply> Login(global::LoginRequest request, grpc::ServerCallContext context)
     {
       throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
@@ -70,46 +78,34 @@ public static partial class RpcService
     {
     }
 
-    /// <summary>
-    /// Sends a greeting
-    /// </summary>
-    /// <param name="request">The request to send to the server.</param>
-    /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-    /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-    /// <param name="cancellationToken">An optional token for canceling the call.</param>
-    /// <returns>The response received from the server.</returns>
+    public virtual global::RpcServiceExampleReply RpcServiceExample(global::RpcServiceExampleRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return RpcServiceExample(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    public virtual global::RpcServiceExampleReply RpcServiceExample(global::RpcServiceExampleRequest request, grpc::CallOptions options)
+    {
+      return CallInvoker.BlockingUnaryCall(__Method_RpcServiceExample, null, options, request);
+    }
+    public virtual grpc::AsyncUnaryCall<global::RpcServiceExampleReply> RpcServiceExampleAsync(global::RpcServiceExampleRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+    {
+      return RpcServiceExampleAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+    }
+    public virtual grpc::AsyncUnaryCall<global::RpcServiceExampleReply> RpcServiceExampleAsync(global::RpcServiceExampleRequest request, grpc::CallOptions options)
+    {
+      return CallInvoker.AsyncUnaryCall(__Method_RpcServiceExample, null, options, request);
+    }
     public virtual global::LoginReply Login(global::LoginRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
     {
       return Login(request, new grpc::CallOptions(headers, deadline, cancellationToken));
     }
-    /// <summary>
-    /// Sends a greeting
-    /// </summary>
-    /// <param name="request">The request to send to the server.</param>
-    /// <param name="options">The options for the call.</param>
-    /// <returns>The response received from the server.</returns>
     public virtual global::LoginReply Login(global::LoginRequest request, grpc::CallOptions options)
     {
       return CallInvoker.BlockingUnaryCall(__Method_Login, null, options, request);
     }
-    /// <summary>
-    /// Sends a greeting
-    /// </summary>
-    /// <param name="request">The request to send to the server.</param>
-    /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
-    /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
-    /// <param name="cancellationToken">An optional token for canceling the call.</param>
-    /// <returns>The call object.</returns>
     public virtual grpc::AsyncUnaryCall<global::LoginReply> LoginAsync(global::LoginRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
     {
       return LoginAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
     }
-    /// <summary>
-    /// Sends a greeting
-    /// </summary>
-    /// <param name="request">The request to send to the server.</param>
-    /// <param name="options">The options for the call.</param>
-    /// <returns>The call object.</returns>
     public virtual grpc::AsyncUnaryCall<global::LoginReply> LoginAsync(global::LoginRequest request, grpc::CallOptions options)
     {
       return CallInvoker.AsyncUnaryCall(__Method_Login, null, options, request);
@@ -126,6 +122,7 @@ public static partial class RpcService
   public static grpc::ServerServiceDefinition BindService(RpcServiceBase serviceImpl)
   {
     return grpc::ServerServiceDefinition.CreateBuilder()
+        .AddMethod(__Method_RpcServiceExample, serviceImpl.RpcServiceExample)
         .AddMethod(__Method_Login, serviceImpl.Login).Build();
   }
 
@@ -135,6 +132,7 @@ public static partial class RpcService
   /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
   public static void BindService(grpc::ServiceBinderBase serviceBinder, RpcServiceBase serviceImpl)
   {
+    serviceBinder.AddMethod(__Method_RpcServiceExample, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::RpcServiceExampleRequest, global::RpcServiceExampleReply>(serviceImpl.RpcServiceExample));
     serviceBinder.AddMethod(__Method_Login, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LoginRequest, global::LoginReply>(serviceImpl.Login));
   }
 
