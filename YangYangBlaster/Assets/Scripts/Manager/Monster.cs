@@ -25,9 +25,11 @@ public class Monster : MonoBehaviour
     public float yForce = 0.0f;   
 
     public TextMeshPro hpText;
-    public int spaawnCount = 0;
+    public int spawnCount = 0;
 
     bool isPuchScaleEffect = false;
+
+    Vector3 originScale;
 
     private void Update()
     {       
@@ -68,7 +70,7 @@ public class Monster : MonoBehaviour
     {
         isLeft = _isLeft;
         isUp = _isUp;
-        spaawnCount = _spwanCount;
+        spawnCount = _spwanCount;
         spriteRender.sprite = _sprite;
 
         originHp = _monsterHp;
@@ -79,6 +81,28 @@ public class Monster : MonoBehaviour
 
         spriteRender.sortingOrder = _sortOrder;
         hpText.sortingOrder = _sortOrder;
+
+        if (spawnCount != 0)
+        {
+            if (spawnCount <= 2)
+            {
+                transform.localScale = Vector3.one;
+            }
+            else if (spawnCount > 2 && spawnCount <= 5)
+            {
+                transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            }
+            else
+            {
+                transform.localScale = new Vector3(2f, 2f, 2f);
+            }
+        }
+        else
+        {
+            transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+        }
+
+        originScale = transform.localScale;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -97,7 +121,7 @@ public class Monster : MonoBehaviour
                         () => 
                         {
                             isPuchScaleEffect = false;
-                            transform.localScale = Vector3.one; 
+                            transform.localScale = originScale; 
                         });
                 }                
             }
@@ -106,12 +130,12 @@ public class Monster : MonoBehaviour
             {
                 monsterHp = 0;
 
-                if (spaawnCount > 0)
+                if (spawnCount > 0)
                 {
-                    MonsterManager.Instance.CreateMonster(transform.position, isUp, spaawnCount - 1, originHp);
+                    MonsterManager.Instance.CreateMonster(transform.position, isUp, spawnCount - 1, originHp);
                 }
 
-                GameManager.Instance.GetScore();
+                GameManager.Instance.UpdateScore(100);
 
                 Destroy(gameObject);
             }

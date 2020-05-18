@@ -26,14 +26,17 @@ public class MonsterManager : SingleTon<MonsterManager>
         return (Number == 0 ? false : true);
     }
 
-    public void SetInGameInit()
+    public void SetLobbyInit()
     {
         if (MonsterParent != null)
         {
             Destroy(MonsterParent.gameObject);
             MonsterParent = null;
         }
+    }
 
+    public void SetInGameInit()
+    {        
         if (MonsterParent == null)
         {
             MonsterParent = new GameObject().transform;
@@ -79,15 +82,28 @@ public class MonsterManager : SingleTon<MonsterManager>
             int rnd = Random.Range(0, monsterSpriteList.Count);
             int rnds = Random.Range(0, 2);
             int rndCount = Random.Range(1, 3);
+            int stage = GameDataManager.Instance.userData.stageNum;
 
-            go.GetComponent<Monster>().CreateMonster(intToBool(rnds), false, rndCount, monsterSpriteList[rnd], MonsterParent.childCount, Random.Range(monsterHp, monsterHp + 5));
+            go.GetComponent<Monster>().CreateMonster(intToBool(rnds), false, rndCount, monsterSpriteList[rnd], MonsterParent.childCount, Random.Range(stage + 6, stage + 10));
         }
     }
 
     public void CreateMonster(Vector2 _createPos, bool _isUp, int _spawnCount, int _hp)
     {
         int rnd = Random.Range(0, monsterSpriteList.Count);
-        int createHp = Random.Range(_hp - 4, _hp);
+        int minHp = _hp - 2;
+        if (minHp < 1)
+        {
+            minHp = 1;
+        }
+
+        int maxHp = _hp - 1;
+        if (maxHp < minHp)
+        {
+            maxHp = minHp + 1;
+        }
+
+        int createHp = Random.Range(minHp, maxHp);
 
         GameObject go = Instantiate(monster.gameObject, MonsterParent);
         go.transform.position = new Vector2(_createPos.x + 0.5f, _createPos.y);

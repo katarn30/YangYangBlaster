@@ -11,14 +11,9 @@ public class InGameUIController : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI stageText;
 
-    public GameObject changeCatButton;
-    public GameObject buyMercenaryButton;
-
     public void OnInitialized()
     {
-        text.gameObject.SetActive(false);
-        changeCatButton.SetActive(false);
-        buyMercenaryButton.SetActive(false);
+        text.gameObject.SetActive(false);                
 
         SetScoreUI();
         SetStageUI();
@@ -26,41 +21,42 @@ public class InGameUIController : MonoBehaviour
 
     public void SetScoreUI()
     {
-        scoreText.text = string.Format("Score : {0}", GameManager.Instance.gameScore);
+        scoreText.text = string.Format("Score : {0}", GameDataManager.Instance.userData.score);
     }
 
     public void SetStageUI()
     {
-        stageText.text = string.Format("Stage {0}", GameManager.Instance.gameStage);
+        stageText.text = string.Format("Stage {0}", GameDataManager.Instance.userData.stageNum);
     }
 
     public void GameOverUI()
     {
         text.text = "GAME OVER";
         text.gameObject.SetActive(true);
-        changeCatButton.SetActive(true);
-        buyMercenaryButton.SetActive(true);
     }
 
     public void StageClearUI()
     {
         text.text = "STAGE CLEAR !!";
         text.gameObject.SetActive(true);
-        changeCatButton.SetActive(true);
-        buyMercenaryButton.SetActive(true);
     }
 
-    public void ChangeCatButton()
+    public void ContinueButton()
     {
-        PlayerManager.Instance.ChangeCat();
+        GameManager.Instance.SetInGame();
     }
 
     public void BuyMercenaryButton()
     {
-        if (GameManager.Instance.gameScore >= 1200)
+        if (GameDataManager.Instance.userData.score >= 1200)
         {
-            GameManager.Instance.gameScore = GameManager.Instance.gameScore - 1200;
-            PlayerManager.Instance.ActiveMercenary();
+            GameManager.Instance.UpdateScore(-1200);
+            
         }        
+    }
+
+    public void ExitLobby()
+    {
+        GameManager.Instance.ChangeGameState(GameManager.GameState.Lobby);
     }
 }
