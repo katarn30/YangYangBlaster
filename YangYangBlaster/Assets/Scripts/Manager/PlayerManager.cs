@@ -3,10 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum PlayerState
+{
+    Idle,
+    Attack,
+    Skill,
+    Dead
+}
+
 public class PlayerManager : SingleTon<PlayerManager>
 {
     public List<Transform> mercenaryPosList = new List<Transform>();
-    public SpriteRenderer playerSprite;    
+    public SpriteRenderer playerSprite;
+
+    public Animator animator;
 
     public int playerHp = 0;
     public float attackSpeed = 0.0f;
@@ -69,6 +79,22 @@ public class PlayerManager : SingleTon<PlayerManager>
             bulletTime = 0;
 
             BulletManager.Instance.CreateBullet(transform.position);               
+        }
+    }
+
+    public void ChangeAniState(PlayerState _playerState)
+    {
+        switch (_playerState)
+        {
+            case PlayerState.Idle:
+                break;
+            case PlayerState.Attack:
+                animator.SetTrigger("Attack");
+                break;
+            case PlayerState.Skill:
+                break;
+            case PlayerState.Dead:
+                break;
         }
     }
 

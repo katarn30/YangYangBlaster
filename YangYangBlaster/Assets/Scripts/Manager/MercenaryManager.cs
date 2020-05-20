@@ -12,6 +12,10 @@ public class MercenaryManager : SingleTon<MercenaryManager>
         DontDestroyOnLoad(this);
     }
 
+    private void Update()
+    {
+        MercenaryMovePoint();
+    }
     public void MercenaryMovePoint()
     {
         mercenary.transform.position = Vector3.Lerp(mercenary.transform.position, PlayerManager.Instance.mercenaryPosList[1].position, Time.deltaTime * speed);

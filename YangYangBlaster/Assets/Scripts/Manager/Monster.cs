@@ -22,7 +22,8 @@ public class Monster : MonoBehaviour
     public float xSpeed = 0.0f;
 
     public bool isUp = false;
-    public float yForce = 0.0f;   
+    public float yForce = 0.0f;
+    public float createAddForce = 0.0f;
 
     public TextMeshPro hpText;
     public int spawnCount = 0;
@@ -77,7 +78,7 @@ public class Monster : MonoBehaviour
         monsterHp = _monsterHp;
         hpText.text = monsterHp.ToString();
 
-        rigidbody2D.AddForce(Vector2.up * 3f, ForceMode2D.Impulse);
+        rigidbody2D.AddForce(Vector2.up * createAddForce, ForceMode2D.Impulse);
 
         spriteRender.sortingOrder = _sortOrder;
         hpText.sortingOrder = _sortOrder;
