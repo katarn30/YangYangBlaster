@@ -56,6 +56,8 @@ public class GameManager : SingleTon<GameManager>
 
                 PlayerManager.Instance.PlayerShot();
             }
+
+            MercenaryManager.Instance.MercenaryMovePoint();
         }
     }
 
@@ -83,6 +85,14 @@ public class GameManager : SingleTon<GameManager>
         MonsterManager.Instance.SetLobbyInit();
         BulletManager.Instance.SetLobbyInit();
         RpcServiceManager.Instance.SetLobbyInit();
+        MercenaryManager.Instance.SetLobbyInit();
+    }
+
+    public void BuyMercenary(int _num)
+    {
+        Debug.Log("BuyMercenary");
+        GameDataManager.Instance.BuyMercenary(_num);
+        UIManager.Instance.lobbyUI.shopController.RefreshCatShopList();
     }
     #endregion
 
@@ -111,6 +121,7 @@ public class GameManager : SingleTon<GameManager>
         MonsterManager.Instance.SetInGameInit();
         PlayerManager.Instance.SetInGameInit();
         BulletManager.Instance.SetInGameInit();
+        MercenaryManager.Instance.SetInGameInit();
     }
 
     public void GameOver()

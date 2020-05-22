@@ -104,7 +104,7 @@ MonoBehaviour:
   xSpeed: 1
   isUp: 0
   yForce: 11
-  createAddForce: 5
+  createAddForce: 6
   hpText: {fileID: 6028230093161568162}
   spawnCount: 0
 --- !u!61 &6028230092614303484

@@ -34,7 +34,7 @@ public class PlayerManager : SingleTon<PlayerManager>
     //로비 상태로 바뀔떄
     public void SetLobbyInit()
     {
-        //playerSprite.gameObject.SetActive(false);
+        playerSprite.gameObject.SetActive(false);
         hpBarUI.gameObject.SetActive(false);
     }
 
