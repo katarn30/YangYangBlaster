@@ -1212,6 +1212,7 @@ MonoBehaviour:
     level: 0
     price: 100
     mercenaryGetType: 0
+  stageDataList: []
 --- !u!1 &1333456981
 GameObject:
   m_ObjectHideFlags: 0

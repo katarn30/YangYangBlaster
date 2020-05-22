@@ -13,20 +13,7 @@ public class InGameUIController : MonoBehaviour
 
     public void OnInitialized()
     {
-        text.gameObject.SetActive(false);                
-
-        SetScoreUI();
-        SetStageUI();
-    }
-
-    public void SetScoreUI()
-    {
-        scoreText.text = string.Format("Score : {0}", GameDataManager.Instance.userData.score);
-    }
-
-    public void SetStageUI()
-    {
-        stageText.text = string.Format("Stage {0}", GameDataManager.Instance.userData.stageNum);
+        text.gameObject.SetActive(false);
     }
 
     public void GameOverUI()

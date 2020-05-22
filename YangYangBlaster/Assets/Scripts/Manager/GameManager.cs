@@ -141,8 +141,6 @@ public class GameManager : SingleTon<GameManager>
     public void UpdateScore(int _score)
     {
         GameDataManager.Instance.userData.score = GameDataManager.Instance.userData.score + _score;
-
-        UIManager.Instance.inGameUI.SetScoreUI();
     }
     #endregion
 }
