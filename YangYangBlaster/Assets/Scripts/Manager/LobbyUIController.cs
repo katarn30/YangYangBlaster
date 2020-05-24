@@ -31,6 +31,11 @@ public class LobbyUIController : MonoBehaviour
 
     }
 
+    public void LoginButton()
+    {
+        LoginManager.Instance.GoogleLogin();
+    }
+
     public void GameStartButton()
     {
         GameManager.Instance.ChangeGameState(GameManager.GameState.InGame);
