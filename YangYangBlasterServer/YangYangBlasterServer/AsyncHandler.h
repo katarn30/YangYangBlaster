@@ -11,51 +11,37 @@ namespace yyb
         virtual void Proceed() = 0;
     };
 
-    /*using CREATE_REQUEST = std::function<void(::grpc::ServerContext*,
-        ::yyb::RpcServiceExampleRequest*,
-        ::grpc::ServerAsyncResponseWriter*,
-        ::grpc::CompletionQueue*,
-        ::grpc::ServerCompletionQueue*,
-        void* tag)>;
-
-    std::function<void(std::placeholders::_1, std::placeholder::_2, std::placeholder::_3, std::placeholder::_4, std::placeholder::_5, std::placeholder::_6)>
-        ;
-    std::*/
     template<class REQUEST, class REPLY>
 	class AsyncHandler : public IAsyncHandler
 	{
     public:
-        //AsyncHandler() = delete;
-        AsyncHandler(/*RpcService::AsyncService* service, grpc::ServerCompletionQueue* cq*/)
-            : service_(nullptr), cq_(nullptr), responder_(&ctx_), status_(CREATE) {
-            // Invoke the serving logic right away.
-            //Proceed();
-        }
+        using AsyncHandlerType = AsyncHandler<REQUEST, REPLY>;
+        using RESPONDER = grpc::ServerAsyncResponseWriter<REPLY>;
+        using REQUEST_FUNC = std::function<void(grpc::ServerContext*,
+            REQUEST*, RESPONDER*, grpc::CompletionQueue*, grpc::ServerCompletionQueue*, void*)>;
+        using CREATE_FUNC = std::function<AsyncHandlerType*()>;
 
-        virtual void Proceed()
+        AsyncHandler()
+            : service_(nullptr), cq_(nullptr), responder_(&ctx_), status_(PROCESS) {}
+
+        void Proceed() override
         {
-            if (status_ == CREATE)
-            {
-                OnRead(request_, reply_);
-                //service_->CREATE_REQUEST(&ctx_, &request_, &responder_, cq_, cq_, this);
-                status_ = PROCESS;
-            }
             // on read
-            else if (status_ == PROCESS)
+            if (status_ == PROCESS)
             {
-                OnWrite();
+                AsyncHandlerType::CreateRequest(service_, cq_, requestFunc_, createFunc_);
 
-                //new CallRpcServiceExample(service_, cq_);
-
-                //reply_.set_error("async error");
-
+                OnRead(request_, reply_);
+                                
                 status_ = FINISH;
 
-                responder_.Finish(reply_, grpc::Status::OK, this);
+                //responder_.Finish(reply_, grpc::Status::OK, this);
             }
             // on write
             else if (status_ == FINISH)
             {
+                OnWrite();
+
                 delete this;
             }
             else
@@ -66,13 +52,41 @@ namespace yyb
 
         virtual void OnRead(const REQUEST& request, REPLY& reply) {}
         virtual void OnWrite() {}
-
-        void Start(RpcService::AsyncService* service, grpc::ServerCompletionQueue* cq)
+        
+        void Start(RpcService::AsyncService* service,
+            grpc::ServerCompletionQueue* cq, REQUEST_FUNC f1, CREATE_FUNC f2)
         {
             service_ = service;
             cq_ = cq;
+            requestFunc_ = f1;
+            createFunc_ = f2;
 
-            Proceed();
+            GPR_ASSERT(requestFunc_);
+            if (requestFunc_)
+            {
+                requestFunc_(&ctx_, &request_, &responder_, cq_, cq_, this);
+            }
+        }
+
+        static AsyncHandlerType* CreateRequest(RpcService::AsyncService* service,
+            grpc::ServerCompletionQueue* cq, REQUEST_FUNC f1, CREATE_FUNC f2)
+        {
+            AsyncHandlerType* handler = nullptr;
+            if (f2)
+            {
+                handler = f2();
+                if (handler)
+                {
+                    handler->Start(service, cq, f1, f2);
+                }
+            }
+
+            return handler;
+        }
+        
+        void Finish() 
+        {
+            responder_.Finish(reply_, grpc::Status::OK, this);
         }
 
     protected:
@@ -82,7 +96,10 @@ namespace yyb
         grpc_impl::ServerContext ctx_;
         REQUEST request_;
         REPLY reply_;
-        grpc::ServerAsyncResponseWriter<REPLY> responder_;
+        RESPONDER responder_;
+
+        CREATE_FUNC createFunc_;
+        REQUEST_FUNC requestFunc_;
 
         enum AsyncHandlerStatus { CREATE, PROCESS, FINISH };
         AsyncHandlerStatus status_;  // The current serving state.

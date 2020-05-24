@@ -12,6 +12,8 @@ namespace yyb
 			RpcServiceExampleReply& reply) override
 		{
 			std::cout << __FUNCTION__ << " : " << status_ << std::endl;
+
+			Finish();
 		}
 
 		void OnWrite() override

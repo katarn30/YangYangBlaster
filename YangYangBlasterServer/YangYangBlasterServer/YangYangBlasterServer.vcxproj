@@ -155,6 +155,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AsyncHandler.cpp" />
+    <ClCompile Include="AsyncHandlerLogin.cpp" />
     <ClCompile Include="AsyncHandlerRpcServiceExample.cpp" />
     <ClCompile Include="DB.cpp" />
     <ClCompile Include="main.cpp" />
@@ -165,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AsyncHandler.h" />
+    <ClInclude Include="AsyncHandlerLogin.h" />
     <ClInclude Include="AsyncHandlerRpcServiceExample.h" />
     <ClInclude Include="DB.h" />
     <ClInclude Include="GlobalDefine.h" />

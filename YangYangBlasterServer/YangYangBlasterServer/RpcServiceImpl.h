@@ -5,7 +5,7 @@
 
 namespace yyb
 {
-	class RpcServiceImpl final : public RpcService::Service
+	class RpcServiceImpl final : public RpcService::AsyncService
 	{
 		grpc::Status RpcServiceExample(grpc_impl::ServerContext* context,
 			const RpcServiceExampleRequest* request, RpcServiceExampleReply* reply) override;
