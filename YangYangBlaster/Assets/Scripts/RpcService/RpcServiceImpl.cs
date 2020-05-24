@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Grpc.Core;
 using System.Threading.Tasks;
+using Yyb;
 
 public class RpcServiceImpl : RpcService.RpcServiceBase
 {

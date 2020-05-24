@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Yyb;
 
 // RpcService 사용 예시 코드
 

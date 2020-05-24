@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Yyb;
 public class RpcServiceManager : SingleTon<RpcServiceManager>
 {
     private Grpc.Core.Channel channel;
