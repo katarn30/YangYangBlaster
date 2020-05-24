@@ -6,6 +6,8 @@ using GooglePlayGames.BasicApi;
 
 public class LoginManager : SingleTon<LoginManager>
 {
+    public bool isWaitLogin = false;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -16,6 +18,14 @@ public class LoginManager : SingleTon<LoginManager>
             PlayGamesPlatform.DebugLogEnabled = true;
             PlayGamesPlatform.Activate();
         }        
+    }
+
+    public void DoAutoLogin()
+    {
+        if (isWaitLogin)
+            return;
+
+
     }
 
     public void GoogleLogin()
@@ -33,6 +43,10 @@ public class LoginManager : SingleTon<LoginManager>
                     Debug.Log("Fall");                    
                 }
             });
+        }
+        else
+        {
+            Debug.Log(Social.localUser.userName);
         }
     }
 }
