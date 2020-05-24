@@ -107,6 +107,7 @@ MonoBehaviour:
   createAddForce: 6
   hpText: {fileID: 6028230093161568162}
   spawnCount: 0
+  rotEndTime: 10
 --- !u!61 &6028230092614303484
 BoxCollider2D:
   m_ObjectHideFlags: 0

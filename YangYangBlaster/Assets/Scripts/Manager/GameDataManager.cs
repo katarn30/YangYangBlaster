@@ -8,7 +8,7 @@ public struct UserData
     public string nickName;
     public int stageNum;
     public int score;
-    public int gold;
+    public int coin;
     public int ruby;
 
     public MercenaryData leaderData;
@@ -35,6 +35,7 @@ public struct MercenaryData
     public int level;
     public int price;
     public MercenaryGetType mercenaryGetType;
+    public Sprite bulletImage;
 }
 
 [System.Serializable]
@@ -69,7 +70,7 @@ public class GameDataManager : SingleTon<GameDataManager>
     public void SetUserData()
     {
         userData.nickName = "멍뭉이는멍뭉";
-        userData.gold = 0;
+        userData.coin = 0;
         userData.ruby = 0;
         userData.stageNum = 1;
         userData.score = 0;
@@ -122,6 +123,46 @@ public class GameDataManager : SingleTon<GameDataManager>
 
             userData.getMercenaryDataDic.Add(key, mercenaryData);
         }
+    }
+
+    public void SelectMercenary(MercenaryData _mercenaryData)
+    {
+        if (userData.mercenaryDataList.Count >= 2)
+        {
+            Debug.LogError("Mercenary Count is Big");
+            return;
+        }
+
+        userData.mercenaryDataList.Add(_mercenaryData);
+    }
+
+    public void RemoveMercenary(MercenaryData _mercenaryData)
+    {
+        for (int i = 0; i < userData.mercenaryDataList.Count; i++)
+        {
+            if (userData.mercenaryDataList[i].name == _mercenaryData.name)
+            {
+                Debug.Log("Mercenary Remove : " + _mercenaryData.name);
+                userData.mercenaryDataList.Remove(userData.mercenaryDataList[i]);
+                break;
+            }
+        }        
+    }
+
+    public bool isDeckMercenary(MercenaryData _mercenaryData)
+    {
+        bool result = false;
+
+        for (int i = 0; i < userData.mercenaryDataList.Count; i++)
+        {
+            if (userData.mercenaryDataList[i].name == _mercenaryData.name)
+            {
+                result = true;
+                break;
+            }            
+        }
+
+        return result;
     }
 
     #region Data Read

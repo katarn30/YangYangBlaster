@@ -8,12 +8,18 @@ using TMPro;
 public class InGameUIController : MonoBehaviour
 {
     public TextMeshProUGUI text;
-    public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI stageText;
+    public Text coinText;
+    public Text stageText;
+    public Text nextStageText;
+    public Image stageGauge;
 
     public void OnInitialized()
     {
         text.gameObject.SetActive(false);
+
+        SetCoinUI();
+        StageUI();
+        SetStageGaugeUI();
     }
 
     public void GameOverUI()
@@ -26,6 +32,22 @@ public class InGameUIController : MonoBehaviour
     {
         text.text = "STAGE CLEAR !!";
         text.gameObject.SetActive(true);
+    }
+
+    public void SetCoinUI()
+    {
+        coinText.text = GameDataManager.Instance.userData.coin.ToString();
+    }
+
+    public void StageUI()
+    {
+        stageText.text = GameDataManager.Instance.userData.stageNum.ToString();
+        nextStageText.text = (GameDataManager.Instance.userData.stageNum + 1).ToString();
+    }
+
+    public void SetStageGaugeUI()
+    {
+        stageGauge.fillAmount = (float)MonsterManager.Instance.nowMonsterCount / (float)MonsterManager.Instance.monsterStageCount;
     }
 
     public void ContinueButton()

@@ -31,6 +31,7 @@ public class Monster : MonoBehaviour
     bool isPuchScaleEffect = false;
 
     Vector3 originScale;
+    public float rotEndTime = 0.0f;
 
     private void Update()
     {       
@@ -46,10 +47,12 @@ public class Monster : MonoBehaviour
         if (isLeft == true)
         {
             transform.position -= new Vector3(xSpeed * Time.deltaTime, 0);
+            transform.DORotate(new Vector3(0, 0, 45), rotEndTime);
         }
         else
         {
             transform.position += new Vector3(xSpeed * Time.deltaTime, 0);
+            transform.DORotate(new Vector3(0, 0, -45), rotEndTime);
         }        
 
         if (transform.position.y <= -4.0f)
@@ -66,6 +69,18 @@ public class Monster : MonoBehaviour
             rigidbody2D.AddForce(Vector2.up * yForce, ForceMode2D.Impulse);            
         }
     }
+
+    private Vector3 AngleToDirection(float angle)
+    {
+        Vector3 direction = transform.forward;
+        // 정면을 기준으로 한다면 transform.forward; 를 입렵하면 된다.
+
+        var quaternion = Quaternion.Euler(0, 0, angle);
+        Vector3 newDirection = quaternion * direction;
+
+        return newDirection;
+    }
+
 
     public void CreateMonster(bool _isLeft, bool _isUp, int _spwanCount, Sprite _sprite, int _sortOrder, int _monsterHp) 
     {

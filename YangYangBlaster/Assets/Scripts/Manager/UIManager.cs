@@ -39,7 +39,7 @@ public class UIManager : SingleTon<UIManager>
         }
 
         lobbyUI.gameObject.SetActive(true);
-        
+        lobbyUI.OnInitialized();
     }
 
     public void SetInGameUI()

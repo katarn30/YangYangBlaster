@@ -42,7 +42,7 @@ public class PlayerManager : SingleTon<PlayerManager>
     public void SetInGameInit()
     {        
         playerSprite.gameObject.SetActive(true);
-        hpBarUI.gameObject.SetActive(true);
+        hpBarUI.gameObject.SetActive(true);        
 
         if (originHp == 0)
         {
@@ -54,8 +54,10 @@ public class PlayerManager : SingleTon<PlayerManager>
         }
 
         transform.position = new Vector2(0, transform.position.y);
+        attackSpeed = GameDataManager.Instance.userData.leaderData.attackSpeed;
 
         UpdateHpBar(playerHp);
+        ChangeAniState(PlayerState.Idle);
     }
 
     public void UpdateHpBar(float _playerHp)
@@ -80,13 +82,19 @@ public class PlayerManager : SingleTon<PlayerManager>
 
             BulletManager.Instance.CreateBullet(transform.position);               
         }
+
+        ChangeAniState(PlayerState.Attack);
     }
 
     public void ChangeAniState(PlayerState _playerState)
     {
+        animator.ResetTrigger("Idle");
+        animator.ResetTrigger("Attack");
+
         switch (_playerState)
         {
             case PlayerState.Idle:
+                animator.SetTrigger("Idle");
                 break;
             case PlayerState.Attack:
                 animator.SetTrigger("Attack");

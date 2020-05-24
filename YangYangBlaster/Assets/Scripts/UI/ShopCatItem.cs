@@ -13,6 +13,7 @@ public class ShopCatItem : MonoBehaviour
     public GameObject selectEffect;
     public List<GameObject> buttonList = new List<GameObject>();
 
+    bool isLeader = false;
     MercenaryData mercenaryData;
 
     public void SetCatItem(int _index, MercenaryData _mercenaryData)
@@ -37,6 +38,24 @@ public class ShopCatItem : MonoBehaviour
             buttonList[1].gameObject.SetActive(false);
             buttonList[2].gameObject.SetActive(false);
         }
+
+        if (GameDataManager.Instance.userData.leaderData.name == mercenaryData.name)
+        {
+            isLeader = true;
+        }
+        else
+        {
+            isLeader = false;
+        }
+
+        if (isLeader == false)
+        {
+            selectEffect.SetActive(GameDataManager.Instance.isDeckMercenary(mercenaryData));
+        }
+        else
+        {
+            selectEffect.SetActive(true);
+        }
     }
 
     public void RefreshCatItem()
@@ -46,12 +65,53 @@ public class ShopCatItem : MonoBehaviour
 
     public void SelectButton()
     {
-        selectEffect.gameObject.SetActive(!selectEffect.gameObject.activeSelf);
+        if (GameDataManager.Instance.isGetMercenaryCat(mercenaryData.name) == false || isLeader == true)
+        {
+            return;
+        }
+
+        if (GameDataManager.Instance.userData.mercenaryDataList.Count < 2)
+        {
+            if (selectEffect.gameObject.activeSelf == false)
+            {
+                GameManager.Instance.SelectMercenary(mercenaryData.name);
+            }
+            else
+            {
+                GameManager.Instance.UnSelectMercenary(mercenaryData.name);
+            }
+
+            selectEffect.gameObject.SetActive(!selectEffect.gameObject.activeSelf);
+        }
+        else
+        {
+            if (GameDataManager.Instance.isDeckMercenary(mercenaryData))
+            {
+                if (selectEffect.gameObject.activeSelf == false)
+                {
+                    GameManager.Instance.SelectMercenary(mercenaryData.name);
+                }
+                else
+                {
+                    Debug.Log("25545");
+                    GameManager.Instance.UnSelectMercenary(mercenaryData.name);
+                }
+
+                selectEffect.gameObject.SetActive(!selectEffect.gameObject.activeSelf);
+            }
+        }
     }
 
     public void UpgrageButton()
     {
-        GameManager.Instance.BuyMercenary(index);
+        if (isLeader == true)
+        {
+
+        }
+        else
+        {
+            GameManager.Instance.BuyMercenary(index);
+        }        
     }
 
     public void VideoButton()

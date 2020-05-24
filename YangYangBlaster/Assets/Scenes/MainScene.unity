@@ -687,7 +687,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5fc22542f0e78e94dbfcd3919a81c594, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a30cfd5c06f51a42bbed56440733ccd, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -883,6 +883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17d2d4f9f78da1f4b890f83b53021621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isWaitLogin: 0
 --- !u!4 &738438696
 Transform:
   m_ObjectHideFlags: 0
@@ -988,7 +989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &835267422
 Transform:
   m_ObjectHideFlags: 0
@@ -1088,6 +1089,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6891f9a7ce1d0f2498429456a1761480, type: 3}
   monsterHp: 5
   monsterStageCount: 5
+  nowMonsterCount: 0
   monster: {fileID: 6028230092614303458, guid: e3ced1efa66a51245a007bb3634f3ae7, type: 3}
   regenTime: 3
 --- !u!4 &922920861
@@ -1151,7 +1153,7 @@ MonoBehaviour:
     nickName: 
     stageNum: 0
     score: 0
-    gold: 0
+    coin: 0
     ruby: 0
     leaderData:
       name: 
@@ -1162,16 +1164,18 @@ MonoBehaviour:
       level: 0
       price: 0
       mercenaryGetType: 0
+      bulletImage: {fileID: 0}
     mercenaryDataList: []
   ReadMercenaryDataList:
   - name: MIA
     damage: 1
     moveSpeed: 3
-    attackSpeed: 1
+    attackSpeed: 0.1
     catImage: {fileID: 21300000, guid: 6d9744f12bdcc584cba80104c51f1c05, type: 3}
     level: 1
     price: 100
     mercenaryGetType: 0
+    bulletImage: {fileID: 21300000, guid: 675bfd46ae1b77646b42df56d80483ee, type: 3}
   - name: MEOWMEOW
     damage: 1
     moveSpeed: 3
@@ -1180,6 +1184,7 @@ MonoBehaviour:
     level: 0
     price: 100
     mercenaryGetType: 0
+    bulletImage: {fileID: 21300000, guid: 85442966ca4488e4fbc57d8e67ac49e2, type: 3}
   - name: BABABA
     damage: 1
     moveSpeed: 3
@@ -1188,6 +1193,7 @@ MonoBehaviour:
     level: 0
     price: 100
     mercenaryGetType: 2
+    bulletImage: {fileID: 21300000, guid: c114196b329a17a4d8955edbb5f6200a, type: 3}
   - name: STAR
     damage: 1
     moveSpeed: 3
@@ -1196,6 +1202,7 @@ MonoBehaviour:
     level: 0
     price: 100
     mercenaryGetType: 0
+    bulletImage: {fileID: 21300000, guid: bf89af1cceee0e94eb3e47cace36b9eb, type: 3}
   - name: YAKYAK
     damage: 1
     moveSpeed: 3
@@ -1204,6 +1211,7 @@ MonoBehaviour:
     level: 0
     price: 100
     mercenaryGetType: 0
+    bulletImage: {fileID: 21300000, guid: 4ec063cee31e9f1459f8d5517c32c8a1, type: 3}
   - name: STUDY
     damage: 1
     moveSpeed: 3
@@ -1212,6 +1220,7 @@ MonoBehaviour:
     level: 0
     price: 100
     mercenaryGetType: 0
+    bulletImage: {fileID: 21300000, guid: 4ec063cee31e9f1459f8d5517c32c8a1, type: 3}
   stageDataList: []
 --- !u!1 &1333456981
 GameObject:
@@ -1432,7 +1441,14 @@ MonoBehaviour:
   bullet: {fileID: 6135983443684274153, guid: 4a42bdb23f22f5046b7867c283865aba, type: 3}
   bulletCount: 15
   bulletParent: {fileID: 0}
+  bulletSprite: {fileID: 0}
   bulletList: []
+  mercenary1BulletCount: 10
+  mercenary1BulletSprite: {fileID: 0}
+  mercenary1BulletList: []
+  mercenary2BulletCount: 10
+  mercenary2BulletSprite: {fileID: 0}
+  mercenary2BulletList: []
 --- !u!4 &1574255869
 Transform:
   m_ObjectHideFlags: 0
@@ -1463,7 +1479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1806076191
 SpriteRenderer:
   m_ObjectHideFlags: 0

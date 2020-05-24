@@ -8,6 +8,12 @@ public class MercenaryManager : SingleTon<MercenaryManager>
     public SpriteRenderer mercenary2;
     public float speed;
 
+    float mercenary1AttackSpeed = 0.0f;
+    float mercenary1BulletTime = 0.0f;
+
+    float mercenary2AttackSpeed = 0.0f;
+    float mercenary2BulletTime = 0.0f;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -21,9 +27,17 @@ public class MercenaryManager : SingleTon<MercenaryManager>
 
     public void SetInGameInit()
     {
-        mercenary1.gameObject.SetActive(true);
-        mercenary2.gameObject.SetActive(true);
-
+        if (GameDataManager.Instance.userData.mercenaryDataList.Count == 1)
+        {
+            SetMercenary(0, true, GameDataManager.Instance.userData.mercenaryDataList[0].catImage, GameDataManager.Instance.userData.mercenaryDataList[0].attackSpeed);
+            SetMercenary(1, false);
+        }
+        else if (GameDataManager.Instance.userData.mercenaryDataList.Count >= 2)
+        {
+            SetMercenary(0, true, GameDataManager.Instance.userData.mercenaryDataList[0].catImage, GameDataManager.Instance.userData.mercenaryDataList[0].attackSpeed);
+            SetMercenary(1, true, GameDataManager.Instance.userData.mercenaryDataList[1].catImage, GameDataManager.Instance.userData.mercenaryDataList[1].attackSpeed);
+        }
+        
         InitMercenaryPosition();
     }
 
@@ -37,12 +51,56 @@ public class MercenaryManager : SingleTon<MercenaryManager>
     {
         if (mercenary1.gameObject.activeInHierarchy == true)
         {
-            mercenary1.transform.position = Vector3.Lerp(mercenary1.transform.position, PlayerManager.Instance.mercenaryPosList[0].position, Time.deltaTime * speed);
+            Mercenary1Shot();
+
+            mercenary1.transform.position = Vector3.Lerp(mercenary1.transform.position, PlayerManager.Instance.mercenaryPosList[0].position, Time.deltaTime * speed);            
         }
 
         if (mercenary2.gameObject.activeInHierarchy == true)
         {
+            Mercenary2Shot();
+
             mercenary2.transform.position = Vector3.Lerp(mercenary2.transform.position, PlayerManager.Instance.mercenaryPosList[1].position, Time.deltaTime * speed);
+        }
+    }
+
+    public void Mercenary1Shot()
+    {
+        mercenary1BulletTime += Time.deltaTime;
+
+        if (mercenary1BulletTime >= mercenary1AttackSpeed)
+        {
+            mercenary1BulletTime = 0;
+
+            BulletManager.Instance.CreateMercenary1Bullet(mercenary1.transform.position);
+        }
+    }
+
+    public void Mercenary2Shot()
+    {
+        mercenary2BulletTime += Time.deltaTime;
+
+        if (mercenary2BulletTime >= mercenary2AttackSpeed)
+        {
+            mercenary2BulletTime = 0;
+
+            BulletManager.Instance.CreateMercenary2Bullet(mercenary2.transform.position);
+        }
+    }
+
+    public void SetMercenary(int _num, bool isActive, Sprite _sprite = null, float _attackSpeed = 0.0f)
+    {
+        if (_num == 1)
+        {
+            mercenary1.sprite = _sprite;
+            mercenary1AttackSpeed = _attackSpeed;
+            mercenary1.gameObject.SetActive(isActive);
+        }
+        else
+        {
+            mercenary2.sprite = _sprite;
+            mercenary2AttackSpeed = _attackSpeed;
+            mercenary2.gameObject.SetActive(isActive);
         }
     }
 }

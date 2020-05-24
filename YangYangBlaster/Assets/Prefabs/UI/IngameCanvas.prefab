@@ -609,8 +609,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 6958420022448828497}
-  scoreText: {fileID: 0}
-  stageText: {fileID: 0}
+  coinText: {fileID: 8071650220311960706}
+  stageText: {fileID: 8071650219958541128}
+  nextStageText: {fileID: 8071650219728095804}
+  stageGauge: {fileID: 7449078057950839215}
 --- !u!1 &6958420023251887094
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,12 @@ using UnityEngine;
 public class LobbyUIController : MonoBehaviour
 {
     public ShopController shopController;
+    public DeckUIController deckUIController;
+
+    public void OnInitialized()
+    {
+        deckUIController.SetDeckUI();
+    }
 
     public void HeroButton()
     {

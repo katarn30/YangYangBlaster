@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopController: {fileID: 2103813820917206353}
+  deckUIController: {fileID: 2960141987541548504}
 --- !u!1 &6101170657815561368
 GameObject:
   m_ObjectHideFlags: 0
@@ -1723,6 +1724,7 @@ GameObject:
   - component: {fileID: 8974532679279843980}
   - component: {fileID: 8974532679279843978}
   - component: {fileID: 8974532679279843979}
+  - component: {fileID: 2960141987541548504}
   m_Layer: 5
   m_Name: MyDeckImage
   m_TagString: Untagged
@@ -1791,6 +1793,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2960141987541548504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8974532679279843981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1497c38d56ce5a34a9fff908cb62f91f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plusButton:
+  - {fileID: 7142726693752393483}
+  - {fileID: 278106691531450981}
+  deckMercenary:
+  - {fileID: 6984090250331384568}
+  - {fileID: 2717369073636579477}
 --- !u!1 &8974532679524805698
 GameObject:
   m_ObjectHideFlags: 0
