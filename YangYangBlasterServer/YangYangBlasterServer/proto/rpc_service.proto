@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package yyb;
+
+// The rpc service definition.
+service RpcService {
+  rpc RpcServiceExample (RpcServiceExampleRequest) returns (RpcServiceExampleReply) {}
+  rpc Login (LoginRequest) returns (LoginReply) {}
+}
+
+message RpcServiceExampleRequest {
+  int32 arg1 = 1;
+  float arg2 = 2;
+  string arg3 = 3;
+  bool arg4 = 4;
+  repeated int32 arg5 = 5;
+}
+
+message RpcServiceExampleReply {
+  string error = 1;
+}
+
+message LoginRequest {
+  string name = 1;
+  string serial_key = 2;
+}
+
+message LoginReply {
+  string error = 1;
+}
