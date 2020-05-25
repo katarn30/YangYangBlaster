@@ -3,10 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum PlayerState
+{
+    Idle,
+    Attack,
+    Skill,
+    Dead
+}
+
 public class PlayerManager : SingleTon<PlayerManager>
 {
     public List<Transform> mercenaryPosList = new List<Transform>();
-    public SpriteRenderer playerSprite;    
+    public SpriteRenderer playerSprite;
+
+    public Animator animator;
 
     public int playerHp = 0;
     public float attackSpeed = 0.0f;
@@ -24,7 +34,7 @@ public class PlayerManager : SingleTon<PlayerManager>
     //로비 상태로 바뀔떄
     public void SetLobbyInit()
     {
-        //playerSprite.gameObject.SetActive(false);
+        playerSprite.gameObject.SetActive(false);
         hpBarUI.gameObject.SetActive(false);
     }
 
@@ -32,7 +42,7 @@ public class PlayerManager : SingleTon<PlayerManager>
     public void SetInGameInit()
     {        
         playerSprite.gameObject.SetActive(true);
-        hpBarUI.gameObject.SetActive(true);
+        hpBarUI.gameObject.SetActive(true);        
 
         if (originHp == 0)
         {
@@ -44,8 +54,10 @@ public class PlayerManager : SingleTon<PlayerManager>
         }
 
         transform.position = new Vector2(0, transform.position.y);
+        attackSpeed = GameDataManager.Instance.userData.leaderData.attackSpeed;
 
         UpdateHpBar(playerHp);
+        ChangeAniState(PlayerState.Idle);
     }
 
     public void UpdateHpBar(float _playerHp)
@@ -69,6 +81,28 @@ public class PlayerManager : SingleTon<PlayerManager>
             bulletTime = 0;
 
             BulletManager.Instance.CreateBullet(transform.position);               
+        }
+
+        ChangeAniState(PlayerState.Attack);
+    }
+
+    public void ChangeAniState(PlayerState _playerState)
+    {
+        animator.ResetTrigger("Idle");
+        animator.ResetTrigger("Attack");
+
+        switch (_playerState)
+        {
+            case PlayerState.Idle:
+                animator.SetTrigger("Idle");
+                break;
+            case PlayerState.Attack:
+                animator.SetTrigger("Attack");
+                break;
+            case PlayerState.Skill:
+                break;
+            case PlayerState.Dead:
+                break;
         }
     }
 

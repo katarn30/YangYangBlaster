@@ -22,7 +22,8 @@ public class Monster : MonoBehaviour
     public float xSpeed = 0.0f;
 
     public bool isUp = false;
-    public float yForce = 0.0f;   
+    public float yForce = 0.0f;
+    public float createAddForce = 0.0f;
 
     public TextMeshPro hpText;
     public int spawnCount = 0;
@@ -30,6 +31,7 @@ public class Monster : MonoBehaviour
     bool isPuchScaleEffect = false;
 
     Vector3 originScale;
+    public float rotEndTime = 0.0f;
 
     private void Update()
     {       
@@ -45,10 +47,12 @@ public class Monster : MonoBehaviour
         if (isLeft == true)
         {
             transform.position -= new Vector3(xSpeed * Time.deltaTime, 0);
+            transform.DORotate(new Vector3(0, 0, 45), rotEndTime);
         }
         else
         {
             transform.position += new Vector3(xSpeed * Time.deltaTime, 0);
+            transform.DORotate(new Vector3(0, 0, -45), rotEndTime);
         }        
 
         if (transform.position.y <= -4.0f)
@@ -66,6 +70,18 @@ public class Monster : MonoBehaviour
         }
     }
 
+    private Vector3 AngleToDirection(float angle)
+    {
+        Vector3 direction = transform.forward;
+        // 정면을 기준으로 한다면 transform.forward; 를 입렵하면 된다.
+
+        var quaternion = Quaternion.Euler(0, 0, angle);
+        Vector3 newDirection = quaternion * direction;
+
+        return newDirection;
+    }
+
+
     public void CreateMonster(bool _isLeft, bool _isUp, int _spwanCount, Sprite _sprite, int _sortOrder, int _monsterHp) 
     {
         isLeft = _isLeft;
@@ -77,7 +93,7 @@ public class Monster : MonoBehaviour
         monsterHp = _monsterHp;
         hpText.text = monsterHp.ToString();
 
-        rigidbody2D.AddForce(Vector2.up * 3f, ForceMode2D.Impulse);
+        rigidbody2D.AddForce(Vector2.up * createAddForce, ForceMode2D.Impulse);
 
         spriteRender.sortingOrder = _sortOrder;
         hpText.sortingOrder = _sortOrder;

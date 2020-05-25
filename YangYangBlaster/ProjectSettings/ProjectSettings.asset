@@ -103,6 +103,7 @@ PlayerSettings:
   xboxOneMonoLoggingLevel: 0
   xboxOneLoggingLevel: 1
   xboxOneDisableEsram: 0
+  xboxOneEnableTypeOptimization: 0
   xboxOnePresentImmediateThreshold: 0
   switchQueueCommandMemory: 0
   switchQueueControlMemory: 16384
@@ -165,7 +166,7 @@ PlayerSettings:
     Standalone: com.Company.ProductName
   buildNumber: {}
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 19
+  AndroidMinSdkVersion: 21
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
   aotOptions: 
@@ -257,15 +258,15 @@ PlayerSettings:
   AndroidTargetArchitectures: 1
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: 
-  AndroidKeyaliasName: 
+  AndroidKeystoreName: '{inproject}: blaster.keystore'
+  AndroidKeyaliasName: tongtong
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
   AndroidIsGame: 1
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 0
+  androidUseCustomKeystore: 1
   m_AndroidBanners:
   - width: 320
     height: 180
@@ -605,6 +606,7 @@ PlayerSettings:
   ps4UseResolutionFallback: 0
   ps4ReprojectionSupport: 0
   ps4UseAudio3dBackend: 0
+  ps4UseLowGarlicFragmentationMode: 1
   ps4SocialScreenEnabled: 0
   ps4ScriptOptimizationLevel: 0
   ps4Audio3dVirtualSpeakerCount: 14
@@ -711,6 +713,7 @@ PlayerSettings:
   XboxOnePersistentLocalStorageSize: 0
   XboxOneXTitleMemory: 8
   XboxOneOverrideIdentityName: 
+  XboxOneOverrideIdentityPublisher: 
   vrEditorSettings:
     daydream:
       daydreamIconForeground: {fileID: 0}

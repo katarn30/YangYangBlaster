@@ -8,7 +8,7 @@ public class MonsterManager : SingleTon<MonsterManager>
 
     public int monsterHp = 0;
     public int monsterStageCount = 0;
-    int nowMonsterCount = 0;
+    public int nowMonsterCount = 0;
 
     public Monster monster;
     Transform MonsterParent = null;
@@ -43,10 +43,10 @@ public class MonsterManager : SingleTon<MonsterManager>
             MonsterParent.parent = transform;
             MonsterParent.name = "MonsterParent";
 
-            MonsterParent.position = Vector3.zero;
+            MonsterParent.position = Vector3.zero;            
+        }
 
-            nowMonsterCount = 0;
-        }               
+        nowMonsterCount = 0;
     }
 
     public void MonsterManagerUpdate()
@@ -75,6 +75,7 @@ public class MonsterManager : SingleTon<MonsterManager>
             float y = 1.74f;
 
             nowMonsterCount = nowMonsterCount + 1;
+            UIManager.Instance.inGameUI.SetStageGaugeUI();
 
             GameObject go = Instantiate(monster.gameObject, MonsterParent);
             go.transform.position = new Vector2(x, y);

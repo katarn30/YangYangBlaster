@@ -104,9 +104,10 @@ MonoBehaviour:
   xSpeed: 1
   isUp: 0
   yForce: 11
+  createAddForce: 6
   hpText: {fileID: 6028230093161568162}
-  spaawnCount: 0
-  isSpawn: 0
+  spawnCount: 0
+  rotEndTime: 10
 --- !u!61 &6028230092614303484
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -263,6 +264,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

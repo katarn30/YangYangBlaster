@@ -56,6 +56,12 @@ public class GameManager : SingleTon<GameManager>
 
                 PlayerManager.Instance.PlayerShot();
             }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                PlayerManager.Instance.ChangeAniState(PlayerState.Idle);
+            }
+
+            MercenaryManager.Instance.MercenaryMovePoint();
         }
     }
 
@@ -76,14 +82,38 @@ public class GameManager : SingleTon<GameManager>
 
     #region Lobby
     public void SetLobby()
-    {
-        UIManager.Instance.SetLobbyUI();
-
+    {        
         PlayerManager.Instance.SetLobbyInit();
         MonsterManager.Instance.SetLobbyInit();
         BulletManager.Instance.SetLobbyInit();
         RpcServiceManager.Instance.SetLobbyInit();
+        MercenaryManager.Instance.SetLobbyInit();
+
+        UIManager.Instance.SetLobbyUI();
     }
+
+    public void BuyMercenary(int _num)
+    {
+        Debug.Log("BuyMercenary");
+        GameDataManager.Instance.BuyMercenary(_num);
+        UIManager.Instance.lobbyUI.shopController.RefreshCatShopList();
+        UIManager.Instance.lobbyUI.deckUIController.SetDeckUI();
+    }
+
+    public void SelectMercenary(string _name)
+    {
+        GameDataManager.Instance.SelectMercenary(GameDataManager.Instance.GetMyMercenaryData(_name));
+
+        UIManager.Instance.lobbyUI.deckUIController.SetDeckUI();
+    }
+
+    public void UnSelectMercenary(string _name)
+    {
+        GameDataManager.Instance.RemoveMercenary(GameDataManager.Instance.GetMyMercenaryData(_name));
+
+        UIManager.Instance.lobbyUI.deckUIController.SetDeckUI();
+    }
+
     #endregion
 
     #region INGAME
@@ -106,11 +136,12 @@ public class GameManager : SingleTon<GameManager>
 
         minScreenPos = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         maxScreenPos = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
-
-        UIManager.Instance.SetInGameUI();
+        
         MonsterManager.Instance.SetInGameInit();
         PlayerManager.Instance.SetInGameInit();
         BulletManager.Instance.SetInGameInit();
+        MercenaryManager.Instance.SetInGameInit();
+        UIManager.Instance.SetInGameUI();
     }
 
     public void GameOver()
@@ -130,8 +161,6 @@ public class GameManager : SingleTon<GameManager>
     public void UpdateScore(int _score)
     {
         GameDataManager.Instance.userData.score = GameDataManager.Instance.userData.score + _score;
-
-        UIManager.Instance.inGameUI.SetScoreUI();
     }
     #endregion
 }
