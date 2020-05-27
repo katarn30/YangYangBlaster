@@ -12,7 +12,6 @@ public class Monster : MonoBehaviour
     }
 
     public SpriteRenderer spriteRender;
-
     public Rigidbody2D rigidbody2D;
 
     int originHp = 0;
@@ -35,6 +34,9 @@ public class Monster : MonoBehaviour
 
     Vector3 originScale;
     public float rotEndTime = 0.0f;
+    public int spriteNum = 0;
+
+    public List<Color> colorList = new List<Color>();
 
     private void Update()
     {       
@@ -102,8 +104,10 @@ public class Monster : MonoBehaviour
     }
 
 
-    public void CreateMonster(bool _isLeft, bool _isUp, int _spwanCount, Sprite _sprite, int _sortOrder, int _monsterHp) 
+    public void CreateMonster(int _spriteNum, bool _isLeft, bool _isUp, int _spwanCount, Sprite _sprite, int _sortOrder, int _monsterHp) 
     {
+        spriteNum = _spriteNum;
+
         isRotLeft = false;
         isRotRight = false;
 
@@ -178,6 +182,8 @@ public class Monster : MonoBehaviour
                 }
 
                 GameManager.Instance.UpdateScore(100);
+
+                EffectManager.Instance.SetBubbleEffect(transform.position, transform.localScale, spriteRender.sortingOrder, colorList[spriteNum]);
 
                 gameObject.SetActive(false);
             }

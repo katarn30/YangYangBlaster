@@ -218,6 +218,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mercenary1: {fileID: 835267423}
   mercenary2: {fileID: 1806076191}
+  mercenaryAnimator1: {fileID: 835267424}
+  mercenaryAnimator2: {fileID: 1806076193}
   speed: 3
 --- !u!1 &475711393
 GameObject:
@@ -983,6 +985,7 @@ GameObject:
   m_Component:
   - component: {fileID: 835267422}
   - component: {fileID: 835267423}
+  - component: {fileID: 835267424}
   m_Layer: 0
   m_Name: Mercenary1
   m_TagString: Untagged
@@ -1054,6 +1057,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &835267424
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835267421}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &922920859
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,6 +1190,7 @@ MonoBehaviour:
       price: 0
       mercenaryGetType: 0
       bulletImage: {fileID: 0}
+      runtimeAnimator: {fileID: 0}
     mercenaryDataList: []
   ReadMercenaryDataList:
   - name: MIA
@@ -1179,6 +1202,7 @@ MonoBehaviour:
     price: 100
     mercenaryGetType: 0
     bulletImage: {fileID: 21300000, guid: 675bfd46ae1b77646b42df56d80483ee, type: 3}
+    runtimeAnimator: {fileID: 0}
   - name: MEOWMEOW
     damage: 1
     moveSpeed: 3
@@ -1188,6 +1212,7 @@ MonoBehaviour:
     price: 100
     mercenaryGetType: 0
     bulletImage: {fileID: 21300000, guid: 85442966ca4488e4fbc57d8e67ac49e2, type: 3}
+    runtimeAnimator: {fileID: 9100000, guid: 600847ea57b3d0c45964ad416bf9f9a5, type: 2}
   - name: BABABA
     damage: 1
     moveSpeed: 3
@@ -1197,6 +1222,7 @@ MonoBehaviour:
     price: 100
     mercenaryGetType: 2
     bulletImage: {fileID: 21300000, guid: c114196b329a17a4d8955edbb5f6200a, type: 3}
+    runtimeAnimator: {fileID: 0}
   - name: STAR
     damage: 1
     moveSpeed: 3
@@ -1206,6 +1232,7 @@ MonoBehaviour:
     price: 100
     mercenaryGetType: 0
     bulletImage: {fileID: 21300000, guid: bf89af1cceee0e94eb3e47cace36b9eb, type: 3}
+    runtimeAnimator: {fileID: 0}
   - name: YAKYAK
     damage: 1
     moveSpeed: 3
@@ -1215,6 +1242,7 @@ MonoBehaviour:
     price: 100
     mercenaryGetType: 0
     bulletImage: {fileID: 21300000, guid: 4ec063cee31e9f1459f8d5517c32c8a1, type: 3}
+    runtimeAnimator: {fileID: 0}
   - name: STUDY
     damage: 1
     moveSpeed: 3
@@ -1224,7 +1252,57 @@ MonoBehaviour:
     price: 100
     mercenaryGetType: 0
     bulletImage: {fileID: 21300000, guid: 4ec063cee31e9f1459f8d5517c32c8a1, type: 3}
+    runtimeAnimator: {fileID: 0}
   stageDataList: []
+--- !u!1 &1175985201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1175985203}
+  - component: {fileID: 1175985202}
+  m_Layer: 0
+  m_Name: EffectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1175985202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175985201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d6ee7877bd887443a24dd2946ebdd55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 0}
+  bubblePrefab: {fileID: 8382085086376219683, guid: ded23065f541a1245bd99715287bbed1,
+    type: 3}
+  bubbleEffectList: []
+  bubbleEffectMaxCount: 20
+  activeBubbleNum: 0
+--- !u!4 &1175985203
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1175985201}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1333456981
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,6 +1554,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1806076192}
   - component: {fileID: 1806076191}
+  - component: {fileID: 1806076193}
   m_Layer: 0
   m_Name: Mercenary2
   m_TagString: Untagged
@@ -1547,6 +1626,25 @@ Transform:
   m_Father: {fileID: 287005596}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1806076193
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806076190}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1845833813
 GameObject:
   m_ObjectHideFlags: 0

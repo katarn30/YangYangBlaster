@@ -36,6 +36,7 @@ public struct MercenaryData
     public int price;
     public MercenaryGetType mercenaryGetType;
     public Sprite bulletImage;
+    public RuntimeAnimatorController runtimeAnimator;
 }
 
 [System.Serializable]
@@ -57,7 +58,7 @@ public class GameDataManager : SingleTon<GameDataManager>
 
     [Header("Mercenary Data")]
     [SerializeField]
-    public List<MercenaryData> ReadMercenaryDataList = new List<MercenaryData>();
+    public List<MercenaryData> ReadMercenaryDataList = new List<MercenaryData>();    
 
     [Header("Stage Data")]
     public List<StageData> stageDataList = new List<StageData>();

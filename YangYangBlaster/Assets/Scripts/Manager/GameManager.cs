@@ -89,6 +89,7 @@ public class GameManager : SingleTon<GameManager>
         BulletManager.Instance.SetLobbyInit();
         RpcServiceManager.Instance.SetLobbyInit();
         MercenaryManager.Instance.SetLobbyInit();
+        EffectManager.Instance.SetLobbyInit();
 
         UIManager.Instance.SetLobbyUI();
     }
@@ -143,6 +144,7 @@ public class GameManager : SingleTon<GameManager>
         BulletManager.Instance.SetInGameInit();
         MercenaryManager.Instance.SetInGameInit();
         UIManager.Instance.SetInGameUI();
+        EffectManager.Instance.SetInGameInit();
     }
 
     public void GameOver()
