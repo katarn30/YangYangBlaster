@@ -55,10 +55,11 @@ public class GameManager : SingleTon<GameManager>
                 PlayerManager.Instance.transform.DOMove(new Vector2(target.x, -3.89f), 0.2f);
 
                 PlayerManager.Instance.PlayerShot();
+                MercenaryManager.Instance.MercenaryShot();
             }
             else if (Input.GetMouseButtonUp(0))
             {
-                PlayerManager.Instance.ChangeAniState(PlayerState.Idle);
+                PlayerManager.Instance.ChangeAniState(PlayerState.Idle);                
             }
 
             MercenaryManager.Instance.MercenaryMovePoint();

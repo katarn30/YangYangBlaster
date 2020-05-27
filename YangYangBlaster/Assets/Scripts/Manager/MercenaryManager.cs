@@ -51,16 +51,25 @@ public class MercenaryManager : SingleTon<MercenaryManager>
     {
         if (mercenary1.gameObject.activeInHierarchy == true)
         {
-            Mercenary1Shot();
-
-            mercenary1.transform.position = Vector3.Lerp(mercenary1.transform.position, PlayerManager.Instance.mercenaryPosList[0].position, Time.deltaTime * speed);            
+            mercenary1.transform.position = Vector3.Lerp(mercenary1.transform.position, PlayerManager.Instance.mercenaryPosList[0].position, Time.deltaTime * speed);
         }
 
         if (mercenary2.gameObject.activeInHierarchy == true)
         {
-            Mercenary2Shot();
-
             mercenary2.transform.position = Vector3.Lerp(mercenary2.transform.position, PlayerManager.Instance.mercenaryPosList[1].position, Time.deltaTime * speed);
+        }
+    }
+
+    public void MercenaryShot()
+    {
+        if (mercenary1.gameObject.activeInHierarchy == true)
+        {
+            Mercenary1Shot();            
+        }
+
+        if (mercenary2.gameObject.activeInHierarchy == true)
+        {
+            Mercenary2Shot();            
         }
     }
 
@@ -90,13 +99,13 @@ public class MercenaryManager : SingleTon<MercenaryManager>
 
     public void SetMercenary(int _num, bool isActive, Sprite _sprite = null, float _attackSpeed = 0.0f)
     {
-        if (_num == 1)
+        if (_num == 0)
         {
             mercenary1.sprite = _sprite;
             mercenary1AttackSpeed = _attackSpeed;
             mercenary1.gameObject.SetActive(isActive);
         }
-        else
+        else if (_num == 1)
         {
             mercenary2.sprite = _sprite;
             mercenary2AttackSpeed = _attackSpeed;
