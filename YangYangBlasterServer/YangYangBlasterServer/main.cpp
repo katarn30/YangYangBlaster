@@ -5,12 +5,22 @@
 #include "rpc_service.pb.h"
 #include "rpc_service.grpc.pb.h"
 #include "GlobalDefine.h"
+#include "Cache.h"
 #include "DB.h"
 #include "RpcServiceImpl.h"
 #include "RpcServerImpl.h"
 
 namespace yyb
 {
+    void InitCache()
+    {
+        std::string host = "127.0.0.1";
+        short port = 3306;
+
+        Cache::Instance().Init(host, port);
+        Cache::Instance().CreateCache(CACHE_INDEX_GLOBAL);
+    }
+
     void InitDB()
     {
         const size_t poolSize = 

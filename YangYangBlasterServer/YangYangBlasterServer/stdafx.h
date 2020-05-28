@@ -108,6 +108,9 @@
 #pragma comment(lib, "absl_throw_delegate.lib")
 #pragma comment(lib, "absl_time.lib")
 #pragma comment(lib, "absl_time_zone.lib")
+#pragma comment(lib, "ws2_32.lib")
+#pragma comment(lib, "tacopie.lib")
+#pragma comment(lib, "cpp_redis.lib")
 
 #include <iostream>
 #include <memory>
@@ -132,3 +135,5 @@
 #include <soci/empty/soci-empty.h>
 #include <soci/mysql/soci-mysql.h>
 #include <soci/callbacks.h>
+
+#include <cpp_redis/core/client.hpp>

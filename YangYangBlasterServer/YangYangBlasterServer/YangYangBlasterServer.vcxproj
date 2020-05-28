@@ -158,6 +158,7 @@
     <ClCompile Include="AsyncHandler.cpp" />
     <ClCompile Include="AsyncHandlerLogin.cpp" />
     <ClCompile Include="AsyncHandlerRpcServiceExample.cpp" />
+    <ClCompile Include="Cache.cpp" />
     <ClCompile Include="DB.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RpcServerImpl.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="AsyncHandler.h" />
     <ClInclude Include="AsyncHandlerLogin.h" />
     <ClInclude Include="AsyncHandlerRpcServiceExample.h" />
+    <ClInclude Include="Cache.h" />
     <ClInclude Include="DB.h" />
     <ClInclude Include="GlobalDefine.h" />
     <ClInclude Include="RpcServerImpl.h" />
