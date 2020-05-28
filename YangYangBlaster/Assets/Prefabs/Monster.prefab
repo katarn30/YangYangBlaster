@@ -108,6 +108,11 @@ MonoBehaviour:
   hpText: {fileID: 6028230093161568162}
   spawnCount: 0
   rotEndTime: 10
+  spriteNum: 0
+  colorList:
+  - {r: 1, g: 0.7411765, b: 0.09019608, a: 1}
+  - {r: 0.40000004, g: 0.97647065, b: 0, a: 1}
+  - {r: 0.09019608, g: 0.8352942, b: 1, a: 1}
 --- !u!61 &6028230092614303484
 BoxCollider2D:
   m_ObjectHideFlags: 0

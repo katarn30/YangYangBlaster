@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LobbyUIController : MonoBehaviour
 {
+    public LeaderCatShopController leaderCatShopController;
     public ShopController shopController;
     public DeckUIController deckUIController;
 
@@ -14,7 +15,10 @@ public class LobbyUIController : MonoBehaviour
 
     public void HeroButton()
     {
-
+        if (leaderCatShopController.gameObject.activeInHierarchy == false)
+        {
+            leaderCatShopController.gameObject.SetActive(true);
+        }
     }
 
     public void FriendButton()

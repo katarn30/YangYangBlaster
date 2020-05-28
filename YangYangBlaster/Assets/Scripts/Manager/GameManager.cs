@@ -55,10 +55,11 @@ public class GameManager : SingleTon<GameManager>
                 PlayerManager.Instance.transform.DOMove(new Vector2(target.x, -3.89f), 0.2f);
 
                 PlayerManager.Instance.PlayerShot();
+                MercenaryManager.Instance.MercenaryShot();
             }
             else if (Input.GetMouseButtonUp(0))
             {
-                PlayerManager.Instance.ChangeAniState(PlayerState.Idle);
+                PlayerManager.Instance.ChangeAniState(PlayerState.Idle);                
             }
 
             MercenaryManager.Instance.MercenaryMovePoint();
@@ -88,6 +89,7 @@ public class GameManager : SingleTon<GameManager>
         BulletManager.Instance.SetLobbyInit();
         RpcServiceManager.Instance.SetLobbyInit();
         MercenaryManager.Instance.SetLobbyInit();
+        EffectManager.Instance.SetLobbyInit();
 
         UIManager.Instance.SetLobbyUI();
     }
@@ -142,6 +144,7 @@ public class GameManager : SingleTon<GameManager>
         BulletManager.Instance.SetInGameInit();
         MercenaryManager.Instance.SetInGameInit();
         UIManager.Instance.SetInGameUI();
+        EffectManager.Instance.SetInGameInit();
     }
 
     public void GameOver()

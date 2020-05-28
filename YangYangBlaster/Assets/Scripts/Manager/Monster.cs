@@ -12,7 +12,6 @@ public class Monster : MonoBehaviour
     }
 
     public SpriteRenderer spriteRender;
-
     public Rigidbody2D rigidbody2D;
 
     int originHp = 0;
@@ -29,12 +28,25 @@ public class Monster : MonoBehaviour
     public int spawnCount = 0;
 
     bool isPuchScaleEffect = false;
+    bool isDead = false;
+    bool isRotLeft = false;
+    bool isRotRight = false;
 
     Vector3 originScale;
     public float rotEndTime = 0.0f;
+    public int spriteNum = 0;
+
+    public List<Color> colorList = new List<Color>();
 
     private void Update()
     {       
+        if (monsterHp == 0 && isDead == true)
+        {
+            isDead = false;
+            DOTween.Clear();
+            return;
+        }
+
         if (transform.position.x <= GameManager.Instance.minScreenPos.x)
         {
             isLeft = false;
@@ -47,12 +59,22 @@ public class Monster : MonoBehaviour
         if (isLeft == true)
         {
             transform.position -= new Vector3(xSpeed * Time.deltaTime, 0);
-            transform.DORotate(new Vector3(0, 0, 45), rotEndTime);
+            if (isRotLeft == false)
+            {
+                isRotLeft = true;
+                isRotRight = false;                
+                transform.DORotate(new Vector3(0, 0, 45), rotEndTime);
+            }            
         }
         else
         {
             transform.position += new Vector3(xSpeed * Time.deltaTime, 0);
-            transform.DORotate(new Vector3(0, 0, -45), rotEndTime);
+            if (isRotRight == false)
+            {
+                isRotRight = true;
+                isRotLeft = false;
+                transform.DORotate(new Vector3(0, 0, -45), rotEndTime);
+            }            
         }        
 
         if (transform.position.y <= -4.0f)
@@ -82,8 +104,13 @@ public class Monster : MonoBehaviour
     }
 
 
-    public void CreateMonster(bool _isLeft, bool _isUp, int _spwanCount, Sprite _sprite, int _sortOrder, int _monsterHp) 
+    public void CreateMonster(int _spriteNum, bool _isLeft, bool _isUp, int _spwanCount, Sprite _sprite, int _sortOrder, int _monsterHp) 
     {
+        spriteNum = _spriteNum;
+
+        isRotLeft = false;
+        isRotRight = false;
+
         isLeft = _isLeft;
         isUp = _isUp;
         spawnCount = _spwanCount;
@@ -93,6 +120,7 @@ public class Monster : MonoBehaviour
         monsterHp = _monsterHp;
         hpText.text = monsterHp.ToString();
 
+        rigidbody2D.velocity = Vector2.zero;
         rigidbody2D.AddForce(Vector2.up * createAddForce, ForceMode2D.Impulse);
 
         spriteRender.sortingOrder = _sortOrder;
@@ -144,7 +172,9 @@ public class Monster : MonoBehaviour
             
             if (monsterHp <= 0)
             {
+                isDead = true;
                 monsterHp = 0;
+                MonsterManager.Instance.deadCount = MonsterManager.Instance.deadCount + 1;
 
                 if (spawnCount > 0)
                 {
@@ -153,7 +183,9 @@ public class Monster : MonoBehaviour
 
                 GameManager.Instance.UpdateScore(100);
 
-                Destroy(gameObject);
+                EffectManager.Instance.SetBubbleEffect(transform.position, transform.localScale, spriteRender.sortingOrder, colorList[spriteNum]);
+
+                gameObject.SetActive(false);
             }
 
             other.gameObject.SetActive(false);

@@ -6,9 +6,19 @@ public class MonsterManager : SingleTon<MonsterManager>
 {
     public List<Sprite> monsterSpriteList = new List<Sprite>();
 
+    [Header("Monster Prefab")]
+    public int monsterMaxSpawnCount = 0;
+    List<Monster> monsterList = new List<Monster>();
+    int activeMonster = 0;
+
+    [Header("Monster Spawn")]
     public int monsterHp = 0;
     public int monsterStageCount = 0;
     public int nowMonsterCount = 0;
+
+    [Header("Monster JudgeMent")]
+    public int allSpawnCount = 0;
+    public int deadCount = 0;
 
     public Monster monster;
     Transform MonsterParent = null;
@@ -31,8 +41,10 @@ public class MonsterManager : SingleTon<MonsterManager>
         if (MonsterParent != null)
         {
             Destroy(MonsterParent.gameObject);
-            MonsterParent = null;
+            MonsterParent = null;            
         }
+
+        monsterList.Clear();
     }
 
     public void SetInGameInit()
@@ -46,6 +58,9 @@ public class MonsterManager : SingleTon<MonsterManager>
             MonsterParent.position = Vector3.zero;            
         }
 
+        activeMonster = 0;
+        deadCount = 0;
+        allSpawnCount = 0;
         nowMonsterCount = 0;
     }
 
@@ -56,7 +71,7 @@ public class MonsterManager : SingleTon<MonsterManager>
 
         if (monsterStageCount == nowMonsterCount)
         {
-            if (MonsterParent.childCount == 0)
+            if (allSpawnCount == deadCount)
             {
                 GameManager.Instance.StageClear();
             }
@@ -77,15 +92,26 @@ public class MonsterManager : SingleTon<MonsterManager>
             nowMonsterCount = nowMonsterCount + 1;
             UIManager.Instance.inGameUI.SetStageGaugeUI();
 
-            GameObject go = Instantiate(monster.gameObject, MonsterParent);
-            go.transform.position = new Vector2(x, y);
-
             int rnd = Random.Range(0, monsterSpriteList.Count);
             int rnds = Random.Range(0, 2);
             int rndCount = Random.Range(1, 3);
             int stage = GameDataManager.Instance.userData.stageNum;
 
-            go.GetComponent<Monster>().CreateMonster(intToBool(rnds), false, rndCount, monsterSpriteList[rnd], MonsterParent.childCount, Random.Range(stage + 6, stage + 10));
+            allSpawnCount = allSpawnCount + 1;
+
+            if (monsterMaxSpawnCount > monsterList.Count)
+            {
+                GameObject go = Instantiate(monster.gameObject, MonsterParent);
+                go.transform.position = new Vector2(x, y);
+                Monster mon = go.GetComponent<Monster>();
+                mon.CreateMonster(rnd, intToBool(rnds), false, rndCount, monsterSpriteList[rnd], monsterList.Count + 1, Random.Range(stage + 6, stage + 10));
+
+                monsterList.Add(monster);
+            }
+            else
+            {
+                ActiveMonsterInit(rnd, new Vector2(x, y), intToBool(rnds), false, rndCount, monsterSpriteList[rnd], monsterList.Count, Random.Range(stage + 6, stage + 10));
+            }
         }
     }
 
@@ -105,14 +131,44 @@ public class MonsterManager : SingleTon<MonsterManager>
         }
 
         int createHp = Random.Range(minHp, maxHp);
+        
+        allSpawnCount = allSpawnCount + 2;
 
-        GameObject go = Instantiate(monster.gameObject, MonsterParent);
-        go.transform.position = new Vector2(_createPos.x + 0.5f, _createPos.y);
-        go.GetComponent<Monster>().CreateMonster(false, _isUp, _spawnCount, monsterSpriteList[rnd], MonsterParent.childCount, createHp);        
+        if (monsterMaxSpawnCount > monsterList.Count)
+        {
+            GameObject go = Instantiate(monster.gameObject, MonsterParent);
+            go.transform.position = new Vector2(_createPos.x + 0.5f, _createPos.y);
+            go.GetComponent<Monster>().CreateMonster(rnd, false, _isUp, _spawnCount, monsterSpriteList[rnd], MonsterParent.childCount, createHp);
+        }
+        else
+        {
+            ActiveMonsterInit(rnd, new Vector2(_createPos.x + 0.5f, _createPos.y), false, _isUp, _spawnCount, monsterSpriteList[rnd], MonsterParent.childCount, createHp);
+        }
 
+        if (monsterMaxSpawnCount > monsterList.Count)
+        {
+            GameObject go1 = Instantiate(monster.gameObject, MonsterParent);
+            go1.transform.position = new Vector2(_createPos.x - 0.5f, _createPos.y);
+            go1.GetComponent<Monster>().CreateMonster(rnd, true, _isUp, _spawnCount, monsterSpriteList[rnd], MonsterParent.childCount, createHp);
+        }
+        else
+        {
+            ActiveMonsterInit(rnd, new Vector2(_createPos.x - 0.5f, _createPos.y), true, _isUp, _spawnCount, monsterSpriteList[rnd], MonsterParent.childCount, createHp);
+        }
+            
+    }
 
-        GameObject go1 = Instantiate(monster.gameObject, MonsterParent);
-        go1.transform.position = new Vector2(_createPos.x - 0.5f, _createPos.y);
-        go1.GetComponent<Monster>().CreateMonster(true, _isUp, _spawnCount, monsterSpriteList[rnd], MonsterParent.childCount, createHp);        
+    public void ActiveMonsterInit(int _spriteNum, Vector2 _pos, bool _isLeft, bool _isUp, int _spawnCount, Sprite _sprite, int _sortOrder, int _monsterHp)
+    {
+        activeMonster = activeMonster + 1;
+
+        if (activeMonster >= monsterList.Count)
+        {
+            activeMonster = 0;
+        }
+
+        monsterList[activeMonster].gameObject.SetActive(true);
+        monsterList[activeMonster].transform.position = _pos;
+        monsterList[activeMonster].CreateMonster(_spriteNum, _isLeft, _isUp, _spawnCount, _sprite, _sortOrder, _monsterHp);
     }
 }
