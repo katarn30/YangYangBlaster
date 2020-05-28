@@ -82,5 +82,6 @@
     <None Include="proto\rpc_service.proto">
       <Filter>proto</Filter>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
