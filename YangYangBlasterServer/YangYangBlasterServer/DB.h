@@ -21,7 +21,7 @@ namespace yyb
 		void SetDB(std::string& db) { db_ = db; }
 
 	private:
-		DB() {}
+		DB() : poolSize_(0), port_(0) {}
 
 		size_t poolSize_;
 		std::string db_;

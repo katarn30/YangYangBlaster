@@ -25,6 +25,7 @@ namespace yyb
         DB::Instance().CreateDBConnectionPool(DB_POOL_INDEX_GLOBAL);
     }
 
+    // 동기 서버
     void RunServer() {
         std::string server_address("0.0.0.0:20051");
         RpcServiceImpl service;

@@ -31,11 +31,10 @@ namespace yyb
         // Get hold of the completion queue used for the asynchronous communication
         // with the gRPC runtime.
 
-        int completionThreadCount = std::thread::hardware_concurrency() * 2;
+        int completionThreadCount = std::thread::hardware_concurrency();
         for (int i = 0; i < completionThreadCount; ++i)
         {
             scqs_.push_back(std::move(builder.AddCompletionQueue()));
-            //thread_group_.create_thread(boost::bind(handleRpcs, &service_, scqs_[i].get()));
         }
         /*grpc::ResourceQuota rq;
         rq.SetMaxThreads(static_cast<int>(std::thread::hardware_concurrency()) * 2);
@@ -50,33 +49,36 @@ namespace yyb
 
         for (int i = 0; i < completionThreadCount; ++i)
         {
-            //scqs_.push_back(std::move(builder.AddCompletionQueue()));
-            thread_group_.create_thread(boost::bind(handleRpcs, &service_, scqs_[i].get()));
+            thread_group_.create_thread(boost::bind(&boost::asio::io_service::run, &io_service_));
+        }
+
+        for (int i = 0; i < completionThreadCount; ++i)
+        {
+            thread_group_.create_thread(boost::bind(handleRpcs, &service_, scqs_[i].get(), &io_service_));
         }
 
         thread_group_.join_all();
     }
 
-	void RpcServerImpl::createHandlers(RpcService::AsyncService* service, grpc::ServerCompletionQueue* cq)
-	{
-		AsyncHandlerRpcServiceExample::CreateRequest(service, cq,
-			std::move(std::bind(&RpcService::AsyncService::RequestRpcServiceExample, service,
-				std::placeholders::_1, std::placeholders::_2,
-				std::placeholders::_3, std::placeholders::_4,
-				std::placeholders::_5, std::placeholders::_6)),
-			[] {return new AsyncHandlerRpcServiceExample; });
+#define HANDLER_MACRO(KEWORD)   \
+    AsyncHandler##KEWORD##::CreateRequest(service, cq, io_service,  \
+    std::move(std::bind(&RpcService::AsyncService::Request##KEWORD##, service,   \
+        std::placeholders::_1, std::placeholders::_2,   \
+        std::placeholders::_3, std::placeholders::_4,   \
+        std::placeholders::_5, std::placeholders::_6)), \
+        [] {return new AsyncHandler##KEWORD##; })
 
-        AsyncHandlerLogin::CreateRequest(service, cq,
-            std::move(std::bind(&RpcService::AsyncService::RequestLogin, service,
-                std::placeholders::_1, std::placeholders::_2,
-                std::placeholders::_3, std::placeholders::_4,
-                std::placeholders::_5, std::placeholders::_6)),
-            [] {return new AsyncHandlerLogin; });
+	void RpcServerImpl::createHandlers(RpcService::AsyncService* service, 
+        grpc::ServerCompletionQueue* cq, boost::asio::io_service* io_service)
+	{
+        HANDLER_MACRO(RpcServiceExample);
+        HANDLER_MACRO(Login);
 	}
 
-    void RpcServerImpl::handleRpcs(RpcService::AsyncService* service, grpc::ServerCompletionQueue* cq)
+    void RpcServerImpl::handleRpcs(RpcService::AsyncService* service, 
+        grpc::ServerCompletionQueue* cq, boost::asio::io_service* io_service)
     {
-        createHandlers(service, cq);
+        createHandlers(service, cq, io_service);
 
         void* tag = nullptr;
         bool ok = false;
