@@ -35,10 +35,12 @@ public class BulletManager : SingleTon<BulletManager>
         if (bulletParent != null)
         {
             Destroy(bulletParent.gameObject);
+            bulletParent = null;
         }
 
-        activeBullet = 0;
         bulletList.Clear();
+        mercenary1BulletList.Clear();
+        mercenary2BulletList.Clear();
     }
 
     public void SetInGameInit()
@@ -63,9 +65,10 @@ public class BulletManager : SingleTon<BulletManager>
             mercenary1BulletSprite = GameDataManager.Instance.userData.mercenaryDataList[0].bulletImage;
             mercenary2BulletSprite = GameDataManager.Instance.userData.mercenaryDataList[1].bulletImage;
         }
-                
+
         activeBullet = 0;
-        bulletList.Clear();
+        mercenary1ActiveBullet = 0;
+        mercenary2ActiveBullet = 0;
     }
 
     public void CreateBullet(Vector2 _createPos)

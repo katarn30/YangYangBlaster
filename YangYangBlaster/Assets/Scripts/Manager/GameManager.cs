@@ -31,6 +31,7 @@ public class GameManager : SingleTon<GameManager>
     void Start()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        Application.targetFrameRate = 60;
 
         GameDataManager.Instance.SetUserData();
 

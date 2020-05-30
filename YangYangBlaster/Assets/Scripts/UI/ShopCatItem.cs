@@ -26,19 +26,6 @@ public class ShopCatItem : MonoBehaviour
         levelText.text = string.Format("Lv.{0}", mercenaryData.level);
         priceText.text = string.Format("{0} {1}", mercenaryData.price, "K");
 
-        if (_mercenaryData.mercenaryGetType == MercenaryGetType.Video)
-        {
-            buttonList[0].gameObject.SetActive(false);
-            buttonList[1].gameObject.SetActive(false);
-            buttonList[2].gameObject.SetActive(true);
-        }
-        else
-        {
-            buttonList[0].gameObject.SetActive(true);
-            buttonList[1].gameObject.SetActive(false);
-            buttonList[2].gameObject.SetActive(false);
-        }
-
         if (GameDataManager.Instance.userData.leaderData.name == mercenaryData.name)
         {
             isLeader = true;
@@ -55,6 +42,37 @@ public class ShopCatItem : MonoBehaviour
         else
         {
             selectEffect.SetActive(true);
+        }
+
+        if (_mercenaryData.mercenaryGetType == MercenaryGetType.Video)
+        {
+            buttonList[0].gameObject.SetActive(false);
+            buttonList[1].gameObject.SetActive(false);
+            buttonList[2].gameObject.SetActive(true);
+        }
+        else
+        {
+            if (isLeader == true)
+            {
+                buttonList[0].gameObject.SetActive(true);
+                buttonList[1].gameObject.SetActive(false);
+                buttonList[2].gameObject.SetActive(false);
+            }
+            else
+            {
+                if (GameDataManager.Instance.isBuyItem(mercenaryData.price) == true)
+                {
+                    buttonList[0].gameObject.SetActive(true);
+                    buttonList[1].gameObject.SetActive(false);
+                    buttonList[2].gameObject.SetActive(false);
+                }
+                else
+                {
+                    buttonList[0].gameObject.SetActive(false);
+                    buttonList[1].gameObject.SetActive(true);
+                    buttonList[2].gameObject.SetActive(false);
+                }
+            }
         }
     }
 
@@ -93,7 +111,6 @@ public class ShopCatItem : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("25545");
                     GameManager.Instance.UnSelectMercenary(mercenaryData.name);
                 }
 
@@ -106,7 +123,7 @@ public class ShopCatItem : MonoBehaviour
     {
         if (isLeader == true)
         {
-
+            UIManager.Instance.lobbyUI.HeroButton();
         }
         else
         {
