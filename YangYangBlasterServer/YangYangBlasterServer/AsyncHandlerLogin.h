@@ -9,16 +9,13 @@ namespace yyb
 	{
 	public:
 		void OnRead(const LoginRequest& request,
-			LoginReply& reply) override
-		{
-			std::cout << __FUNCTION__ << " : " << status_ << std::endl;
+			LoginReply& reply) override;
 
-			//Finish();
-		}
+		void OnWrite() override;
 
-		void OnWrite() override
-		{
-
-		}
+		bool CallHttpGoogleApiTokenInfo();
+		bool GetCacheTokenInfo(const std::string& serial_ey);
+		bool GetDBUserInfo(const std::string& name, 
+			const std::string& serial_key);
 	};
 }

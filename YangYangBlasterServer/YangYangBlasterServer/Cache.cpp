@@ -24,32 +24,50 @@ namespace yyb
 
 			cacheMap_.emplace(cacheIndex, cache);
 
-			cache->connect(host_, port_, [](const std::string& host,
-				std::size_t port, cpp_redis::client::connect_state state)
-				{
-					if (state == cpp_redis::client::connect_state::ok)
+			try
+			{
+				cache->connect(host_, port_, [](const std::string& host,
+					std::size_t port, cpp_redis::client::connect_state state)
 					{
-						std::cout << "cache connected from " << host <<
-							":" << port << std::endl;
-					}
-					if (state == cpp_redis::client::connect_state::dropped)
-					{
-						std::cout << "cache disconnected from " << host <<
-							":" << port << std::endl;
-					}
-					else
-					{
-						std::cout << "cache disconnected from " << host <<
-							":" << port << " unkown error"<< std::endl;
-					}
-				}, 0, -1, 5000);
+						if (state == cpp_redis::client::connect_state::ok)
+						{
+							std::cout << "Cache connected from " << host <<
+								":" << port << std::endl;
+						}
+						else if (state == cpp_redis::client::connect_state::start)
+						{
+							//std::cout << "cache start"<< std::endl;
+						}
+						else if (state == cpp_redis::client::connect_state::dropped)
+						{
+							std::cout << "Cache disconnected from " << host <<
+								":" << port << std::endl;
+						}
+						else
+						{
+							std::cout << "Cache disconnected from " << host <<
+								":" << port << " unkown error" << std::endl;
+						}
+					}, 0, -1, 5000);
+			}
+			catch (std::exception const& e)
+			{
+				std::cerr << "Standard error: " << e.what() << std::endl;
+				return false;
+			}
+			catch (...)
+			{
+				std::cerr << "Some other error" << std::endl;
+				return false;
+			}
 
-			return true;
+			if (false == cache->is_connected())
+			{
+				return false;
+			}
 		}
-		else
-		{
-			return false;
-		}
+			
+		return true;
 	}
 
 	redis_client_ptr Cache::GetCache(int cacheIndex)

@@ -17,6 +17,8 @@ namespace Yyb {
 
     static readonly grpc::Marshaller<global::Yyb.RpcServiceExampleRequest> __Marshaller_yyb_RpcServiceExampleRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Yyb.RpcServiceExampleRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Yyb.RpcServiceExampleReply> __Marshaller_yyb_RpcServiceExampleReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Yyb.RpcServiceExampleReply.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Yyb.Empty> __Marshaller_yyb_Empty = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Yyb.Empty.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Yyb.PushNotification> __Marshaller_yyb_PushNotification = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Yyb.PushNotification.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Yyb.LoginRequest> __Marshaller_yyb_LoginRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Yyb.LoginRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Yyb.LoginReply> __Marshaller_yyb_LoginReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Yyb.LoginReply.Parser.ParseFrom);
 
@@ -26,6 +28,13 @@ namespace Yyb {
         "RpcServiceExample",
         __Marshaller_yyb_RpcServiceExampleRequest,
         __Marshaller_yyb_RpcServiceExampleReply);
+
+    static readonly grpc::Method<global::Yyb.Empty, global::Yyb.PushNotification> __Method_Listen = new grpc::Method<global::Yyb.Empty, global::Yyb.PushNotification>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "Listen",
+        __Marshaller_yyb_Empty,
+        __Marshaller_yyb_PushNotification);
 
     static readonly grpc::Method<global::Yyb.LoginRequest, global::Yyb.LoginReply> __Method_Login = new grpc::Method<global::Yyb.LoginRequest, global::Yyb.LoginReply>(
         grpc::MethodType.Unary,
@@ -45,6 +54,11 @@ namespace Yyb {
     public abstract partial class RpcServiceBase
     {
       public virtual global::System.Threading.Tasks.Task<global::Yyb.RpcServiceExampleReply> RpcServiceExample(global::Yyb.RpcServiceExampleRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task Listen(global::Yyb.Empty request, grpc::IServerStreamWriter<global::Yyb.PushNotification> responseStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -95,6 +109,14 @@ namespace Yyb {
       {
         return CallInvoker.AsyncUnaryCall(__Method_RpcServiceExample, null, options, request);
       }
+      public virtual grpc::AsyncServerStreamingCall<global::Yyb.PushNotification> Listen(global::Yyb.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Listen(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncServerStreamingCall<global::Yyb.PushNotification> Listen(global::Yyb.Empty request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncServerStreamingCall(__Method_Listen, null, options, request);
+      }
       public virtual global::Yyb.LoginReply Login(global::Yyb.LoginRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return Login(request, new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -124,6 +146,7 @@ namespace Yyb {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_RpcServiceExample, serviceImpl.RpcServiceExample)
+          .AddMethod(__Method_Listen, serviceImpl.Listen)
           .AddMethod(__Method_Login, serviceImpl.Login).Build();
     }
 
@@ -134,6 +157,7 @@ namespace Yyb {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, RpcServiceBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_RpcServiceExample, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Yyb.RpcServiceExampleRequest, global::Yyb.RpcServiceExampleReply>(serviceImpl.RpcServiceExample));
+      serviceBinder.AddMethod(__Method_Listen, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::Yyb.Empty, global::Yyb.PushNotification>(serviceImpl.Listen));
       serviceBinder.AddMethod(__Method_Login, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Yyb.LoginRequest, global::Yyb.LoginReply>(serviceImpl.Login));
     }
 

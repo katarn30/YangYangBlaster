@@ -19,6 +19,11 @@ class RpcServiceStub(object):
                 request_serializer=rpc__service__pb2.RpcServiceExampleRequest.SerializeToString,
                 response_deserializer=rpc__service__pb2.RpcServiceExampleReply.FromString,
                 )
+        self.Listen = channel.unary_stream(
+                '/yyb.RpcService/Listen',
+                request_serializer=rpc__service__pb2.Empty.SerializeToString,
+                response_deserializer=rpc__service__pb2.PushNotification.FromString,
+                )
         self.Login = channel.unary_unary(
                 '/yyb.RpcService/Login',
                 request_serializer=rpc__service__pb2.LoginRequest.SerializeToString,
@@ -31,6 +36,12 @@ class RpcServiceServicer(object):
     """
 
     def RpcServiceExample(self, request, context):
+        """Missing associated documentation comment in .proto file"""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Listen(self, request, context):
         """Missing associated documentation comment in .proto file"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -49,6 +60,11 @@ def add_RpcServiceServicer_to_server(servicer, server):
                     servicer.RpcServiceExample,
                     request_deserializer=rpc__service__pb2.RpcServiceExampleRequest.FromString,
                     response_serializer=rpc__service__pb2.RpcServiceExampleReply.SerializeToString,
+            ),
+            'Listen': grpc.unary_stream_rpc_method_handler(
+                    servicer.Listen,
+                    request_deserializer=rpc__service__pb2.Empty.FromString,
+                    response_serializer=rpc__service__pb2.PushNotification.SerializeToString,
             ),
             'Login': grpc.unary_unary_rpc_method_handler(
                     servicer.Login,
@@ -79,6 +95,22 @@ class RpcService(object):
         return grpc.experimental.unary_unary(request, target, '/yyb.RpcService/RpcServiceExample',
             rpc__service__pb2.RpcServiceExampleRequest.SerializeToString,
             rpc__service__pb2.RpcServiceExampleReply.FromString,
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Listen(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/yyb.RpcService/Listen',
+            rpc__service__pb2.Empty.SerializeToString,
+            rpc__service__pb2.PushNotification.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 

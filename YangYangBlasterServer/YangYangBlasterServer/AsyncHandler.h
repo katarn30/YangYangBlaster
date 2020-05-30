@@ -31,7 +31,8 @@ namespace yyb
         using CREATE_FUNC = std::function<AsyncHandlerType*()>;
 
         AsyncHandler()
-            : service_(nullptr), cq_(nullptr), responder_(&ctx_), status_(PROCESS) {}
+            : service_(nullptr), cq_(nullptr), io_service_(nullptr),
+            responder_(&ctx_), status_(PROCESS) {}
 
         void Proceed() override
         {

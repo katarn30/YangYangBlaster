@@ -117,6 +117,7 @@
 #include <string.h>
 #include <ctime>
 #include <mutex>
+#include <future>
 
 #include <google/protobuf/reflection.h>
 
@@ -124,6 +125,13 @@
 #include <boost/bind.hpp>
 #include <boost/thread.hpp>
 #include <boost/asio/defer.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/locale.hpp>
+#include <boost/beast/core.hpp>
+#include <boost/beast/http.hpp>
+#include <boost/beast/version.hpp>
+#include <boost/asio/connect.hpp>
+#include <boost/asio/ip/tcp.hpp>
 
 #include <grpcpp/grpcpp.h>
 #include <grpcpp/health_check_service_interface.h>

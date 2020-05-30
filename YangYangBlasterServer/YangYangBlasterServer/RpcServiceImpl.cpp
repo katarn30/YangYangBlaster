@@ -27,6 +27,60 @@ namespace yyb
 		return grpc::Status::OK;
 	}
 
+	grpc::Status RpcServiceImpl::Listen(::grpc::ServerContext* context, const ::yyb::Empty* request,
+		::grpc::ServerWriter< ::yyb::PushNotification>* writer)
+	{
+		std::string access_key;
+		auto& metadata = context->client_metadata();
+		auto iter = metadata.find("access_key");
+		if (iter != metadata.end())
+		{
+			std::cout << "Start listen notifier " << iter->second << std::endl;
+
+			access_key = iter->second.data();
+		}
+		else
+		{
+			GPR_ASSERT(false);
+		}
+
+		while (true)
+		{
+			auto p = TestNotifier::Instance().CreatePromise(access_key);
+
+			std::shared_future<std::string> data = p->get_future();
+
+			//data.wait();
+
+			/*time_t t;
+			time(&t);
+			std::string ts = std::to_string(t);*/
+			//std::chrono::duration<std::string> diff = 0;
+
+			yyb::PushNotification noti;
+			noti.set_payload(data.get());
+
+			if (false == writer->Write(noti))
+			{
+				break;
+			}
+			if (false == writer->Write(noti))
+			{
+				break;
+			}
+			if (false == writer->Write(noti))
+			{
+				break;
+			}
+
+			std::this_thread::sleep_for(std::chrono::seconds(1));
+		}
+
+		TestNotifier::Instance().ClearPromise(access_key);
+
+		return grpc::Status::OK;
+	}
+
 	grpc::Status RpcServiceImpl::Login(grpc_impl::ServerContext* context,
 		const LoginRequest* request, LoginReply* reply)
 	{

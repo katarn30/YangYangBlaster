@@ -47,7 +47,7 @@ struct TableStruct_rpc_5fservice_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[4]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[6]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -55,12 +55,18 @@ struct TableStruct_rpc_5fservice_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_rpc_5fservice_2eproto;
 namespace yyb {
+class Empty;
+class EmptyDefaultTypeInternal;
+extern EmptyDefaultTypeInternal _Empty_default_instance_;
 class LoginReply;
 class LoginReplyDefaultTypeInternal;
 extern LoginReplyDefaultTypeInternal _LoginReply_default_instance_;
 class LoginRequest;
 class LoginRequestDefaultTypeInternal;
 extern LoginRequestDefaultTypeInternal _LoginRequest_default_instance_;
+class PushNotification;
+class PushNotificationDefaultTypeInternal;
+extern PushNotificationDefaultTypeInternal _PushNotification_default_instance_;
 class RpcServiceExampleReply;
 class RpcServiceExampleReplyDefaultTypeInternal;
 extern RpcServiceExampleReplyDefaultTypeInternal _RpcServiceExampleReply_default_instance_;
@@ -69,8 +75,10 @@ class RpcServiceExampleRequestDefaultTypeInternal;
 extern RpcServiceExampleRequestDefaultTypeInternal _RpcServiceExampleRequest_default_instance_;
 }  // namespace yyb
 PROTOBUF_NAMESPACE_OPEN
+template<> ::yyb::Empty* Arena::CreateMaybeMessage<::yyb::Empty>(Arena*);
 template<> ::yyb::LoginReply* Arena::CreateMaybeMessage<::yyb::LoginReply>(Arena*);
 template<> ::yyb::LoginRequest* Arena::CreateMaybeMessage<::yyb::LoginRequest>(Arena*);
+template<> ::yyb::PushNotification* Arena::CreateMaybeMessage<::yyb::PushNotification>(Arena*);
 template<> ::yyb::RpcServiceExampleReply* Arena::CreateMaybeMessage<::yyb::RpcServiceExampleReply>(Arena*);
 template<> ::yyb::RpcServiceExampleRequest* Arena::CreateMaybeMessage<::yyb::RpcServiceExampleRequest>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -406,6 +414,256 @@ class RpcServiceExampleReply :
 };
 // -------------------------------------------------------------------
 
+class Empty :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:yyb.Empty) */ {
+ public:
+  Empty();
+  virtual ~Empty();
+
+  Empty(const Empty& from);
+  Empty(Empty&& from) noexcept
+    : Empty() {
+    *this = ::std::move(from);
+  }
+
+  inline Empty& operator=(const Empty& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Empty& operator=(Empty&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const Empty& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Empty* internal_default_instance() {
+    return reinterpret_cast<const Empty*>(
+               &_Empty_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(Empty& a, Empty& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Empty* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Empty* New() const final {
+    return CreateMaybeMessage<Empty>(nullptr);
+  }
+
+  Empty* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<Empty>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const Empty& from);
+  void MergeFrom(const Empty& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Empty* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "yyb.Empty";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_rpc_5fservice_2eproto);
+    return ::descriptor_table_rpc_5fservice_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:yyb.Empty)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_rpc_5fservice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class PushNotification :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:yyb.PushNotification) */ {
+ public:
+  PushNotification();
+  virtual ~PushNotification();
+
+  PushNotification(const PushNotification& from);
+  PushNotification(PushNotification&& from) noexcept
+    : PushNotification() {
+    *this = ::std::move(from);
+  }
+
+  inline PushNotification& operator=(const PushNotification& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline PushNotification& operator=(PushNotification&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const PushNotification& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const PushNotification* internal_default_instance() {
+    return reinterpret_cast<const PushNotification*>(
+               &_PushNotification_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(PushNotification& a, PushNotification& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(PushNotification* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PushNotification* New() const final {
+    return CreateMaybeMessage<PushNotification>(nullptr);
+  }
+
+  PushNotification* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<PushNotification>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const PushNotification& from);
+  void MergeFrom(const PushNotification& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PushNotification* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "yyb.PushNotification";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_rpc_5fservice_2eproto);
+    return ::descriptor_table_rpc_5fservice_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kPayloadFieldNumber = 1,
+  };
+  // string payload = 1;
+  void clear_payload();
+  const std::string& payload() const;
+  void set_payload(const std::string& value);
+  void set_payload(std::string&& value);
+  void set_payload(const char* value);
+  void set_payload(const char* value, size_t size);
+  std::string* mutable_payload();
+  std::string* release_payload();
+  void set_allocated_payload(std::string* payload);
+  private:
+  const std::string& _internal_payload() const;
+  void _internal_set_payload(const std::string& value);
+  std::string* _internal_mutable_payload();
+  public:
+
+  // @@protoc_insertion_point(class_scope:yyb.PushNotification)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr payload_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_rpc_5fservice_2eproto;
+};
+// -------------------------------------------------------------------
+
 class LoginRequest :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:yyb.LoginRequest) */ {
  public:
@@ -448,7 +706,7 @@ class LoginRequest :
                &_LoginRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    4;
 
   friend void swap(LoginRequest& a, LoginRequest& b) {
     a.Swap(&b);
@@ -601,7 +859,7 @@ class LoginReply :
                &_LoginReply_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
   friend void swap(LoginReply& a, LoginReply& b) {
     a.Swap(&b);
@@ -936,6 +1194,74 @@ inline void RpcServiceExampleReply::set_allocated_error(std::string* error) {
 
 // -------------------------------------------------------------------
 
+// Empty
+
+// -------------------------------------------------------------------
+
+// PushNotification
+
+// string payload = 1;
+inline void PushNotification::clear_payload() {
+  payload_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& PushNotification::payload() const {
+  // @@protoc_insertion_point(field_get:yyb.PushNotification.payload)
+  return _internal_payload();
+}
+inline void PushNotification::set_payload(const std::string& value) {
+  _internal_set_payload(value);
+  // @@protoc_insertion_point(field_set:yyb.PushNotification.payload)
+}
+inline std::string* PushNotification::mutable_payload() {
+  // @@protoc_insertion_point(field_mutable:yyb.PushNotification.payload)
+  return _internal_mutable_payload();
+}
+inline const std::string& PushNotification::_internal_payload() const {
+  return payload_.GetNoArena();
+}
+inline void PushNotification::_internal_set_payload(const std::string& value) {
+  
+  payload_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void PushNotification::set_payload(std::string&& value) {
+  
+  payload_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:yyb.PushNotification.payload)
+}
+inline void PushNotification::set_payload(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  payload_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:yyb.PushNotification.payload)
+}
+inline void PushNotification::set_payload(const char* value, size_t size) {
+  
+  payload_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:yyb.PushNotification.payload)
+}
+inline std::string* PushNotification::_internal_mutable_payload() {
+  
+  return payload_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* PushNotification::release_payload() {
+  // @@protoc_insertion_point(field_release:yyb.PushNotification.payload)
+  
+  return payload_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void PushNotification::set_allocated_payload(std::string* payload) {
+  if (payload != nullptr) {
+    
+  } else {
+    
+  }
+  payload_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), payload);
+  // @@protoc_insertion_point(field_set_allocated:yyb.PushNotification.payload)
+}
+
+// -------------------------------------------------------------------
+
 // LoginRequest
 
 // string name = 1;
@@ -1125,6 +1451,10 @@ inline void LoginReply::set_allocated_error(std::string* error) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

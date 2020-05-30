@@ -23,6 +23,14 @@ class RpcServiceExampleReplyDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RpcServiceExampleReply> _instance;
 } _RpcServiceExampleReply_default_instance_;
+class EmptyDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Empty> _instance;
+} _Empty_default_instance_;
+class PushNotificationDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<PushNotification> _instance;
+} _PushNotification_default_instance_;
 class LoginRequestDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<LoginRequest> _instance;
@@ -32,6 +40,20 @@ class LoginReplyDefaultTypeInternal {
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<LoginReply> _instance;
 } _LoginReply_default_instance_;
 }  // namespace yyb
+static void InitDefaultsscc_info_Empty_rpc_5fservice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::yyb::_Empty_default_instance_;
+    new (ptr) ::yyb::Empty();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::yyb::Empty::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Empty_rpc_5fservice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Empty_rpc_5fservice_2eproto}, {}};
+
 static void InitDefaultsscc_info_LoginReply_rpc_5fservice_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -59,6 +81,20 @@ static void InitDefaultsscc_info_LoginRequest_rpc_5fservice_2eproto() {
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_LoginRequest_rpc_5fservice_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_LoginRequest_rpc_5fservice_2eproto}, {}};
+
+static void InitDefaultsscc_info_PushNotification_rpc_5fservice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::yyb::_PushNotification_default_instance_;
+    new (ptr) ::yyb::PushNotification();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::yyb::PushNotification::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PushNotification_rpc_5fservice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_PushNotification_rpc_5fservice_2eproto}, {}};
 
 static void InitDefaultsscc_info_RpcServiceExampleReply_rpc_5fservice_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -88,7 +124,7 @@ static void InitDefaultsscc_info_RpcServiceExampleRequest_rpc_5fservice_2eproto(
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RpcServiceExampleRequest_rpc_5fservice_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_RpcServiceExampleRequest_rpc_5fservice_2eproto}, {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_rpc_5fservice_2eproto[4];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_rpc_5fservice_2eproto[6];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_rpc_5fservice_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_rpc_5fservice_2eproto = nullptr;
 
@@ -110,6 +146,17 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_rpc_5fservice_2eproto::offsets
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::yyb::RpcServiceExampleReply, error_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::yyb::Empty, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::yyb::PushNotification, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::yyb::PushNotification, payload_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::yyb::LoginRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -126,13 +173,17 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_rpc_5fservice_2eproto::offsets
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::yyb::RpcServiceExampleRequest)},
   { 10, -1, sizeof(::yyb::RpcServiceExampleReply)},
-  { 16, -1, sizeof(::yyb::LoginRequest)},
-  { 23, -1, sizeof(::yyb::LoginReply)},
+  { 16, -1, sizeof(::yyb::Empty)},
+  { 21, -1, sizeof(::yyb::PushNotification)},
+  { 27, -1, sizeof(::yyb::LoginRequest)},
+  { 34, -1, sizeof(::yyb::LoginReply)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_RpcServiceExampleRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_RpcServiceExampleReply_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_Empty_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_PushNotification_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_LoginRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_LoginReply_default_instance_),
 };
@@ -142,28 +193,33 @@ const char descriptor_table_protodef_rpc_5fservice_2eproto[] PROTOBUF_SECTION_VA
   "ampleRequest\022\014\n\004arg1\030\001 \001(\005\022\014\n\004arg2\030\002 \001(\002"
   "\022\014\n\004arg3\030\003 \001(\t\022\014\n\004arg4\030\004 \001(\010\022\014\n\004arg5\030\005 \003"
   "(\005\"\'\n\026RpcServiceExampleReply\022\r\n\005error\030\001 "
-  "\001(\t\"0\n\014LoginRequest\022\014\n\004name\030\001 \001(\t\022\022\n\nser"
-  "ial_key\030\002 \001(\t\"\033\n\nLoginReply\022\r\n\005error\030\001 \001"
-  "(\t2\216\001\n\nRpcService\022Q\n\021RpcServiceExample\022\035"
-  ".yyb.RpcServiceExampleRequest\032\033.yyb.RpcS"
-  "erviceExampleReply\"\000\022-\n\005Login\022\021.yyb.Logi"
-  "nRequest\032\017.yyb.LoginReply\"\000b\006proto3"
+  "\001(\t\"\007\n\005Empty\"#\n\020PushNotification\022\017\n\007payl"
+  "oad\030\001 \001(\t\"0\n\014LoginRequest\022\014\n\004name\030\001 \001(\t\022"
+  "\022\n\nserial_key\030\002 \001(\t\"\033\n\nLoginReply\022\r\n\005err"
+  "or\030\001 \001(\t2\277\001\n\nRpcService\022Q\n\021RpcServiceExa"
+  "mple\022\035.yyb.RpcServiceExampleRequest\032\033.yy"
+  "b.RpcServiceExampleReply\"\000\022/\n\006Listen\022\n.y"
+  "yb.Empty\032\025.yyb.PushNotification\"\0000\001\022-\n\005L"
+  "ogin\022\021.yyb.LoginRequest\032\017.yyb.LoginReply"
+  "\"\000b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_rpc_5fservice_2eproto_deps[1] = {
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_rpc_5fservice_2eproto_sccs[4] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_rpc_5fservice_2eproto_sccs[6] = {
+  &scc_info_Empty_rpc_5fservice_2eproto.base,
   &scc_info_LoginReply_rpc_5fservice_2eproto.base,
   &scc_info_LoginRequest_rpc_5fservice_2eproto.base,
+  &scc_info_PushNotification_rpc_5fservice_2eproto.base,
   &scc_info_RpcServiceExampleReply_rpc_5fservice_2eproto.base,
   &scc_info_RpcServiceExampleRequest_rpc_5fservice_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_rpc_5fservice_2eproto_once;
 static bool descriptor_table_rpc_5fservice_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_rpc_5fservice_2eproto = {
-  &descriptor_table_rpc_5fservice_2eproto_initialized, descriptor_table_protodef_rpc_5fservice_2eproto, "rpc_service.proto", 395,
-  &descriptor_table_rpc_5fservice_2eproto_once, descriptor_table_rpc_5fservice_2eproto_sccs, descriptor_table_rpc_5fservice_2eproto_deps, 4, 0,
+  &descriptor_table_rpc_5fservice_2eproto_initialized, descriptor_table_protodef_rpc_5fservice_2eproto, "rpc_service.proto", 490,
+  &descriptor_table_rpc_5fservice_2eproto_once, descriptor_table_rpc_5fservice_2eproto_sccs, descriptor_table_rpc_5fservice_2eproto_deps, 6, 0,
   schemas, file_default_instances, TableStruct_rpc_5fservice_2eproto::offsets,
-  file_level_metadata_rpc_5fservice_2eproto, 4, file_level_enum_descriptors_rpc_5fservice_2eproto, file_level_service_descriptors_rpc_5fservice_2eproto,
+  file_level_metadata_rpc_5fservice_2eproto, 6, file_level_enum_descriptors_rpc_5fservice_2eproto, file_level_service_descriptors_rpc_5fservice_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -685,6 +741,359 @@ void RpcServiceExampleReply::InternalSwap(RpcServiceExampleReply* other) {
 
 // ===================================================================
 
+void Empty::InitAsDefaultInstance() {
+}
+class Empty::_Internal {
+ public:
+};
+
+Empty::Empty()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:yyb.Empty)
+}
+Empty::Empty(const Empty& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:yyb.Empty)
+}
+
+void Empty::SharedCtor() {
+}
+
+Empty::~Empty() {
+  // @@protoc_insertion_point(destructor:yyb.Empty)
+  SharedDtor();
+}
+
+void Empty::SharedDtor() {
+}
+
+void Empty::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Empty& Empty::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Empty_rpc_5fservice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Empty::Clear() {
+// @@protoc_insertion_point(message_clear_start:yyb.Empty)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _internal_metadata_.Clear();
+}
+
+const char* Empty::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* Empty::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:yyb.Empty)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:yyb.Empty)
+  return target;
+}
+
+size_t Empty::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:yyb.Empty)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Empty::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:yyb.Empty)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Empty* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Empty>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:yyb.Empty)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:yyb.Empty)
+    MergeFrom(*source);
+  }
+}
+
+void Empty::MergeFrom(const Empty& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:yyb.Empty)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+}
+
+void Empty::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:yyb.Empty)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Empty::CopyFrom(const Empty& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:yyb.Empty)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Empty::IsInitialized() const {
+  return true;
+}
+
+void Empty::InternalSwap(Empty* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Empty::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void PushNotification::InitAsDefaultInstance() {
+}
+class PushNotification::_Internal {
+ public:
+};
+
+PushNotification::PushNotification()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:yyb.PushNotification)
+}
+PushNotification::PushNotification(const PushNotification& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  payload_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_payload().empty()) {
+    payload_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.payload_);
+  }
+  // @@protoc_insertion_point(copy_constructor:yyb.PushNotification)
+}
+
+void PushNotification::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_PushNotification_rpc_5fservice_2eproto.base);
+  payload_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+PushNotification::~PushNotification() {
+  // @@protoc_insertion_point(destructor:yyb.PushNotification)
+  SharedDtor();
+}
+
+void PushNotification::SharedDtor() {
+  payload_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void PushNotification::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const PushNotification& PushNotification::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_PushNotification_rpc_5fservice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void PushNotification::Clear() {
+// @@protoc_insertion_point(message_clear_start:yyb.PushNotification)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  payload_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  _internal_metadata_.Clear();
+}
+
+const char* PushNotification::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string payload = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_payload();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "yyb.PushNotification.payload"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* PushNotification::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:yyb.PushNotification)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string payload = 1;
+  if (this->payload().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_payload().data(), static_cast<int>(this->_internal_payload().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "yyb.PushNotification.payload");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_payload(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:yyb.PushNotification)
+  return target;
+}
+
+size_t PushNotification::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:yyb.PushNotification)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string payload = 1;
+  if (this->payload().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_payload());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void PushNotification::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:yyb.PushNotification)
+  GOOGLE_DCHECK_NE(&from, this);
+  const PushNotification* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<PushNotification>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:yyb.PushNotification)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:yyb.PushNotification)
+    MergeFrom(*source);
+  }
+}
+
+void PushNotification::MergeFrom(const PushNotification& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:yyb.PushNotification)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.payload().size() > 0) {
+
+    payload_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.payload_);
+  }
+}
+
+void PushNotification::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:yyb.PushNotification)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void PushNotification::CopyFrom(const PushNotification& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:yyb.PushNotification)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool PushNotification::IsInitialized() const {
+  return true;
+}
+
+void PushNotification::InternalSwap(PushNotification* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  payload_.Swap(&other->payload_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata PushNotification::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
 void LoginRequest::InitAsDefaultInstance() {
 }
 class LoginRequest::_Internal {
@@ -1128,6 +1537,12 @@ template<> PROTOBUF_NOINLINE ::yyb::RpcServiceExampleRequest* Arena::CreateMaybe
 }
 template<> PROTOBUF_NOINLINE ::yyb::RpcServiceExampleReply* Arena::CreateMaybeMessage< ::yyb::RpcServiceExampleReply >(Arena* arena) {
   return Arena::CreateInternal< ::yyb::RpcServiceExampleReply >(arena);
+}
+template<> PROTOBUF_NOINLINE ::yyb::Empty* Arena::CreateMaybeMessage< ::yyb::Empty >(Arena* arena) {
+  return Arena::CreateInternal< ::yyb::Empty >(arena);
+}
+template<> PROTOBUF_NOINLINE ::yyb::PushNotification* Arena::CreateMaybeMessage< ::yyb::PushNotification >(Arena* arena) {
+  return Arena::CreateInternal< ::yyb::PushNotification >(arena);
 }
 template<> PROTOBUF_NOINLINE ::yyb::LoginRequest* Arena::CreateMaybeMessage< ::yyb::LoginRequest >(Arena* arena) {
   return Arena::CreateInternal< ::yyb::LoginRequest >(arena);

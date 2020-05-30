@@ -5,6 +5,7 @@ package yyb;
 // The rpc service definition.
 service RpcService {
   rpc RpcServiceExample (RpcServiceExampleRequest) returns (RpcServiceExampleReply) {}
+  rpc Listen(Empty) returns (stream PushNotification) {}
   rpc Login (LoginRequest) returns (LoginReply) {}
 }
 
@@ -18,6 +19,12 @@ message RpcServiceExampleRequest {
 
 message RpcServiceExampleReply {
   string error = 1;
+}
+
+message Empty {}
+
+message PushNotification {
+    string payload = 1;
 }
 
 message LoginRequest {

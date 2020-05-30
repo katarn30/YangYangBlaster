@@ -12,16 +12,22 @@
 
 namespace yyb
 {
-    void InitCache()
+    bool InitCache()
     {
         std::string host = "127.0.0.1";
-        short port = 3306;
+        short port = 6379;
 
         Cache::Instance().Init(host, port);
-        Cache::Instance().CreateCache(CACHE_INDEX_GLOBAL);
+
+        if (false == Cache::Instance().CreateCache(CACHE_INDEX_GLOBAL))
+        {
+            return false;
+        }
+
+        return true;
     }
 
-    void InitDB()
+    bool InitDB()
     {
         const size_t poolSize = 
             static_cast<size_t>(std::thread::hardware_concurrency()) * 2;
@@ -32,7 +38,13 @@ namespace yyb
         std::string password = "369369";
 
         DB::Instance().Init(poolSize, db, host, port, user, password);
-        DB::Instance().CreateDBConnectionPool(DB_POOL_INDEX_GLOBAL);
+        
+        if (false == DB::Instance().CreateDBConnectionPool(DB_POOL_INDEX_GLOBAL))
+        {
+            return false;
+        }
+
+        return true;
     }
 
     // 동기 서버
@@ -43,6 +55,11 @@ namespace yyb
         grpc::EnableDefaultHealthCheckService(true);
         grpc::reflection::InitProtoReflectionServerBuilderPlugin();
         grpc::ServerBuilder builder;
+        // Options..
+        /*builder.AddChannelArgument(GRPC_ARG_KEEPALIVE_TIME_MS, 2000);
+        builder.AddChannelArgument(GRPC_ARG_KEEPALIVE_TIMEOUT_MS, 1000);
+        builder.AddChannelArgument(GRPC_ARG_HTTP2_BDP_PROBE, 1);
+        builder.AddChannelArgument(GRPC_ARG_MAX_CONNECTION_IDLE_MS, 1000);*/
         // Listen on the given address without any authentication mechanism.
         builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
         // Register "service" as the instance through which we'll communicate with
@@ -62,17 +79,46 @@ namespace yyb
     }
 }
 
+void test_process()
+{
+    while (true)
+    {
+        /*if (yyb::TestNotifier::Instance().p_)*/
+        {
+            /*yyb::PushNotification noti;
+            noti.set_payload("보내짐");*/
+            //yyb::TestNotifier::Instance().notifier_->Write(noti);
+
+            std::this_thread::sleep_for(std::chrono::seconds(10));
+
+            yyb::TestNotifier::Instance().SetValueAll("abcd");
+        }
+    }
+}
+
 int main()
 {
+    std::thread t(test_process);
+
     /*boost::asio::io_service io_service;
     boost::asio::ip::tcp::socket socket(io_service);*/
 
-    yyb::InitDB();
+    if (false == yyb::InitCache())
+    {
+        return 0;
+    }
+
+    if (false == yyb::InitDB())
+    {
+        return 0;
+    }
 
     //yyb::RunServer();
     yyb::RpcServerImpl server;
     server.Run();
+    
 
+    t.join();
 
     return 0;
 }

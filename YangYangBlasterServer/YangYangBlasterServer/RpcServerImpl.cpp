@@ -23,6 +23,12 @@ namespace yyb
         grpc::EnableDefaultHealthCheckService(true);
         grpc::reflection::InitProtoReflectionServerBuilderPlugin();
         grpc::ServerBuilder builder;
+
+        // Options..
+        /*builder.AddChannelArgument(GRPC_ARG_KEEPALIVE_TIME_MS, 2000);
+        builder.AddChannelArgument(GRPC_ARG_KEEPALIVE_TIMEOUT_MS, 1000);
+        builder.AddChannelArgument(GRPC_ARG_HTTP2_BDP_PROBE, 1);*/
+
         // Listen on the given address without any authentication mechanism.
         builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
         // Register "service" as the instance through which we'll communicate with
@@ -72,6 +78,7 @@ namespace yyb
         grpc::ServerCompletionQueue* cq, boost::asio::io_service* io_service)
 	{
         HANDLER_MACRO(RpcServiceExample);
+        //HANDLER_MACRO(Listen);
         HANDLER_MACRO(Login);
 	}
 

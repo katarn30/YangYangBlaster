@@ -23,6 +23,7 @@ namespace yyb {
 
 static const char* RpcService_method_names[] = {
   "/yyb.RpcService/RpcServiceExample",
+  "/yyb.RpcService/Listen",
   "/yyb.RpcService/Login",
 };
 
@@ -34,7 +35,8 @@ std::unique_ptr< RpcService::Stub> RpcService::NewStub(const std::shared_ptr< ::
 
 RpcService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
   : channel_(channel), rpcmethod_RpcServiceExample_(RpcService_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Login_(RpcService_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Listen_(RpcService_method_names[1], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
+  , rpcmethod_Login_(RpcService_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status RpcService::Stub::RpcServiceExample(::grpc::ClientContext* context, const ::yyb::RpcServiceExampleRequest& request, ::yyb::RpcServiceExampleReply* response) {
@@ -63,6 +65,22 @@ void RpcService::Stub::experimental_async::RpcServiceExample(::grpc::ClientConte
 
 ::grpc::ClientAsyncResponseReader< ::yyb::RpcServiceExampleReply>* RpcService::Stub::PrepareAsyncRpcServiceExampleRaw(::grpc::ClientContext* context, const ::yyb::RpcServiceExampleRequest& request, ::grpc::CompletionQueue* cq) {
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::yyb::RpcServiceExampleReply>::Create(channel_.get(), cq, rpcmethod_RpcServiceExample_, context, request, false);
+}
+
+::grpc::ClientReader< ::yyb::PushNotification>* RpcService::Stub::ListenRaw(::grpc::ClientContext* context, const ::yyb::Empty& request) {
+  return ::grpc_impl::internal::ClientReaderFactory< ::yyb::PushNotification>::Create(channel_.get(), rpcmethod_Listen_, context, request);
+}
+
+void RpcService::Stub::experimental_async::Listen(::grpc::ClientContext* context, ::yyb::Empty* request, ::grpc::experimental::ClientReadReactor< ::yyb::PushNotification>* reactor) {
+  ::grpc_impl::internal::ClientCallbackReaderFactory< ::yyb::PushNotification>::Create(stub_->channel_.get(), stub_->rpcmethod_Listen_, context, request, reactor);
+}
+
+::grpc::ClientAsyncReader< ::yyb::PushNotification>* RpcService::Stub::AsyncListenRaw(::grpc::ClientContext* context, const ::yyb::Empty& request, ::grpc::CompletionQueue* cq, void* tag) {
+  return ::grpc_impl::internal::ClientAsyncReaderFactory< ::yyb::PushNotification>::Create(channel_.get(), cq, rpcmethod_Listen_, context, request, true, tag);
+}
+
+::grpc::ClientAsyncReader< ::yyb::PushNotification>* RpcService::Stub::PrepareAsyncListenRaw(::grpc::ClientContext* context, const ::yyb::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncReaderFactory< ::yyb::PushNotification>::Create(channel_.get(), cq, rpcmethod_Listen_, context, request, false, nullptr);
 }
 
 ::grpc::Status RpcService::Stub::Login(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::yyb::LoginReply* response) {
@@ -101,6 +119,11 @@ RpcService::Service::Service() {
           std::mem_fn(&RpcService::Service::RpcServiceExample), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       RpcService_method_names[1],
+      ::grpc::internal::RpcMethod::SERVER_STREAMING,
+      new ::grpc::internal::ServerStreamingHandler< RpcService::Service, ::yyb::Empty, ::yyb::PushNotification>(
+          std::mem_fn(&RpcService::Service::Listen), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RpcService_method_names[2],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RpcService::Service, ::yyb::LoginRequest, ::yyb::LoginReply>(
           std::mem_fn(&RpcService::Service::Login), this)));
@@ -113,6 +136,13 @@ RpcService::Service::~Service() {
   (void) context;
   (void) request;
   (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RpcService::Service::Listen(::grpc::ServerContext* context, const ::yyb::Empty* request, ::grpc::ServerWriter< ::yyb::PushNotification>* writer) {
+  (void) context;
+  (void) request;
+  (void) writer;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 

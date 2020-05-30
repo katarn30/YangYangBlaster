@@ -44,6 +44,15 @@ class RpcService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RpcServiceExampleReply>> PrepareAsyncRpcServiceExample(::grpc::ClientContext* context, const ::yyb::RpcServiceExampleRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RpcServiceExampleReply>>(PrepareAsyncRpcServiceExampleRaw(context, request, cq));
     }
+    std::unique_ptr< ::grpc::ClientReaderInterface< ::yyb::PushNotification>> Listen(::grpc::ClientContext* context, const ::yyb::Empty& request) {
+      return std::unique_ptr< ::grpc::ClientReaderInterface< ::yyb::PushNotification>>(ListenRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::yyb::PushNotification>> AsyncListen(::grpc::ClientContext* context, const ::yyb::Empty& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::yyb::PushNotification>>(AsyncListenRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::yyb::PushNotification>> PrepareAsyncListen(::grpc::ClientContext* context, const ::yyb::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::yyb::PushNotification>>(PrepareAsyncListenRaw(context, request, cq));
+    }
     virtual ::grpc::Status Login(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::yyb::LoginReply* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::LoginReply>> AsyncLogin(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::LoginReply>>(AsyncLoginRaw(context, request, cq));
@@ -65,6 +74,11 @@ class RpcService final {
       virtual void RpcServiceExample(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RpcServiceExampleReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
       virtual void RpcServiceExample(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RpcServiceExampleReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void Listen(::grpc::ClientContext* context, ::yyb::Empty* request, ::grpc::ClientReadReactor< ::yyb::PushNotification>* reactor) = 0;
+      #else
+      virtual void Listen(::grpc::ClientContext* context, ::yyb::Empty* request, ::grpc::experimental::ClientReadReactor< ::yyb::PushNotification>* reactor) = 0;
       #endif
       virtual void Login(::grpc::ClientContext* context, const ::yyb::LoginRequest* request, ::yyb::LoginReply* response, std::function<void(::grpc::Status)>) = 0;
       virtual void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::LoginReply* response, std::function<void(::grpc::Status)>) = 0;
@@ -89,6 +103,9 @@ class RpcService final {
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RpcServiceExampleReply>* AsyncRpcServiceExampleRaw(::grpc::ClientContext* context, const ::yyb::RpcServiceExampleRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RpcServiceExampleReply>* PrepareAsyncRpcServiceExampleRaw(::grpc::ClientContext* context, const ::yyb::RpcServiceExampleRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientReaderInterface< ::yyb::PushNotification>* ListenRaw(::grpc::ClientContext* context, const ::yyb::Empty& request) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::yyb::PushNotification>* AsyncListenRaw(::grpc::ClientContext* context, const ::yyb::Empty& request, ::grpc::CompletionQueue* cq, void* tag) = 0;
+    virtual ::grpc::ClientAsyncReaderInterface< ::yyb::PushNotification>* PrepareAsyncListenRaw(::grpc::ClientContext* context, const ::yyb::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::yyb::LoginReply>* AsyncLoginRaw(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::yyb::LoginReply>* PrepareAsyncLoginRaw(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
@@ -101,6 +118,15 @@ class RpcService final {
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::RpcServiceExampleReply>> PrepareAsyncRpcServiceExample(::grpc::ClientContext* context, const ::yyb::RpcServiceExampleRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::RpcServiceExampleReply>>(PrepareAsyncRpcServiceExampleRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientReader< ::yyb::PushNotification>> Listen(::grpc::ClientContext* context, const ::yyb::Empty& request) {
+      return std::unique_ptr< ::grpc::ClientReader< ::yyb::PushNotification>>(ListenRaw(context, request));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::yyb::PushNotification>> AsyncListen(::grpc::ClientContext* context, const ::yyb::Empty& request, ::grpc::CompletionQueue* cq, void* tag) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::yyb::PushNotification>>(AsyncListenRaw(context, request, cq, tag));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncReader< ::yyb::PushNotification>> PrepareAsyncListen(::grpc::ClientContext* context, const ::yyb::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncReader< ::yyb::PushNotification>>(PrepareAsyncListenRaw(context, request, cq));
     }
     ::grpc::Status Login(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::yyb::LoginReply* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::LoginReply>> AsyncLogin(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) {
@@ -123,6 +149,11 @@ class RpcService final {
       void RpcServiceExample(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RpcServiceExampleReply* response, ::grpc::ClientUnaryReactor* reactor) override;
       #else
       void RpcServiceExample(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RpcServiceExampleReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void Listen(::grpc::ClientContext* context, ::yyb::Empty* request, ::grpc::ClientReadReactor< ::yyb::PushNotification>* reactor) override;
+      #else
+      void Listen(::grpc::ClientContext* context, ::yyb::Empty* request, ::grpc::experimental::ClientReadReactor< ::yyb::PushNotification>* reactor) override;
       #endif
       void Login(::grpc::ClientContext* context, const ::yyb::LoginRequest* request, ::yyb::LoginReply* response, std::function<void(::grpc::Status)>) override;
       void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::LoginReply* response, std::function<void(::grpc::Status)>) override;
@@ -149,9 +180,13 @@ class RpcService final {
     class experimental_async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::yyb::RpcServiceExampleReply>* AsyncRpcServiceExampleRaw(::grpc::ClientContext* context, const ::yyb::RpcServiceExampleRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::yyb::RpcServiceExampleReply>* PrepareAsyncRpcServiceExampleRaw(::grpc::ClientContext* context, const ::yyb::RpcServiceExampleRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientReader< ::yyb::PushNotification>* ListenRaw(::grpc::ClientContext* context, const ::yyb::Empty& request) override;
+    ::grpc::ClientAsyncReader< ::yyb::PushNotification>* AsyncListenRaw(::grpc::ClientContext* context, const ::yyb::Empty& request, ::grpc::CompletionQueue* cq, void* tag) override;
+    ::grpc::ClientAsyncReader< ::yyb::PushNotification>* PrepareAsyncListenRaw(::grpc::ClientContext* context, const ::yyb::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::yyb::LoginReply>* AsyncLoginRaw(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::yyb::LoginReply>* PrepareAsyncLoginRaw(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_RpcServiceExample_;
+    const ::grpc::internal::RpcMethod rpcmethod_Listen_;
     const ::grpc::internal::RpcMethod rpcmethod_Login_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
@@ -161,6 +196,7 @@ class RpcService final {
     Service();
     virtual ~Service();
     virtual ::grpc::Status RpcServiceExample(::grpc::ServerContext* context, const ::yyb::RpcServiceExampleRequest* request, ::yyb::RpcServiceExampleReply* response);
+    virtual ::grpc::Status Listen(::grpc::ServerContext* context, const ::yyb::Empty* request, ::grpc::ServerWriter< ::yyb::PushNotification>* writer);
     virtual ::grpc::Status Login(::grpc::ServerContext* context, const ::yyb::LoginRequest* request, ::yyb::LoginReply* response);
   };
   template <class BaseClass>
@@ -184,12 +220,32 @@ class RpcService final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_Listen : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_Listen() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_Listen() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Listen(::grpc::ServerContext* /*context*/, const ::yyb::Empty* /*request*/, ::grpc::ServerWriter< ::yyb::PushNotification>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestListen(::grpc::ServerContext* context, ::yyb::Empty* request, ::grpc::ServerAsyncWriter< ::yyb::PushNotification>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(1, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_Login : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_Login() {
-      ::grpc::Service::MarkMethodAsync(1);
+      ::grpc::Service::MarkMethodAsync(2);
     }
     ~WithAsyncMethod_Login() override {
       BaseClassMustBeDerivedFromService(this);
@@ -200,10 +256,10 @@ class RpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestLogin(::grpc::ServerContext* context, ::yyb::LoginRequest* request, ::grpc::ServerAsyncResponseWriter< ::yyb::LoginReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_RpcServiceExample<WithAsyncMethod_Login<Service > > AsyncService;
+  typedef WithAsyncMethod_RpcServiceExample<WithAsyncMethod_Listen<WithAsyncMethod_Login<Service > > > AsyncService;
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_RpcServiceExample : public BaseClass {
    private:
@@ -252,6 +308,44 @@ class RpcService final {
       { return nullptr; }
   };
   template <class BaseClass>
+  class ExperimentalWithCallbackMethod_Listen : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_Listen() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(1,
+          new ::grpc_impl::internal::CallbackServerStreamingHandler< ::yyb::Empty, ::yyb::PushNotification>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::yyb::Empty* request) { return this->Listen(context, request); }));
+    }
+    ~ExperimentalWithCallbackMethod_Listen() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Listen(::grpc::ServerContext* /*context*/, const ::yyb::Empty* /*request*/, ::grpc::ServerWriter< ::yyb::PushNotification>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerWriteReactor< ::yyb::PushNotification>* Listen(
+      ::grpc::CallbackServerContext* /*context*/, const ::yyb::Empty* /*request*/)
+    #else
+    virtual ::grpc::experimental::ServerWriteReactor< ::yyb::PushNotification>* Listen(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::yyb::Empty* /*request*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
   class ExperimentalWithCallbackMethod_Login : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -262,7 +356,7 @@ class RpcService final {
     #else
       ::grpc::Service::experimental().
     #endif
-        MarkMethodCallback(1,
+        MarkMethodCallback(2,
           new ::grpc_impl::internal::CallbackUnaryHandler< ::yyb::LoginRequest, ::yyb::LoginReply>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -274,9 +368,9 @@ class RpcService final {
     void SetMessageAllocatorFor_Login(
         ::grpc::experimental::MessageAllocator< ::yyb::LoginRequest, ::yyb::LoginReply>* allocator) {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
     #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(1);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(2);
     #endif
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::yyb::LoginRequest, ::yyb::LoginReply>*>(handler)
               ->SetMessageAllocator(allocator);
@@ -299,10 +393,10 @@ class RpcService final {
       { return nullptr; }
   };
   #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-  typedef ExperimentalWithCallbackMethod_RpcServiceExample<ExperimentalWithCallbackMethod_Login<Service > > CallbackService;
+  typedef ExperimentalWithCallbackMethod_RpcServiceExample<ExperimentalWithCallbackMethod_Listen<ExperimentalWithCallbackMethod_Login<Service > > > CallbackService;
   #endif
 
-  typedef ExperimentalWithCallbackMethod_RpcServiceExample<ExperimentalWithCallbackMethod_Login<Service > > ExperimentalCallbackService;
+  typedef ExperimentalWithCallbackMethod_RpcServiceExample<ExperimentalWithCallbackMethod_Listen<ExperimentalWithCallbackMethod_Login<Service > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_RpcServiceExample : public BaseClass {
    private:
@@ -321,12 +415,29 @@ class RpcService final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_Listen : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_Listen() {
+      ::grpc::Service::MarkMethodGeneric(1);
+    }
+    ~WithGenericMethod_Listen() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Listen(::grpc::ServerContext* /*context*/, const ::yyb::Empty* /*request*/, ::grpc::ServerWriter< ::yyb::PushNotification>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_Login : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_Login() {
-      ::grpc::Service::MarkMethodGeneric(1);
+      ::grpc::Service::MarkMethodGeneric(2);
     }
     ~WithGenericMethod_Login() override {
       BaseClassMustBeDerivedFromService(this);
@@ -358,12 +469,32 @@ class RpcService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_Listen : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_Listen() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_Listen() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Listen(::grpc::ServerContext* /*context*/, const ::yyb::Empty* /*request*/, ::grpc::ServerWriter< ::yyb::PushNotification>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestListen(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncWriter< ::grpc::ByteBuffer>* writer, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncServerStreaming(1, context, request, writer, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_Login : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_Login() {
-      ::grpc::Service::MarkMethodRaw(1);
+      ::grpc::Service::MarkMethodRaw(2);
     }
     ~WithRawMethod_Login() override {
       BaseClassMustBeDerivedFromService(this);
@@ -374,7 +505,7 @@ class RpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestLogin(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -416,6 +547,44 @@ class RpcService final {
       { return nullptr; }
   };
   template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_Listen : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_Listen() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(1,
+          new ::grpc_impl::internal::CallbackServerStreamingHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const::grpc::ByteBuffer* request) { return this->Listen(context, request); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_Listen() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Listen(::grpc::ServerContext* /*context*/, const ::yyb::Empty* /*request*/, ::grpc::ServerWriter< ::yyb::PushNotification>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerWriteReactor< ::grpc::ByteBuffer>* Listen(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)
+    #else
+    virtual ::grpc::experimental::ServerWriteReactor< ::grpc::ByteBuffer>* Listen(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_Login : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -426,7 +595,7 @@ class RpcService final {
     #else
       ::grpc::Service::experimental().
     #endif
-        MarkMethodRawCallback(1,
+        MarkMethodRawCallback(2,
           new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -479,7 +648,7 @@ class RpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_Login() {
-      ::grpc::Service::MarkMethodStreamed(1,
+      ::grpc::Service::MarkMethodStreamed(2,
         new ::grpc::internal::StreamedUnaryHandler< ::yyb::LoginRequest, ::yyb::LoginReply>(std::bind(&WithStreamedUnaryMethod_Login<BaseClass>::StreamedLogin, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_Login() override {
@@ -494,8 +663,28 @@ class RpcService final {
     virtual ::grpc::Status StreamedLogin(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::yyb::LoginRequest,::yyb::LoginReply>* server_unary_streamer) = 0;
   };
   typedef WithStreamedUnaryMethod_RpcServiceExample<WithStreamedUnaryMethod_Login<Service > > StreamedUnaryService;
-  typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_RpcServiceExample<WithStreamedUnaryMethod_Login<Service > > StreamedService;
+  template <class BaseClass>
+  class WithSplitStreamingMethod_Listen : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithSplitStreamingMethod_Listen() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::SplitServerStreamingHandler< ::yyb::Empty, ::yyb::PushNotification>(std::bind(&WithSplitStreamingMethod_Listen<BaseClass>::StreamedListen, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithSplitStreamingMethod_Listen() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status Listen(::grpc::ServerContext* /*context*/, const ::yyb::Empty* /*request*/, ::grpc::ServerWriter< ::yyb::PushNotification>* /*writer*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with split streamed
+    virtual ::grpc::Status StreamedListen(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::yyb::Empty,::yyb::PushNotification>* server_split_streamer) = 0;
+  };
+  typedef WithSplitStreamingMethod_Listen<Service > SplitStreamedService;
+  typedef WithStreamedUnaryMethod_RpcServiceExample<WithSplitStreamingMethod_Listen<WithStreamedUnaryMethod_Login<Service > > > StreamedService;
 };
 
 }  // namespace yyb
