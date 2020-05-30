@@ -166,6 +166,19 @@ public class GameDataManager : SingleTon<GameDataManager>
         return result;
     }
 
+    //아이템 살 수 있는 지 여부 확인
+    public bool isBuyItem(int _coin)
+    {
+        bool result = false;
+
+        if (userData.coin >= _coin)
+        {
+            result = true;
+        }
+
+        return result;
+    }
+
     #region Data Read
     public bool isGetMercenaryCat(string _name)
     {
