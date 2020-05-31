@@ -19,6 +19,16 @@ public class UIManager : SingleTon<UIManager>
         DontDestroyOnLoad(this);
     }
 
+    public void LobbyUIUpdate()
+    {
+        lobbyUI.LobbyUIUpdate();
+    }
+
+    public void InGameUIUpdate()
+    {
+        
+    }
+
     public void SetLobbyUI()
     {
         if (createlobbyUI == null)
@@ -40,6 +50,8 @@ public class UIManager : SingleTon<UIManager>
 
         lobbyUI.gameObject.SetActive(true);
         lobbyUI.OnInitialized();
+
+        SetMainCanvasScale(lobbyUI.GetComponent<CanvasScaler>());
     }
 
     public void SetInGameUI()
@@ -63,5 +75,36 @@ public class UIManager : SingleTon<UIManager>
 
         inGameUI.gameObject.SetActive(true);
         inGameUI.OnInitialized();
-    }    
+
+        SetMainCanvasScale(inGameUI.GetComponent<CanvasScaler>());
+    }
+
+    public void SetMainCanvasScale(CanvasScaler _canvasScaler)
+    {
+        float mobile_w = Screen.width - 720;
+        float mobile_h = Screen.height - 1280;
+
+        Debug.Log(mobile_w + " : " + mobile_h);
+
+        if (mobile_w <= 0 && mobile_h <= 0)
+        {
+            Debug.Log("Normal");
+            _canvasScaler.matchWidthOrHeight = 0.5f;          
+        }
+        else
+        {
+            if (mobile_w > mobile_h)
+            {
+                Debug.Log("hight");
+                //가로가 길어짐
+                _canvasScaler.matchWidthOrHeight = 1;
+            }
+            else
+            {
+                Debug.Log("width");
+                //세로가 길어짐
+                _canvasScaler.matchWidthOrHeight = 0f;
+            }
+        }
+    }
 }

@@ -64,6 +64,12 @@ public class GameManager : SingleTon<GameManager>
             }
 
             MercenaryManager.Instance.MercenaryMovePoint();
+
+            UIManager.Instance.InGameUIUpdate();
+        }
+        else if (state == GameState.Lobby)
+        {
+            UIManager.Instance.LobbyUIUpdate();
         }
     }
 

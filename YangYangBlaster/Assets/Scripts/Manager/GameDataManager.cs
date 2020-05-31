@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [System.Serializable]
 public struct UserData
@@ -10,6 +11,8 @@ public struct UserData
     public int score;
     public int coin;
     public int ruby;
+    public DateTime freeCoinGetTime;
+    public DateTime freeCoinUpdateTime;
 
     public MercenaryData leaderData;
     public List<MercenaryData> mercenaryDataList;
@@ -55,6 +58,7 @@ public class GameDataManager : SingleTon<GameDataManager>
     [Header("User Data")]
     [SerializeField]
     public UserData userData;
+    public int freeCoin = 0;
 
     [Header("Mercenary Data")]
     [SerializeField]
@@ -75,12 +79,19 @@ public class GameDataManager : SingleTon<GameDataManager>
         userData.ruby = 0;
         userData.stageNum = 1;
         userData.score = 0;
+        SetFreeCoinInfo();
 
         userData.leaderData = ReadMercenaryDataList[0];
         userData.mercenaryDataList = new List<MercenaryData>();
         userData.getMercenaryDataDic = new Dictionary<string, MercenaryData>();
 
         PlayerManager.Instance.ChangeLeaderCat(userData.leaderData.catImage);
+    }
+
+    public void SetFreeCoinInfo()
+    {
+        userData.freeCoinGetTime = DateTime.Now;
+        userData.freeCoinUpdateTime = DateTime.Now.AddMinutes(1);
     }
 
     public void InsertMercenary(bool isInsert, MercenaryData _mercenaryData)

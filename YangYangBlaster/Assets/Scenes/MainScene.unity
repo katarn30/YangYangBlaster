@@ -1192,6 +1192,7 @@ MonoBehaviour:
       bulletImage: {fileID: 0}
       runtimeAnimator: {fileID: 0}
     mercenaryDataList: []
+  freeCoin: 100
   ReadMercenaryDataList:
   - name: MIA
     damage: 1

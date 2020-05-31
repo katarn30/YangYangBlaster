@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,12 +15,27 @@ public class LobbyUIController : MonoBehaviour
     public Text scoreText;
     public Text coinText;
 
+    [Header("CENTER UI")]
+    public Image freeCoinGauge;
+    public Text freeCoinText;
+
     public void OnInitialized()
     {
         deckUIController.SetDeckUI();
+        deckUIController.SetStageGauge();
 
         UpdateScoreText();
         UpdateCoinText();
+        UpdateFreeCoinText();
+    }
+
+    public void LobbyUIUpdate()
+    {
+        TimeSpan sp = GameDataManager.Instance.userData.freeCoinUpdateTime - GameDataManager.Instance.userData.freeCoinGetTime;
+
+        TimeSpan nsp = GameDataManager.Instance.userData.freeCoinUpdateTime - DateTime.Now;
+
+        freeCoinGauge.fillAmount = (float)(nsp.TotalSeconds / sp.TotalSeconds);
     }
 
     public void AllClosePopup()
@@ -92,8 +108,22 @@ public class LobbyUIController : MonoBehaviour
         coinText.text = GameDataManager.Instance.userData.coin.ToString();
     }
 
+    public void UpdateFreeCoinText()
+    {
+        freeCoinText.text = GameDataManager.Instance.freeCoin.ToString();
+    }
+
     public void FreeCoinButton()
     {
+        TimeSpan sp = GameDataManager.Instance.userData.freeCoinUpdateTime - DateTime.Now;
 
+        if (sp.TotalSeconds <= 0)
+        {
+            GameDataManager.Instance.userData.coin = GameDataManager.Instance.userData.coin + GameDataManager.Instance.freeCoin;
+            GameDataManager.Instance.SetFreeCoinInfo();
+
+            UpdateFreeCoinText();
+            UpdateCoinText();
+        }
     }
 }
