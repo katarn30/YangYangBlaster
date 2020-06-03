@@ -1109,6 +1109,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 503c2354a95c9974eabc782e3dd5ce4a, type: 3}
   - {fileID: 21300000, guid: a57635d2cf34e8b44af0e49e934c19dc, type: 3}
   - {fileID: 21300000, guid: 6891f9a7ce1d0f2498429456a1761480, type: 3}
+  - {fileID: 21300000, guid: 50fc28d2237ed2648b82603eb9971572, type: 3}
+  - {fileID: 21300000, guid: 15a7b7c14136781409ca2931ad1641da, type: 3}
+  - {fileID: 21300000, guid: 4aeac89842ea0024cac3ebe6eb6b3bd4, type: 3}
+  - {fileID: 21300000, guid: 9ab96c73f08f1e745a2488b498a98a68, type: 3}
+  - {fileID: 21300000, guid: d6aea66b8aada3a4bafa03a0bfec5afe, type: 3}
   monsterMaxSpawnCount: 30
   monsterHp: 5
   monsterStageCount: 5
@@ -1192,7 +1197,7 @@ MonoBehaviour:
       bulletImage: {fileID: 0}
       runtimeAnimator: {fileID: 0}
     mercenaryDataList: []
-  freeCoin: 100
+  freeCoin: 200
   ReadMercenaryDataList:
   - name: MIA
     damage: 1
@@ -1200,7 +1205,7 @@ MonoBehaviour:
     attackSpeed: 0.1
     catImage: {fileID: 21300000, guid: 6d9744f12bdcc584cba80104c51f1c05, type: 3}
     level: 1
-    price: 100
+    price: 0
     mercenaryGetType: 0
     bulletImage: {fileID: 21300000, guid: 675bfd46ae1b77646b42df56d80483ee, type: 3}
     runtimeAnimator: {fileID: 0}
@@ -1210,7 +1215,7 @@ MonoBehaviour:
     attackSpeed: 1
     catImage: {fileID: 21300000, guid: b4911ee06e40d1d4c8b7fa10cd118cdb, type: 3}
     level: 0
-    price: 100
+    price: 0
     mercenaryGetType: 0
     bulletImage: {fileID: 21300000, guid: 85442966ca4488e4fbc57d8e67ac49e2, type: 3}
     runtimeAnimator: {fileID: 9100000, guid: 600847ea57b3d0c45964ad416bf9f9a5, type: 2}
@@ -1230,7 +1235,7 @@ MonoBehaviour:
     attackSpeed: 1
     catImage: {fileID: 21300000, guid: 35998915734498141b95cadb26231553, type: 3}
     level: 0
-    price: 100
+    price: 0
     mercenaryGetType: 0
     bulletImage: {fileID: 21300000, guid: bf89af1cceee0e94eb3e47cace36b9eb, type: 3}
     runtimeAnimator: {fileID: 0}
@@ -1240,7 +1245,7 @@ MonoBehaviour:
     attackSpeed: 1
     catImage: {fileID: 21300000, guid: c48acaf034ec5ab499762bab96a56693, type: 3}
     level: 0
-    price: 100
+    price: 0
     mercenaryGetType: 0
     bulletImage: {fileID: 21300000, guid: 4ec063cee31e9f1459f8d5517c32c8a1, type: 3}
     runtimeAnimator: {fileID: 0}
@@ -1250,7 +1255,7 @@ MonoBehaviour:
     attackSpeed: 1
     catImage: {fileID: 21300000, guid: 2372ec25010351a4e9bf0b8749780fdd, type: 3}
     level: 0
-    price: 100
+    price: 0
     mercenaryGetType: 0
     bulletImage: {fileID: 21300000, guid: 4ec063cee31e9f1459f8d5517c32c8a1, type: 3}
     runtimeAnimator: {fileID: 0}
@@ -1288,8 +1293,13 @@ MonoBehaviour:
   bubblePrefab: {fileID: 8382085086376219683, guid: ded23065f541a1245bd99715287bbed1,
     type: 3}
   bubbleEffectList: []
-  bubbleEffectMaxCount: 20
+  bubbleEffectMaxCount: 10
   activeBubbleNum: 0
+  coinPrefab: {fileID: -2295724647634282891, guid: b93af28cf5c4a72418afe1817c5cc89a,
+    type: 3}
+  coinEffectList: []
+  coinEffectMaxCount: 60
+  activeCoinNum: 0
 --- !u!4 &1175985203
 Transform:
   m_ObjectHideFlags: 0
@@ -1303,6 +1313,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1233264983
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1233264985}
+  - component: {fileID: 1233264984}
+  m_Layer: 0
+  m_Name: GoogleAdmobManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1233264984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233264983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5df51aee42874a54cb4660aae7623fc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1233264985
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233264983}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1333456981
 GameObject:
@@ -1399,7 +1452,7 @@ GameObject:
   - component: {fileID: 1363029904}
   m_Layer: 0
   m_Name: PlayerManager
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

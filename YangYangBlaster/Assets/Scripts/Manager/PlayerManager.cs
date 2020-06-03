@@ -80,7 +80,7 @@ public class PlayerManager : SingleTon<PlayerManager>
         {
             bulletTime = 0;
 
-            BulletManager.Instance.CreateBullet(transform.position);               
+            BulletManager.Instance.ShotBullet(transform.position);               
         }
 
         ChangeAniState(PlayerState.Attack);

@@ -12,6 +12,12 @@ public class EffectManager : SingleTon<EffectManager>
     public int bubbleEffectMaxCount = 0;
     public int activeBubbleNum = 0;
 
+    [Header("Coin Effect")]
+    public CoinEffect coinPrefab;
+    public List<CoinEffect> coinEffectList = new List<CoinEffect>();
+    public int coinEffectMaxCount = 0;
+    public int activeCoinNum = 0;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -21,11 +27,8 @@ public class EffectManager : SingleTon<EffectManager>
     {
         if (parent != null)
         {
-            Destroy(parent.gameObject);
-            parent = null;
+            parent.gameObject.SetActive(false);
         }
-
-        bubbleEffectList.Clear();
     }
 
     public void SetInGameInit()
@@ -35,32 +38,78 @@ public class EffectManager : SingleTon<EffectManager>
             parent = new GameObject().transform;
             parent.transform.parent = transform;
             parent.name = "Effect Parent";
+
+            CreateBubbleEffect();
+            CreateCoinEffect();
+        }
+        else
+        {
+            parent.gameObject.SetActive(true);
         }
 
         activeBubbleNum = 0;
+        activeCoinNum = 0;
+    }
+
+    public void CreateBubbleEffect()
+    {
+        for (int i = 0; i < bubbleEffectMaxCount; i++)
+        {
+            BubbleEffect bubble = Instantiate(bubblePrefab, parent);
+
+            bubble.gameObject.SetActive(false);
+
+            bubbleEffectList.Add(bubble);
+        }
     }
 
     public void SetBubbleEffect(Vector2 _pos, Vector2 _scale, int _sortOrder, Color _color)
     {
-        if (bubbleEffectList.Count < bubbleEffectMaxCount)
+        activeBubbleNum = activeBubbleNum + 1;
+
+        if (activeBubbleNum >= bubbleEffectList.Count)
         {
-            BubbleEffect bubble = Instantiate(bubblePrefab, parent);
-
-            bubble.SetBubbleEffect(_pos, _scale, _sortOrder, _color);
-
-            bubbleEffectList.Add(bubble);
+            activeBubbleNum = 0;
         }
-        else
-        {
-            activeBubbleNum = activeBubbleNum + 1;
 
-            if (activeBubbleNum >= bubbleEffectList.Count)
+        bubbleEffectList[activeBubbleNum].gameObject.SetActive(true);
+        bubbleEffectList[activeBubbleNum].SetBubbleEffect(_pos, _scale, _sortOrder, _color);
+    }
+
+    public void CreateCoinEffect()
+    {
+        for (int i = 0; i < coinEffectMaxCount; i++)
+        {
+            CoinEffect coin = Instantiate(coinPrefab, parent);
+
+            coin.gameObject.SetActive(false);
+
+            coinEffectList.Add(coin);
+        }
+    }
+
+    public void SetCoinEffect(Vector2 _pos)
+    {
+        int ran = Random.Range(1, 6);
+
+        for (int i = 0; i < ran; i ++)
+        {
+            activeCoinNum = activeCoinNum + 1;
+
+            if (activeCoinNum >= coinEffectList.Count)
             {
-                activeBubbleNum = 0;
+                activeCoinNum = 0;
             }
-
-            bubbleEffectList[activeBubbleNum].gameObject.SetActive(true);
-            bubbleEffectList[activeBubbleNum].SetBubbleEffect(_pos, _scale, _sortOrder, _color);
-        }
+            if (coinEffectList[activeCoinNum].gameObject.activeInHierarchy == true)
+            {
+                GameManager.Instance.GetCoin(100);
+            }
+            else
+            {
+                coinEffectList[activeCoinNum].gameObject.SetActive(true);
+            }
+            
+            coinEffectList[activeCoinNum].SetCoinEffect(_pos);
+        }        
     }
 }

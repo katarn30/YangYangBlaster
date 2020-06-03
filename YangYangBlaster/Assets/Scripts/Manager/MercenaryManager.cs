@@ -84,7 +84,7 @@ public class MercenaryManager : SingleTon<MercenaryManager>
         {
             mercenary1BulletTime = 0;
 
-            BulletManager.Instance.CreateMercenary1Bullet(mercenary1.transform.position);
+            BulletManager.Instance.ShotMercenary1Bullet(mercenary1.transform.position);
         }
     }
 
@@ -96,7 +96,7 @@ public class MercenaryManager : SingleTon<MercenaryManager>
         {
             mercenary2BulletTime = 0;
 
-            BulletManager.Instance.CreateMercenary2Bullet(mercenary2.transform.position);
+            BulletManager.Instance.ShotMercenary2Bullet(mercenary2.transform.position);
         }
     }
 

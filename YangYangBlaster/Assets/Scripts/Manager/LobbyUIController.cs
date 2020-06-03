@@ -18,6 +18,7 @@ public class LobbyUIController : MonoBehaviour
     [Header("CENTER UI")]
     public Image freeCoinGauge;
     public Text freeCoinText;
+    public Text stageText;
 
     public void OnInitialized()
     {
@@ -27,6 +28,7 @@ public class LobbyUIController : MonoBehaviour
         UpdateScoreText();
         UpdateCoinText();
         UpdateFreeCoinText();
+        UpdateStageText();
     }
 
     public void LobbyUIUpdate()
@@ -113,6 +115,11 @@ public class LobbyUIController : MonoBehaviour
         freeCoinText.text = GameDataManager.Instance.freeCoin.ToString();
     }
 
+    public void UpdateStageText()
+    {
+        stageText.text = string.Format("STAGE {0}", GameDataManager.Instance.userData.stageNum.ToString());
+    }
+
     public void FreeCoinButton()
     {
         TimeSpan sp = GameDataManager.Instance.userData.freeCoinUpdateTime - DateTime.Now;
@@ -125,5 +132,10 @@ public class LobbyUIController : MonoBehaviour
             UpdateFreeCoinText();
             UpdateCoinText();
         }
+    }
+
+    public void ShowRewardButton()
+    {
+        GoogleAdmobManager.Instance.ShowReward();
     }
 }

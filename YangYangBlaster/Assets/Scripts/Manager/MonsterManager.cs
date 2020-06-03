@@ -104,7 +104,7 @@ public class MonsterManager : SingleTon<MonsterManager>
                 GameObject go = Instantiate(monster.gameObject, MonsterParent);
                 go.transform.position = new Vector2(x, y);
                 Monster mon = go.GetComponent<Monster>();
-                mon.CreateMonster(rnd, intToBool(rnds), false, rndCount, monsterSpriteList[rnd], monsterList.Count + 1, Random.Range(stage + 6, stage + 10));
+                mon.CreateMonster(rnd, intToBool(rnds), false, rndCount, monsterSpriteList[rnd], monsterList.Count + 1, Random.Range(stage + 2, stage + 5));
 
                 monsterList.Add(monster);
             }

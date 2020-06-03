@@ -34,13 +34,8 @@ public class BulletManager : SingleTon<BulletManager>
     {
         if (bulletParent != null)
         {
-            Destroy(bulletParent.gameObject);
-            bulletParent = null;
+            bulletParent.gameObject.SetActive(false);
         }
-
-        bulletList.Clear();
-        mercenary1BulletList.Clear();
-        mercenary2BulletList.Clear();
     }
 
     public void SetInGameInit()
@@ -53,6 +48,14 @@ public class BulletManager : SingleTon<BulletManager>
 
             bulletParent = go.transform;
             bulletParent.name = "BulletParent";
+
+            CreateBullet();
+            CreateMercenary1Bullet();
+            CreateMercenary2Bullet();
+        }
+        else
+        {
+            bulletParent.gameObject.SetActive(true);
         }
 
         bulletSprite = GameDataManager.Instance.userData.leaderData.bulletImage;
@@ -71,69 +74,70 @@ public class BulletManager : SingleTon<BulletManager>
         mercenary2ActiveBullet = 0;
     }
 
-    public void CreateBullet(Vector2 _createPos)
+    public void CreateBullet()
     {        
-        if (bulletList.Count < bulletCount)
+        for (int i = 0; i < bulletCount; i++)
         {
-            GameObject go = Instantiate(bullet.gameObject, bulletParent);            
-            Bullet b = go.GetComponent<Bullet>();            
-            b.StartMove(_createPos, bulletSprite);
-
+            Bullet b = Instantiate(bullet, bulletParent);
+            b.gameObject.SetActive(false);
             bulletList.Add(b);
-        }
-        else
-        {            
-            bulletList[activeBullet].StartMove(_createPos);
-
-            activeBullet++;
-            if (activeBullet == bulletList.Count)
-            {
-                activeBullet = 0;
-            }
         }
     }
 
-    public void CreateMercenary1Bullet(Vector2 _createPos)
+    public void ShotBullet(Vector2 _createPos)
     {
-        if (mercenary1BulletList.Count < mercenary1BulletCount)
+        bulletList[activeBullet].StartMove(_createPos);
+
+        activeBullet++;
+        if (activeBullet == bulletList.Count)
         {
-            GameObject go = Instantiate(bullet.gameObject, bulletParent);
-            Bullet b = go.GetComponent<Bullet>();
-            b.StartMove(_createPos, mercenary1BulletSprite);
+            activeBullet = 0;
+        }
+    }
+
+    public void CreateMercenary1Bullet()
+    {
+        for (int i = 0; i < mercenary1BulletCount; i++)
+        {
+            Bullet b = Instantiate(bullet, bulletParent);
+
+            b.gameObject.SetActive(false);
 
             mercenary1BulletList.Add(b);
         }
-        else
-        {
-            mercenary1BulletList[mercenary1ActiveBullet].StartMove(_createPos);
+    }
 
-            mercenary1ActiveBullet++;
-            if (mercenary1ActiveBullet == mercenary1BulletList.Count)
-            {
-                mercenary1ActiveBullet = 0;
-            }
+    public void ShotMercenary1Bullet(Vector2 _createPos)
+    {
+        mercenary1BulletList[mercenary1ActiveBullet].StartMove(_createPos);
+
+        mercenary1ActiveBullet++;
+        if (mercenary1ActiveBullet == mercenary1BulletList.Count)
+        {
+            mercenary1ActiveBullet = 0;
         }
     }
 
-    public void CreateMercenary2Bullet(Vector2 _createPos)
+    public void CreateMercenary2Bullet()
     {
-        if (mercenary2BulletList.Count < mercenary2BulletCount)
+        for (int i = 0; i < mercenary2BulletCount; i++)
         {
-            GameObject go = Instantiate(bullet.gameObject, bulletParent);
-            Bullet b = go.GetComponent<Bullet>();
-            b.StartMove(_createPos, mercenary2BulletSprite);
+            Bullet b = Instantiate(bullet, bulletParent);
+
+            b.gameObject.SetActive(false);
 
             mercenary2BulletList.Add(b);
-        }
-        else
-        {
-            mercenary2BulletList[mercenary2ActiveBullet].StartMove(_createPos);
+        }       
+    }
 
-            mercenary2ActiveBullet++;
-            if (mercenary2ActiveBullet == mercenary2BulletList.Count)
-            {
-                mercenary2ActiveBullet = 0;
-            }
+    public void ShotMercenary2Bullet(Vector2 _createPos)
+    {
+        mercenary2BulletList[mercenary2ActiveBullet].StartMove(_createPos);
+
+        mercenary2ActiveBullet++;
+        if (mercenary2ActiveBullet == mercenary2BulletList.Count)
+        {
+            mercenary2ActiveBullet = 0;
         }
     }
 }

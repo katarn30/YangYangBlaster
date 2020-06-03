@@ -170,7 +170,14 @@ public class GameManager : SingleTon<GameManager>
 
     public void UpdateScore(int _score)
     {
-        GameDataManager.Instance.userData.score = GameDataManager.Instance.userData.score + _score;
+        GameDataManager.Instance.userData.score = GameDataManager.Instance.userData.score + _score;        
+    }
+
+    public void GetCoin(int _coin)
+    {
+        GameDataManager.Instance.userData.coin += _coin;
+
+        UIManager.Instance.inGameUI.SetCoinUI();
     }
     #endregion
 }
