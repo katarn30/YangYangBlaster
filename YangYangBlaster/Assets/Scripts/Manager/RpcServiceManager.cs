@@ -18,17 +18,17 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
     //로비 상태로 바뀔떄
     public void SetLobbyInit()
     {
-        // 로그인
-        LoginRequest request = new LoginRequest();
-        request.Name = "이름이름이름이름이름";
-        request.SerialKey = "키키키키키키키";
+        //// 로그인
+        //LoginRequest request = new LoginRequest();
+        //request.Name = "이름이름이름이름이름";
+        //request.SerialKey = "키키키키키키키";
 
-        // 요청
-        Login(request, delegate (LoginReply reply)
-        {
-            // 응답
-            Debug.Log("RpcService : " + reply);
-        });
+        //// 요청
+        //Login(request, delegate (LoginReply reply)
+        //{
+        //    // 응답
+        //    Debug.Log("RpcService : " + reply);
+        //});
     }
 
     public void Run()
@@ -36,19 +36,28 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
         if (channel == null || client == null)
         {
             // 서버 연결
-            string liveHost = "183.99.10.187:20051";
-            string inhouseHost = "127.0.0.1:20051";
+            string localHost = "127.0.0.1:20051";
+            string inhouseHost = "183.99.10.187:20051";
+            string liveHost = "";
 
-            channel = new Grpc.Core.Channel(inhouseHost, Grpc.Core.ChannelCredentials.Insecure);
+#if UNITY_EDITOR
+            string host = localHost;
+#else
+            string host = inhouseHost;
+#endif
+            channel = new Grpc.Core.Channel(host, Grpc.Core.ChannelCredentials.Insecure);
             client = new RpcService.RpcServiceClient(channel);
         }
     }
 
     protected override void OnApplicationQuit()
     {
-        base.OnApplicationQuit();
+        if (null != channel)
+        {
+            channel.ShutdownAsync().Wait();
+        }
 
-        channel.ShutdownAsync().Wait();
+        base.OnApplicationQuit();
     }
 
     public delegate void RPCHandler<T>(T reply);
