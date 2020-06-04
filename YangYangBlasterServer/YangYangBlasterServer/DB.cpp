@@ -42,6 +42,44 @@ namespace yyb
 		return db;
 	}
 
+	bool DB::QueryScope(int dbPoolIndex, std::function<bool(soci::session&)> query)
+	{
+		auto pool = DB::Instance().GetDBConnectionPool(dbPoolIndex);
+		if (pool)
+		{
+			soci::session sql(*pool);
+
+			try
+			{
+				return query(sql);
+			}
+			catch (soci::mysql_soci_error const& e)
+			{
+				if (2013 == e.err_num_)
+				{
+					sql.reconnect();
+				}
+
+				std::cerr << "MySQL error: " << e.err_num_
+					<< " " << e.what() << std::endl;
+
+				return false;
+			}
+			catch (std::exception const& e)
+			{
+				std::cerr << "Standard error: " << e.what() << std::endl;
+				return false;
+			}
+			catch (...)
+			{
+				std::cerr << "Some other error" << std::endl;
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 	void DB::Init(size_t poolSize,
 		const std::string& db, const std::string& host, short port,
 		const std::string& user, const std::string& password,

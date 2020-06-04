@@ -98,7 +98,7 @@ namespace yyb
 				{
 
 				}*/
-				std::string user_id = request->name();
+				std::string user_id = "";// request->name();
 
 				int usn = 0;
 				sql << "SELECT usn FROM user WHERE user_id=:user_id", 
@@ -106,7 +106,7 @@ namespace yyb
 
 				if (0 == usn)
 				{
-					reply->set_error("invalid user");
+					//reply->set_error("invalid user");
 					return grpc::Status::OK;
 				}
 			}
@@ -125,7 +125,7 @@ namespace yyb
 			std::cerr << "Some other error" << std::endl;
 		}
 
-		reply->set_error("login ok");
+		//reply->set_error("login ok");
 		return grpc::Status::OK;
 	}
 }

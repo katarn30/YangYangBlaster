@@ -28,13 +28,25 @@ namespace Yyb {
             "UmVxdWVzdBIMCgRhcmcxGAEgASgFEgwKBGFyZzIYAiABKAISDAoEYXJnMxgD",
             "IAEoCRIMCgRhcmc0GAQgASgIEgwKBGFyZzUYBSADKAUiJwoWUnBjU2Vydmlj",
             "ZUV4YW1wbGVSZXBseRINCgVlcnJvchgBIAEoCSIHCgVFbXB0eSIjChBQdXNo",
-            "Tm90aWZpY2F0aW9uEg8KB3BheWxvYWQYASABKAkiMAoMTG9naW5SZXF1ZXN0",
-            "EgwKBG5hbWUYASABKAkSEgoKc2VyaWFsX2tleRgCIAEoCSIbCgpMb2dpblJl",
-            "cGx5Eg0KBWVycm9yGAEgASgJMr8BCgpScGNTZXJ2aWNlElEKEVJwY1NlcnZp",
-            "Y2VFeGFtcGxlEh0ueXliLlJwY1NlcnZpY2VFeGFtcGxlUmVxdWVzdBobLnl5",
-            "Yi5ScGNTZXJ2aWNlRXhhbXBsZVJlcGx5IgASLwoGTGlzdGVuEgoueXliLkVt",
-            "cHR5GhUueXliLlB1c2hOb3RpZmljYXRpb24iADABEi0KBUxvZ2luEhEueXli",
-            "LkxvZ2luUmVxdWVzdBoPLnl5Yi5Mb2dpblJlcGx5IgBiBnByb3RvMw=="));
+            "Tm90aWZpY2F0aW9uEg8KB3BheWxvYWQYASABKAkiywEKDExvZ2luUmVxdWVz",
+            "dBIvCglsb2dpblR5cGUYASABKA4yHC55eWIuTG9naW5SZXF1ZXN0LkxPR0lO",
+            "X1RZUEUSEAoIbG9naW5LZXkYAiABKAkSDwoHaWRUb2tlbhgDIAEoCRIQCghu",
+            "aWNrTmFtZRgEIAEoCSJVCgpMT0dJTl9UWVBFEhcKE0xPR0lOX1RZUEVfTk9O",
+            "X0NFUlQQABIVChFMT0dJTl9UWVBFX0dPT0dMRRABEhcKE0xPR0lOX1RZUEVf",
+            "RkFDRUJPT0sQAiKLAwoKTG9naW5SZXBseRIpCgVlcnJvchgBIAEoDjIaLnl5",
+            "Yi5Mb2dpblJlcGx5LkVSUk9SX0NPREUSCwoDdXNuGAIgASgFEhAKCGxvZ2lu",
+            "S2V5GAMgASgJEhAKCG5pY2tOYW1lGAQgASgJIqACCgpFUlJPUl9DT0RFEhEK",
+            "DUVSUk9SX0NPREVfT0sQABIdChlFUlJPUl9DT0RFX0VNUFRZX05JQ0tOQU1F",
+            "EAESGwoXRVJST1JfQ09ERV9EVVBfTklDS05BTUUQAhIvCitFUlJPUl9DT0RF",
+            "X05JQ0tOQU1FX0hBVkVfU1BFQ0lBTF9DSEFSQUNURVJTEAMSJAogRVJST1Jf",
+            "Q09ERV9VTkFCTEVfVE9fQ1JFQVRFX1VTRVIQBBIqCiZFUlJPUl9DT0RFX0ZB",
+            "SUxFRF9UT19BQ1FVSVJFX1VTRVJfSU5GTxAFEiEKHUVSUk9SX0NPREVfR09P",
+            "R0xFX0FVVEhfRkFJTEVEEAYSHQoZRVJST1JfQ09ERV9FTVBUWV9JRF9UT0tF",
+            "ThAHMr8BCgpScGNTZXJ2aWNlElEKEVJwY1NlcnZpY2VFeGFtcGxlEh0ueXli",
+            "LlJwY1NlcnZpY2VFeGFtcGxlUmVxdWVzdBobLnl5Yi5ScGNTZXJ2aWNlRXhh",
+            "bXBsZVJlcGx5IgASLwoGTGlzdGVuEgoueXliLkVtcHR5GhUueXliLlB1c2hO",
+            "b3RpZmljYXRpb24iADABEi0KBUxvZ2luEhEueXliLkxvZ2luUmVxdWVzdBoP",
+            "Lnl5Yi5Mb2dpblJlcGx5IgBiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -42,8 +54,8 @@ namespace Yyb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RpcServiceExampleReply), global::Yyb.RpcServiceExampleReply.Parser, new[]{ "Error" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.Empty), global::Yyb.Empty.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.PushNotification), global::Yyb.PushNotification.Parser, new[]{ "Payload" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.LoginRequest), global::Yyb.LoginRequest.Parser, new[]{ "Name", "SerialKey" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.LoginReply), global::Yyb.LoginReply.Parser, new[]{ "Error" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.LoginRequest), global::Yyb.LoginRequest.Parser, new[]{ "LoginType", "LoginKey", "IdToken", "NickName" }, null, new[]{ typeof(global::Yyb.LoginRequest.Types.LOGIN_TYPE) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.LoginReply), global::Yyb.LoginReply.Parser, new[]{ "Error", "Usn", "LoginKey", "NickName" }, null, new[]{ typeof(global::Yyb.LoginReply.Types.ERROR_CODE) }, null)
           }));
     }
     #endregion
@@ -668,8 +680,10 @@ namespace Yyb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public LoginRequest(LoginRequest other) : this() {
-      name_ = other.name_;
-      serialKey_ = other.serialKey_;
+      loginType_ = other.loginType_;
+      loginKey_ = other.loginKey_;
+      idToken_ = other.idToken_;
+      nickName_ = other.nickName_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -678,25 +692,47 @@ namespace Yyb {
       return new LoginRequest(this);
     }
 
-    /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 1;
-    private string name_ = "";
+    /// <summary>Field number for the "loginType" field.</summary>
+    public const int LoginTypeFieldNumber = 1;
+    private global::Yyb.LoginRequest.Types.LOGIN_TYPE loginType_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Name {
-      get { return name_; }
+    public global::Yyb.LoginRequest.Types.LOGIN_TYPE LoginType {
+      get { return loginType_; }
       set {
-        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        loginType_ = value;
       }
     }
 
-    /// <summary>Field number for the "serial_key" field.</summary>
-    public const int SerialKeyFieldNumber = 2;
-    private string serialKey_ = "";
+    /// <summary>Field number for the "loginKey" field.</summary>
+    public const int LoginKeyFieldNumber = 2;
+    private string loginKey_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string SerialKey {
-      get { return serialKey_; }
+    public string LoginKey {
+      get { return loginKey_; }
       set {
-        serialKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        loginKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "idToken" field.</summary>
+    public const int IdTokenFieldNumber = 3;
+    private string idToken_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string IdToken {
+      get { return idToken_; }
+      set {
+        idToken_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "nickName" field.</summary>
+    public const int NickNameFieldNumber = 4;
+    private string nickName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string NickName {
+      get { return nickName_; }
+      set {
+        nickName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -713,16 +749,20 @@ namespace Yyb {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Name != other.Name) return false;
-      if (SerialKey != other.SerialKey) return false;
+      if (LoginType != other.LoginType) return false;
+      if (LoginKey != other.LoginKey) return false;
+      if (IdToken != other.IdToken) return false;
+      if (NickName != other.NickName) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Name.Length != 0) hash ^= Name.GetHashCode();
-      if (SerialKey.Length != 0) hash ^= SerialKey.GetHashCode();
+      if (LoginType != 0) hash ^= LoginType.GetHashCode();
+      if (LoginKey.Length != 0) hash ^= LoginKey.GetHashCode();
+      if (IdToken.Length != 0) hash ^= IdToken.GetHashCode();
+      if (NickName.Length != 0) hash ^= NickName.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -736,13 +776,21 @@ namespace Yyb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Name.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Name);
+      if (LoginType != 0) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) LoginType);
       }
-      if (SerialKey.Length != 0) {
+      if (LoginKey.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteString(SerialKey);
+        output.WriteString(LoginKey);
+      }
+      if (IdToken.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(IdToken);
+      }
+      if (NickName.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(NickName);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -752,11 +800,17 @@ namespace Yyb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Name.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      if (LoginType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) LoginType);
       }
-      if (SerialKey.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(SerialKey);
+      if (LoginKey.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(LoginKey);
+      }
+      if (IdToken.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(IdToken);
+      }
+      if (NickName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(NickName);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -769,11 +823,17 @@ namespace Yyb {
       if (other == null) {
         return;
       }
-      if (other.Name.Length != 0) {
-        Name = other.Name;
+      if (other.LoginType != 0) {
+        LoginType = other.LoginType;
       }
-      if (other.SerialKey.Length != 0) {
-        SerialKey = other.SerialKey;
+      if (other.LoginKey.Length != 0) {
+        LoginKey = other.LoginKey;
+      }
+      if (other.IdToken.Length != 0) {
+        IdToken = other.IdToken;
+      }
+      if (other.NickName.Length != 0) {
+        NickName = other.NickName;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -786,17 +846,38 @@ namespace Yyb {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            Name = input.ReadString();
+          case 8: {
+            LoginType = (global::Yyb.LoginRequest.Types.LOGIN_TYPE) input.ReadEnum();
             break;
           }
           case 18: {
-            SerialKey = input.ReadString();
+            LoginKey = input.ReadString();
+            break;
+          }
+          case 26: {
+            IdToken = input.ReadString();
+            break;
+          }
+          case 34: {
+            NickName = input.ReadString();
             break;
           }
         }
       }
     }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the LoginRequest message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public enum LOGIN_TYPE {
+        [pbr::OriginalName("LOGIN_TYPE_NON_CERT")] NonCert = 0,
+        [pbr::OriginalName("LOGIN_TYPE_GOOGLE")] Google = 1,
+        [pbr::OriginalName("LOGIN_TYPE_FACEBOOK")] Facebook = 2,
+      }
+
+    }
+    #endregion
 
   }
 
@@ -826,6 +907,9 @@ namespace Yyb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public LoginReply(LoginReply other) : this() {
       error_ = other.error_;
+      usn_ = other.usn_;
+      loginKey_ = other.loginKey_;
+      nickName_ = other.nickName_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -836,12 +920,45 @@ namespace Yyb {
 
     /// <summary>Field number for the "error" field.</summary>
     public const int ErrorFieldNumber = 1;
-    private string error_ = "";
+    private global::Yyb.LoginReply.Types.ERROR_CODE error_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Error {
+    public global::Yyb.LoginReply.Types.ERROR_CODE Error {
       get { return error_; }
       set {
-        error_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        error_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "usn" field.</summary>
+    public const int UsnFieldNumber = 2;
+    private int usn_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Usn {
+      get { return usn_; }
+      set {
+        usn_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "loginKey" field.</summary>
+    public const int LoginKeyFieldNumber = 3;
+    private string loginKey_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string LoginKey {
+      get { return loginKey_; }
+      set {
+        loginKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "nickName" field.</summary>
+    public const int NickNameFieldNumber = 4;
+    private string nickName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string NickName {
+      get { return nickName_; }
+      set {
+        nickName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -859,13 +976,19 @@ namespace Yyb {
         return true;
       }
       if (Error != other.Error) return false;
+      if (Usn != other.Usn) return false;
+      if (LoginKey != other.LoginKey) return false;
+      if (NickName != other.NickName) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Error.Length != 0) hash ^= Error.GetHashCode();
+      if (Error != 0) hash ^= Error.GetHashCode();
+      if (Usn != 0) hash ^= Usn.GetHashCode();
+      if (LoginKey.Length != 0) hash ^= LoginKey.GetHashCode();
+      if (NickName.Length != 0) hash ^= NickName.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -879,9 +1002,21 @@ namespace Yyb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Error.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Error);
+      if (Error != 0) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Error);
+      }
+      if (Usn != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(Usn);
+      }
+      if (LoginKey.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(LoginKey);
+      }
+      if (NickName.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(NickName);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -891,8 +1026,17 @@ namespace Yyb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Error.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Error);
+      if (Error != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Error);
+      }
+      if (Usn != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Usn);
+      }
+      if (LoginKey.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(LoginKey);
+      }
+      if (NickName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(NickName);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -905,8 +1049,17 @@ namespace Yyb {
       if (other == null) {
         return;
       }
-      if (other.Error.Length != 0) {
+      if (other.Error != 0) {
         Error = other.Error;
+      }
+      if (other.Usn != 0) {
+        Usn = other.Usn;
+      }
+      if (other.LoginKey.Length != 0) {
+        LoginKey = other.LoginKey;
+      }
+      if (other.NickName.Length != 0) {
+        NickName = other.NickName;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -919,13 +1072,43 @@ namespace Yyb {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            Error = input.ReadString();
+          case 8: {
+            Error = (global::Yyb.LoginReply.Types.ERROR_CODE) input.ReadEnum();
+            break;
+          }
+          case 16: {
+            Usn = input.ReadInt32();
+            break;
+          }
+          case 26: {
+            LoginKey = input.ReadString();
+            break;
+          }
+          case 34: {
+            NickName = input.ReadString();
             break;
           }
         }
       }
     }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the LoginReply message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public enum ERROR_CODE {
+        [pbr::OriginalName("ERROR_CODE_OK")] Ok = 0,
+        [pbr::OriginalName("ERROR_CODE_EMPTY_NICKNAME")] EmptyNickname = 1,
+        [pbr::OriginalName("ERROR_CODE_DUP_NICKNAME")] DupNickname = 2,
+        [pbr::OriginalName("ERROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS")] NicknameHaveSpecialCharacters = 3,
+        [pbr::OriginalName("ERROR_CODE_UNABLE_TO_CREATE_USER")] UnableToCreateUser = 4,
+        [pbr::OriginalName("ERROR_CODE_FAILED_TO_ACQUIRE_USER_INFO")] FailedToAcquireUserInfo = 5,
+        [pbr::OriginalName("ERROR_CODE_GOOGLE_AUTH_FAILED")] GoogleAuthFailed = 6,
+        [pbr::OriginalName("ERROR_CODE_EMPTY_ID_TOKEN")] EmptyIdToken = 7,
+      }
+
+    }
+    #endregion
 
   }
 

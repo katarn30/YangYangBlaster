@@ -2,6 +2,8 @@
 
 namespace yyb
 {
+#define OUT
+
     enum CACHE_INDEX
     {
         CACHE_INDEX_GLOBAL,
