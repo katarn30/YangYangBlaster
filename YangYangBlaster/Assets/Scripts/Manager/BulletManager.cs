@@ -50,24 +50,18 @@ public class BulletManager : SingleTon<BulletManager>
             bulletParent.name = "BulletParent";
 
             CreateBullet();
+
+            SetBulletSprite();
+
             CreateMercenary1Bullet();
             CreateMercenary2Bullet();
         }
         else
         {
             bulletParent.gameObject.SetActive(true);
-        }
 
-        bulletSprite = GameDataManager.Instance.userData.leaderData.bulletImage;
-        if (GameDataManager.Instance.userData.mercenaryDataList.Count == 1)
-        {
-            mercenary1BulletSprite = GameDataManager.Instance.userData.mercenaryDataList[0].bulletImage;
-        }
-        else if (GameDataManager.Instance.userData.mercenaryDataList.Count >= 2)
-        {
-            mercenary1BulletSprite = GameDataManager.Instance.userData.mercenaryDataList[0].bulletImage;
-            mercenary2BulletSprite = GameDataManager.Instance.userData.mercenaryDataList[1].bulletImage;
-        }
+            SetBulletSprite();
+        }        
 
         activeBullet = 0;
         mercenary1ActiveBullet = 0;
@@ -80,7 +74,22 @@ public class BulletManager : SingleTon<BulletManager>
         {
             Bullet b = Instantiate(bullet, bulletParent);
             b.gameObject.SetActive(false);
+
             bulletList.Add(b);
+        }
+    }
+
+    public void SetBulletSprite()
+    {
+        bulletSprite = GameDataManager.Instance.userData.leaderData.bulletImage;
+        if (GameDataManager.Instance.userData.mercenaryDataList.Count == 1)
+        {
+            mercenary1BulletSprite = GameDataManager.Instance.userData.mercenaryDataList[0].bulletImage;
+        }
+        else if (GameDataManager.Instance.userData.mercenaryDataList.Count >= 2)
+        {
+            mercenary1BulletSprite = GameDataManager.Instance.userData.mercenaryDataList[0].bulletImage;
+            mercenary2BulletSprite = GameDataManager.Instance.userData.mercenaryDataList[1].bulletImage;
         }
     }
 
@@ -100,7 +109,6 @@ public class BulletManager : SingleTon<BulletManager>
         for (int i = 0; i < mercenary1BulletCount; i++)
         {
             Bullet b = Instantiate(bullet, bulletParent);
-
             b.gameObject.SetActive(false);
 
             mercenary1BulletList.Add(b);
@@ -109,6 +117,7 @@ public class BulletManager : SingleTon<BulletManager>
 
     public void ShotMercenary1Bullet(Vector2 _createPos)
     {
+        mercenary1BulletList[mercenary1ActiveBullet].SetBulletSprite(mercenary1BulletSprite);
         mercenary1BulletList[mercenary1ActiveBullet].StartMove(_createPos);
 
         mercenary1ActiveBullet++;
@@ -122,8 +131,7 @@ public class BulletManager : SingleTon<BulletManager>
     {
         for (int i = 0; i < mercenary2BulletCount; i++)
         {
-            Bullet b = Instantiate(bullet, bulletParent);
-
+            Bullet b = Instantiate(bullet, bulletParent);            
             b.gameObject.SetActive(false);
 
             mercenary2BulletList.Add(b);
@@ -132,6 +140,7 @@ public class BulletManager : SingleTon<BulletManager>
 
     public void ShotMercenary2Bullet(Vector2 _createPos)
     {
+        mercenary1BulletList[mercenary2ActiveBullet].SetBulletSprite(mercenary2BulletSprite);
         mercenary2BulletList[mercenary2ActiveBullet].StartMove(_createPos);
 
         mercenary2ActiveBullet++;

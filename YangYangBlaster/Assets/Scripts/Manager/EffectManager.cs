@@ -63,7 +63,7 @@ public class EffectManager : SingleTon<EffectManager>
         }
     }
 
-    public void SetBubbleEffect(Vector2 _pos, Vector2 _scale, int _sortOrder, Color _color)
+    public void SetBubbleEffect(Vector2 _pos, Vector2 _scale, Color _color)
     {
         activeBubbleNum = activeBubbleNum + 1;
 
@@ -73,7 +73,7 @@ public class EffectManager : SingleTon<EffectManager>
         }
 
         bubbleEffectList[activeBubbleNum].gameObject.SetActive(true);
-        bubbleEffectList[activeBubbleNum].SetBubbleEffect(_pos, _scale, _sortOrder, _color);
+        bubbleEffectList[activeBubbleNum].SetBubbleEffect(_pos, _scale, _color);
     }
 
     public void CreateCoinEffect()

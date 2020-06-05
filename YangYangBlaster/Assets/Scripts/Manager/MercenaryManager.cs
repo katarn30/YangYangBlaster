@@ -9,6 +9,10 @@ public class MercenaryManager : SingleTon<MercenaryManager>
 
     public Animator mercenaryAnimator1;
     public Animator mercenaryAnimator2;
+
+    public ParticleSystem mercenary1Particle;
+    public ParticleSystem mercenary2Particle;
+
     public float speed;
 
     float mercenary1AttackSpeed = 0.0f;
@@ -26,6 +30,9 @@ public class MercenaryManager : SingleTon<MercenaryManager>
     {
         mercenary1.gameObject.SetActive(false);
         mercenary2.gameObject.SetActive(false);
+
+        mercenary1Particle.gameObject.SetActive(false);
+        mercenary2Particle.gameObject.SetActive(false);
     }
 
     public void SetInGameInit()
@@ -84,7 +91,14 @@ public class MercenaryManager : SingleTon<MercenaryManager>
         {
             mercenary1BulletTime = 0;
 
+            if (mercenaryAnimator1 != null)
+            {
+                mercenaryAnimator1.SetTrigger("Attack");
+            }            
+
             BulletManager.Instance.ShotMercenary1Bullet(mercenary1.transform.position);
+            mercenary1Particle.Stop();
+            mercenary1Particle.Play();
         }
     }
 
@@ -96,7 +110,14 @@ public class MercenaryManager : SingleTon<MercenaryManager>
         {
             mercenary2BulletTime = 0;
 
+            if (mercenaryAnimator2 != null)
+            {
+                mercenaryAnimator2.SetTrigger("Attack");
+            }
+            
             BulletManager.Instance.ShotMercenary2Bullet(mercenary2.transform.position);
+            mercenary2Particle.Stop();
+            mercenary2Particle.Play();
         }
     }
 
@@ -108,6 +129,7 @@ public class MercenaryManager : SingleTon<MercenaryManager>
             mercenary1AttackSpeed = _attackSpeed;
             mercenaryAnimator1.runtimeAnimatorController = _animatorRuntime;
             mercenary1.gameObject.SetActive(isActive);
+            mercenary1Particle.gameObject.SetActive(true);
         }
         else if (_num == 1)
         {
@@ -115,6 +137,7 @@ public class MercenaryManager : SingleTon<MercenaryManager>
             mercenary2AttackSpeed = _attackSpeed;
             mercenaryAnimator2.runtimeAnimatorController = _animatorRuntime;
             mercenary2.gameObject.SetActive(isActive);
+            mercenary2Particle.gameObject.SetActive(true);
         }
     }
 }

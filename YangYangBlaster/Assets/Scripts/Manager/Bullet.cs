@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
 {
     public SpriteRenderer bulletSprite;
 
-    public void StartMove(Vector2 _createPos, Sprite _bulletSprite = null)
+    public void SetBulletSprite(Sprite _bulletSprite)
     {
         if (_bulletSprite == null)
         {
@@ -15,7 +15,10 @@ public class Bullet : MonoBehaviour
         }
 
         bulletSprite.sprite = _bulletSprite;
+    }
 
+    public void StartMove(Vector2 _createPos)
+    {        
         gameObject.SetActive(true);
         transform.position = _createPos;
 

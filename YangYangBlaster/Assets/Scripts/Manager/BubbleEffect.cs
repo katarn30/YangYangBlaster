@@ -12,7 +12,7 @@ public class BubbleEffect : MonoBehaviour
         StartCoroutine(waitDisableEffect());
     }
 
-    public void SetBubbleEffect(Vector2 _pos, Vector2 _scale, int _sortOder, Color _color)
+    public void SetBubbleEffect(Vector2 _pos, Vector2 _scale, Color _color)
     {
         transform.position = _pos;
         transform.localScale = _scale;

@@ -8,8 +8,8 @@ public class MonsterManager : SingleTon<MonsterManager>
 
     [Header("Monster Prefab")]
     public int monsterMaxSpawnCount = 0;
-    List<Monster> monsterList = new List<Monster>();
-    int activeMonster = 0;
+    public List<Monster> monsterList = new List<Monster>();
+    public int activeMonster = 0;
 
     [Header("Monster Spawn")]
     public int monsterHp = 0;
@@ -39,12 +39,9 @@ public class MonsterManager : SingleTon<MonsterManager>
     public void SetLobbyInit()
     {
         if (MonsterParent != null)
-        {
-            Destroy(MonsterParent.gameObject);
-            MonsterParent = null;            
+        {            
+            MonsterParent.gameObject.SetActive(false);               
         }
-
-        monsterList.Clear();
     }
 
     public void SetInGameInit()
@@ -55,13 +52,38 @@ public class MonsterManager : SingleTon<MonsterManager>
             MonsterParent.parent = transform;
             MonsterParent.name = "MonsterParent";
 
-            MonsterParent.position = Vector3.zero;            
+            MonsterParent.position = Vector3.zero;
+            CreateMonster();
         }
+        else
+        {
+            MonsterParent.gameObject.SetActive(true);
+        }
+
+        initMonster();
 
         activeMonster = 0;
         deadCount = 0;
         allSpawnCount = 0;
         nowMonsterCount = 0;
+    }
+
+    public void initMonster()
+    {
+        for (int i = 0; i < monsterList.Count; i++)
+        {
+            monsterList[i].gameObject.SetActive(false);
+        }
+    }
+
+    public void CreateMonster()
+    {
+        for (int i = 0; i < monsterMaxSpawnCount; i++)
+        {
+            Monster mon = Instantiate(monster, MonsterParent);
+            mon.gameObject.SetActive(false);
+            monsterList.Add(mon);
+        }
     }
 
     public void MonsterManagerUpdate()
@@ -99,19 +121,7 @@ public class MonsterManager : SingleTon<MonsterManager>
 
             allSpawnCount = allSpawnCount + 1;
 
-            if (monsterMaxSpawnCount > monsterList.Count)
-            {
-                GameObject go = Instantiate(monster.gameObject, MonsterParent);
-                go.transform.position = new Vector2(x, y);
-                Monster mon = go.GetComponent<Monster>();
-                mon.CreateMonster(rnd, intToBool(rnds), false, rndCount, monsterSpriteList[rnd], monsterList.Count + 1, Random.Range(stage + 2, stage + 5));
-
-                monsterList.Add(monster);
-            }
-            else
-            {
-                ActiveMonsterInit(rnd, new Vector2(x, y), intToBool(rnds), false, rndCount, monsterSpriteList[rnd], monsterList.Count, Random.Range(stage + 6, stage + 10));
-            }
+            ActiveMonsterInit(rnd, new Vector2(x, y), intToBool(rnds), false, rndCount, monsterSpriteList[rnd], Random.Range(stage + 4, stage + 6));
         }
     }
 
@@ -134,41 +144,21 @@ public class MonsterManager : SingleTon<MonsterManager>
         
         allSpawnCount = allSpawnCount + 2;
 
-        if (monsterMaxSpawnCount > monsterList.Count)
-        {
-            GameObject go = Instantiate(monster.gameObject, MonsterParent);
-            go.transform.position = new Vector2(_createPos.x + 0.5f, _createPos.y);
-            go.GetComponent<Monster>().CreateMonster(rnd, false, _isUp, _spawnCount, monsterSpriteList[rnd], MonsterParent.childCount, createHp);
-        }
-        else
-        {
-            ActiveMonsterInit(rnd, new Vector2(_createPos.x + 0.5f, _createPos.y), false, _isUp, _spawnCount, monsterSpriteList[rnd], MonsterParent.childCount, createHp);
-        }
-
-        if (monsterMaxSpawnCount > monsterList.Count)
-        {
-            GameObject go1 = Instantiate(monster.gameObject, MonsterParent);
-            go1.transform.position = new Vector2(_createPos.x - 0.5f, _createPos.y);
-            go1.GetComponent<Monster>().CreateMonster(rnd, true, _isUp, _spawnCount, monsterSpriteList[rnd], MonsterParent.childCount, createHp);
-        }
-        else
-        {
-            ActiveMonsterInit(rnd, new Vector2(_createPos.x - 0.5f, _createPos.y), true, _isUp, _spawnCount, monsterSpriteList[rnd], MonsterParent.childCount, createHp);
-        }
-            
+        ActiveMonsterInit(rnd, new Vector2(_createPos.x + 0.5f, _createPos.y), false, _isUp, _spawnCount, monsterSpriteList[rnd], createHp);
+        ActiveMonsterInit(rnd, new Vector2(_createPos.x - 0.5f, _createPos.y), true, _isUp, _spawnCount, monsterSpriteList[rnd], createHp);
     }
 
-    public void ActiveMonsterInit(int _spriteNum, Vector2 _pos, bool _isLeft, bool _isUp, int _spawnCount, Sprite _sprite, int _sortOrder, int _monsterHp)
-    {
+    public void ActiveMonsterInit(int _spriteNum, Vector2 _pos, bool _isLeft, bool _isUp, int _spawnCount, Sprite _sprite, int _monsterHp)
+    {        
+        monsterList[activeMonster].transform.position = _pos;
+        monsterList[activeMonster].gameObject.SetActive(true);
+        monsterList[activeMonster].CreateMonster(_spriteNum, _isLeft, _isUp, _spawnCount, _sprite, activeMonster + 1, _monsterHp);
+
         activeMonster = activeMonster + 1;
 
         if (activeMonster >= monsterList.Count)
         {
             activeMonster = 0;
         }
-
-        monsterList[activeMonster].gameObject.SetActive(true);
-        monsterList[activeMonster].transform.position = _pos;
-        monsterList[activeMonster].CreateMonster(_spriteNum, _isLeft, _isUp, _spawnCount, _sprite, _sortOrder, _monsterHp);
     }
 }

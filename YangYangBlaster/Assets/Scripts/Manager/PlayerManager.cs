@@ -13,6 +13,8 @@ public enum PlayerState
 
 public class PlayerManager : SingleTon<PlayerManager>
 {
+    public PlayerState state = PlayerState.Idle;
+
     public List<Transform> mercenaryPosList = new List<Transform>();
     public SpriteRenderer playerSprite;
 
@@ -23,8 +25,7 @@ public class PlayerManager : SingleTon<PlayerManager>
     float bulletTime = 0.0f;
     public int originHp = 0;
 
-    public GameObject hpBarUI;
-    public Image hpBar;
+    public ParticleSystem particle;
 
     private void Awake()
     {
@@ -35,14 +36,14 @@ public class PlayerManager : SingleTon<PlayerManager>
     public void SetLobbyInit()
     {
         playerSprite.gameObject.SetActive(false);
-        hpBarUI.gameObject.SetActive(false);
+        particle.gameObject.SetActive(false);
     }
 
     //인게임 상태로 바뀔때
     public void SetInGameInit()
     {        
         playerSprite.gameObject.SetActive(true);
-        hpBarUI.gameObject.SetActive(true);        
+        particle.gameObject.SetActive(true);
 
         if (originHp == 0)
         {
@@ -56,19 +57,7 @@ public class PlayerManager : SingleTon<PlayerManager>
         transform.position = new Vector2(0, transform.position.y);
         attackSpeed = GameDataManager.Instance.userData.leaderData.attackSpeed;
 
-        UpdateHpBar(playerHp);
         ChangeAniState(PlayerState.Idle);
-    }
-
-    public void UpdateHpBar(float _playerHp)
-    {
-        if (hpBar == null)
-        {
-            Debug.LogError("PlayerManager HpBar UI Null");
-            return;
-        }
-
-        hpBar.fillAmount = _playerHp / originHp;
     }
 
     // Update is called once per frame
@@ -83,21 +72,28 @@ public class PlayerManager : SingleTon<PlayerManager>
             BulletManager.Instance.ShotBullet(transform.position);               
         }
 
-        ChangeAniState(PlayerState.Attack);
+        ChangeAniState(PlayerState.Attack);        
     }
 
     public void ChangeAniState(PlayerState _playerState)
     {
+        if (state == _playerState)
+            return;
+
+        state = _playerState;
+
         animator.ResetTrigger("Idle");
         animator.ResetTrigger("Attack");
 
-        switch (_playerState)
+        switch (state)
         {
             case PlayerState.Idle:
                 animator.SetTrigger("Idle");
+                particle.Stop();
                 break;
             case PlayerState.Attack:
                 animator.SetTrigger("Attack");
+                particle.Play();       
                 break;
             case PlayerState.Skill:
                 break;
@@ -115,18 +111,14 @@ public class PlayerManager : SingleTon<PlayerManager>
     {
         if (other.gameObject.CompareTag("Monster"))
         {
-            if (playerHp > 0)
-            {
-                playerHp = playerHp - 1;
-            }
-            else
+            playerHp = playerHp - 1;
+
+            if (playerHp <= 0)
             {
                 playerHp = 0;
                 GameManager.Instance.GameOver();
             }
-
-            UpdateHpBar((float)playerHp);
-
+            
             Handheld.Vibrate();
         }
     }

@@ -37,7 +37,7 @@ public class LobbyUIController : MonoBehaviour
 
         TimeSpan nsp = GameDataManager.Instance.userData.freeCoinUpdateTime - DateTime.Now;
 
-        freeCoinGauge.fillAmount = (float)(nsp.TotalSeconds / sp.TotalSeconds);
+        freeCoinGauge.fillAmount = (float)((sp.TotalSeconds - nsp.TotalSeconds) / sp.TotalSeconds);
     }
 
     public void AllClosePopup()

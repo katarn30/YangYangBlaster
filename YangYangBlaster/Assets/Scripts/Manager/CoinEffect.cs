@@ -60,6 +60,12 @@ public class CoinEffect : MonoBehaviour
         {
             GameManager.Instance.GetCoin(100);
 
+            if (dellayCoinCor != null)
+            {
+                StopCoroutine(dellayCoinCor);
+                dellayCoinCor = null;
+            }
+
             gameObject.SetActive(false);
         }
     }

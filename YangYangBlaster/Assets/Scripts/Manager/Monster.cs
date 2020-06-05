@@ -183,9 +183,11 @@ public class Monster : MonoBehaviour
 
                 GameManager.Instance.UpdateScore(100);
 
-                EffectManager.Instance.SetBubbleEffect(transform.position, transform.localScale, spriteRender.sortingOrder, colorList[spriteNum]);
+                EffectManager.Instance.SetBubbleEffect(transform.position, transform.localScale, colorList[spriteNum]);
                 EffectManager.Instance.SetCoinEffect(transform.position);
 
+                transform.DOKill();
+                transform.rotation = Quaternion.Euler(Vector2.zero);
                 gameObject.SetActive(false);
             }
 

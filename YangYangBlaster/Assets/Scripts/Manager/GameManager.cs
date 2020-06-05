@@ -44,28 +44,32 @@ public class GameManager : SingleTon<GameManager>
         if (state == GameState.InGame)
         {
             if (isGameOver == true || isStageClear == true)
-                return;
-
-            MonsterManager.Instance.MonsterManagerUpdate();
-
-            if (Input.GetMouseButton(0))
             {
-                Vector2 target = new Vector2(Input.mousePosition.x, 0);
-                target = Camera.main.ScreenToWorldPoint(target);
-                target.x = Mathf.Clamp(target.x, minScreenPos.x, maxScreenPos.x);
-                PlayerManager.Instance.transform.DOMove(new Vector2(target.x, -3.89f), 0.2f);
-
-                PlayerManager.Instance.PlayerShot();
-                MercenaryManager.Instance.MercenaryShot();
+                PlayerManager.Instance.ChangeAniState(PlayerState.Idle);
             }
-            else if (Input.GetMouseButtonUp(0))
+            else
             {
-                PlayerManager.Instance.ChangeAniState(PlayerState.Idle);                
-            }
+                MonsterManager.Instance.MonsterManagerUpdate();
 
-            MercenaryManager.Instance.MercenaryMovePoint();
+                if (Input.GetMouseButton(0))
+                {
+                    Vector2 target = new Vector2(Input.mousePosition.x, 0);
+                    target = Camera.main.ScreenToWorldPoint(target);
+                    target.x = Mathf.Clamp(target.x, minScreenPos.x, maxScreenPos.x);
+                    PlayerManager.Instance.transform.DOMove(new Vector2(target.x, -3.89f), 0.2f);
 
-            UIManager.Instance.InGameUIUpdate();
+                    PlayerManager.Instance.PlayerShot();
+                    MercenaryManager.Instance.MercenaryShot();
+                }
+                if (Input.GetMouseButtonUp(0))
+                {
+                    PlayerManager.Instance.ChangeAniState(PlayerState.Idle);
+                }
+
+                MercenaryManager.Instance.MercenaryMovePoint();
+
+                UIManager.Instance.InGameUIUpdate();
+            }            
         }
         else if (state == GameState.Lobby)
         {
@@ -165,7 +169,7 @@ public class GameManager : SingleTon<GameManager>
     {
         isStageClear = true;
 
-        UIManager.Instance.inGameUI.StageClearUI();
+        UIManager.Instance.inGameUI.StageClearUI();        
     }
 
     public void UpdateScore(int _score)
