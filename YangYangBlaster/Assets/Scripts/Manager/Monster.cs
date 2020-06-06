@@ -146,6 +146,7 @@ public class Monster : MonoBehaviour
             transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
         }
 
+        transform.DOPlay();
         transform.rotation = Quaternion.Euler(Vector2.zero);
         originScale = transform.localScale;
     }
@@ -188,7 +189,6 @@ public class Monster : MonoBehaviour
                 EffectManager.Instance.SetCoinEffect(transform.position);
 
                 transform.DOPause();
-                //DOTween.Clear();
 
                 gameObject.SetActive(false);
             }

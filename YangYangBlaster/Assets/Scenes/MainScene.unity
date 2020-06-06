@@ -482,8 +482,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.21, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children:
-  - {fileID: 1148695537}
   - {fileID: 2958935125573523087}
+  - {fileID: 1148695537}
   m_Father: {fileID: 1363029900}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -718,6 +718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWaitLogin: 0
+  nicknameField: {fileID: 0}
 --- !u!4 &738438696
 Transform:
   m_ObjectHideFlags: 0
@@ -872,7 +873,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4aeac89842ea0024cac3ebe6eb6b3bd4, type: 3}
   - {fileID: 21300000, guid: 9ab96c73f08f1e745a2488b498a98a68, type: 3}
   - {fileID: 21300000, guid: d6aea66b8aada3a4bafa03a0bfec5afe, type: 3}
-  monsterMaxSpawnCount: 30
+  monsterMaxSpawnCount: 40
   monsterList: []
   activeMonster: 0
   monsterHp: 5
@@ -881,6 +882,7 @@ MonoBehaviour:
   allSpawnCount: 0
   deadCount: 0
   monster: {fileID: 6028230092614303458, guid: e3ced1efa66a51245a007bb3634f3ae7, type: 3}
+  isBossStage: 1
   regenTime: 3.5
 --- !u!4 &922920861
 Transform:

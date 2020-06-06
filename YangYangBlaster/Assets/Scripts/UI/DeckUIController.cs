@@ -63,7 +63,7 @@ public class DeckUIController : MonoBehaviour
         {
             StageActiveGaugeUI(3);
         }
-        else
+        else if (num == 5)
         {
             StageActiveGaugeUI(4);
         }

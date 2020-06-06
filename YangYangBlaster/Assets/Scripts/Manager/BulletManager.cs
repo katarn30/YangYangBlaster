@@ -49,10 +49,10 @@ public class BulletManager : SingleTon<BulletManager>
             bulletParent = go.transform;
             bulletParent.name = "BulletParent";
 
-            CreateBullet();
-
             SetBulletSprite();
 
+            CreateBullet();
+            
             CreateMercenary1Bullet();
             CreateMercenary2Bullet();
         }
@@ -85,6 +85,7 @@ public class BulletManager : SingleTon<BulletManager>
         if (GameDataManager.Instance.userData.mercenaryDataList.Count == 1)
         {
             mercenary1BulletSprite = GameDataManager.Instance.userData.mercenaryDataList[0].bulletImage;
+            mercenary2BulletSprite = null;
         }
         else if (GameDataManager.Instance.userData.mercenaryDataList.Count >= 2)
         {
@@ -140,7 +141,7 @@ public class BulletManager : SingleTon<BulletManager>
 
     public void ShotMercenary2Bullet(Vector2 _createPos)
     {
-        mercenary1BulletList[mercenary2ActiveBullet].SetBulletSprite(mercenary2BulletSprite);
+        mercenary2BulletList[mercenary2ActiveBullet].SetBulletSprite(mercenary2BulletSprite);
         mercenary2BulletList[mercenary2ActiveBullet].StartMove(_createPos);
 
         mercenary2ActiveBullet++;

@@ -184,5 +184,17 @@ public class GameManager : SingleTon<GameManager>
 
         UIManager.Instance.inGameUI.SetCoinUI();
     }
+
+    public bool isBossStage()
+    {
+        bool result = false;
+        float num = ((float)GameDataManager.Instance.userData.stageNum % 6);
+        if (num == 5)
+        {
+            result = true;
+        }
+
+        return result;
+    }
     #endregion
 }

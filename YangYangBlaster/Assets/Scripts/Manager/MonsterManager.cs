@@ -22,6 +22,7 @@ public class MonsterManager : SingleTon<MonsterManager>
 
     public Monster monster;
     Transform MonsterParent = null;
+    public bool isBossStage = false;
 
     public float regenTime = 0.0f;
     float nowTime = 0.0f;
@@ -60,6 +61,8 @@ public class MonsterManager : SingleTon<MonsterManager>
             MonsterParent.gameObject.SetActive(true);
         }
 
+        isBossStage = GameManager.Instance.isBossStage();
+
         initMonster();
 
         activeMonster = 0;
@@ -88,12 +91,12 @@ public class MonsterManager : SingleTon<MonsterManager>
 
     public void MonsterManagerUpdate()
     {
-        if (GameManager.Instance.isGameOver == true)
+        if (GameManager.Instance.isGameOver == true || GameManager.Instance.isStageClear == true)
             return;
 
-        if (monsterStageCount == nowMonsterCount)
+        if (monsterStageCount <= nowMonsterCount)
         {
-            if (allSpawnCount == deadCount)
+            if (allSpawnCount <= deadCount)
             {
                 GameManager.Instance.StageClear();
             }
@@ -111,17 +114,14 @@ public class MonsterManager : SingleTon<MonsterManager>
             x = Random.Range(-2.38f, 2.34f);
             float y = 1.74f;
 
-            nowMonsterCount = nowMonsterCount + 1;
-            UIManager.Instance.inGameUI.SetStageGaugeUI();
-
             int rnd = Random.Range(0, monsterSpriteList.Count);
             int rnds = Random.Range(0, 2);
             int rndCount = Random.Range(1, 3);
             int stage = GameDataManager.Instance.userData.stageNum;
 
-            allSpawnCount = allSpawnCount + 1;
+            ActiveMonsterInit(true, rnd, new Vector2(x, y), intToBool(rnds), false, rndCount, monsterSpriteList[rnd], Random.Range(stage + 4, stage + 6));
 
-            ActiveMonsterInit(rnd, new Vector2(x, y), intToBool(rnds), false, rndCount, monsterSpriteList[rnd], Random.Range(stage + 4, stage + 6));
+            UIManager.Instance.inGameUI.SetStageGaugeUI();
         }
     }
 
@@ -141,17 +141,28 @@ public class MonsterManager : SingleTon<MonsterManager>
         }
 
         int createHp = Random.Range(minHp, maxHp);
-        
-        allSpawnCount = allSpawnCount + 2;
-
-        ActiveMonsterInit(rnd, new Vector2(_createPos.x + 0.5f, _createPos.y), false, _isUp, _spawnCount, monsterSpriteList[rnd], createHp);
-        ActiveMonsterInit(rnd, new Vector2(_createPos.x - 0.5f, _createPos.y), true, _isUp, _spawnCount, monsterSpriteList[rnd], createHp);
+                
+        ActiveMonsterInit(false, rnd, new Vector2(_createPos.x + 0.5f, _createPos.y), false, _isUp, _spawnCount, monsterSpriteList[rnd], createHp);
+        ActiveMonsterInit(false, rnd, new Vector2(_createPos.x - 0.5f, _createPos.y), true, _isUp, _spawnCount, monsterSpriteList[rnd], createHp);
     }
 
-    public void ActiveMonsterInit(int _spriteNum, Vector2 _pos, bool _isLeft, bool _isUp, int _spawnCount, Sprite _sprite, int _monsterHp)
-    {        
-        monsterList[activeMonster].transform.position = _pos;
+    public void ActiveMonsterInit(bool isLeader, int _spriteNum, Vector2 _pos, bool _isLeft, bool _isUp, int _spawnCount, Sprite _sprite, int _monsterHp)
+    {
+        if (monsterList[activeMonster].gameObject.activeInHierarchy == true)
+        {
+            return;
+        }
+
+        if (isLeader == true)
+        {
+            nowMonsterCount = nowMonsterCount + 1;
+        }
+        
+        allSpawnCount = allSpawnCount + 1;
         monsterList[activeMonster].gameObject.SetActive(true);
+
+        monsterList[activeMonster].transform.position = _pos;
+        
         monsterList[activeMonster].CreateMonster(_spriteNum, _isLeft, _isUp, _spawnCount, _sprite, activeMonster + 1, _monsterHp);
 
         activeMonster = activeMonster + 1;

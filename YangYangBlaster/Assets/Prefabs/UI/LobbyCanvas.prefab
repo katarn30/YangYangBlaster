@@ -347,7 +347,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -129.2, y: 6.2}
+  m_AnchoredPosition: {x: -129.2, y: -16}
   m_SizeDelta: {x: 208, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &733930503
@@ -1173,7 +1173,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: POWER
+  m_Text: SKILL DAMAGE
 --- !u!1 &121479703774808641
 GameObject:
   m_ObjectHideFlags: 0
@@ -1735,7 +1735,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: POWER
+  m_Text: ATTACK SPEED
 --- !u!1 &830371715363501512
 GameObject:
   m_ObjectHideFlags: 0
@@ -2059,7 +2059,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -129.2, y: 6.2}
+  m_AnchoredPosition: {x: -129.2, y: -16}
   m_SizeDelta: {x: 208, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4405562563038907145
@@ -2371,7 +2371,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: POWER
+  m_Text: FREE COIN
 --- !u!1 &1795085689727569651
 GameObject:
   m_ObjectHideFlags: 0
@@ -2523,7 +2523,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: POWER
+  m_Text: CRITICAL
 --- !u!1 &2326048214232875302
 GameObject:
   m_ObjectHideFlags: 0
@@ -4165,7 +4165,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -129.2, y: 6.2}
+  m_AnchoredPosition: {x: -129.2, y: -16}
   m_SizeDelta: {x: 208, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7768657832237104021
@@ -4440,7 +4440,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -129.2, y: 6.2}
+  m_AnchoredPosition: {x: -129.2, y: -16}
   m_SizeDelta: {x: 208, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8546639761927493476
@@ -4709,7 +4709,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -129.2, y: 6.2}
+  m_AnchoredPosition: {x: -129.2, y: -16}
   m_SizeDelta: {x: 208, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &257368687028965366
