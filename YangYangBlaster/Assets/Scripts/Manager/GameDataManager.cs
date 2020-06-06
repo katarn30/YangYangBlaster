@@ -120,21 +120,26 @@ public class GameDataManager : SingleTon<GameDataManager>
     public void BuyMercenary(int _num)
     {
         string key = ReadMercenaryDataList[_num].name;
+        int catPrice = 0;
         MercenaryData mercenaryData = ReadMercenaryDataList[_num];
 
         if (userData.getMercenaryDataDic.Count > 0 && isGetMercenaryCat(key) == true)
         {
             MercenaryData myMercenary = GetMyMercenaryData(key);
             myMercenary.level = myMercenary.level + 1;
+            catPrice = myMercenary.price;
 
             SetMyMercenaryData(key, myMercenary);
         }
         else
         {
             mercenaryData.level = mercenaryData.level + 1;
+            catPrice = mercenaryData.price;
 
             userData.getMercenaryDataDic.Add(key, mercenaryData);
         }
+
+        userData.coin = userData.coin - catPrice;
     }
 
     public void SelectMercenary(MercenaryData _mercenaryData)

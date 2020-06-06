@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class CoinEffect : MonoBehaviour
 {
@@ -35,6 +36,11 @@ public class CoinEffect : MonoBehaviour
     IEnumerator waitDisable()
     {
         yield return new WaitForSeconds(1f);
+
+        Vector3 screenPos = Camera.main.WorldToViewportPoint(UIManager.Instance.inGameUI.coinText.transform.position);
+        screenPos.x *= 720;
+        screenPos.y *= 1280;
+        transform.position = screenPos;
 
         GameManager.Instance.GetCoin(100);
 

@@ -45,21 +45,21 @@ public class DeckUIController : MonoBehaviour
 
     public void SetStageGauge()
     {
-        float num = ((float)GameDataManager.Instance.userData.stageNum / 5);
+        float num = ((float)GameDataManager.Instance.userData.stageNum % 6);
 
-        if (num == 0.2f)
+        if (num == 1)
         {
             StageActiveGaugeUI(0);
         }
-        else if (num == 0.4f)
+        else if (num == 2)
         {
             StageActiveGaugeUI(1);
         }
-        else if (num == 0.6f)
+        else if (num == 3)
         {
             StageActiveGaugeUI(2);
         }
-        else if (num == 0.8f)
+        else if (num == 4)
         {
             StageActiveGaugeUI(3);
         }

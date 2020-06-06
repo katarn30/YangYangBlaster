@@ -25,7 +25,8 @@ public class PlayerManager : SingleTon<PlayerManager>
     float bulletTime = 0.0f;
     public int originHp = 0;
 
-    public ParticleSystem particle;
+    public ParticleSystem bulleParticle;
+    public ParticleSystem getItemParticle;
 
     private void Awake()
     {
@@ -36,14 +37,16 @@ public class PlayerManager : SingleTon<PlayerManager>
     public void SetLobbyInit()
     {
         playerSprite.gameObject.SetActive(false);
-        particle.gameObject.SetActive(false);
+        bulleParticle.gameObject.SetActive(false);
+        getItemParticle.gameObject.SetActive(false);
     }
 
     //인게임 상태로 바뀔때
     public void SetInGameInit()
     {        
         playerSprite.gameObject.SetActive(true);
-        particle.gameObject.SetActive(true);
+        bulleParticle.gameObject.SetActive(true);
+        getItemParticle.gameObject.SetActive(true);
 
         if (originHp == 0)
         {
@@ -89,11 +92,11 @@ public class PlayerManager : SingleTon<PlayerManager>
         {
             case PlayerState.Idle:
                 animator.SetTrigger("Idle");
-                particle.Stop();
+                bulleParticle.Stop();
                 break;
             case PlayerState.Attack:
                 animator.SetTrigger("Attack");
-                particle.Play();       
+                bulleParticle.Play();       
                 break;
             case PlayerState.Skill:
                 break;
@@ -120,6 +123,11 @@ public class PlayerManager : SingleTon<PlayerManager>
             }
             
             Handheld.Vibrate();
+        }
+        else if (other.gameObject.CompareTag("Coin"))
+        {
+            getItemParticle.Stop();
+            getItemParticle.Play();
         }
     }
 }

@@ -111,6 +111,7 @@ public class GameManager : SingleTon<GameManager>
         GameDataManager.Instance.BuyMercenary(_num);
         UIManager.Instance.lobbyUI.shopController.RefreshCatShopList();
         UIManager.Instance.lobbyUI.deckUIController.SetDeckUI();
+        UIManager.Instance.lobbyUI.UpdateCoinText();
     }
 
     public void SelectMercenary(string _name)

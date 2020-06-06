@@ -28,7 +28,7 @@ public class Monster : MonoBehaviour
     public int spawnCount = 0;
 
     bool isPuchScaleEffect = false;
-    bool isDead = false;
+    public bool isDead = false;
     bool isRotLeft = false;
     bool isRotRight = false;
 
@@ -40,10 +40,9 @@ public class Monster : MonoBehaviour
 
     private void Update()
     {       
-        if (monsterHp == 0 && isDead == true)
+        if (isDead == true)
         {
-            isDead = false;
-            DOTween.Clear();
+            
             return;
         }
 
@@ -115,6 +114,7 @@ public class Monster : MonoBehaviour
         isUp = _isUp;
         spawnCount = _spwanCount;
         spriteRender.sprite = _sprite;
+        isDead = false;
 
         originHp = _monsterHp;
         monsterHp = _monsterHp;
@@ -146,6 +146,7 @@ public class Monster : MonoBehaviour
             transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
         }
 
+        transform.rotation = Quaternion.Euler(Vector2.zero);
         originScale = transform.localScale;
     }
 
@@ -186,8 +187,9 @@ public class Monster : MonoBehaviour
                 EffectManager.Instance.SetBubbleEffect(transform.position, transform.localScale, colorList[spriteNum]);
                 EffectManager.Instance.SetCoinEffect(transform.position);
 
-                transform.DOKill();
-                transform.rotation = Quaternion.Euler(Vector2.zero);
+                transform.DOPause();
+                //DOTween.Clear();
+
                 gameObject.SetActive(false);
             }
 
