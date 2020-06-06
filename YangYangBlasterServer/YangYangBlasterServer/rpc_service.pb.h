@@ -31,6 +31,7 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>  // IWYU pragma: export
 #include <google/protobuf/extension_set.h>  // IWYU pragma: export
+#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
@@ -47,7 +48,7 @@ struct TableStruct_rpc_5fservice_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[4]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[6]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -55,12 +56,18 @@ struct TableStruct_rpc_5fservice_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_rpc_5fservice_2eproto;
 namespace yyb {
+class Empty;
+class EmptyDefaultTypeInternal;
+extern EmptyDefaultTypeInternal _Empty_default_instance_;
 class LoginReply;
 class LoginReplyDefaultTypeInternal;
 extern LoginReplyDefaultTypeInternal _LoginReply_default_instance_;
 class LoginRequest;
 class LoginRequestDefaultTypeInternal;
 extern LoginRequestDefaultTypeInternal _LoginRequest_default_instance_;
+class PushNotification;
+class PushNotificationDefaultTypeInternal;
+extern PushNotificationDefaultTypeInternal _PushNotification_default_instance_;
 class RpcServiceExampleReply;
 class RpcServiceExampleReplyDefaultTypeInternal;
 extern RpcServiceExampleReplyDefaultTypeInternal _RpcServiceExampleReply_default_instance_;
@@ -69,13 +76,75 @@ class RpcServiceExampleRequestDefaultTypeInternal;
 extern RpcServiceExampleRequestDefaultTypeInternal _RpcServiceExampleRequest_default_instance_;
 }  // namespace yyb
 PROTOBUF_NAMESPACE_OPEN
+template<> ::yyb::Empty* Arena::CreateMaybeMessage<::yyb::Empty>(Arena*);
 template<> ::yyb::LoginReply* Arena::CreateMaybeMessage<::yyb::LoginReply>(Arena*);
 template<> ::yyb::LoginRequest* Arena::CreateMaybeMessage<::yyb::LoginRequest>(Arena*);
+template<> ::yyb::PushNotification* Arena::CreateMaybeMessage<::yyb::PushNotification>(Arena*);
 template<> ::yyb::RpcServiceExampleReply* Arena::CreateMaybeMessage<::yyb::RpcServiceExampleReply>(Arena*);
 template<> ::yyb::RpcServiceExampleRequest* Arena::CreateMaybeMessage<::yyb::RpcServiceExampleRequest>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace yyb {
 
+enum LoginRequest_LOGIN_TYPE : int {
+  LoginRequest_LOGIN_TYPE_LOGIN_TYPE_NON_CERT = 0,
+  LoginRequest_LOGIN_TYPE_LOGIN_TYPE_GOOGLE = 1,
+  LoginRequest_LOGIN_TYPE_LOGIN_TYPE_FACEBOOK = 2,
+  LoginRequest_LOGIN_TYPE_LoginRequest_LOGIN_TYPE_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  LoginRequest_LOGIN_TYPE_LoginRequest_LOGIN_TYPE_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+};
+bool LoginRequest_LOGIN_TYPE_IsValid(int value);
+constexpr LoginRequest_LOGIN_TYPE LoginRequest_LOGIN_TYPE_LOGIN_TYPE_MIN = LoginRequest_LOGIN_TYPE_LOGIN_TYPE_NON_CERT;
+constexpr LoginRequest_LOGIN_TYPE LoginRequest_LOGIN_TYPE_LOGIN_TYPE_MAX = LoginRequest_LOGIN_TYPE_LOGIN_TYPE_FACEBOOK;
+constexpr int LoginRequest_LOGIN_TYPE_LOGIN_TYPE_ARRAYSIZE = LoginRequest_LOGIN_TYPE_LOGIN_TYPE_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* LoginRequest_LOGIN_TYPE_descriptor();
+template<typename T>
+inline const std::string& LoginRequest_LOGIN_TYPE_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, LoginRequest_LOGIN_TYPE>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function LoginRequest_LOGIN_TYPE_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    LoginRequest_LOGIN_TYPE_descriptor(), enum_t_value);
+}
+inline bool LoginRequest_LOGIN_TYPE_Parse(
+    const std::string& name, LoginRequest_LOGIN_TYPE* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<LoginRequest_LOGIN_TYPE>(
+    LoginRequest_LOGIN_TYPE_descriptor(), name, value);
+}
+enum LoginReply_ERROR_CODE : int {
+  LoginReply_ERROR_CODE_ERROR_CODE_OK = 0,
+  LoginReply_ERROR_CODE_ERROR_CODE_EMPTY_NICKNAME = 1,
+  LoginReply_ERROR_CODE_ERROR_CODE_DUP_NICKNAME = 2,
+  LoginReply_ERROR_CODE_ERROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS = 3,
+  LoginReply_ERROR_CODE_ERROR_CODE_UNABLE_TO_CREATE_USER = 4,
+  LoginReply_ERROR_CODE_ERROR_CODE_FAILED_TO_ACQUIRE_USER_INFO = 5,
+  LoginReply_ERROR_CODE_ERROR_CODE_GOOGLE_AUTH_FAILED = 6,
+  LoginReply_ERROR_CODE_ERROR_CODE_EMPTY_ID_TOKEN = 7,
+  LoginReply_ERROR_CODE_ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY = 8,
+  LoginReply_ERROR_CODE_ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE = 9,
+  LoginReply_ERROR_CODE_ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT = 10,
+  LoginReply_ERROR_CODE_LoginReply_ERROR_CODE_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  LoginReply_ERROR_CODE_LoginReply_ERROR_CODE_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+};
+bool LoginReply_ERROR_CODE_IsValid(int value);
+constexpr LoginReply_ERROR_CODE LoginReply_ERROR_CODE_ERROR_CODE_MIN = LoginReply_ERROR_CODE_ERROR_CODE_OK;
+constexpr LoginReply_ERROR_CODE LoginReply_ERROR_CODE_ERROR_CODE_MAX = LoginReply_ERROR_CODE_ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT;
+constexpr int LoginReply_ERROR_CODE_ERROR_CODE_ARRAYSIZE = LoginReply_ERROR_CODE_ERROR_CODE_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* LoginReply_ERROR_CODE_descriptor();
+template<typename T>
+inline const std::string& LoginReply_ERROR_CODE_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, LoginReply_ERROR_CODE>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function LoginReply_ERROR_CODE_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    LoginReply_ERROR_CODE_descriptor(), enum_t_value);
+}
+inline bool LoginReply_ERROR_CODE_Parse(
+    const std::string& name, LoginReply_ERROR_CODE* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<LoginReply_ERROR_CODE>(
+    LoginReply_ERROR_CODE_descriptor(), name, value);
+}
 // ===================================================================
 
 class RpcServiceExampleRequest :
@@ -406,6 +475,256 @@ class RpcServiceExampleReply :
 };
 // -------------------------------------------------------------------
 
+class Empty :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:yyb.Empty) */ {
+ public:
+  Empty();
+  virtual ~Empty();
+
+  Empty(const Empty& from);
+  Empty(Empty&& from) noexcept
+    : Empty() {
+    *this = ::std::move(from);
+  }
+
+  inline Empty& operator=(const Empty& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Empty& operator=(Empty&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const Empty& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Empty* internal_default_instance() {
+    return reinterpret_cast<const Empty*>(
+               &_Empty_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    2;
+
+  friend void swap(Empty& a, Empty& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Empty* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Empty* New() const final {
+    return CreateMaybeMessage<Empty>(nullptr);
+  }
+
+  Empty* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<Empty>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const Empty& from);
+  void MergeFrom(const Empty& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Empty* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "yyb.Empty";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_rpc_5fservice_2eproto);
+    return ::descriptor_table_rpc_5fservice_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:yyb.Empty)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_rpc_5fservice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class PushNotification :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:yyb.PushNotification) */ {
+ public:
+  PushNotification();
+  virtual ~PushNotification();
+
+  PushNotification(const PushNotification& from);
+  PushNotification(PushNotification&& from) noexcept
+    : PushNotification() {
+    *this = ::std::move(from);
+  }
+
+  inline PushNotification& operator=(const PushNotification& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline PushNotification& operator=(PushNotification&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const PushNotification& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const PushNotification* internal_default_instance() {
+    return reinterpret_cast<const PushNotification*>(
+               &_PushNotification_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  friend void swap(PushNotification& a, PushNotification& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(PushNotification* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline PushNotification* New() const final {
+    return CreateMaybeMessage<PushNotification>(nullptr);
+  }
+
+  PushNotification* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<PushNotification>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const PushNotification& from);
+  void MergeFrom(const PushNotification& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(PushNotification* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "yyb.PushNotification";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_rpc_5fservice_2eproto);
+    return ::descriptor_table_rpc_5fservice_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kPayloadFieldNumber = 1,
+  };
+  // string payload = 1;
+  void clear_payload();
+  const std::string& payload() const;
+  void set_payload(const std::string& value);
+  void set_payload(std::string&& value);
+  void set_payload(const char* value);
+  void set_payload(const char* value, size_t size);
+  std::string* mutable_payload();
+  std::string* release_payload();
+  void set_allocated_payload(std::string* payload);
+  private:
+  const std::string& _internal_payload() const;
+  void _internal_set_payload(const std::string& value);
+  std::string* _internal_mutable_payload();
+  public:
+
+  // @@protoc_insertion_point(class_scope:yyb.PushNotification)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr payload_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_rpc_5fservice_2eproto;
+};
+// -------------------------------------------------------------------
+
 class LoginRequest :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:yyb.LoginRequest) */ {
  public:
@@ -448,7 +767,7 @@ class LoginRequest :
                &_LoginRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    4;
 
   friend void swap(LoginRequest& a, LoginRequest& b) {
     a.Swap(&b);
@@ -509,42 +828,101 @@ class LoginRequest :
 
   // nested types ----------------------------------------------------
 
+  typedef LoginRequest_LOGIN_TYPE LOGIN_TYPE;
+  static constexpr LOGIN_TYPE LOGIN_TYPE_NON_CERT =
+    LoginRequest_LOGIN_TYPE_LOGIN_TYPE_NON_CERT;
+  static constexpr LOGIN_TYPE LOGIN_TYPE_GOOGLE =
+    LoginRequest_LOGIN_TYPE_LOGIN_TYPE_GOOGLE;
+  static constexpr LOGIN_TYPE LOGIN_TYPE_FACEBOOK =
+    LoginRequest_LOGIN_TYPE_LOGIN_TYPE_FACEBOOK;
+  static inline bool LOGIN_TYPE_IsValid(int value) {
+    return LoginRequest_LOGIN_TYPE_IsValid(value);
+  }
+  static constexpr LOGIN_TYPE LOGIN_TYPE_MIN =
+    LoginRequest_LOGIN_TYPE_LOGIN_TYPE_MIN;
+  static constexpr LOGIN_TYPE LOGIN_TYPE_MAX =
+    LoginRequest_LOGIN_TYPE_LOGIN_TYPE_MAX;
+  static constexpr int LOGIN_TYPE_ARRAYSIZE =
+    LoginRequest_LOGIN_TYPE_LOGIN_TYPE_ARRAYSIZE;
+  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
+  LOGIN_TYPE_descriptor() {
+    return LoginRequest_LOGIN_TYPE_descriptor();
+  }
+  template<typename T>
+  static inline const std::string& LOGIN_TYPE_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, LOGIN_TYPE>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function LOGIN_TYPE_Name.");
+    return LoginRequest_LOGIN_TYPE_Name(enum_t_value);
+  }
+  static inline bool LOGIN_TYPE_Parse(const std::string& name,
+      LOGIN_TYPE* value) {
+    return LoginRequest_LOGIN_TYPE_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   enum : int {
-    kNameFieldNumber = 1,
-    kSerialKeyFieldNumber = 2,
+    kLoginKeyFieldNumber = 2,
+    kIdTokenFieldNumber = 3,
+    kNickNameFieldNumber = 4,
+    kLoginTypeFieldNumber = 1,
   };
-  // string name = 1;
-  void clear_name();
-  const std::string& name() const;
-  void set_name(const std::string& value);
-  void set_name(std::string&& value);
-  void set_name(const char* value);
-  void set_name(const char* value, size_t size);
-  std::string* mutable_name();
-  std::string* release_name();
-  void set_allocated_name(std::string* name);
+  // string loginKey = 2;
+  void clear_loginkey();
+  const std::string& loginkey() const;
+  void set_loginkey(const std::string& value);
+  void set_loginkey(std::string&& value);
+  void set_loginkey(const char* value);
+  void set_loginkey(const char* value, size_t size);
+  std::string* mutable_loginkey();
+  std::string* release_loginkey();
+  void set_allocated_loginkey(std::string* loginkey);
   private:
-  const std::string& _internal_name() const;
-  void _internal_set_name(const std::string& value);
-  std::string* _internal_mutable_name();
+  const std::string& _internal_loginkey() const;
+  void _internal_set_loginkey(const std::string& value);
+  std::string* _internal_mutable_loginkey();
   public:
 
-  // string serial_key = 2;
-  void clear_serial_key();
-  const std::string& serial_key() const;
-  void set_serial_key(const std::string& value);
-  void set_serial_key(std::string&& value);
-  void set_serial_key(const char* value);
-  void set_serial_key(const char* value, size_t size);
-  std::string* mutable_serial_key();
-  std::string* release_serial_key();
-  void set_allocated_serial_key(std::string* serial_key);
+  // string idToken = 3;
+  void clear_idtoken();
+  const std::string& idtoken() const;
+  void set_idtoken(const std::string& value);
+  void set_idtoken(std::string&& value);
+  void set_idtoken(const char* value);
+  void set_idtoken(const char* value, size_t size);
+  std::string* mutable_idtoken();
+  std::string* release_idtoken();
+  void set_allocated_idtoken(std::string* idtoken);
   private:
-  const std::string& _internal_serial_key() const;
-  void _internal_set_serial_key(const std::string& value);
-  std::string* _internal_mutable_serial_key();
+  const std::string& _internal_idtoken() const;
+  void _internal_set_idtoken(const std::string& value);
+  std::string* _internal_mutable_idtoken();
+  public:
+
+  // string nickName = 4;
+  void clear_nickname();
+  const std::string& nickname() const;
+  void set_nickname(const std::string& value);
+  void set_nickname(std::string&& value);
+  void set_nickname(const char* value);
+  void set_nickname(const char* value, size_t size);
+  std::string* mutable_nickname();
+  std::string* release_nickname();
+  void set_allocated_nickname(std::string* nickname);
+  private:
+  const std::string& _internal_nickname() const;
+  void _internal_set_nickname(const std::string& value);
+  std::string* _internal_mutable_nickname();
+  public:
+
+  // .yyb.LoginRequest.LOGIN_TYPE loginType = 1;
+  void clear_logintype();
+  ::yyb::LoginRequest_LOGIN_TYPE logintype() const;
+  void set_logintype(::yyb::LoginRequest_LOGIN_TYPE value);
+  private:
+  ::yyb::LoginRequest_LOGIN_TYPE _internal_logintype() const;
+  void _internal_set_logintype(::yyb::LoginRequest_LOGIN_TYPE value);
   public:
 
   // @@protoc_insertion_point(class_scope:yyb.LoginRequest)
@@ -552,8 +930,10 @@ class LoginRequest :
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr name_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr serial_key_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr loginkey_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr idtoken_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr nickname_;
+  int logintype_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_rpc_5fservice_2eproto;
 };
@@ -601,7 +981,7 @@ class LoginReply :
                &_LoginReply_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    5;
 
   friend void swap(LoginReply& a, LoginReply& b) {
     a.Swap(&b);
@@ -662,25 +1042,127 @@ class LoginReply :
 
   // nested types ----------------------------------------------------
 
+  typedef LoginReply_ERROR_CODE ERROR_CODE;
+  static constexpr ERROR_CODE ERROR_CODE_OK =
+    LoginReply_ERROR_CODE_ERROR_CODE_OK;
+  static constexpr ERROR_CODE ERROR_CODE_EMPTY_NICKNAME =
+    LoginReply_ERROR_CODE_ERROR_CODE_EMPTY_NICKNAME;
+  static constexpr ERROR_CODE ERROR_CODE_DUP_NICKNAME =
+    LoginReply_ERROR_CODE_ERROR_CODE_DUP_NICKNAME;
+  static constexpr ERROR_CODE ERROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS =
+    LoginReply_ERROR_CODE_ERROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS;
+  static constexpr ERROR_CODE ERROR_CODE_UNABLE_TO_CREATE_USER =
+    LoginReply_ERROR_CODE_ERROR_CODE_UNABLE_TO_CREATE_USER;
+  static constexpr ERROR_CODE ERROR_CODE_FAILED_TO_ACQUIRE_USER_INFO =
+    LoginReply_ERROR_CODE_ERROR_CODE_FAILED_TO_ACQUIRE_USER_INFO;
+  static constexpr ERROR_CODE ERROR_CODE_GOOGLE_AUTH_FAILED =
+    LoginReply_ERROR_CODE_ERROR_CODE_GOOGLE_AUTH_FAILED;
+  static constexpr ERROR_CODE ERROR_CODE_EMPTY_ID_TOKEN =
+    LoginReply_ERROR_CODE_ERROR_CODE_EMPTY_ID_TOKEN;
+  static constexpr ERROR_CODE ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY =
+    LoginReply_ERROR_CODE_ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY;
+  static constexpr ERROR_CODE ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE =
+    LoginReply_ERROR_CODE_ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE;
+  static constexpr ERROR_CODE ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT =
+    LoginReply_ERROR_CODE_ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT;
+  static inline bool ERROR_CODE_IsValid(int value) {
+    return LoginReply_ERROR_CODE_IsValid(value);
+  }
+  static constexpr ERROR_CODE ERROR_CODE_MIN =
+    LoginReply_ERROR_CODE_ERROR_CODE_MIN;
+  static constexpr ERROR_CODE ERROR_CODE_MAX =
+    LoginReply_ERROR_CODE_ERROR_CODE_MAX;
+  static constexpr int ERROR_CODE_ARRAYSIZE =
+    LoginReply_ERROR_CODE_ERROR_CODE_ARRAYSIZE;
+  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
+  ERROR_CODE_descriptor() {
+    return LoginReply_ERROR_CODE_descriptor();
+  }
+  template<typename T>
+  static inline const std::string& ERROR_CODE_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, ERROR_CODE>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function ERROR_CODE_Name.");
+    return LoginReply_ERROR_CODE_Name(enum_t_value);
+  }
+  static inline bool ERROR_CODE_Parse(const std::string& name,
+      ERROR_CODE* value) {
+    return LoginReply_ERROR_CODE_Parse(name, value);
+  }
+
   // accessors -------------------------------------------------------
 
   enum : int {
+    kNickNameFieldNumber = 3,
+    kLoginKeyFieldNumber = 4,
+    kAccessKeyFieldNumber = 5,
     kErrorFieldNumber = 1,
+    kUsnFieldNumber = 2,
   };
-  // string error = 1;
-  void clear_error();
-  const std::string& error() const;
-  void set_error(const std::string& value);
-  void set_error(std::string&& value);
-  void set_error(const char* value);
-  void set_error(const char* value, size_t size);
-  std::string* mutable_error();
-  std::string* release_error();
-  void set_allocated_error(std::string* error);
+  // string nickName = 3;
+  void clear_nickname();
+  const std::string& nickname() const;
+  void set_nickname(const std::string& value);
+  void set_nickname(std::string&& value);
+  void set_nickname(const char* value);
+  void set_nickname(const char* value, size_t size);
+  std::string* mutable_nickname();
+  std::string* release_nickname();
+  void set_allocated_nickname(std::string* nickname);
   private:
-  const std::string& _internal_error() const;
-  void _internal_set_error(const std::string& value);
-  std::string* _internal_mutable_error();
+  const std::string& _internal_nickname() const;
+  void _internal_set_nickname(const std::string& value);
+  std::string* _internal_mutable_nickname();
+  public:
+
+  // string loginKey = 4;
+  void clear_loginkey();
+  const std::string& loginkey() const;
+  void set_loginkey(const std::string& value);
+  void set_loginkey(std::string&& value);
+  void set_loginkey(const char* value);
+  void set_loginkey(const char* value, size_t size);
+  std::string* mutable_loginkey();
+  std::string* release_loginkey();
+  void set_allocated_loginkey(std::string* loginkey);
+  private:
+  const std::string& _internal_loginkey() const;
+  void _internal_set_loginkey(const std::string& value);
+  std::string* _internal_mutable_loginkey();
+  public:
+
+  // string accessKey = 5;
+  void clear_accesskey();
+  const std::string& accesskey() const;
+  void set_accesskey(const std::string& value);
+  void set_accesskey(std::string&& value);
+  void set_accesskey(const char* value);
+  void set_accesskey(const char* value, size_t size);
+  std::string* mutable_accesskey();
+  std::string* release_accesskey();
+  void set_allocated_accesskey(std::string* accesskey);
+  private:
+  const std::string& _internal_accesskey() const;
+  void _internal_set_accesskey(const std::string& value);
+  std::string* _internal_mutable_accesskey();
+  public:
+
+  // .yyb.LoginReply.ERROR_CODE error = 1;
+  void clear_error();
+  ::yyb::LoginReply_ERROR_CODE error() const;
+  void set_error(::yyb::LoginReply_ERROR_CODE value);
+  private:
+  ::yyb::LoginReply_ERROR_CODE _internal_error() const;
+  void _internal_set_error(::yyb::LoginReply_ERROR_CODE value);
+  public:
+
+  // int32 usn = 2;
+  void clear_usn();
+  ::PROTOBUF_NAMESPACE_ID::int32 usn() const;
+  void set_usn(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_usn() const;
+  void _internal_set_usn(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:yyb.LoginReply)
@@ -688,7 +1170,11 @@ class LoginReply :
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr error_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr nickname_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr loginkey_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr accesskey_;
+  int error_;
+  ::PROTOBUF_NAMESPACE_ID::int32 usn_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_rpc_5fservice_2eproto;
 };
@@ -936,190 +1422,498 @@ inline void RpcServiceExampleReply::set_allocated_error(std::string* error) {
 
 // -------------------------------------------------------------------
 
+// Empty
+
+// -------------------------------------------------------------------
+
+// PushNotification
+
+// string payload = 1;
+inline void PushNotification::clear_payload() {
+  payload_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& PushNotification::payload() const {
+  // @@protoc_insertion_point(field_get:yyb.PushNotification.payload)
+  return _internal_payload();
+}
+inline void PushNotification::set_payload(const std::string& value) {
+  _internal_set_payload(value);
+  // @@protoc_insertion_point(field_set:yyb.PushNotification.payload)
+}
+inline std::string* PushNotification::mutable_payload() {
+  // @@protoc_insertion_point(field_mutable:yyb.PushNotification.payload)
+  return _internal_mutable_payload();
+}
+inline const std::string& PushNotification::_internal_payload() const {
+  return payload_.GetNoArena();
+}
+inline void PushNotification::_internal_set_payload(const std::string& value) {
+  
+  payload_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void PushNotification::set_payload(std::string&& value) {
+  
+  payload_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:yyb.PushNotification.payload)
+}
+inline void PushNotification::set_payload(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  payload_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:yyb.PushNotification.payload)
+}
+inline void PushNotification::set_payload(const char* value, size_t size) {
+  
+  payload_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:yyb.PushNotification.payload)
+}
+inline std::string* PushNotification::_internal_mutable_payload() {
+  
+  return payload_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* PushNotification::release_payload() {
+  // @@protoc_insertion_point(field_release:yyb.PushNotification.payload)
+  
+  return payload_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void PushNotification::set_allocated_payload(std::string* payload) {
+  if (payload != nullptr) {
+    
+  } else {
+    
+  }
+  payload_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), payload);
+  // @@protoc_insertion_point(field_set_allocated:yyb.PushNotification.payload)
+}
+
+// -------------------------------------------------------------------
+
 // LoginRequest
 
-// string name = 1;
-inline void LoginRequest::clear_name() {
-  name_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+// .yyb.LoginRequest.LOGIN_TYPE loginType = 1;
+inline void LoginRequest::clear_logintype() {
+  logintype_ = 0;
 }
-inline const std::string& LoginRequest::name() const {
-  // @@protoc_insertion_point(field_get:yyb.LoginRequest.name)
-  return _internal_name();
+inline ::yyb::LoginRequest_LOGIN_TYPE LoginRequest::_internal_logintype() const {
+  return static_cast< ::yyb::LoginRequest_LOGIN_TYPE >(logintype_);
 }
-inline void LoginRequest::set_name(const std::string& value) {
-  _internal_set_name(value);
-  // @@protoc_insertion_point(field_set:yyb.LoginRequest.name)
+inline ::yyb::LoginRequest_LOGIN_TYPE LoginRequest::logintype() const {
+  // @@protoc_insertion_point(field_get:yyb.LoginRequest.loginType)
+  return _internal_logintype();
 }
-inline std::string* LoginRequest::mutable_name() {
-  // @@protoc_insertion_point(field_mutable:yyb.LoginRequest.name)
-  return _internal_mutable_name();
-}
-inline const std::string& LoginRequest::_internal_name() const {
-  return name_.GetNoArena();
-}
-inline void LoginRequest::_internal_set_name(const std::string& value) {
+inline void LoginRequest::_internal_set_logintype(::yyb::LoginRequest_LOGIN_TYPE value) {
   
-  name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  logintype_ = value;
 }
-inline void LoginRequest::set_name(std::string&& value) {
-  
-  name_.SetNoArena(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:yyb.LoginRequest.name)
-}
-inline void LoginRequest::set_name(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:yyb.LoginRequest.name)
-}
-inline void LoginRequest::set_name(const char* value, size_t size) {
-  
-  name_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:yyb.LoginRequest.name)
-}
-inline std::string* LoginRequest::_internal_mutable_name() {
-  
-  return name_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline std::string* LoginRequest::release_name() {
-  // @@protoc_insertion_point(field_release:yyb.LoginRequest.name)
-  
-  return name_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline void LoginRequest::set_allocated_name(std::string* name) {
-  if (name != nullptr) {
-    
-  } else {
-    
-  }
-  name_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), name);
-  // @@protoc_insertion_point(field_set_allocated:yyb.LoginRequest.name)
+inline void LoginRequest::set_logintype(::yyb::LoginRequest_LOGIN_TYPE value) {
+  _internal_set_logintype(value);
+  // @@protoc_insertion_point(field_set:yyb.LoginRequest.loginType)
 }
 
-// string serial_key = 2;
-inline void LoginRequest::clear_serial_key() {
-  serial_key_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+// string loginKey = 2;
+inline void LoginRequest::clear_loginkey() {
+  loginkey_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline const std::string& LoginRequest::serial_key() const {
-  // @@protoc_insertion_point(field_get:yyb.LoginRequest.serial_key)
-  return _internal_serial_key();
+inline const std::string& LoginRequest::loginkey() const {
+  // @@protoc_insertion_point(field_get:yyb.LoginRequest.loginKey)
+  return _internal_loginkey();
 }
-inline void LoginRequest::set_serial_key(const std::string& value) {
-  _internal_set_serial_key(value);
-  // @@protoc_insertion_point(field_set:yyb.LoginRequest.serial_key)
+inline void LoginRequest::set_loginkey(const std::string& value) {
+  _internal_set_loginkey(value);
+  // @@protoc_insertion_point(field_set:yyb.LoginRequest.loginKey)
 }
-inline std::string* LoginRequest::mutable_serial_key() {
-  // @@protoc_insertion_point(field_mutable:yyb.LoginRequest.serial_key)
-  return _internal_mutable_serial_key();
+inline std::string* LoginRequest::mutable_loginkey() {
+  // @@protoc_insertion_point(field_mutable:yyb.LoginRequest.loginKey)
+  return _internal_mutable_loginkey();
 }
-inline const std::string& LoginRequest::_internal_serial_key() const {
-  return serial_key_.GetNoArena();
+inline const std::string& LoginRequest::_internal_loginkey() const {
+  return loginkey_.GetNoArena();
 }
-inline void LoginRequest::_internal_set_serial_key(const std::string& value) {
+inline void LoginRequest::_internal_set_loginkey(const std::string& value) {
   
-  serial_key_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  loginkey_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
 }
-inline void LoginRequest::set_serial_key(std::string&& value) {
+inline void LoginRequest::set_loginkey(std::string&& value) {
   
-  serial_key_.SetNoArena(
+  loginkey_.SetNoArena(
     &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:yyb.LoginRequest.serial_key)
+  // @@protoc_insertion_point(field_set_rvalue:yyb.LoginRequest.loginKey)
 }
-inline void LoginRequest::set_serial_key(const char* value) {
+inline void LoginRequest::set_loginkey(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
-  serial_key_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:yyb.LoginRequest.serial_key)
+  loginkey_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:yyb.LoginRequest.loginKey)
 }
-inline void LoginRequest::set_serial_key(const char* value, size_t size) {
+inline void LoginRequest::set_loginkey(const char* value, size_t size) {
   
-  serial_key_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+  loginkey_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:yyb.LoginRequest.serial_key)
+  // @@protoc_insertion_point(field_set_pointer:yyb.LoginRequest.loginKey)
 }
-inline std::string* LoginRequest::_internal_mutable_serial_key() {
+inline std::string* LoginRequest::_internal_mutable_loginkey() {
   
-  return serial_key_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  return loginkey_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline std::string* LoginRequest::release_serial_key() {
-  // @@protoc_insertion_point(field_release:yyb.LoginRequest.serial_key)
+inline std::string* LoginRequest::release_loginkey() {
+  // @@protoc_insertion_point(field_release:yyb.LoginRequest.loginKey)
   
-  return serial_key_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  return loginkey_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline void LoginRequest::set_allocated_serial_key(std::string* serial_key) {
-  if (serial_key != nullptr) {
+inline void LoginRequest::set_allocated_loginkey(std::string* loginkey) {
+  if (loginkey != nullptr) {
     
   } else {
     
   }
-  serial_key_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), serial_key);
-  // @@protoc_insertion_point(field_set_allocated:yyb.LoginRequest.serial_key)
+  loginkey_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), loginkey);
+  // @@protoc_insertion_point(field_set_allocated:yyb.LoginRequest.loginKey)
+}
+
+// string idToken = 3;
+inline void LoginRequest::clear_idtoken() {
+  idtoken_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& LoginRequest::idtoken() const {
+  // @@protoc_insertion_point(field_get:yyb.LoginRequest.idToken)
+  return _internal_idtoken();
+}
+inline void LoginRequest::set_idtoken(const std::string& value) {
+  _internal_set_idtoken(value);
+  // @@protoc_insertion_point(field_set:yyb.LoginRequest.idToken)
+}
+inline std::string* LoginRequest::mutable_idtoken() {
+  // @@protoc_insertion_point(field_mutable:yyb.LoginRequest.idToken)
+  return _internal_mutable_idtoken();
+}
+inline const std::string& LoginRequest::_internal_idtoken() const {
+  return idtoken_.GetNoArena();
+}
+inline void LoginRequest::_internal_set_idtoken(const std::string& value) {
+  
+  idtoken_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void LoginRequest::set_idtoken(std::string&& value) {
+  
+  idtoken_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:yyb.LoginRequest.idToken)
+}
+inline void LoginRequest::set_idtoken(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  idtoken_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:yyb.LoginRequest.idToken)
+}
+inline void LoginRequest::set_idtoken(const char* value, size_t size) {
+  
+  idtoken_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:yyb.LoginRequest.idToken)
+}
+inline std::string* LoginRequest::_internal_mutable_idtoken() {
+  
+  return idtoken_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* LoginRequest::release_idtoken() {
+  // @@protoc_insertion_point(field_release:yyb.LoginRequest.idToken)
+  
+  return idtoken_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void LoginRequest::set_allocated_idtoken(std::string* idtoken) {
+  if (idtoken != nullptr) {
+    
+  } else {
+    
+  }
+  idtoken_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), idtoken);
+  // @@protoc_insertion_point(field_set_allocated:yyb.LoginRequest.idToken)
+}
+
+// string nickName = 4;
+inline void LoginRequest::clear_nickname() {
+  nickname_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& LoginRequest::nickname() const {
+  // @@protoc_insertion_point(field_get:yyb.LoginRequest.nickName)
+  return _internal_nickname();
+}
+inline void LoginRequest::set_nickname(const std::string& value) {
+  _internal_set_nickname(value);
+  // @@protoc_insertion_point(field_set:yyb.LoginRequest.nickName)
+}
+inline std::string* LoginRequest::mutable_nickname() {
+  // @@protoc_insertion_point(field_mutable:yyb.LoginRequest.nickName)
+  return _internal_mutable_nickname();
+}
+inline const std::string& LoginRequest::_internal_nickname() const {
+  return nickname_.GetNoArena();
+}
+inline void LoginRequest::_internal_set_nickname(const std::string& value) {
+  
+  nickname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void LoginRequest::set_nickname(std::string&& value) {
+  
+  nickname_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:yyb.LoginRequest.nickName)
+}
+inline void LoginRequest::set_nickname(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  nickname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:yyb.LoginRequest.nickName)
+}
+inline void LoginRequest::set_nickname(const char* value, size_t size) {
+  
+  nickname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:yyb.LoginRequest.nickName)
+}
+inline std::string* LoginRequest::_internal_mutable_nickname() {
+  
+  return nickname_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* LoginRequest::release_nickname() {
+  // @@protoc_insertion_point(field_release:yyb.LoginRequest.nickName)
+  
+  return nickname_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void LoginRequest::set_allocated_nickname(std::string* nickname) {
+  if (nickname != nullptr) {
+    
+  } else {
+    
+  }
+  nickname_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), nickname);
+  // @@protoc_insertion_point(field_set_allocated:yyb.LoginRequest.nickName)
 }
 
 // -------------------------------------------------------------------
 
 // LoginReply
 
-// string error = 1;
+// .yyb.LoginReply.ERROR_CODE error = 1;
 inline void LoginReply::clear_error() {
-  error_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  error_ = 0;
 }
-inline const std::string& LoginReply::error() const {
+inline ::yyb::LoginReply_ERROR_CODE LoginReply::_internal_error() const {
+  return static_cast< ::yyb::LoginReply_ERROR_CODE >(error_);
+}
+inline ::yyb::LoginReply_ERROR_CODE LoginReply::error() const {
   // @@protoc_insertion_point(field_get:yyb.LoginReply.error)
   return _internal_error();
 }
-inline void LoginReply::set_error(const std::string& value) {
+inline void LoginReply::_internal_set_error(::yyb::LoginReply_ERROR_CODE value) {
+  
+  error_ = value;
+}
+inline void LoginReply::set_error(::yyb::LoginReply_ERROR_CODE value) {
   _internal_set_error(value);
   // @@protoc_insertion_point(field_set:yyb.LoginReply.error)
 }
-inline std::string* LoginReply::mutable_error() {
-  // @@protoc_insertion_point(field_mutable:yyb.LoginReply.error)
-  return _internal_mutable_error();
+
+// int32 usn = 2;
+inline void LoginReply::clear_usn() {
+  usn_ = 0;
 }
-inline const std::string& LoginReply::_internal_error() const {
-  return error_.GetNoArena();
+inline ::PROTOBUF_NAMESPACE_ID::int32 LoginReply::_internal_usn() const {
+  return usn_;
 }
-inline void LoginReply::_internal_set_error(const std::string& value) {
+inline ::PROTOBUF_NAMESPACE_ID::int32 LoginReply::usn() const {
+  // @@protoc_insertion_point(field_get:yyb.LoginReply.usn)
+  return _internal_usn();
+}
+inline void LoginReply::_internal_set_usn(::PROTOBUF_NAMESPACE_ID::int32 value) {
   
-  error_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  usn_ = value;
 }
-inline void LoginReply::set_error(std::string&& value) {
+inline void LoginReply::set_usn(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_usn(value);
+  // @@protoc_insertion_point(field_set:yyb.LoginReply.usn)
+}
+
+// string nickName = 3;
+inline void LoginReply::clear_nickname() {
+  nickname_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& LoginReply::nickname() const {
+  // @@protoc_insertion_point(field_get:yyb.LoginReply.nickName)
+  return _internal_nickname();
+}
+inline void LoginReply::set_nickname(const std::string& value) {
+  _internal_set_nickname(value);
+  // @@protoc_insertion_point(field_set:yyb.LoginReply.nickName)
+}
+inline std::string* LoginReply::mutable_nickname() {
+  // @@protoc_insertion_point(field_mutable:yyb.LoginReply.nickName)
+  return _internal_mutable_nickname();
+}
+inline const std::string& LoginReply::_internal_nickname() const {
+  return nickname_.GetNoArena();
+}
+inline void LoginReply::_internal_set_nickname(const std::string& value) {
   
-  error_.SetNoArena(
+  nickname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void LoginReply::set_nickname(std::string&& value) {
+  
+  nickname_.SetNoArena(
     &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:yyb.LoginReply.error)
+  // @@protoc_insertion_point(field_set_rvalue:yyb.LoginReply.nickName)
 }
-inline void LoginReply::set_error(const char* value) {
+inline void LoginReply::set_nickname(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
-  error_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:yyb.LoginReply.error)
+  nickname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:yyb.LoginReply.nickName)
 }
-inline void LoginReply::set_error(const char* value, size_t size) {
+inline void LoginReply::set_nickname(const char* value, size_t size) {
   
-  error_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+  nickname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:yyb.LoginReply.error)
+  // @@protoc_insertion_point(field_set_pointer:yyb.LoginReply.nickName)
 }
-inline std::string* LoginReply::_internal_mutable_error() {
+inline std::string* LoginReply::_internal_mutable_nickname() {
   
-  return error_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  return nickname_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline std::string* LoginReply::release_error() {
-  // @@protoc_insertion_point(field_release:yyb.LoginReply.error)
+inline std::string* LoginReply::release_nickname() {
+  // @@protoc_insertion_point(field_release:yyb.LoginReply.nickName)
   
-  return error_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  return nickname_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline void LoginReply::set_allocated_error(std::string* error) {
-  if (error != nullptr) {
+inline void LoginReply::set_allocated_nickname(std::string* nickname) {
+  if (nickname != nullptr) {
     
   } else {
     
   }
-  error_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), error);
-  // @@protoc_insertion_point(field_set_allocated:yyb.LoginReply.error)
+  nickname_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), nickname);
+  // @@protoc_insertion_point(field_set_allocated:yyb.LoginReply.nickName)
+}
+
+// string loginKey = 4;
+inline void LoginReply::clear_loginkey() {
+  loginkey_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& LoginReply::loginkey() const {
+  // @@protoc_insertion_point(field_get:yyb.LoginReply.loginKey)
+  return _internal_loginkey();
+}
+inline void LoginReply::set_loginkey(const std::string& value) {
+  _internal_set_loginkey(value);
+  // @@protoc_insertion_point(field_set:yyb.LoginReply.loginKey)
+}
+inline std::string* LoginReply::mutable_loginkey() {
+  // @@protoc_insertion_point(field_mutable:yyb.LoginReply.loginKey)
+  return _internal_mutable_loginkey();
+}
+inline const std::string& LoginReply::_internal_loginkey() const {
+  return loginkey_.GetNoArena();
+}
+inline void LoginReply::_internal_set_loginkey(const std::string& value) {
+  
+  loginkey_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void LoginReply::set_loginkey(std::string&& value) {
+  
+  loginkey_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:yyb.LoginReply.loginKey)
+}
+inline void LoginReply::set_loginkey(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  loginkey_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:yyb.LoginReply.loginKey)
+}
+inline void LoginReply::set_loginkey(const char* value, size_t size) {
+  
+  loginkey_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:yyb.LoginReply.loginKey)
+}
+inline std::string* LoginReply::_internal_mutable_loginkey() {
+  
+  return loginkey_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* LoginReply::release_loginkey() {
+  // @@protoc_insertion_point(field_release:yyb.LoginReply.loginKey)
+  
+  return loginkey_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void LoginReply::set_allocated_loginkey(std::string* loginkey) {
+  if (loginkey != nullptr) {
+    
+  } else {
+    
+  }
+  loginkey_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), loginkey);
+  // @@protoc_insertion_point(field_set_allocated:yyb.LoginReply.loginKey)
+}
+
+// string accessKey = 5;
+inline void LoginReply::clear_accesskey() {
+  accesskey_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& LoginReply::accesskey() const {
+  // @@protoc_insertion_point(field_get:yyb.LoginReply.accessKey)
+  return _internal_accesskey();
+}
+inline void LoginReply::set_accesskey(const std::string& value) {
+  _internal_set_accesskey(value);
+  // @@protoc_insertion_point(field_set:yyb.LoginReply.accessKey)
+}
+inline std::string* LoginReply::mutable_accesskey() {
+  // @@protoc_insertion_point(field_mutable:yyb.LoginReply.accessKey)
+  return _internal_mutable_accesskey();
+}
+inline const std::string& LoginReply::_internal_accesskey() const {
+  return accesskey_.GetNoArena();
+}
+inline void LoginReply::_internal_set_accesskey(const std::string& value) {
+  
+  accesskey_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void LoginReply::set_accesskey(std::string&& value) {
+  
+  accesskey_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:yyb.LoginReply.accessKey)
+}
+inline void LoginReply::set_accesskey(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  accesskey_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:yyb.LoginReply.accessKey)
+}
+inline void LoginReply::set_accesskey(const char* value, size_t size) {
+  
+  accesskey_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:yyb.LoginReply.accessKey)
+}
+inline std::string* LoginReply::_internal_mutable_accesskey() {
+  
+  return accesskey_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* LoginReply::release_accesskey() {
+  // @@protoc_insertion_point(field_release:yyb.LoginReply.accessKey)
+  
+  return accesskey_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void LoginReply::set_allocated_accesskey(std::string* accesskey) {
+  if (accesskey != nullptr) {
+    
+  } else {
+    
+  }
+  accesskey_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), accesskey);
+  // @@protoc_insertion_point(field_set_allocated:yyb.LoginReply.accessKey)
 }
 
 #ifdef __GNUC__
@@ -1131,10 +1925,29 @@ inline void LoginReply::set_allocated_error(std::string* error) {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
 }  // namespace yyb
+
+PROTOBUF_NAMESPACE_OPEN
+
+template <> struct is_proto_enum< ::yyb::LoginRequest_LOGIN_TYPE> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::yyb::LoginRequest_LOGIN_TYPE>() {
+  return ::yyb::LoginRequest_LOGIN_TYPE_descriptor();
+}
+template <> struct is_proto_enum< ::yyb::LoginReply_ERROR_CODE> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::yyb::LoginReply_ERROR_CODE>() {
+  return ::yyb::LoginReply_ERROR_CODE_descriptor();
+}
+
+PROTOBUF_NAMESPACE_CLOSE
 
 // @@protoc_insertion_point(global_scope)
 

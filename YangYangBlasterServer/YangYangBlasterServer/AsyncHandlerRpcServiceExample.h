@@ -8,15 +8,9 @@ namespace yyb
 		: public AsyncHandler<RpcServiceExampleRequest, RpcServiceExampleReply>
 	{
     public:
-		void OnRead(const RpcServiceExampleRequest& request, 
-			RpcServiceExampleReply& reply) override
-		{
-			std::cout << __FUNCTION__ << " : " << status_ << std::endl;
-		}
+		void OnRead(const RpcServiceExampleRequest& request,
+			RpcServiceExampleReply& reply) override;
 
-		void OnWrite() override
-		{
-
-		}
+		void OnWrite() override;
 	};
 }

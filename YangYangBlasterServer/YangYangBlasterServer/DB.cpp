@@ -42,6 +42,44 @@ namespace yyb
 		return db;
 	}
 
+	bool DB::QueryScope(int dbPoolIndex, std::function<bool(soci::session&)> query)
+	{
+		auto pool = DB::Instance().GetDBConnectionPool(dbPoolIndex);
+		if (pool)
+		{
+			soci::session sql(*pool);
+
+			try
+			{
+				return query(sql);
+			}
+			catch (soci::mysql_soci_error const& e)
+			{
+				if (2013 == e.err_num_)
+				{
+					sql.reconnect();
+				}
+
+				std::cerr << "MySQL error: " << e.err_num_
+					<< " " << e.what() << std::endl;
+
+				return false;
+			}
+			catch (std::exception const& e)
+			{
+				std::cerr << "Standard error: " << e.what() << std::endl;
+				return false;
+			}
+			catch (...)
+			{
+				std::cerr << "Some other error" << std::endl;
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 	void DB::Init(size_t poolSize,
 		const std::string& db, const std::string& host, short port,
 		const std::string& user, const std::string& password,
@@ -58,7 +96,7 @@ namespace yyb
 
 	bool DB::CreateDBConnectionPool(int poolIndex)
 	{
-		//static failover_callback_impl fci;
+		static failover_callback_impl fci;
 
 		if (dbMap_.find(poolIndex) == dbMap_.end())
 		{
@@ -74,14 +112,48 @@ namespace yyb
 			ss << " user=" << user_;
 			ss << " port=" << port_;
 			ss << " password=" << password_;
+			ss << " charset=utf8mb4";
 
 			std::string connectString = ss.str();
 
 			for (size_t i = 0; i < poolSize_; ++i)
 			{
-				soci::session& sql = pool->at(i);
-				//sql.set_failover_callback(fci);
-				sql.open(soci::mysql, connectString);// "db=YYB host='192.168.1.5' user=satel password='369369'");
+				try
+				{
+					soci::connection_parameters param;
+
+					soci::session& sql = pool->at(i);
+
+					sql.open(soci::mysql, connectString);
+					
+					// mysql 에서 작동 안하는듯
+					sql.set_failover_callback(fci);
+
+					sql << "SET TIME_ZONE='" + tz_ + "'";
+
+					soci::mysql_session_backend* sessionBackEnd
+						= static_cast<soci::mysql_session_backend*>(sql.get_backend());
+					std::string version = mysql_get_server_info(sessionBackEnd->conn_);
+
+					std::cout << "DB session " << i << " connected from " << host_ <<
+						":" << port_ << " version:" << version << std::endl;
+				}
+				catch (soci::mysql_soci_error const& e)
+				{
+					std::cerr << "MySQL error: " << e.err_num_
+						<< " " << e.what() << std::endl;
+					return false;
+				}
+				catch (std::exception const& e)
+				{
+					std::cerr << "Standard error: " << e.what() << std::endl;
+					return false;
+				}
+				catch (...)
+				{
+					std::cerr << "Some other error" << std::endl;
+					return false;
+				}
 			}
 
 			return true;

@@ -8,7 +8,8 @@ namespace yyb
 	{
 	public:
 		static DB& Instance();
-		
+		static bool QueryScope(int dbPoolIndex, std::function<bool(soci::session&)> query);
+
 		void Init(size_t poolSize,
 			const std::string& db, const std::string& host, short port,
 			const std::string& user, const std::string& password,
@@ -21,7 +22,7 @@ namespace yyb
 		void SetDB(std::string& db) { db_ = db; }
 
 	private:
-		DB() {}
+		DB() : poolSize_(0), port_(0) {}
 
 		size_t poolSize_;
 		std::string db_;

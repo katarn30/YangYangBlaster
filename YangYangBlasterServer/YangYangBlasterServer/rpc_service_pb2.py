@@ -18,7 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='yyb',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=b'\n\x11rpc_service.proto\x12\x03yyb\"`\n\x18RpcServiceExampleRequest\x12\x0c\n\x04\x61rg1\x18\x01 \x01(\x05\x12\x0c\n\x04\x61rg2\x18\x02 \x01(\x02\x12\x0c\n\x04\x61rg3\x18\x03 \x01(\t\x12\x0c\n\x04\x61rg4\x18\x04 \x01(\x08\x12\x0c\n\x04\x61rg5\x18\x05 \x03(\x05\"\'\n\x16RpcServiceExampleReply\x12\r\n\x05\x65rror\x18\x01 \x01(\t\"0\n\x0cLoginRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x12\n\nserial_key\x18\x02 \x01(\t\"\x1b\n\nLoginReply\x12\r\n\x05\x65rror\x18\x01 \x01(\t2\x8e\x01\n\nRpcService\x12Q\n\x11RpcServiceExample\x12\x1d.yyb.RpcServiceExampleRequest\x1a\x1b.yyb.RpcServiceExampleReply\"\x00\x12-\n\x05Login\x12\x11.yyb.LoginRequest\x1a\x0f.yyb.LoginReply\"\x00\x62\x06proto3'
+  serialized_pb=b'\n\x11rpc_service.proto\x12\x03yyb\"`\n\x18RpcServiceExampleRequest\x12\x0c\n\x04\x61rg1\x18\x01 \x01(\x05\x12\x0c\n\x04\x61rg2\x18\x02 \x01(\x02\x12\x0c\n\x04\x61rg3\x18\x03 \x01(\t\x12\x0c\n\x04\x61rg4\x18\x04 \x01(\x08\x12\x0c\n\x04\x61rg5\x18\x05 \x03(\x05\"\'\n\x16RpcServiceExampleReply\x12\r\n\x05\x65rror\x18\x01 \x01(\t\"\x07\n\x05\x45mpty\"#\n\x10PushNotification\x12\x0f\n\x07payload\x18\x01 \x01(\t\"0\n\x0cLoginRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x12\n\nserial_key\x18\x02 \x01(\t\"\x1b\n\nLoginReply\x12\r\n\x05\x65rror\x18\x01 \x01(\t2\xbf\x01\n\nRpcService\x12Q\n\x11RpcServiceExample\x12\x1d.yyb.RpcServiceExampleRequest\x1a\x1b.yyb.RpcServiceExampleReply\"\x00\x12/\n\x06Listen\x12\n.yyb.Empty\x1a\x15.yyb.PushNotification\"\x00\x30\x01\x12-\n\x05Login\x12\x11.yyb.LoginRequest\x1a\x0f.yyb.LoginReply\"\x00\x62\x06proto3'
 )
 
 
@@ -114,6 +114,61 @@ _RPCSERVICEEXAMPLEREPLY = _descriptor.Descriptor(
 )
 
 
+_EMPTY = _descriptor.Descriptor(
+  name='Empty',
+  full_name='yyb.Empty',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=165,
+  serialized_end=172,
+)
+
+
+_PUSHNOTIFICATION = _descriptor.Descriptor(
+  name='PushNotification',
+  full_name='yyb.PushNotification',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='payload', full_name='yyb.PushNotification.payload', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=174,
+  serialized_end=209,
+)
+
+
 _LOGINREQUEST = _descriptor.Descriptor(
   name='LoginRequest',
   full_name='yyb.LoginRequest',
@@ -147,8 +202,8 @@ _LOGINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=165,
-  serialized_end=213,
+  serialized_start=211,
+  serialized_end=259,
 )
 
 
@@ -178,12 +233,14 @@ _LOGINREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=215,
-  serialized_end=242,
+  serialized_start=261,
+  serialized_end=288,
 )
 
 DESCRIPTOR.message_types_by_name['RpcServiceExampleRequest'] = _RPCSERVICEEXAMPLEREQUEST
 DESCRIPTOR.message_types_by_name['RpcServiceExampleReply'] = _RPCSERVICEEXAMPLEREPLY
+DESCRIPTOR.message_types_by_name['Empty'] = _EMPTY
+DESCRIPTOR.message_types_by_name['PushNotification'] = _PUSHNOTIFICATION
 DESCRIPTOR.message_types_by_name['LoginRequest'] = _LOGINREQUEST
 DESCRIPTOR.message_types_by_name['LoginReply'] = _LOGINREPLY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -201,6 +258,20 @@ RpcServiceExampleReply = _reflection.GeneratedProtocolMessageType('RpcServiceExa
   # @@protoc_insertion_point(class_scope:yyb.RpcServiceExampleReply)
   })
 _sym_db.RegisterMessage(RpcServiceExampleReply)
+
+Empty = _reflection.GeneratedProtocolMessageType('Empty', (_message.Message,), {
+  'DESCRIPTOR' : _EMPTY,
+  '__module__' : 'rpc_service_pb2'
+  # @@protoc_insertion_point(class_scope:yyb.Empty)
+  })
+_sym_db.RegisterMessage(Empty)
+
+PushNotification = _reflection.GeneratedProtocolMessageType('PushNotification', (_message.Message,), {
+  'DESCRIPTOR' : _PUSHNOTIFICATION,
+  '__module__' : 'rpc_service_pb2'
+  # @@protoc_insertion_point(class_scope:yyb.PushNotification)
+  })
+_sym_db.RegisterMessage(PushNotification)
 
 LoginRequest = _reflection.GeneratedProtocolMessageType('LoginRequest', (_message.Message,), {
   'DESCRIPTOR' : _LOGINREQUEST,
@@ -224,8 +295,8 @@ _RPCSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=245,
-  serialized_end=387,
+  serialized_start=291,
+  serialized_end=482,
   methods=[
   _descriptor.MethodDescriptor(
     name='RpcServiceExample',
@@ -237,9 +308,18 @@ _RPCSERVICE = _descriptor.ServiceDescriptor(
     serialized_options=None,
   ),
   _descriptor.MethodDescriptor(
+    name='Listen',
+    full_name='yyb.RpcService.Listen',
+    index=1,
+    containing_service=None,
+    input_type=_EMPTY,
+    output_type=_PUSHNOTIFICATION,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
     name='Login',
     full_name='yyb.RpcService.Login',
-    index=1,
+    index=2,
     containing_service=None,
     input_type=_LOGINREQUEST,
     output_type=_LOGINREPLY,

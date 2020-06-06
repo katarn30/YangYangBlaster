@@ -108,18 +108,41 @@
 #pragma comment(lib, "absl_throw_delegate.lib")
 #pragma comment(lib, "absl_time.lib")
 #pragma comment(lib, "absl_time_zone.lib")
+#pragma comment(lib, "ws2_32.lib")
+#pragma comment(lib, "tacopie.lib")
+#pragma comment(lib, "cpp_redis.lib")
 
 #include <iostream>
 #include <memory>
 #include <string.h>
 #include <ctime>
 #include <mutex>
+#include <future>
 
 #include <google/protobuf/reflection.h>
 
 #include <boost/asio.hpp>
 #include <boost/bind.hpp>
 #include <boost/thread.hpp>
+#include <boost/asio/defer.hpp>
+#include <boost/asio/ip/tcp.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/locale.hpp>
+//#include <boost/beast.hpp>
+//#include <boost/beast/core.hpp>
+//#include <boost/beast/http.hpp>
+//#include <boost/beast/version.hpp>
+//#include <boost/beast/ssl.hpp>
+#include <boost/asio/connect.hpp>
+#include <boost/asio/ip/tcp.hpp>
+#include <boost/regex.hpp>
+#include <boost/uuid/uuid.hpp>
+#include <boost/uuid/uuid_generators.hpp>
+#include <boost/uuid/uuid_io.hpp>
+//#include <boost/asio/ssl.hpp>
+//#include <boost/asio/ssl/error.hpp>
+//#include <boost/asio/ssl/stream.hpp>
+#include <boost/python.hpp>
 
 #include <grpcpp/grpcpp.h>
 #include <grpcpp/health_check_service_interface.h>
@@ -131,3 +154,5 @@
 #include <soci/empty/soci-empty.h>
 #include <soci/mysql/soci-mysql.h>
 #include <soci/callbacks.h>
+
+#include <cpp_redis/core/client.hpp>

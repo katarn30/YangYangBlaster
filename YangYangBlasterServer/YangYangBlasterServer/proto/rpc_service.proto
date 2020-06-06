@@ -4,27 +4,61 @@ package yyb;
 
 // The rpc service definition.
 service RpcService {
-  rpc RpcServiceExample (RpcServiceExampleRequest) returns (RpcServiceExampleReply) {}
-  rpc Login (LoginRequest) returns (LoginReply) {}
+    rpc RpcServiceExample (RpcServiceExampleRequest) returns (RpcServiceExampleReply) {}
+    rpc Listen(Empty) returns (stream PushNotification) {}
+    rpc Login (LoginRequest) returns (LoginReply) {}
 }
 
 message RpcServiceExampleRequest {
-  int32 arg1 = 1;
-  float arg2 = 2;
-  string arg3 = 3;
-  bool arg4 = 4;
-  repeated int32 arg5 = 5;
+    int32 arg1 = 1;
+    float arg2 = 2;
+    string arg3 = 3;
+    bool arg4 = 4;
+    repeated int32 arg5 = 5;
 }
 
 message RpcServiceExampleReply {
-  string error = 1;
+    string error = 1;
+}
+
+message Empty {}
+
+message PushNotification {
+    string payload = 1;
 }
 
 message LoginRequest {
-  string name = 1;
-  string serial_key = 2;
+    enum LOGIN_TYPE {
+        LOGIN_TYPE_NON_CERT = 0;
+        LOGIN_TYPE_GOOGLE = 1;
+        LOGIN_TYPE_FACEBOOK = 2;
+    }
+
+    LOGIN_TYPE loginType = 1;
+    string loginKey = 2;
+    string idToken = 3;
+    string nickName = 4;
+    
 }
 
 message LoginReply {
-  string error = 1;
+    enum ERROR_CODE {
+        ERROR_CODE_OK = 0;
+        ERROR_CODE_EMPTY_NICKNAME = 1;
+        ERROR_CODE_DUP_NICKNAME = 2;
+        ERROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS = 3;
+        ERROR_CODE_UNABLE_TO_CREATE_USER = 4;
+        ERROR_CODE_FAILED_TO_ACQUIRE_USER_INFO = 5;
+        ERROR_CODE_GOOGLE_AUTH_FAILED = 6;
+        ERROR_CODE_EMPTY_ID_TOKEN = 7;
+        ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY = 8;
+        ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE = 9;
+        ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT = 10;
+	}
+
+    ERROR_CODE error = 1;
+    int32 usn = 2;
+    string nickName = 3;
+    string loginKey = 4;
+    string accessKey = 5;
 }
