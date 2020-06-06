@@ -138,4 +138,9 @@ public class LobbyUIController : MonoBehaviour
     {
         GoogleAdmobManager.Instance.ShowReward();
     }
+
+    public void ServerTestButton()
+    {
+        ServerTestManager.Instance.ServerTest();
+    }
 }
