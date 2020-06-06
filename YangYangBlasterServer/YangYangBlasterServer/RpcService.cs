@@ -33,20 +33,23 @@ namespace Yyb {
             "X1RZUEUSEAoIbG9naW5LZXkYAiABKAkSDwoHaWRUb2tlbhgDIAEoCRIQCghu",
             "aWNrTmFtZRgEIAEoCSJVCgpMT0dJTl9UWVBFEhcKE0xPR0lOX1RZUEVfTk9O",
             "X0NFUlQQABIVChFMT0dJTl9UWVBFX0dPT0dMRRABEhcKE0xPR0lOX1RZUEVf",
-            "RkFDRUJPT0sQAiKLAwoKTG9naW5SZXBseRIpCgVlcnJvchgBIAEoDjIaLnl5",
-            "Yi5Mb2dpblJlcGx5LkVSUk9SX0NPREUSCwoDdXNuGAIgASgFEhAKCGxvZ2lu",
-            "S2V5GAMgASgJEhAKCG5pY2tOYW1lGAQgASgJIqACCgpFUlJPUl9DT0RFEhEK",
-            "DUVSUk9SX0NPREVfT0sQABIdChlFUlJPUl9DT0RFX0VNUFRZX05JQ0tOQU1F",
-            "EAESGwoXRVJST1JfQ09ERV9EVVBfTklDS05BTUUQAhIvCitFUlJPUl9DT0RF",
-            "X05JQ0tOQU1FX0hBVkVfU1BFQ0lBTF9DSEFSQUNURVJTEAMSJAogRVJST1Jf",
-            "Q09ERV9VTkFCTEVfVE9fQ1JFQVRFX1VTRVIQBBIqCiZFUlJPUl9DT0RFX0ZB",
-            "SUxFRF9UT19BQ1FVSVJFX1VTRVJfSU5GTxAFEiEKHUVSUk9SX0NPREVfR09P",
-            "R0xFX0FVVEhfRkFJTEVEEAYSHQoZRVJST1JfQ09ERV9FTVBUWV9JRF9UT0tF",
-            "ThAHMr8BCgpScGNTZXJ2aWNlElEKEVJwY1NlcnZpY2VFeGFtcGxlEh0ueXli",
-            "LlJwY1NlcnZpY2VFeGFtcGxlUmVxdWVzdBobLnl5Yi5ScGNTZXJ2aWNlRXhh",
-            "bXBsZVJlcGx5IgASLwoGTGlzdGVuEgoueXliLkVtcHR5GhUueXliLlB1c2hO",
-            "b3RpZmljYXRpb24iADABEi0KBUxvZ2luEhEueXliLkxvZ2luUmVxdWVzdBoP",
-            "Lnl5Yi5Mb2dpblJlcGx5IgBiBnByb3RvMw=="));
+            "RkFDRUJPT0sQAiKdBAoKTG9naW5SZXBseRIpCgVlcnJvchgBIAEoDjIaLnl5",
+            "Yi5Mb2dpblJlcGx5LkVSUk9SX0NPREUSCwoDdXNuGAIgASgFEhAKCG5pY2tO",
+            "YW1lGAMgASgJEhAKCGxvZ2luS2V5GAQgASgJEhEKCWFjY2Vzc0tleRgFIAEo",
+            "CSKfAwoKRVJST1JfQ09ERRIRCg1FUlJPUl9DT0RFX09LEAASHQoZRVJST1Jf",
+            "Q09ERV9FTVBUWV9OSUNLTkFNRRABEhsKF0VSUk9SX0NPREVfRFVQX05JQ0tO",
+            "QU1FEAISLworRVJST1JfQ09ERV9OSUNLTkFNRV9IQVZFX1NQRUNJQUxfQ0hB",
+            "UkFDVEVSUxADEiQKIEVSUk9SX0NPREVfVU5BQkxFX1RPX0NSRUFURV9VU0VS",
+            "EAQSKgomRVJST1JfQ09ERV9GQUlMRURfVE9fQUNRVUlSRV9VU0VSX0lORk8Q",
+            "BRIhCh1FUlJPUl9DT0RFX0dPT0dMRV9BVVRIX0ZBSUxFRBAGEh0KGUVSUk9S",
+            "X0NPREVfRU1QVFlfSURfVE9LRU4QBxIpCiVFUlJPUl9DT0RFX0ZBSUxFRF9U",
+            "T19VUERBVEVfTE9HSU5fS0VZEAgSKgomRVJST1JfQ09ERV9GQUlMRURfVE9f",
+            "Q0hBTkdFX0xPR0lOX1RZUEUQCRImCiJFUlJPUl9DT0RFX0xPR0lOX1RZUEVf",
+            "SVNfRElGRkVSRU5UEAoyvwEKClJwY1NlcnZpY2USUQoRUnBjU2VydmljZUV4",
+            "YW1wbGUSHS55eWIuUnBjU2VydmljZUV4YW1wbGVSZXF1ZXN0GhsueXliLlJw",
+            "Y1NlcnZpY2VFeGFtcGxlUmVwbHkiABIvCgZMaXN0ZW4SCi55eWIuRW1wdHka",
+            "FS55eWIuUHVzaE5vdGlmaWNhdGlvbiIAMAESLQoFTG9naW4SES55eWIuTG9n",
+            "aW5SZXF1ZXN0Gg8ueXliLkxvZ2luUmVwbHkiAGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -55,7 +58,7 @@ namespace Yyb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.Empty), global::Yyb.Empty.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.PushNotification), global::Yyb.PushNotification.Parser, new[]{ "Payload" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.LoginRequest), global::Yyb.LoginRequest.Parser, new[]{ "LoginType", "LoginKey", "IdToken", "NickName" }, null, new[]{ typeof(global::Yyb.LoginRequest.Types.LOGIN_TYPE) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.LoginReply), global::Yyb.LoginReply.Parser, new[]{ "Error", "Usn", "LoginKey", "NickName" }, null, new[]{ typeof(global::Yyb.LoginReply.Types.ERROR_CODE) }, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.LoginReply), global::Yyb.LoginReply.Parser, new[]{ "Error", "Usn", "NickName", "LoginKey", "AccessKey" }, null, new[]{ typeof(global::Yyb.LoginReply.Types.ERROR_CODE) }, null)
           }));
     }
     #endregion
@@ -908,8 +911,9 @@ namespace Yyb {
     public LoginReply(LoginReply other) : this() {
       error_ = other.error_;
       usn_ = other.usn_;
-      loginKey_ = other.loginKey_;
       nickName_ = other.nickName_;
+      loginKey_ = other.loginKey_;
+      accessKey_ = other.accessKey_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -940,8 +944,19 @@ namespace Yyb {
       }
     }
 
+    /// <summary>Field number for the "nickName" field.</summary>
+    public const int NickNameFieldNumber = 3;
+    private string nickName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string NickName {
+      get { return nickName_; }
+      set {
+        nickName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "loginKey" field.</summary>
-    public const int LoginKeyFieldNumber = 3;
+    public const int LoginKeyFieldNumber = 4;
     private string loginKey_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string LoginKey {
@@ -951,14 +966,14 @@ namespace Yyb {
       }
     }
 
-    /// <summary>Field number for the "nickName" field.</summary>
-    public const int NickNameFieldNumber = 4;
-    private string nickName_ = "";
+    /// <summary>Field number for the "accessKey" field.</summary>
+    public const int AccessKeyFieldNumber = 5;
+    private string accessKey_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string NickName {
-      get { return nickName_; }
+    public string AccessKey {
+      get { return accessKey_; }
       set {
-        nickName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        accessKey_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -977,8 +992,9 @@ namespace Yyb {
       }
       if (Error != other.Error) return false;
       if (Usn != other.Usn) return false;
-      if (LoginKey != other.LoginKey) return false;
       if (NickName != other.NickName) return false;
+      if (LoginKey != other.LoginKey) return false;
+      if (AccessKey != other.AccessKey) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -987,8 +1003,9 @@ namespace Yyb {
       int hash = 1;
       if (Error != 0) hash ^= Error.GetHashCode();
       if (Usn != 0) hash ^= Usn.GetHashCode();
-      if (LoginKey.Length != 0) hash ^= LoginKey.GetHashCode();
       if (NickName.Length != 0) hash ^= NickName.GetHashCode();
+      if (LoginKey.Length != 0) hash ^= LoginKey.GetHashCode();
+      if (AccessKey.Length != 0) hash ^= AccessKey.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1010,13 +1027,17 @@ namespace Yyb {
         output.WriteRawTag(16);
         output.WriteInt32(Usn);
       }
-      if (LoginKey.Length != 0) {
+      if (NickName.Length != 0) {
         output.WriteRawTag(26);
+        output.WriteString(NickName);
+      }
+      if (LoginKey.Length != 0) {
+        output.WriteRawTag(34);
         output.WriteString(LoginKey);
       }
-      if (NickName.Length != 0) {
-        output.WriteRawTag(34);
-        output.WriteString(NickName);
+      if (AccessKey.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(AccessKey);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1032,11 +1053,14 @@ namespace Yyb {
       if (Usn != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Usn);
       }
+      if (NickName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(NickName);
+      }
       if (LoginKey.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(LoginKey);
       }
-      if (NickName.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(NickName);
+      if (AccessKey.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(AccessKey);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1055,11 +1079,14 @@ namespace Yyb {
       if (other.Usn != 0) {
         Usn = other.Usn;
       }
+      if (other.NickName.Length != 0) {
+        NickName = other.NickName;
+      }
       if (other.LoginKey.Length != 0) {
         LoginKey = other.LoginKey;
       }
-      if (other.NickName.Length != 0) {
-        NickName = other.NickName;
+      if (other.AccessKey.Length != 0) {
+        AccessKey = other.AccessKey;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1081,11 +1108,15 @@ namespace Yyb {
             break;
           }
           case 26: {
-            LoginKey = input.ReadString();
+            NickName = input.ReadString();
             break;
           }
           case 34: {
-            NickName = input.ReadString();
+            LoginKey = input.ReadString();
+            break;
+          }
+          case 42: {
+            AccessKey = input.ReadString();
             break;
           }
         }
@@ -1105,6 +1136,9 @@ namespace Yyb {
         [pbr::OriginalName("ERROR_CODE_FAILED_TO_ACQUIRE_USER_INFO")] FailedToAcquireUserInfo = 5,
         [pbr::OriginalName("ERROR_CODE_GOOGLE_AUTH_FAILED")] GoogleAuthFailed = 6,
         [pbr::OriginalName("ERROR_CODE_EMPTY_ID_TOKEN")] EmptyIdToken = 7,
+        [pbr::OriginalName("ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY")] FailedToUpdateLoginKey = 8,
+        [pbr::OriginalName("ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE")] FailedToChangeLoginType = 9,
+        [pbr::OriginalName("ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT")] LoginTypeIsDifferent = 10,
       }
 
     }

@@ -12,6 +12,7 @@ public class LoginManager : SingleTon<LoginManager>
 
     private LoginRequest.Types.LOGIN_TYPE loginType_ = 0;
     private string loginKey_ = "";
+    private string accessKey_ = "";
     private string nickName_ = "";
     private int usn_ = 0;
 
@@ -43,7 +44,7 @@ public class LoginManager : SingleTon<LoginManager>
             (int)LoginRequest.Types.LOGIN_TYPE.NonCert);
         nickName_ = PlayerPrefs.GetString(PREFIX_PREFS + "nick_name", "");
 
-        nicknameField.text = nickName_;
+        //nicknameField.text = nickName_;
     }
 
     public void SavePlayerPrefs()
@@ -53,19 +54,24 @@ public class LoginManager : SingleTon<LoginManager>
         PlayerPrefs.SetString(PREFIX_PREFS + "nick_name", nickName_);
     }
 
+    public void DeletePlayerPrefs()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
     public void DoAutoLogin()
     {
-        if (loginKey_.Equals(""))
-        {
-            return;
-        }
-
         if (LoginRequest.Types.LOGIN_TYPE.NonCert == loginType_)
         {
             NonCertLogin();
         }
         else if (LoginRequest.Types.LOGIN_TYPE.Google == loginType_)
         {
+            if (loginKey_.Equals(""))
+            {
+                return;
+            }
+
             GoogleLogin();
         }
     }
@@ -75,7 +81,7 @@ public class LoginManager : SingleTon<LoginManager>
         //int usn = PlayerPrefs.GetInt("usn", 0);
         //if (nickName_.Equals(""))
         {
-            nickName_ = nicknameField.text == null ? "" : nicknameField.text;
+            nickName_ = "이름이름이름";//nicknameField.text == null ? "" : nicknameField.text;
         }
 
         loginType_ = LoginRequest.Types.LOGIN_TYPE.NonCert;
@@ -95,7 +101,7 @@ public class LoginManager : SingleTon<LoginManager>
 
                     //if (nickName_.Equals(""))
                     {
-                        nickName_ = nicknameField.text == null ? "" : nicknameField.text;
+                        nickName_ = "이름이름이름";//nicknameField.text == null ? "" : nicknameField.text;
                     }
 
                     loginType_ = LoginRequest.Types.LOGIN_TYPE.Google;
@@ -140,38 +146,17 @@ public class LoginManager : SingleTon<LoginManager>
 
                 //private LoginRequest.Types.LOGIN_TYPE loginType_ = 0;
                 loginKey_ = reply.LoginKey;
+                accessKey_ = reply.AccessKey;
                 nickName_ = reply.NickName;
                 usn_ = reply.Usn;
 
                 SavePlayerPrefs();
             }
-            else if (LoginReply.Types.ERROR_CODE.EmptyNickname == reply.Error)
-            {
-                Debug.Log("EmptyNickname");
-            }
-            else if (LoginReply.Types.ERROR_CODE.DupNickname == reply.Error)
-            {
-                Debug.Log("DupNickname");
-            }
-            else if (LoginReply.Types.ERROR_CODE.NicknameHaveSpecialCharacters == reply.Error)
-            {
-                Debug.Log("NicknameHaveSpecialCharacters");
-            }
-            else if (LoginReply.Types.ERROR_CODE.UnableToCreateUser == reply.Error)
-            {
-                Debug.Log("UnableToCreateUser");
-            }
-            else if (LoginReply.Types.ERROR_CODE.FailedToAcquireUserInfo == reply.Error)
-            {
-                Debug.Log("FailedToAcquireUserInfo");
-            }
-            else if (LoginReply.Types.ERROR_CODE.GoogleAuthFailed == reply.Error)
-            {
-                Debug.Log("GoogleAuthFailed");
-            }
             else
             {
-                Debug.Log("Unkown error code");
+                Debug.Log(reply.Error);
+
+                DeletePlayerPrefs();
             }
         });
     }

@@ -120,12 +120,15 @@ enum LoginReply_ERROR_CODE : int {
   LoginReply_ERROR_CODE_ERROR_CODE_FAILED_TO_ACQUIRE_USER_INFO = 5,
   LoginReply_ERROR_CODE_ERROR_CODE_GOOGLE_AUTH_FAILED = 6,
   LoginReply_ERROR_CODE_ERROR_CODE_EMPTY_ID_TOKEN = 7,
+  LoginReply_ERROR_CODE_ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY = 8,
+  LoginReply_ERROR_CODE_ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE = 9,
+  LoginReply_ERROR_CODE_ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT = 10,
   LoginReply_ERROR_CODE_LoginReply_ERROR_CODE_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
   LoginReply_ERROR_CODE_LoginReply_ERROR_CODE_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
 bool LoginReply_ERROR_CODE_IsValid(int value);
 constexpr LoginReply_ERROR_CODE LoginReply_ERROR_CODE_ERROR_CODE_MIN = LoginReply_ERROR_CODE_ERROR_CODE_OK;
-constexpr LoginReply_ERROR_CODE LoginReply_ERROR_CODE_ERROR_CODE_MAX = LoginReply_ERROR_CODE_ERROR_CODE_EMPTY_ID_TOKEN;
+constexpr LoginReply_ERROR_CODE LoginReply_ERROR_CODE_ERROR_CODE_MAX = LoginReply_ERROR_CODE_ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT;
 constexpr int LoginReply_ERROR_CODE_ERROR_CODE_ARRAYSIZE = LoginReply_ERROR_CODE_ERROR_CODE_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* LoginReply_ERROR_CODE_descriptor();
@@ -1056,6 +1059,12 @@ class LoginReply :
     LoginReply_ERROR_CODE_ERROR_CODE_GOOGLE_AUTH_FAILED;
   static constexpr ERROR_CODE ERROR_CODE_EMPTY_ID_TOKEN =
     LoginReply_ERROR_CODE_ERROR_CODE_EMPTY_ID_TOKEN;
+  static constexpr ERROR_CODE ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY =
+    LoginReply_ERROR_CODE_ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY;
+  static constexpr ERROR_CODE ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE =
+    LoginReply_ERROR_CODE_ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE;
+  static constexpr ERROR_CODE ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT =
+    LoginReply_ERROR_CODE_ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT;
   static inline bool ERROR_CODE_IsValid(int value) {
     return LoginReply_ERROR_CODE_IsValid(value);
   }
@@ -1084,12 +1093,29 @@ class LoginReply :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kLoginKeyFieldNumber = 3,
-    kNickNameFieldNumber = 4,
+    kNickNameFieldNumber = 3,
+    kLoginKeyFieldNumber = 4,
+    kAccessKeyFieldNumber = 5,
     kErrorFieldNumber = 1,
     kUsnFieldNumber = 2,
   };
-  // string loginKey = 3;
+  // string nickName = 3;
+  void clear_nickname();
+  const std::string& nickname() const;
+  void set_nickname(const std::string& value);
+  void set_nickname(std::string&& value);
+  void set_nickname(const char* value);
+  void set_nickname(const char* value, size_t size);
+  std::string* mutable_nickname();
+  std::string* release_nickname();
+  void set_allocated_nickname(std::string* nickname);
+  private:
+  const std::string& _internal_nickname() const;
+  void _internal_set_nickname(const std::string& value);
+  std::string* _internal_mutable_nickname();
+  public:
+
+  // string loginKey = 4;
   void clear_loginkey();
   const std::string& loginkey() const;
   void set_loginkey(const std::string& value);
@@ -1105,20 +1131,20 @@ class LoginReply :
   std::string* _internal_mutable_loginkey();
   public:
 
-  // string nickName = 4;
-  void clear_nickname();
-  const std::string& nickname() const;
-  void set_nickname(const std::string& value);
-  void set_nickname(std::string&& value);
-  void set_nickname(const char* value);
-  void set_nickname(const char* value, size_t size);
-  std::string* mutable_nickname();
-  std::string* release_nickname();
-  void set_allocated_nickname(std::string* nickname);
+  // string accessKey = 5;
+  void clear_accesskey();
+  const std::string& accesskey() const;
+  void set_accesskey(const std::string& value);
+  void set_accesskey(std::string&& value);
+  void set_accesskey(const char* value);
+  void set_accesskey(const char* value, size_t size);
+  std::string* mutable_accesskey();
+  std::string* release_accesskey();
+  void set_allocated_accesskey(std::string* accesskey);
   private:
-  const std::string& _internal_nickname() const;
-  void _internal_set_nickname(const std::string& value);
-  std::string* _internal_mutable_nickname();
+  const std::string& _internal_accesskey() const;
+  void _internal_set_accesskey(const std::string& value);
+  std::string* _internal_mutable_accesskey();
   public:
 
   // .yyb.LoginReply.ERROR_CODE error = 1;
@@ -1144,8 +1170,9 @@ class LoginReply :
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr loginkey_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr nickname_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr loginkey_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr accesskey_;
   int error_;
   ::PROTOBUF_NAMESPACE_ID::int32 usn_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
@@ -1709,7 +1736,67 @@ inline void LoginReply::set_usn(::PROTOBUF_NAMESPACE_ID::int32 value) {
   // @@protoc_insertion_point(field_set:yyb.LoginReply.usn)
 }
 
-// string loginKey = 3;
+// string nickName = 3;
+inline void LoginReply::clear_nickname() {
+  nickname_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& LoginReply::nickname() const {
+  // @@protoc_insertion_point(field_get:yyb.LoginReply.nickName)
+  return _internal_nickname();
+}
+inline void LoginReply::set_nickname(const std::string& value) {
+  _internal_set_nickname(value);
+  // @@protoc_insertion_point(field_set:yyb.LoginReply.nickName)
+}
+inline std::string* LoginReply::mutable_nickname() {
+  // @@protoc_insertion_point(field_mutable:yyb.LoginReply.nickName)
+  return _internal_mutable_nickname();
+}
+inline const std::string& LoginReply::_internal_nickname() const {
+  return nickname_.GetNoArena();
+}
+inline void LoginReply::_internal_set_nickname(const std::string& value) {
+  
+  nickname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void LoginReply::set_nickname(std::string&& value) {
+  
+  nickname_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:yyb.LoginReply.nickName)
+}
+inline void LoginReply::set_nickname(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  nickname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:yyb.LoginReply.nickName)
+}
+inline void LoginReply::set_nickname(const char* value, size_t size) {
+  
+  nickname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:yyb.LoginReply.nickName)
+}
+inline std::string* LoginReply::_internal_mutable_nickname() {
+  
+  return nickname_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* LoginReply::release_nickname() {
+  // @@protoc_insertion_point(field_release:yyb.LoginReply.nickName)
+  
+  return nickname_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void LoginReply::set_allocated_nickname(std::string* nickname) {
+  if (nickname != nullptr) {
+    
+  } else {
+    
+  }
+  nickname_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), nickname);
+  // @@protoc_insertion_point(field_set_allocated:yyb.LoginReply.nickName)
+}
+
+// string loginKey = 4;
 inline void LoginReply::clear_loginkey() {
   loginkey_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
@@ -1769,64 +1856,64 @@ inline void LoginReply::set_allocated_loginkey(std::string* loginkey) {
   // @@protoc_insertion_point(field_set_allocated:yyb.LoginReply.loginKey)
 }
 
-// string nickName = 4;
-inline void LoginReply::clear_nickname() {
-  nickname_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+// string accessKey = 5;
+inline void LoginReply::clear_accesskey() {
+  accesskey_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline const std::string& LoginReply::nickname() const {
-  // @@protoc_insertion_point(field_get:yyb.LoginReply.nickName)
-  return _internal_nickname();
+inline const std::string& LoginReply::accesskey() const {
+  // @@protoc_insertion_point(field_get:yyb.LoginReply.accessKey)
+  return _internal_accesskey();
 }
-inline void LoginReply::set_nickname(const std::string& value) {
-  _internal_set_nickname(value);
-  // @@protoc_insertion_point(field_set:yyb.LoginReply.nickName)
+inline void LoginReply::set_accesskey(const std::string& value) {
+  _internal_set_accesskey(value);
+  // @@protoc_insertion_point(field_set:yyb.LoginReply.accessKey)
 }
-inline std::string* LoginReply::mutable_nickname() {
-  // @@protoc_insertion_point(field_mutable:yyb.LoginReply.nickName)
-  return _internal_mutable_nickname();
+inline std::string* LoginReply::mutable_accesskey() {
+  // @@protoc_insertion_point(field_mutable:yyb.LoginReply.accessKey)
+  return _internal_mutable_accesskey();
 }
-inline const std::string& LoginReply::_internal_nickname() const {
-  return nickname_.GetNoArena();
+inline const std::string& LoginReply::_internal_accesskey() const {
+  return accesskey_.GetNoArena();
 }
-inline void LoginReply::_internal_set_nickname(const std::string& value) {
+inline void LoginReply::_internal_set_accesskey(const std::string& value) {
   
-  nickname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+  accesskey_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
 }
-inline void LoginReply::set_nickname(std::string&& value) {
+inline void LoginReply::set_accesskey(std::string&& value) {
   
-  nickname_.SetNoArena(
+  accesskey_.SetNoArena(
     &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:yyb.LoginReply.nickName)
+  // @@protoc_insertion_point(field_set_rvalue:yyb.LoginReply.accessKey)
 }
-inline void LoginReply::set_nickname(const char* value) {
+inline void LoginReply::set_accesskey(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
-  nickname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:yyb.LoginReply.nickName)
+  accesskey_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:yyb.LoginReply.accessKey)
 }
-inline void LoginReply::set_nickname(const char* value, size_t size) {
+inline void LoginReply::set_accesskey(const char* value, size_t size) {
   
-  nickname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+  accesskey_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:yyb.LoginReply.nickName)
+  // @@protoc_insertion_point(field_set_pointer:yyb.LoginReply.accessKey)
 }
-inline std::string* LoginReply::_internal_mutable_nickname() {
+inline std::string* LoginReply::_internal_mutable_accesskey() {
   
-  return nickname_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  return accesskey_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline std::string* LoginReply::release_nickname() {
-  // @@protoc_insertion_point(field_release:yyb.LoginReply.nickName)
+inline std::string* LoginReply::release_accesskey() {
+  // @@protoc_insertion_point(field_release:yyb.LoginReply.accessKey)
   
-  return nickname_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  return accesskey_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
-inline void LoginReply::set_allocated_nickname(std::string* nickname) {
-  if (nickname != nullptr) {
+inline void LoginReply::set_allocated_accesskey(std::string* accesskey) {
+  if (accesskey != nullptr) {
     
   } else {
     
   }
-  nickname_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), nickname);
-  // @@protoc_insertion_point(field_set_allocated:yyb.LoginReply.nickName)
+  accesskey_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), accesskey);
+  // @@protoc_insertion_point(field_set_allocated:yyb.LoginReply.accessKey)
 }
 
 #ifdef __GNUC__

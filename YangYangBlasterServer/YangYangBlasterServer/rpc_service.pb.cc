@@ -172,8 +172,9 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_rpc_5fservice_2eproto::offsets
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::yyb::LoginReply, error_),
   PROTOBUF_FIELD_OFFSET(::yyb::LoginReply, usn_),
-  PROTOBUF_FIELD_OFFSET(::yyb::LoginReply, loginkey_),
   PROTOBUF_FIELD_OFFSET(::yyb::LoginReply, nickname_),
+  PROTOBUF_FIELD_OFFSET(::yyb::LoginReply, loginkey_),
+  PROTOBUF_FIELD_OFFSET(::yyb::LoginReply, accesskey_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::yyb::RpcServiceExampleRequest)},
@@ -204,22 +205,26 @@ const char descriptor_table_protodef_rpc_5fservice_2eproto[] PROTOBUF_SECTION_VA
   "oginKey\030\002 \001(\t\022\017\n\007idToken\030\003 \001(\t\022\020\n\010nickNa"
   "me\030\004 \001(\t\"U\n\nLOGIN_TYPE\022\027\n\023LOGIN_TYPE_NON"
   "_CERT\020\000\022\025\n\021LOGIN_TYPE_GOOGLE\020\001\022\027\n\023LOGIN_"
-  "TYPE_FACEBOOK\020\002\"\213\003\n\nLoginReply\022)\n\005error\030"
+  "TYPE_FACEBOOK\020\002\"\235\004\n\nLoginReply\022)\n\005error\030"
   "\001 \001(\0162\032.yyb.LoginReply.ERROR_CODE\022\013\n\003usn"
-  "\030\002 \001(\005\022\020\n\010loginKey\030\003 \001(\t\022\020\n\010nickName\030\004 \001"
-  "(\t\"\240\002\n\nERROR_CODE\022\021\n\rERROR_CODE_OK\020\000\022\035\n\031"
-  "ERROR_CODE_EMPTY_NICKNAME\020\001\022\033\n\027ERROR_COD"
-  "E_DUP_NICKNAME\020\002\022/\n+ERROR_CODE_NICKNAME_"
-  "HAVE_SPECIAL_CHARACTERS\020\003\022$\n ERROR_CODE_"
-  "UNABLE_TO_CREATE_USER\020\004\022*\n&ERROR_CODE_FA"
-  "ILED_TO_ACQUIRE_USER_INFO\020\005\022!\n\035ERROR_COD"
-  "E_GOOGLE_AUTH_FAILED\020\006\022\035\n\031ERROR_CODE_EMP"
-  "TY_ID_TOKEN\020\0072\277\001\n\nRpcService\022Q\n\021RpcServi"
-  "ceExample\022\035.yyb.RpcServiceExampleRequest"
-  "\032\033.yyb.RpcServiceExampleReply\"\000\022/\n\006Liste"
-  "n\022\n.yyb.Empty\032\025.yyb.PushNotification\"\0000\001"
-  "\022-\n\005Login\022\021.yyb.LoginRequest\032\017.yyb.Login"
-  "Reply\"\000b\006proto3"
+  "\030\002 \001(\005\022\020\n\010nickName\030\003 \001(\t\022\020\n\010loginKey\030\004 \001"
+  "(\t\022\021\n\taccessKey\030\005 \001(\t\"\237\003\n\nERROR_CODE\022\021\n\r"
+  "ERROR_CODE_OK\020\000\022\035\n\031ERROR_CODE_EMPTY_NICK"
+  "NAME\020\001\022\033\n\027ERROR_CODE_DUP_NICKNAME\020\002\022/\n+E"
+  "RROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTE"
+  "RS\020\003\022$\n ERROR_CODE_UNABLE_TO_CREATE_USER"
+  "\020\004\022*\n&ERROR_CODE_FAILED_TO_ACQUIRE_USER_"
+  "INFO\020\005\022!\n\035ERROR_CODE_GOOGLE_AUTH_FAILED\020"
+  "\006\022\035\n\031ERROR_CODE_EMPTY_ID_TOKEN\020\007\022)\n%ERRO"
+  "R_CODE_FAILED_TO_UPDATE_LOGIN_KEY\020\010\022*\n&E"
+  "RROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE\020\t\022"
+  "&\n\"ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT\020\n2"
+  "\277\001\n\nRpcService\022Q\n\021RpcServiceExample\022\035.yy"
+  "b.RpcServiceExampleRequest\032\033.yyb.RpcServ"
+  "iceExampleReply\"\000\022/\n\006Listen\022\n.yyb.Empty\032"
+  "\025.yyb.PushNotification\"\0000\001\022-\n\005Login\022\021.yy"
+  "b.LoginRequest\032\017.yyb.LoginReply\"\000b\006proto"
+  "3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_rpc_5fservice_2eproto_deps[1] = {
 };
@@ -234,7 +239,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_rpc
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_rpc_5fservice_2eproto_once;
 static bool descriptor_table_rpc_5fservice_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_rpc_5fservice_2eproto = {
-  &descriptor_table_rpc_5fservice_2eproto_initialized, descriptor_table_protodef_rpc_5fservice_2eproto, "rpc_service.proto", 1015,
+  &descriptor_table_rpc_5fservice_2eproto_initialized, descriptor_table_protodef_rpc_5fservice_2eproto, "rpc_service.proto", 1161,
   &descriptor_table_rpc_5fservice_2eproto_once, descriptor_table_rpc_5fservice_2eproto_sccs, descriptor_table_rpc_5fservice_2eproto_deps, 6, 0,
   schemas, file_default_instances, TableStruct_rpc_5fservice_2eproto::offsets,
   file_level_metadata_rpc_5fservice_2eproto, 6, file_level_enum_descriptors_rpc_5fservice_2eproto, file_level_service_descriptors_rpc_5fservice_2eproto,
@@ -280,6 +285,9 @@ bool LoginReply_ERROR_CODE_IsValid(int value) {
     case 5:
     case 6:
     case 7:
+    case 8:
+    case 9:
+    case 10:
       return true;
     default:
       return false;
@@ -295,6 +303,9 @@ constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_UNABLE_TO_CREATE_USER;
 constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_FAILED_TO_ACQUIRE_USER_INFO;
 constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_GOOGLE_AUTH_FAILED;
 constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_EMPTY_ID_TOKEN;
+constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY;
+constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE;
+constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT;
 constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_MIN;
 constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_MAX;
 constexpr int LoginReply::ERROR_CODE_ARRAYSIZE;
@@ -1488,13 +1499,17 @@ LoginReply::LoginReply(const LoginReply& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
+  nickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_nickname().empty()) {
+    nickname_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.nickname_);
+  }
   loginkey_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_loginkey().empty()) {
     loginkey_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.loginkey_);
   }
-  nickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_nickname().empty()) {
-    nickname_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.nickname_);
+  accesskey_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_accesskey().empty()) {
+    accesskey_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.accesskey_);
   }
   ::memcpy(&error_, &from.error_,
     static_cast<size_t>(reinterpret_cast<char*>(&usn_) -
@@ -1504,8 +1519,9 @@ LoginReply::LoginReply(const LoginReply& from)
 
 void LoginReply::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_LoginReply_rpc_5fservice_2eproto.base);
-  loginkey_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   nickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  loginkey_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  accesskey_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&error_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&usn_) -
       reinterpret_cast<char*>(&error_)) + sizeof(usn_));
@@ -1517,8 +1533,9 @@ LoginReply::~LoginReply() {
 }
 
 void LoginReply::SharedDtor() {
-  loginkey_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   nickname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  loginkey_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  accesskey_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void LoginReply::SetCachedSize(int size) const {
@@ -1536,8 +1553,9 @@ void LoginReply::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  loginkey_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   nickname_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  loginkey_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  accesskey_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&error_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&usn_) -
       reinterpret_cast<char*>(&error_)) + sizeof(usn_));
@@ -1566,21 +1584,30 @@ const char* LoginReply::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string loginKey = 3;
+      // string nickName = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          auto str = _internal_mutable_nickname();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "yyb.LoginReply.nickName"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // string loginKey = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
           auto str = _internal_mutable_loginkey();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "yyb.LoginReply.loginKey"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string nickName = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
-          auto str = _internal_mutable_nickname();
+      // string accessKey = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
+          auto str = _internal_mutable_accesskey();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "yyb.LoginReply.nickName"));
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "yyb.LoginReply.accessKey"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -1623,24 +1650,34 @@ failure:
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_usn(), target);
   }
 
-  // string loginKey = 3;
-  if (this->loginkey().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_loginkey().data(), static_cast<int>(this->_internal_loginkey().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "yyb.LoginReply.loginKey");
-    target = stream->WriteStringMaybeAliased(
-        3, this->_internal_loginkey(), target);
-  }
-
-  // string nickName = 4;
+  // string nickName = 3;
   if (this->nickname().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
       this->_internal_nickname().data(), static_cast<int>(this->_internal_nickname().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
       "yyb.LoginReply.nickName");
     target = stream->WriteStringMaybeAliased(
-        4, this->_internal_nickname(), target);
+        3, this->_internal_nickname(), target);
+  }
+
+  // string loginKey = 4;
+  if (this->loginkey().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_loginkey().data(), static_cast<int>(this->_internal_loginkey().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "yyb.LoginReply.loginKey");
+    target = stream->WriteStringMaybeAliased(
+        4, this->_internal_loginkey(), target);
+  }
+
+  // string accessKey = 5;
+  if (this->accesskey().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_accesskey().data(), static_cast<int>(this->_internal_accesskey().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "yyb.LoginReply.accessKey");
+    target = stream->WriteStringMaybeAliased(
+        5, this->_internal_accesskey(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1659,18 +1696,25 @@ size_t LoginReply::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string loginKey = 3;
+  // string nickName = 3;
+  if (this->nickname().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_nickname());
+  }
+
+  // string loginKey = 4;
   if (this->loginkey().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_loginkey());
   }
 
-  // string nickName = 4;
-  if (this->nickname().size() > 0) {
+  // string accessKey = 5;
+  if (this->accesskey().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_nickname());
+        this->_internal_accesskey());
   }
 
   // .yyb.LoginReply.ERROR_CODE error = 1;
@@ -1717,13 +1761,17 @@ void LoginReply::MergeFrom(const LoginReply& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.nickname().size() > 0) {
+
+    nickname_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.nickname_);
+  }
   if (from.loginkey().size() > 0) {
 
     loginkey_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.loginkey_);
   }
-  if (from.nickname().size() > 0) {
+  if (from.accesskey().size() > 0) {
 
-    nickname_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.nickname_);
+    accesskey_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.accesskey_);
   }
   if (from.error() != 0) {
     _internal_set_error(from._internal_error());
@@ -1754,9 +1802,11 @@ bool LoginReply::IsInitialized() const {
 void LoginReply::InternalSwap(LoginReply* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
+  nickname_.Swap(&other->nickname_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
   loginkey_.Swap(&other->loginkey_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
-  nickname_.Swap(&other->nickname_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+  accesskey_.Swap(&other->accesskey_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(error_, other->error_);
   swap(usn_, other->usn_);

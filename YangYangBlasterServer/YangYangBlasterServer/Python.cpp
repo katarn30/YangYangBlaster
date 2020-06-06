@@ -26,14 +26,15 @@ namespace yyb
 		mainNamespace_ = mainModule_.attr("__dict__");
 	}
 
-	bool Python::GoogleVerifyOauth2Token(const std::string& idToken)
+	bool Python::GoogleVerifyOauth2Token(const std::string& idToken, 
+		OUT std::string& oustSub)
 	{
 		try
 		{
 			std::string pythonRoot = "C:\\ProgramData\\Anaconda3\\envs\\yyb";
 			//std::string idToken = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjQ5MjcxMGE3ZmNkYjE1Mzk2MGNlMDFmNzYwNTIwYTMyYzg0NTVkZmYiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJhenAiOiI0MjM0NzI3MzE0ODUtZjY1M2Rzb2Z0NzRkajJjMTJhb3R2aTRrYnVoN25pOWEuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJhdWQiOiI0MjM0NzI3MzE0ODUtZDhzZHQ0ZzNvdGsxNTZiM3N1cDFyYmUxdG5xaTQ5dGYuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDc4MzgwNTA1OTU0ODEzNjAxNjUiLCJpYXQiOjE1OTEyNDk1NzUsImV4cCI6MTU5MTI1MzE3NX0.cCBcnGJGWa7ZqHbh6d38kWHZCaXHjVQfAvJTQYOIrFCjCQZEojWxPP2uPdmXGVjalJ7NT1RqqmV3WbwaGcyQqThHgCw_3qsIYHa2U-_YrSwFMD34x0uvEEhYwovl61IeKTngm2jzVcdimVyA1chz85gUe1OuG0dIII5ND1CNYI9ztBppKDkGjxPza9lKEtnQjmOi0gGhv-_u_yRaegTlX6WyFtP6tG6XGLhCp-mhFOqw8BM4ondwWl3lwtrVgb-R6ni4pR0gld0EOjv_AQcwz_OGUL8o6b7His6OOY7lAQ5D0eRKIs75xPAA9L_eOUBn8NN8L4_cK1XolzKjsB9b5w";
 			std::string clientId = 
-				"423472731485-d8sdt4g3otk156b3sup1rbe1tnqi49tf.apps.googleusercontent.com";
+				"436238547875-ao5qlaml57b66s8l0s2l5i7lftoa6dc7.apps.googleusercontent.com";
 
 			std::string pythonGoogleAuthSource =
 				"import sys\n"
@@ -58,8 +59,10 @@ namespace yyb
 				"	aud = idinfo['aud']\n"
 				"	iat = idinfo['iat']\n"
 				"	exp = idinfo['exp']\n"
+				"	err = 0\n"
 				"except ValueError:\n"
 				"	print('Invalid token')\n"
+				"	err = 1\n"
 				;
 
 			boost::python::api::object ignored = boost::python::exec(
@@ -67,6 +70,13 @@ namespace yyb
 				//"result = abcd.get()"
 				pythonGoogleAuthSource.c_str()
 				, mainNamespace_);
+			int err = boost::python::extract<int>(mainNamespace_["err"]);
+			if (err)
+			{
+				std::cout << "Id token has not been verified." << std::endl;
+				return false;
+			}
+
 			std::string iss = boost::python::extract<std::string>(mainNamespace_["iss"]);
 			std::string sub = boost::python::extract<std::string>(mainNamespace_["sub"]);
 			std::string aud = boost::python::extract<std::string>(mainNamespace_["aud"]);
@@ -79,10 +89,14 @@ namespace yyb
 			std::cout << iat << std::endl;
 			std::cout << exp << std::endl;
 
-			if (clientId != aud)
+			/*if (clientId != aud)
 			{
 				return false;
-			}
+			}*/
+
+			oustSub = sub;
+
+			std::cout << "Id token has been verified." << std::endl;
 		}
 		catch (boost::python::error_already_set const& e)
 		{

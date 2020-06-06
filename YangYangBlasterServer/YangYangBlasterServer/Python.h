@@ -8,7 +8,8 @@ namespace yyb
 		static Python& Instance();
 		void Init();
 
-		bool GoogleVerifyOauth2Token(const std::string& idToken);
+		bool GoogleVerifyOauth2Token(const std::string& idToken, 
+			OUT std::string& oustSub);
 
 	private:
 		Python() {}
