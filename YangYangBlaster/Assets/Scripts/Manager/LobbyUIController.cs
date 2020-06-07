@@ -54,6 +54,8 @@ public class LobbyUIController : MonoBehaviour
         {
             leaderCatShopController.gameObject.SetActive(true);
         }
+
+        leaderCatShopController.SetLeaderCatShop();
     }
 
     public void FriendButton()

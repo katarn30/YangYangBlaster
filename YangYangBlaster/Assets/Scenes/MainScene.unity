@@ -136,7 +136,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &235363284
 Transform:
@@ -238,7 +238,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &475711394
 Transform:
@@ -320,7 +320,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &490949692
 MonoBehaviour:
@@ -573,7 +573,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &593539882
 Transform:
   m_ObjectHideFlags: 0
@@ -653,7 +653,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &722717182
 MonoBehaviour:
@@ -951,6 +951,22 @@ MonoBehaviour:
     score: 0
     coin: 0
     ruby: 0
+    upgradePlayer:
+      powerLevel: 1
+      powerIncrease: 10
+      powerPrice: 200
+      attackSpeedLevel: 1
+      attackSpeedIncrease: 5
+      attackSpeedPrice: 200
+      criticalLevel: 1
+      criticalIncrease: 2
+      criticalPrice: 200
+      skillDamageLevel: 1
+      skillDamageIncrease: 10
+      skillDamagePrice: 200
+      freeCoinLevel: 1
+      freeCoinIncrease: 400
+      freeCoinPrice: 200
     leaderData:
       name: 
       damage: 0
@@ -1228,7 +1244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1333456982
 Transform:
   m_ObjectHideFlags: 0
@@ -1694,7 +1710,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1976749480
 Transform:
@@ -1996,7 +2012,7 @@ PrefabInstance:
     - target: {fileID: 3814230523312046624, guid: 527593346b2c4bf41b7fc054b53df921,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3814230523312046624, guid: 527593346b2c4bf41b7fc054b53df921,
         type: 3}

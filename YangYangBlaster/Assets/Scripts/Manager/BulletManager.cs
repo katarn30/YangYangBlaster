@@ -12,6 +12,7 @@ public class BulletManager : SingleTon<BulletManager>
     public Transform bulletParent;
     public Sprite bulletSprite;
     public List<Bullet> bulletList = new List<Bullet>();
+    public float bulletDamage = 0;
 
     [Header("Mercenary 1")]
     public int mercenary1BulletCount = 0;
@@ -66,6 +67,8 @@ public class BulletManager : SingleTon<BulletManager>
         activeBullet = 0;
         mercenary1ActiveBullet = 0;
         mercenary2ActiveBullet = 0;
+
+        bulletDamage = GameDataManager.Instance.GetPlayerDamage();
     }
 
     public void CreateBullet()

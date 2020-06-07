@@ -157,7 +157,7 @@ public class Monster : MonoBehaviour
         {
             if (monsterHp > 0)
             {
-                monsterHp = monsterHp - 1;
+                monsterHp = monsterHp - (int)BulletManager.Instance.bulletDamage;
                 hpText.text = monsterHp.ToString();
 
                 if (isPuchScaleEffect == false)

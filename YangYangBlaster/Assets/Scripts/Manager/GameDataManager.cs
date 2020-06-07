@@ -13,10 +13,35 @@ public struct UserData
     public int ruby;
     public DateTime freeCoinGetTime;
     public DateTime freeCoinUpdateTime;
+    public UpgradePlayer upgradePlayer;
 
     public MercenaryData leaderData;
     public List<MercenaryData> mercenaryDataList;
     public Dictionary<string, MercenaryData> getMercenaryDataDic;
+}
+
+[Serializable]
+public struct UpgradePlayer
+{
+    public int powerLevel;
+    public int powerIncrease;
+    public int powerPrice;
+
+    public int attackSpeedLevel;
+    public int attackSpeedIncrease;
+    public int attackSpeedPrice;
+
+    public int criticalLevel;
+    public int criticalIncrease;
+    public int criticalPrice;
+
+    public int skillDamageLevel;
+    public int skillDamageIncrease;
+    public int skillDamagePrice;
+
+    public int freeCoinLevel;
+    public int freeCoinIncrease;
+    public int freeCoinPrice;
 }
 
 public enum MercenaryGetType
@@ -229,6 +254,152 @@ public class GameDataManager : SingleTon<GameDataManager>
     public void SetMyMercenaryData(string _name, MercenaryData _mercenaryData)
     {
         userData.getMercenaryDataDic[_name] = _mercenaryData;
+    }
+
+    public float GetPlayerDamage()
+    {
+        float result = 0;
+
+        result = 1 + ((float)(userData.upgradePlayer.powerLevel * userData.upgradePlayer.powerIncrease) / 100);        
+
+        return result;
+    }
+
+    public int GetPlayerUpgradeDamage()
+    {
+        int result = 0;
+
+        result = 100 + userData.upgradePlayer.powerLevel * userData.upgradePlayer.powerIncrease;
+
+        return result;
+    }
+
+    public int GetPlayerUpgradeDamagePrice()
+    {
+        int result = 0;
+
+        result = userData.upgradePlayer.powerLevel * userData.upgradePlayer.powerPrice;
+
+        return result;
+    }
+
+    public int GetPlayerUpgradeAttackSpeed()
+    {
+        int result = 0;
+
+        result = 100 + userData.upgradePlayer.attackSpeedLevel * userData.upgradePlayer.attackSpeedIncrease;
+
+        return result;
+    }
+
+    public int GetPlayerUpgradeAttackSpeedPrice()
+    {
+        int result = 0;
+
+        result = userData.upgradePlayer.attackSpeedLevel * userData.upgradePlayer.attackSpeedPrice;
+
+        return result;
+    }
+
+    public int GetPlayerUpgradeCritical()
+    {
+        int result = 0;
+
+        result = userData.upgradePlayer.criticalLevel * userData.upgradePlayer.criticalIncrease;
+
+        return result;
+    }
+
+    public int GetPlayerUpgradeCriticalPrice()
+    {
+        int result = 0;
+
+        result = userData.upgradePlayer.criticalLevel * userData.upgradePlayer.criticalPrice;
+
+        return result;
+    }
+
+    public int GetPlayerUpgradeSkill()
+    {
+        int result = 0;
+
+        result = 100 + userData.upgradePlayer.skillDamageLevel * userData.upgradePlayer.skillDamageIncrease;
+
+        return result;
+    }
+
+    public int GetPlayerUpgradeSkillPrice()
+    {
+        int result = 0;
+
+        result = userData.upgradePlayer.skillDamageLevel * userData.upgradePlayer.skillDamagePrice;
+
+        return result;
+    }
+
+    public int GetPlayerUpgradeFreeCoin()
+    {
+        int result = 0;
+
+        result = 100 + userData.upgradePlayer.freeCoinLevel * userData.upgradePlayer.freeCoinIncrease;
+
+        return result;
+    }
+
+    public int GetPlayerUpgradeFreeCoinPrice()
+    {
+        int result = 0;
+
+        result = userData.upgradePlayer.freeCoinLevel * userData.upgradePlayer.freeCoinPrice;
+
+        return result;
+    }
+
+    public void SetUpgradeDamage(int _price)
+    {
+        userData.coin = userData.coin - _price;
+
+        userData.upgradePlayer.powerLevel++;
+    }
+
+    public void SetUpgradeAttackSpeed(int _price)
+    {
+        userData.coin = userData.coin - _price;
+
+        userData.upgradePlayer.attackSpeedLevel++;
+    }
+
+    public void SetUpgradeCritical(int _price)
+    {
+        userData.coin = userData.coin - _price;
+
+        userData.upgradePlayer.criticalLevel++;
+    }
+
+    public void SetUpgradeSkillDamage(int _price)
+    {
+        userData.coin = userData.coin - _price;
+
+        userData.upgradePlayer.skillDamageLevel++;
+    }
+
+    public void SetUpgradeFreeCoin(int _price)
+    {
+        userData.coin = userData.coin - _price;
+
+        userData.upgradePlayer.freeCoinLevel++;
+    }
+
+    public bool isUpgrade(int _price)
+    {
+        bool result = false;
+
+        if (userData.coin >= _price)
+        {
+            result = true;
+        }
+
+        return result;
     }
     #endregion
 }
