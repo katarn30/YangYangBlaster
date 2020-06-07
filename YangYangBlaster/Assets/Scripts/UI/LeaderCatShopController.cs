@@ -5,35 +5,45 @@ using UnityEngine.UI;
 
 public class LeaderCatShopController : MonoBehaviour
 {
+    public Text powerLevelText;
     public Text powerText;
     public Text powerCoinText;
 
+    public Text attackSpeedLevelText;
     public Text attackSpeedText;
     public Text attackSpeedCoinText;
 
+    public Text criticalLevelText;
     public Text criticalText;
     public Text criticalCoinText;
 
+    public Text skillLevelText;
     public Text skillText;
     public Text skillCoinText;
 
+    public Text freeCoinLevelText;
     public Text freeCoinText;
     public Text freeCoinCoinText;
 
     public void SetLeaderCatShop()
     {
+        powerLevelText.text = string.Format("Lv.{0}", GameDataManager.Instance.userData.upgradePlayer.powerLevel.ToString());
         powerText.text = string.Format("{0}%", GameDataManager.Instance.GetPlayerUpgradeDamage().ToString());
         powerCoinText.text = GameDataManager.Instance.GetPlayerUpgradeDamagePrice().ToString();
 
+        attackSpeedLevelText.text = string.Format("Lv.{0}", GameDataManager.Instance.userData.upgradePlayer.attackSpeedLevel.ToString());
         attackSpeedText.text = string.Format("{0}%", GameDataManager.Instance.GetPlayerUpgradeAttackSpeed().ToString());
         attackSpeedCoinText.text = GameDataManager.Instance.GetPlayerUpgradeAttackSpeedPrice().ToString();
 
+        criticalLevelText.text = string.Format("Lv.{0}", GameDataManager.Instance.userData.upgradePlayer.criticalLevel.ToString());
         criticalText.text = string.Format("{0}%", GameDataManager.Instance.GetPlayerUpgradeCritical().ToString());
         criticalCoinText.text = GameDataManager.Instance.GetPlayerUpgradeCriticalPrice().ToString();
 
+        skillLevelText.text = string.Format("Lv.{0}", GameDataManager.Instance.userData.upgradePlayer.skillDamageLevel.ToString());
         skillText.text = string.Format("{0}%", GameDataManager.Instance.GetPlayerUpgradeSkill().ToString());
         skillCoinText.text = GameDataManager.Instance.GetPlayerUpgradeSkillPrice().ToString();
 
+        freeCoinLevelText.text = string.Format("Lv.{0}", GameDataManager.Instance.userData.upgradePlayer.freeCoinLevel.ToString());
         freeCoinText.text = string.Format("{0}%", GameDataManager.Instance.GetPlayerUpgradeFreeCoin().ToString());
         freeCoinCoinText.text = GameDataManager.Instance.GetPlayerUpgradeFreeCoinPrice().ToString();
     }
@@ -50,8 +60,11 @@ public class LeaderCatShopController : MonoBehaviour
 
         GameDataManager.Instance.SetUpgradeDamage(GameDataManager.Instance.GetPlayerUpgradeDamagePrice());
 
+        powerLevelText.text = string.Format("Lv.{0}", GameDataManager.Instance.userData.upgradePlayer.powerLevel.ToString());
         powerText.text = string.Format("{0}%", GameDataManager.Instance.GetPlayerUpgradeDamage().ToString());
         powerCoinText.text = GameDataManager.Instance.GetPlayerUpgradeDamagePrice().ToString();
+
+        UIManager.Instance.lobbyUI.UpdateCoinText();
     }
 
     public void AttackSpeedButton()
@@ -61,8 +74,11 @@ public class LeaderCatShopController : MonoBehaviour
 
         GameDataManager.Instance.SetUpgradeAttackSpeed(GameDataManager.Instance.GetPlayerUpgradeAttackSpeedPrice());
 
+        attackSpeedLevelText.text = string.Format("Lv.{0}", GameDataManager.Instance.userData.upgradePlayer.attackSpeedLevel.ToString());
         attackSpeedText.text = string.Format("{0}%", GameDataManager.Instance.GetPlayerUpgradeAttackSpeed().ToString());
         attackSpeedCoinText.text = GameDataManager.Instance.GetPlayerUpgradeAttackSpeedPrice().ToString();
+
+        UIManager.Instance.lobbyUI.UpdateCoinText();
     }
 
     public void CriticalButton()
@@ -72,8 +88,11 @@ public class LeaderCatShopController : MonoBehaviour
 
         GameDataManager.Instance.SetUpgradeCritical(GameDataManager.Instance.GetPlayerUpgradeCriticalPrice());
 
+        criticalLevelText.text = string.Format("Lv.{0}", GameDataManager.Instance.userData.upgradePlayer.criticalLevel.ToString());
         criticalText.text = string.Format("{0}%", GameDataManager.Instance.GetPlayerUpgradeCritical().ToString());
         criticalCoinText.text = GameDataManager.Instance.GetPlayerUpgradeCriticalPrice().ToString();
+
+        UIManager.Instance.lobbyUI.UpdateCoinText();
     }
 
     public void SkillButton()
@@ -83,8 +102,11 @@ public class LeaderCatShopController : MonoBehaviour
 
         GameDataManager.Instance.SetUpgradeSkillDamage(GameDataManager.Instance.GetPlayerUpgradeSkillPrice());
 
+        skillLevelText.text = string.Format("Lv.{0}", GameDataManager.Instance.userData.upgradePlayer.skillDamageLevel.ToString());
         skillText.text = string.Format("{0}%", GameDataManager.Instance.GetPlayerUpgradeSkill().ToString());
         skillCoinText.text = GameDataManager.Instance.GetPlayerUpgradeSkillPrice().ToString();
+
+        UIManager.Instance.lobbyUI.UpdateCoinText();
     }
 
     public void FreeCoinButton()
@@ -94,7 +116,10 @@ public class LeaderCatShopController : MonoBehaviour
 
         GameDataManager.Instance.SetUpgradeFreeCoin(GameDataManager.Instance.GetPlayerUpgradeFreeCoinPrice());
 
+        freeCoinLevelText.text = string.Format("Lv.{0}", GameDataManager.Instance.userData.upgradePlayer.freeCoinLevel.ToString());
         freeCoinText.text = string.Format("{0}%", GameDataManager.Instance.GetPlayerUpgradeFreeCoin().ToString());
         freeCoinCoinText.text = GameDataManager.Instance.GetPlayerUpgradeFreeCoinPrice().ToString();
+
+        UIManager.Instance.lobbyUI.UpdateCoinText();
     }
 }

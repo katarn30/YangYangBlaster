@@ -311,14 +311,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d19422ae26bcc94e91bf74106a76378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  powerLevelText: {fileID: 1657060301}
   powerText: {fileID: 307529012}
   powerCoinText: {fileID: 2648194628209445099}
+  attackSpeedLevelText: {fileID: 5637193628650735367}
   attackSpeedText: {fileID: 5307090954205151084}
   attackSpeedCoinText: {fileID: 8881859536617934173}
+  criticalLevelText: {fileID: 4087087115056077661}
   criticalText: {fileID: 2154393348381457479}
   criticalCoinText: {fileID: 7869894165195074269}
+  skillLevelText: {fileID: 5134845371081727008}
   skillText: {fileID: 2571539665998804527}
   skillCoinText: {fileID: 4993815066390109220}
+  freeCoinLevelText: {fileID: 2351087578381752694}
   freeCoinText: {fileID: 4433885865390125983}
   freeCoinCoinText: {fileID: 2171379899724958986}
 --- !u!1 &733930499
