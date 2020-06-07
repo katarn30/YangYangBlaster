@@ -151,12 +151,12 @@ public class GameManager : SingleTon<GameManager>
         minScreenPos = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         maxScreenPos = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
         
-        MonsterManager.Instance.SetInGameInit();
         PlayerManager.Instance.SetInGameInit();
+        MonsterManager.Instance.SetInGameInit();        
         BulletManager.Instance.SetInGameInit();
-        MercenaryManager.Instance.SetInGameInit();
-        UIManager.Instance.SetInGameUI();
+        MercenaryManager.Instance.SetInGameInit();        
         EffectManager.Instance.SetInGameInit();
+        UIManager.Instance.SetInGameUI();
     }
 
     public void GameOver()

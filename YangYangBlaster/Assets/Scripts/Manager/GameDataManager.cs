@@ -43,6 +43,18 @@ public struct MercenaryData
 }
 
 [System.Serializable]
+public struct BossData
+{
+    public string name;
+    public int pattenType;
+    public int hp;
+    public Vector2 colliderOffset;
+    public float radius;
+    public Color deadColor;
+    public RuntimeAnimatorController runtimeAnimator;
+}
+
+[System.Serializable]
 public struct StageData
 {
     public int stageNum;
@@ -66,6 +78,7 @@ public class GameDataManager : SingleTon<GameDataManager>
 
     [Header("Stage Data")]
     public List<StageData> stageDataList = new List<StageData>();
+    public List<BossData> BossDataList = new List<BossData>();
 
     private void Awake()
     {

@@ -180,7 +180,7 @@ public class Monster : MonoBehaviour
 
                 if (spawnCount > 0)
                 {
-                    MonsterManager.Instance.CreateMonster(transform.position, isUp, spawnCount - 1, originHp);
+                    MonsterManager.Instance.SetSubMonster(transform.position, isUp, spawnCount - 1, originHp);
                 }
 
                 GameManager.Instance.UpdateScore(100);

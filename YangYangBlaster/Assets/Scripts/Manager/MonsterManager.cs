@@ -20,7 +20,13 @@ public class MonsterManager : SingleTon<MonsterManager>
     public int allSpawnCount = 0;
     public int deadCount = 0;
 
+    [Header("Boos Prefab")]
+    public int bossMaxSpawnCount = 0;
+    public List<Boss> bossList = new List<Boss>();
+    public int activeBoss = 0;
+
     public Monster monster;
+    public Boss boss;
     Transform MonsterParent = null;
     public bool isBossStage = false;
 
@@ -55,24 +61,71 @@ public class MonsterManager : SingleTon<MonsterManager>
 
             MonsterParent.position = Vector3.zero;
             CreateMonster();
+            CreateBoss();
         }
         else
         {
             MonsterParent.gameObject.SetActive(true);
         }
+                
+        initMonster();
+        initBoss();        
+    }
 
+    #region Boss
+    public void initBoss()
+    {
         isBossStage = GameManager.Instance.isBossStage();
 
-        initMonster();
+        activeBoss = 0;
 
+        for (int i = 0; i < bossList.Count; i++)
+        {
+            bossList[i].gameObject.SetActive(false);
+        }
+
+        if (isBossStage == true)
+        {
+            SetBoss();            
+        }
+    }
+
+    public void CreateBoss()
+    {
+        for (int i = 0; i < bossMaxSpawnCount; i++)
+        {
+            Boss b = Instantiate(boss, MonsterParent);
+            b.gameObject.SetActive(false);
+            bossList.Add(b);
+        }
+    }
+
+    public void SetBoss()
+    {
+        bossList[activeBoss].gameObject.SetActive(true);
+
+        bossList[activeBoss].SetBoss(GameDataManager.Instance.BossDataList[activeBoss]);
+
+        activeBoss = activeBoss + 1;
+
+        if (activeBoss >= bossList.Count)
+        {
+            activeBoss = 0;
+        }
+
+
+    }
+    #endregion
+
+
+    #region Monster
+    public void initMonster()
+    {
         activeMonster = 0;
         deadCount = 0;
         allSpawnCount = 0;
         nowMonsterCount = 0;
-    }
 
-    public void initMonster()
-    {
         for (int i = 0; i < monsterList.Count; i++)
         {
             monsterList[i].gameObject.SetActive(false);
@@ -92,6 +145,9 @@ public class MonsterManager : SingleTon<MonsterManager>
     public void MonsterManagerUpdate()
     {
         if (GameManager.Instance.isGameOver == true || GameManager.Instance.isStageClear == true)
+            return;
+
+        if (isBossStage == true)
             return;
 
         if (monsterStageCount <= nowMonsterCount)
@@ -125,7 +181,7 @@ public class MonsterManager : SingleTon<MonsterManager>
         }
     }
 
-    public void CreateMonster(Vector2 _createPos, bool _isUp, int _spawnCount, int _hp)
+    public void SetSubMonster(Vector2 _createPos, bool _isUp, int _spawnCount, int _hp)
     {
         int rnd = Random.Range(0, monsterSpriteList.Count);
         int minHp = _hp - 2;
@@ -172,4 +228,5 @@ public class MonsterManager : SingleTon<MonsterManager>
             activeMonster = 0;
         }
     }
+    #endregion
 }

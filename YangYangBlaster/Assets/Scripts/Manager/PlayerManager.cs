@@ -114,6 +114,9 @@ public class PlayerManager : SingleTon<PlayerManager>
     {
         if (other.gameObject.CompareTag("Monster"))
         {
+            if (GameManager.Instance.isStageClear == true)
+                return;
+
             playerHp = playerHp - 1;
 
             if (playerHp <= 0)

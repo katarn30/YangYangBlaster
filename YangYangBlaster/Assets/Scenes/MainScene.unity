@@ -881,7 +881,11 @@ MonoBehaviour:
   nowMonsterCount: 0
   allSpawnCount: 0
   deadCount: 0
+  bossMaxSpawnCount: 2
+  bossList: []
+  activeBoss: 0
   monster: {fileID: 6028230092614303458, guid: e3ced1efa66a51245a007bb3634f3ae7, type: 3}
+  boss: {fileID: 2607388319443178513, guid: cf4016cc4bf927348ac507de7f313b62, type: 3}
   isBossStage: 1
   regenTime: 3.5
 --- !u!4 &922920861
@@ -1022,6 +1026,14 @@ MonoBehaviour:
     bulletImage: {fileID: 21300000, guid: 4ec063cee31e9f1459f8d5517c32c8a1, type: 3}
     runtimeAnimator: {fileID: 0}
   stageDataList: []
+  BossDataList:
+  - name: 
+    pattenType: 0
+    hp: 30
+    colliderOffset: {x: -0.04, y: -0.24}
+    radius: 1.16
+    deadColor: {r: 0.3137255, g: 0.28627452, b: 0.41960785, a: 1}
+    runtimeAnimator: {fileID: 22100000, guid: 025ddcb4f496dae489cddc3e403a50e4, type: 2}
 --- !u!1001 &1148695535
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ public class InGameUIController : MonoBehaviour
         SetCoinUI();
         StageUI();
         SetStageGaugeUI();
+        SetBossStageGaugeUI();
     }
 
     public void GameOverUI()
@@ -48,6 +49,11 @@ public class InGameUIController : MonoBehaviour
     public void SetStageGaugeUI()
     {
         stageGauge.fillAmount = (float)MonsterManager.Instance.nowMonsterCount / (float)MonsterManager.Instance.monsterStageCount;
+    }
+
+    public void SetBossStageGaugeUI()
+    {
+        stageGauge.fillAmount = 1;
     }
 
     public void ContinueButton()
