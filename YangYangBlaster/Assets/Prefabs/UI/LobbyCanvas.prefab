@@ -1211,6 +1211,7 @@ GameObject:
   - component: {fileID: 2147412531472666554}
   - component: {fileID: 1863690584320721166}
   - component: {fileID: 2717369073636579477}
+  - component: {fileID: 9136014867634295934}
   m_Layer: 5
   m_Name: Mercenary2
   m_TagString: Untagged
@@ -1274,6 +1275,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &9136014867634295934
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121479703774808641}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &278106691531450981
 GameObject:
   m_ObjectHideFlags: 0
@@ -6034,6 +6054,7 @@ GameObject:
   - component: {fileID: 6571872615023246986}
   - component: {fileID: 9115943933889317689}
   - component: {fileID: 7490644494610323617}
+  - component: {fileID: 500484263734785719}
   m_Layer: 5
   m_Name: Leader
   m_TagString: Untagged
@@ -6097,6 +6118,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &500484263734785719
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6101170657815561368}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa2f38e69171eee40b437a805cdf4fe2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6327976798131834544
 GameObject:
   m_ObjectHideFlags: 0
@@ -6108,6 +6148,7 @@ GameObject:
   - component: {fileID: 3345617087719025781}
   - component: {fileID: 3431607509678564820}
   - component: {fileID: 6984090250331384568}
+  - component: {fileID: 3404039382312918922}
   m_Layer: 5
   m_Name: Mercenary1
   m_TagString: Untagged
@@ -6171,6 +6212,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &3404039382312918922
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6327976798131834544}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6470519710577039437
 GameObject:
   m_ObjectHideFlags: 0
@@ -7928,6 +7988,9 @@ MonoBehaviour:
   - {fileID: 1429459888648759343}
   - {fileID: 2559925310898413701}
   - {fileID: 6734052236746295098}
+  mercenaryAnimatorList:
+  - {fileID: 3404039382312918922}
+  - {fileID: 9136014867634295934}
 --- !u!1 &8974532679524805698
 GameObject:
   m_ObjectHideFlags: 0

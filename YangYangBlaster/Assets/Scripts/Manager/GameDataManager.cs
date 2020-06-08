@@ -65,6 +65,7 @@ public struct MercenaryData
     public MercenaryGetType mercenaryGetType;
     public Sprite bulletImage;
     public RuntimeAnimatorController runtimeAnimator;
+    public RuntimeAnimatorController uiRuntimeAnimator;
 }
 
 [System.Serializable]

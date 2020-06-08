@@ -978,6 +978,7 @@ MonoBehaviour:
       mercenaryGetType: 0
       bulletImage: {fileID: 0}
       runtimeAnimator: {fileID: 0}
+      uiRuntimeAnimator: {fileID: 0}
     mercenaryDataList: []
   freeCoin: 200
   ReadMercenaryDataList:
@@ -990,7 +991,8 @@ MonoBehaviour:
     price: 0
     mercenaryGetType: 0
     bulletImage: {fileID: 21300000, guid: 675bfd46ae1b77646b42df56d80483ee, type: 3}
-    runtimeAnimator: {fileID: 0}
+    runtimeAnimator: {fileID: 9100000, guid: b8f0392a872b265458d542292082b6ac, type: 2}
+    uiRuntimeAnimator: {fileID: 9100000, guid: fa2f38e69171eee40b437a805cdf4fe2, type: 2}
   - name: MEOWMEOW
     damage: 1
     moveSpeed: 3
@@ -1001,6 +1003,8 @@ MonoBehaviour:
     mercenaryGetType: 0
     bulletImage: {fileID: 21300000, guid: 85442966ca4488e4fbc57d8e67ac49e2, type: 3}
     runtimeAnimator: {fileID: 9100000, guid: 600847ea57b3d0c45964ad416bf9f9a5, type: 2}
+    uiRuntimeAnimator: {fileID: 22100000, guid: def7752d062eb954bb6c66a1caa3329b,
+      type: 2}
   - name: BABABA
     damage: 1
     moveSpeed: 3
@@ -1011,6 +1015,8 @@ MonoBehaviour:
     mercenaryGetType: 2
     bulletImage: {fileID: 21300000, guid: c114196b329a17a4d8955edbb5f6200a, type: 3}
     runtimeAnimator: {fileID: 22100000, guid: b1de54e23b2d5554c9bcf376e5099ace, type: 2}
+    uiRuntimeAnimator: {fileID: 22100000, guid: 440999379b3615c408c0a4ecb0b1eef8,
+      type: 2}
   - name: STAR
     damage: 1
     moveSpeed: 3
@@ -1021,6 +1027,8 @@ MonoBehaviour:
     mercenaryGetType: 0
     bulletImage: {fileID: 21300000, guid: bf89af1cceee0e94eb3e47cace36b9eb, type: 3}
     runtimeAnimator: {fileID: 22100000, guid: 8e73525f5c2691a4980273bffd53ee3d, type: 2}
+    uiRuntimeAnimator: {fileID: 22100000, guid: 34a8ebeeca8a4f74fadf0a08061196d0,
+      type: 2}
   - name: YAKYAK
     damage: 1
     moveSpeed: 3
@@ -1031,6 +1039,7 @@ MonoBehaviour:
     mercenaryGetType: 0
     bulletImage: {fileID: 21300000, guid: 4ec063cee31e9f1459f8d5517c32c8a1, type: 3}
     runtimeAnimator: {fileID: 0}
+    uiRuntimeAnimator: {fileID: 0}
   - name: STUDY
     damage: 1
     moveSpeed: 3
@@ -1041,6 +1050,7 @@ MonoBehaviour:
     mercenaryGetType: 0
     bulletImage: {fileID: 21300000, guid: 4ec063cee31e9f1459f8d5517c32c8a1, type: 3}
     runtimeAnimator: {fileID: 0}
+    uiRuntimeAnimator: {fileID: 0}
   stageDataList: []
   BossDataList:
   - name: 
@@ -1449,6 +1459,7 @@ MonoBehaviour:
   bulletParent: {fileID: 0}
   bulletSprite: {fileID: 0}
   bulletList: []
+  bulletDamage: 0
   mercenary1BulletCount: 10
   mercenary1BulletSprite: {fileID: 0}
   mercenary1BulletList: []
@@ -1571,6 +1582,146 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1855150384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1855150386}
+  - component: {fileID: 1855150385}
+  - component: {fileID: 1855150387}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1855150385
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855150384}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 305cfd7e2671cfc4dade32c21110f4eb, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1855150386
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855150384}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1855150387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855150384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c4277eeddd0d14cb4a0f78baf5c386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1958265223
 GameObject:
   m_ObjectHideFlags: 0
