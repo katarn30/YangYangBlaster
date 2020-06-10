@@ -159,6 +159,9 @@
     <ClCompile Include="AsyncHandlerRpcServiceExample.cpp" />
     <ClCompile Include="Cache.cpp" />
     <ClCompile Include="DB.cpp" />
+    <ClCompile Include="HealthCheckServiceImpl.cpp" />
+    <ClCompile Include="health_check_service.grpc.pb.cc" />
+    <ClCompile Include="health_check_service.pb.cc" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RpcServerImpl.cpp" />
     <ClCompile Include="RpcServiceImpl.cpp" />
@@ -173,8 +176,12 @@
     <ClInclude Include="AsyncHandlerLogin.h" />
     <ClInclude Include="AsyncHandlerRpcServiceExample.h" />
     <ClInclude Include="Cache.h" />
+    <ClInclude Include="CreateHandler.h" />
     <ClInclude Include="DB.h" />
     <ClInclude Include="GlobalDefine.h" />
+    <ClInclude Include="HealthCheckServiceImpl.h" />
+    <ClInclude Include="health_check_service.grpc.pb.h" />
+    <ClInclude Include="health_check_service.pb.h" />
     <ClInclude Include="RpcServerImpl.h" />
     <ClInclude Include="RpcServiceImpl.h" />
     <ClInclude Include="rpc_service.grpc.pb.h" />
@@ -185,6 +192,7 @@
     <ClInclude Include="UserManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="proto\health_check_service.proto" />
     <None Include="proto\rpc_service.proto" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

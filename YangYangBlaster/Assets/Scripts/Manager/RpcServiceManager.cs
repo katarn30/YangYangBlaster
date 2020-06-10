@@ -1,12 +1,21 @@
-﻿using System;
+﻿using Grpc.Health.V1;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Yyb;
+using Grpc.Core;
+using System.Threading.Tasks;
+using System.Threading;
+
 public class RpcServiceManager : SingleTon<RpcServiceManager>
 {
     private Grpc.Core.Channel channel;
     private RpcService.RpcServiceClient client;
+    private Health.HealthClient health;
+    private Thread healthCheckThread;
+    private Thread healthWatchThread;
+    private bool running = true;
 
     private void Awake()
     {
@@ -47,20 +56,164 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
 #endif
             channel = new Grpc.Core.Channel(host, Grpc.Core.ChannelCredentials.Insecure);
             client = new RpcService.RpcServiceClient(channel);
+            health = new Health.HealthClient(channel);
         }
     }
 
     protected override void OnApplicationQuit()
     {
+        running = false;
+
         if (null != channel)
         {
-            channel.ShutdownAsync().Wait();
+            channel.ShutdownAsync().Wait(1);
+        }
+
+        if (null != healthCheckThread)
+        {
+            healthCheckThread.Abort();
+        }
+
+        if (null != healthWatchThread)
+        {
+            //healthThread.Interrupt();
+            healthWatchThread.Abort();
         }
 
         base.OnApplicationQuit();
     }
 
     public delegate void RPCHandler<T>(T reply);
+
+    // HealthCheck - Check
+    public void Check(HealthCheckRequest request, RPCHandler<HealthCheckResponse> handler)
+    {
+        healthCheckThread = new Thread(() =>
+        {
+            int intervalTime = 60 * 1000;//Time.time + (10.0f * 60.0f);
+
+            try
+            {
+                while (running)
+                {
+                    //if (Time.time < intervalTime)
+                    //{
+                    //    continue;
+                    //}
+
+                    var metadata = new Metadata
+                    {
+                        { "access_key", "abcdefg" }
+                    };
+
+                    var reply = health.Check(request, metadata);
+
+                    handler(reply);
+
+                    Thread.Sleep(intervalTime);
+                }
+            }
+            catch (Grpc.Core.RpcException e)
+            {
+                Debug.LogError("RPC failed " + e);
+            }
+        });
+
+
+        healthCheckThread.Start();
+        //StartCoroutine(coCheck(request, handler));
+    }
+
+    IEnumerator coCheck(HealthCheckRequest request, RPCHandler<HealthCheckResponse> handler)
+    {
+        try
+        {
+            while (running)
+            {
+                if (Time.time < intervalTime)
+                {
+                    continue;
+                }
+
+                var metadata = new Metadata
+                    {
+                        { "access_key", "abcdefg" }
+                    };
+
+                var reply = health.Check(request, metadata);
+
+                handler(reply);
+            }
+        }
+        catch (Grpc.Core.RpcException e)
+        {
+            Debug.LogError("RPC failed " + e);
+        }
+
+        yield return null;
+    }
+
+    // HealthCheck - Watch
+    public void Watch(HealthCheckRequest request, 
+        RPCHandler<HealthCheckResponse> handler)
+    {
+        //coWatch(request, handler);
+
+        //await task;
+        //StartCoroutine(coWatch(request, handler));
+        //await coWatch(request, handler);
+
+        healthWatchThread = new Thread(async () =>
+        {
+            try
+            {
+                while (running)
+                {
+                    using (var call = health.Watch(request))
+                    {
+                        while (await call.ResponseStream.MoveNext())
+                        {
+                            HealthCheckResponse reply = call.ResponseStream.Current;
+                            handler(reply);
+                        }
+                    }
+                }
+            }
+            catch (Grpc.Core.RpcException e)
+            {
+                Debug.LogError("RPC failed " + e);
+            }
+        });
+
+        healthWatchThread.Start();
+    }
+
+    //void coWatch(HealthCheckRequest request, 
+    //    RPCHandler<HealthCheckResponse> handler)
+    //{
+    //    Thread thread = new Thread(async () =>
+    //    {
+    //        try
+    //        {
+    //            using (var call = health.Watch(request))
+    //            {
+    //                while (await call.ResponseStream.MoveNext())
+    //                {
+    //                    HealthCheckResponse reply = call.ResponseStream.Current;
+    //                    handler(reply);
+    //                }
+    //            }
+
+    //            //var reply = health.Watch(request);
+
+    //            //handler(reply);
+    //        }
+    //        catch (Grpc.Core.RpcException e)
+    //        {
+    //            Debug.LogError("RPC failed " + e);
+    //        }
+    //    });
+    //}
 
     // RpcServiceExample
     public void RpcServiceExample(RpcServiceExampleRequest request, RPCHandler<RpcServiceExampleReply> handler)
@@ -101,6 +254,48 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
             Debug.LogError("RPC failed " + e);
         }
         
+        yield return null;
+    }
+
+    // Ranking
+    public void Ranking(RankingRequest request, RPCHandler<RankingReply> handler)
+    {
+        StartCoroutine(coRanking(request, handler));
+    }
+    IEnumerator coRanking(RankingRequest request, RPCHandler<RankingReply> handler)
+    {
+        try
+        {
+            var reply = client.Ranking(request);
+
+            handler(reply);
+        }
+        catch (Grpc.Core.RpcException e)
+        {
+            Debug.LogError("RPC failed " + e);
+        }
+
+        yield return null;
+    }
+
+    // RankingList
+    public void RankingList(RankingListRequest request, RPCHandler<RankingListReply> handler)
+    {
+        StartCoroutine(coRankingList(request, handler));
+    }
+    IEnumerator coRankingList(RankingListRequest request, RPCHandler<RankingListReply> handler)
+    {
+        try
+        {
+            var reply = client.RankingList(request);
+
+            handler(reply);
+        }
+        catch (Grpc.Core.RpcException e)
+        {
+            Debug.LogError("RPC failed " + e);
+        }
+
         yield return null;
     }
 }

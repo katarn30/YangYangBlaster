@@ -22,7 +22,7 @@ namespace yyb
 		}
 
 		// reply output
-		reply->set_error("this is test error");
+		reply->set_error(ERROR_CODE_OK);
 
 		return grpc::Status::OK;
 	}

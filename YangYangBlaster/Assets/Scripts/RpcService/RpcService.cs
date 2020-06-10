@@ -45,11 +45,24 @@ namespace Yyb {
             "X0NPREVfRU1QVFlfSURfVE9LRU4QBxIpCiVFUlJPUl9DT0RFX0ZBSUxFRF9U",
             "T19VUERBVEVfTE9HSU5fS0VZEAgSKgomRVJST1JfQ09ERV9GQUlMRURfVE9f",
             "Q0hBTkdFX0xPR0lOX1RZUEUQCRImCiJFUlJPUl9DT0RFX0xPR0lOX1RZUEVf",
-            "SVNfRElGRkVSRU5UEAoyvwEKClJwY1NlcnZpY2USUQoRUnBjU2VydmljZUV4",
-            "YW1wbGUSHS55eWIuUnBjU2VydmljZUV4YW1wbGVSZXF1ZXN0GhsueXliLlJw",
-            "Y1NlcnZpY2VFeGFtcGxlUmVwbHkiABIvCgZMaXN0ZW4SCi55eWIuRW1wdHka",
-            "FS55eWIuUHVzaE5vdGlmaWNhdGlvbiIAMAESLQoFTG9naW4SES55eWIuTG9n",
-            "aW5SZXF1ZXN0Gg8ueXliLkxvZ2luUmVwbHkiAGIGcHJvdG8z"));
+            "SVNfRElGRkVSRU5UEAoiHwoOUmFua2luZ1JlcXVlc3QSDQoFc2NvcmUYASAB",
+            "KAMicwoMUmFua2luZ1JlcGx5EisKBWVycm9yGAEgASgOMhwueXliLlJhbmtp",
+            "bmdSZXBseS5FUlJPUl9DT0RFIjYKCkVSUk9SX0NPREUSEQoNRVJST1JfQ09E",
+            "RV9PSxAAEhUKEUVSUk9SX0NPREVfU1lTVE1FEAEiFAoSUmFua2luZ0xpc3RS",
+            "ZXF1ZXN0IpgCChBSYW5raW5nTGlzdFJlcGx5Ei8KBWVycm9yGAEgASgOMiAu",
+            "eXliLlJhbmtpbmdMaXN0UmVwbHkuRVJST1JfQ09ERRIwCglteVJhbmtpbmcY",
+            "AiABKAsyHS55eWIuUmFua2luZ0xpc3RSZXBseS5SYW5raW5nEi8KCHJhbmtp",
+            "bmdzGAMgAygLMh0ueXliLlJhbmtpbmdMaXN0UmVwbHkuUmFua2luZxo4CgdS",
+            "YW5raW5nEhAKCG5pY2tOYW1lGAEgASgJEgwKBHJhbmsYAiABKAUSDQoFc2Nv",
+            "cmUYAyABKAUiNgoKRVJST1JfQ09ERRIRCg1FUlJPUl9DT0RFX09LEAASFQoR",
+            "RVJST1JfQ09ERV9TWVNUTUUQATK1AgoKUnBjU2VydmljZRJRChFScGNTZXJ2",
+            "aWNlRXhhbXBsZRIdLnl5Yi5ScGNTZXJ2aWNlRXhhbXBsZVJlcXVlc3QaGy55",
+            "eWIuUnBjU2VydmljZUV4YW1wbGVSZXBseSIAEi8KBkxpc3RlbhIKLnl5Yi5F",
+            "bXB0eRoVLnl5Yi5QdXNoTm90aWZpY2F0aW9uIgAwARItCgVMb2dpbhIRLnl5",
+            "Yi5Mb2dpblJlcXVlc3QaDy55eWIuTG9naW5SZXBseSIAEjMKB1JhbmtpbmcS",
+            "Ey55eWIuUmFua2luZ1JlcXVlc3QaES55eWIuUmFua2luZ1JlcGx5IgASPwoL",
+            "UmFua2luZ0xpc3QSFy55eWIuUmFua2luZ0xpc3RSZXF1ZXN0GhUueXliLlJh",
+            "bmtpbmdMaXN0UmVwbHkiAGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -58,7 +71,11 @@ namespace Yyb {
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.Empty), global::Yyb.Empty.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.PushNotification), global::Yyb.PushNotification.Parser, new[]{ "Payload" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.LoginRequest), global::Yyb.LoginRequest.Parser, new[]{ "LoginType", "LoginKey", "IdToken", "NickName" }, null, new[]{ typeof(global::Yyb.LoginRequest.Types.LOGIN_TYPE) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.LoginReply), global::Yyb.LoginReply.Parser, new[]{ "Error", "Usn", "NickName", "LoginKey", "AccessKey" }, null, new[]{ typeof(global::Yyb.LoginReply.Types.ERROR_CODE) }, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.LoginReply), global::Yyb.LoginReply.Parser, new[]{ "Error", "Usn", "NickName", "LoginKey", "AccessKey" }, null, new[]{ typeof(global::Yyb.LoginReply.Types.ERROR_CODE) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RankingRequest), global::Yyb.RankingRequest.Parser, new[]{ "Score" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RankingReply), global::Yyb.RankingReply.Parser, new[]{ "Error" }, null, new[]{ typeof(global::Yyb.RankingReply.Types.ERROR_CODE) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RankingListRequest), global::Yyb.RankingListRequest.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RankingListReply), global::Yyb.RankingListReply.Parser, new[]{ "Error", "MyRanking", "Rankings" }, null, new[]{ typeof(global::Yyb.RankingListReply.Types.ERROR_CODE) }, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RankingListReply.Types.Ranking), global::Yyb.RankingListReply.Types.Ranking.Parser, new[]{ "NickName", "Rank", "Score" }, null, null, null)})
           }));
     }
     #endregion
@@ -1139,6 +1156,757 @@ namespace Yyb {
         [pbr::OriginalName("ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY")] FailedToUpdateLoginKey = 8,
         [pbr::OriginalName("ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE")] FailedToChangeLoginType = 9,
         [pbr::OriginalName("ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT")] LoginTypeIsDifferent = 10,
+      }
+
+    }
+    #endregion
+
+  }
+
+  public sealed partial class RankingRequest : pb::IMessage<RankingRequest> {
+    private static readonly pb::MessageParser<RankingRequest> _parser = new pb::MessageParser<RankingRequest>(() => new RankingRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<RankingRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Yyb.RpcServiceReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RankingRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RankingRequest(RankingRequest other) : this() {
+      score_ = other.score_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RankingRequest Clone() {
+      return new RankingRequest(this);
+    }
+
+    /// <summary>Field number for the "score" field.</summary>
+    public const int ScoreFieldNumber = 1;
+    private long score_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long Score {
+      get { return score_; }
+      set {
+        score_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as RankingRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(RankingRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Score != other.Score) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Score != 0L) hash ^= Score.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Score != 0L) {
+        output.WriteRawTag(8);
+        output.WriteInt64(Score);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Score != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Score);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(RankingRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Score != 0L) {
+        Score = other.Score;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Score = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class RankingReply : pb::IMessage<RankingReply> {
+    private static readonly pb::MessageParser<RankingReply> _parser = new pb::MessageParser<RankingReply>(() => new RankingReply());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<RankingReply> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Yyb.RpcServiceReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RankingReply() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RankingReply(RankingReply other) : this() {
+      error_ = other.error_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RankingReply Clone() {
+      return new RankingReply(this);
+    }
+
+    /// <summary>Field number for the "error" field.</summary>
+    public const int ErrorFieldNumber = 1;
+    private global::Yyb.RankingReply.Types.ERROR_CODE error_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Yyb.RankingReply.Types.ERROR_CODE Error {
+      get { return error_; }
+      set {
+        error_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as RankingReply);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(RankingReply other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Error != other.Error) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Error != 0) hash ^= Error.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Error != 0) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Error);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Error != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Error);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(RankingReply other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Error != 0) {
+        Error = other.Error;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Error = (global::Yyb.RankingReply.Types.ERROR_CODE) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the RankingReply message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public enum ERROR_CODE {
+        [pbr::OriginalName("ERROR_CODE_OK")] Ok = 0,
+        [pbr::OriginalName("ERROR_CODE_SYSTME")] Systme = 1,
+      }
+
+    }
+    #endregion
+
+  }
+
+  public sealed partial class RankingListRequest : pb::IMessage<RankingListRequest> {
+    private static readonly pb::MessageParser<RankingListRequest> _parser = new pb::MessageParser<RankingListRequest>(() => new RankingListRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<RankingListRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Yyb.RpcServiceReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RankingListRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RankingListRequest(RankingListRequest other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RankingListRequest Clone() {
+      return new RankingListRequest(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as RankingListRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(RankingListRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(RankingListRequest other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class RankingListReply : pb::IMessage<RankingListReply> {
+    private static readonly pb::MessageParser<RankingListReply> _parser = new pb::MessageParser<RankingListReply>(() => new RankingListReply());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<RankingListReply> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Yyb.RpcServiceReflection.Descriptor.MessageTypes[9]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RankingListReply() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RankingListReply(RankingListReply other) : this() {
+      error_ = other.error_;
+      myRanking_ = other.myRanking_ != null ? other.myRanking_.Clone() : null;
+      rankings_ = other.rankings_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RankingListReply Clone() {
+      return new RankingListReply(this);
+    }
+
+    /// <summary>Field number for the "error" field.</summary>
+    public const int ErrorFieldNumber = 1;
+    private global::Yyb.RankingListReply.Types.ERROR_CODE error_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Yyb.RankingListReply.Types.ERROR_CODE Error {
+      get { return error_; }
+      set {
+        error_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "myRanking" field.</summary>
+    public const int MyRankingFieldNumber = 2;
+    private global::Yyb.RankingListReply.Types.Ranking myRanking_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Yyb.RankingListReply.Types.Ranking MyRanking {
+      get { return myRanking_; }
+      set {
+        myRanking_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rankings" field.</summary>
+    public const int RankingsFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::Yyb.RankingListReply.Types.Ranking> _repeated_rankings_codec
+        = pb::FieldCodec.ForMessage(26, global::Yyb.RankingListReply.Types.Ranking.Parser);
+    private readonly pbc::RepeatedField<global::Yyb.RankingListReply.Types.Ranking> rankings_ = new pbc::RepeatedField<global::Yyb.RankingListReply.Types.Ranking>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Yyb.RankingListReply.Types.Ranking> Rankings {
+      get { return rankings_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as RankingListReply);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(RankingListReply other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Error != other.Error) return false;
+      if (!object.Equals(MyRanking, other.MyRanking)) return false;
+      if(!rankings_.Equals(other.rankings_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Error != 0) hash ^= Error.GetHashCode();
+      if (myRanking_ != null) hash ^= MyRanking.GetHashCode();
+      hash ^= rankings_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Error != 0) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Error);
+      }
+      if (myRanking_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(MyRanking);
+      }
+      rankings_.WriteTo(output, _repeated_rankings_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Error != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Error);
+      }
+      if (myRanking_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MyRanking);
+      }
+      size += rankings_.CalculateSize(_repeated_rankings_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(RankingListReply other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Error != 0) {
+        Error = other.Error;
+      }
+      if (other.myRanking_ != null) {
+        if (myRanking_ == null) {
+          MyRanking = new global::Yyb.RankingListReply.Types.Ranking();
+        }
+        MyRanking.MergeFrom(other.MyRanking);
+      }
+      rankings_.Add(other.rankings_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Error = (global::Yyb.RankingListReply.Types.ERROR_CODE) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            if (myRanking_ == null) {
+              MyRanking = new global::Yyb.RankingListReply.Types.Ranking();
+            }
+            input.ReadMessage(MyRanking);
+            break;
+          }
+          case 26: {
+            rankings_.AddEntriesFrom(input, _repeated_rankings_codec);
+            break;
+          }
+        }
+      }
+    }
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the RankingListReply message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static partial class Types {
+      public enum ERROR_CODE {
+        [pbr::OriginalName("ERROR_CODE_OK")] Ok = 0,
+        [pbr::OriginalName("ERROR_CODE_SYSTME")] Systme = 1,
+      }
+
+      public sealed partial class Ranking : pb::IMessage<Ranking> {
+        private static readonly pb::MessageParser<Ranking> _parser = new pb::MessageParser<Ranking>(() => new Ranking());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pb::MessageParser<Ranking> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::Yyb.RankingListReply.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Ranking() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Ranking(Ranking other) : this() {
+          nickName_ = other.nickName_;
+          rank_ = other.rank_;
+          score_ = other.score_;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public Ranking Clone() {
+          return new Ranking(this);
+        }
+
+        /// <summary>Field number for the "nickName" field.</summary>
+        public const int NickNameFieldNumber = 1;
+        private string nickName_ = "";
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public string NickName {
+          get { return nickName_; }
+          set {
+            nickName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+
+        /// <summary>Field number for the "rank" field.</summary>
+        public const int RankFieldNumber = 2;
+        private int rank_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int Rank {
+          get { return rank_; }
+          set {
+            rank_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "score" field.</summary>
+        public const int ScoreFieldNumber = 3;
+        private int score_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int Score {
+          get { return score_; }
+          set {
+            score_ = value;
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override bool Equals(object other) {
+          return Equals(other as Ranking);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public bool Equals(Ranking other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (NickName != other.NickName) return false;
+          if (Rank != other.Rank) return false;
+          if (Score != other.Score) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (NickName.Length != 0) hash ^= NickName.GetHashCode();
+          if (Rank != 0) hash ^= Rank.GetHashCode();
+          if (Score != 0) hash ^= Score.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void WriteTo(pb::CodedOutputStream output) {
+          if (NickName.Length != 0) {
+            output.WriteRawTag(10);
+            output.WriteString(NickName);
+          }
+          if (Rank != 0) {
+            output.WriteRawTag(16);
+            output.WriteInt32(Rank);
+          }
+          if (Score != 0) {
+            output.WriteRawTag(24);
+            output.WriteInt32(Score);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public int CalculateSize() {
+          int size = 0;
+          if (NickName.Length != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(NickName);
+          }
+          if (Rank != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeInt32Size(Rank);
+          }
+          if (Score != 0) {
+            size += 1 + pb::CodedOutputStream.ComputeInt32Size(Score);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(Ranking other) {
+          if (other == null) {
+            return;
+          }
+          if (other.NickName.Length != 0) {
+            NickName = other.NickName;
+          }
+          if (other.Rank != 0) {
+            Rank = other.Rank;
+          }
+          if (other.Score != 0) {
+            Score = other.Score;
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        public void MergeFrom(pb::CodedInputStream input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+            switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 10: {
+                NickName = input.ReadString();
+                break;
+              }
+              case 16: {
+                Rank = input.ReadInt32();
+                break;
+              }
+              case 24: {
+                Score = input.ReadInt32();
+                break;
+              }
+            }
+          }
+        }
+
       }
 
     }
