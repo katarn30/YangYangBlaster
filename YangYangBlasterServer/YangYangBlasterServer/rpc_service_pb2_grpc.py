@@ -29,6 +29,16 @@ class RpcServiceStub(object):
                 request_serializer=rpc__service__pb2.LoginRequest.SerializeToString,
                 response_deserializer=rpc__service__pb2.LoginReply.FromString,
                 )
+        self.Ranking = channel.unary_unary(
+                '/yyb.RpcService/Ranking',
+                request_serializer=rpc__service__pb2.RankingRequest.SerializeToString,
+                response_deserializer=rpc__service__pb2.RankingReply.FromString,
+                )
+        self.RankingList = channel.unary_unary(
+                '/yyb.RpcService/RankingList',
+                request_serializer=rpc__service__pb2.RankingListRequest.SerializeToString,
+                response_deserializer=rpc__service__pb2.RankingListReply.FromString,
+                )
 
 
 class RpcServiceServicer(object):
@@ -36,19 +46,36 @@ class RpcServiceServicer(object):
     """
 
     def RpcServiceExample(self, request, context):
-        """Missing associated documentation comment in .proto file"""
+        """rpc 예시
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def Listen(self, request, context):
-        """Missing associated documentation comment in .proto file"""
+        """푸시용 리슨 (서버 -> 클라)
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def Login(self, request, context):
-        """Missing associated documentation comment in .proto file"""
+        """로그인 요청
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Ranking(self, request, context):
+        """랭킹 기록 요청
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def RankingList(self, request, context):
+        """랭킹 리스트 요청
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -70,6 +97,16 @@ def add_RpcServiceServicer_to_server(servicer, server):
                     servicer.Login,
                     request_deserializer=rpc__service__pb2.LoginRequest.FromString,
                     response_serializer=rpc__service__pb2.LoginReply.SerializeToString,
+            ),
+            'Ranking': grpc.unary_unary_rpc_method_handler(
+                    servicer.Ranking,
+                    request_deserializer=rpc__service__pb2.RankingRequest.FromString,
+                    response_serializer=rpc__service__pb2.RankingReply.SerializeToString,
+            ),
+            'RankingList': grpc.unary_unary_rpc_method_handler(
+                    servicer.RankingList,
+                    request_deserializer=rpc__service__pb2.RankingListRequest.FromString,
+                    response_serializer=rpc__service__pb2.RankingListReply.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -127,5 +164,37 @@ class RpcService(object):
         return grpc.experimental.unary_unary(request, target, '/yyb.RpcService/Login',
             rpc__service__pb2.LoginRequest.SerializeToString,
             rpc__service__pb2.LoginReply.FromString,
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Ranking(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/yyb.RpcService/Ranking',
+            rpc__service__pb2.RankingRequest.SerializeToString,
+            rpc__service__pb2.RankingReply.FromString,
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def RankingList(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/yyb.RpcService/RankingList',
+            rpc__service__pb2.RankingListRequest.SerializeToString,
+            rpc__service__pb2.RankingListReply.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)

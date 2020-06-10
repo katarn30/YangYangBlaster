@@ -10,6 +10,9 @@ namespace yyb
 		public AsyncHandler<LoginRequest, LoginReply>
 	{
 	public:
+		bool VerifyMessage(const grpc_impl::ServerContext& context,
+			const LoginRequest& request, LoginReply& reply) override;
+
 		void OnRead(const LoginRequest& request,
 			LoginReply& reply) override;
 
@@ -27,13 +30,7 @@ namespace yyb
 		bool GetUser(const std::string& loginKey, OUT User& outUser);
 		bool UpdateUserLoginKey(const std::string& loginKey, 
 			const std::string& sub);
-		/*bool DeleteUser(const std::string& nickName,
-			int loginType, const std::string& countryCode,
-			int marketPlatformType, OUT User& outUser);*/
 		bool UpdateUserLoginType(const std::string& loginKey,
 			int loginType);
-		/*bool UpdateUserAccessKey(int usn);
-		bool GetUserAccessKey(int usn, OUT std::string& outAccessKey,
-			OUT int outAccessKeyUpdateTime);*/
 	};
 }

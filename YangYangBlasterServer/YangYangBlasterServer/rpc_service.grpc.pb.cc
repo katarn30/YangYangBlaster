@@ -25,6 +25,8 @@ static const char* RpcService_method_names[] = {
   "/yyb.RpcService/RpcServiceExample",
   "/yyb.RpcService/Listen",
   "/yyb.RpcService/Login",
+  "/yyb.RpcService/Ranking",
+  "/yyb.RpcService/RankingList",
 };
 
 std::unique_ptr< RpcService::Stub> RpcService::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -37,6 +39,8 @@ RpcService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel
   : channel_(channel), rpcmethod_RpcServiceExample_(RpcService_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Listen_(RpcService_method_names[1], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_Login_(RpcService_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Ranking_(RpcService_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_RankingList_(RpcService_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status RpcService::Stub::RpcServiceExample(::grpc::ClientContext* context, const ::yyb::RpcServiceExampleRequest& request, ::yyb::RpcServiceExampleReply* response) {
@@ -111,6 +115,62 @@ void RpcService::Stub::experimental_async::Login(::grpc::ClientContext* context,
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::yyb::LoginReply>::Create(channel_.get(), cq, rpcmethod_Login_, context, request, false);
 }
 
+::grpc::Status RpcService::Stub::Ranking(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::yyb::RankingReply* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_Ranking_, context, request, response);
+}
+
+void RpcService::Stub::experimental_async::Ranking(::grpc::ClientContext* context, const ::yyb::RankingRequest* request, ::yyb::RankingReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Ranking_, context, request, response, std::move(f));
+}
+
+void RpcService::Stub::experimental_async::Ranking(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RankingReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_Ranking_, context, request, response, std::move(f));
+}
+
+void RpcService::Stub::experimental_async::Ranking(::grpc::ClientContext* context, const ::yyb::RankingRequest* request, ::yyb::RankingReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Ranking_, context, request, response, reactor);
+}
+
+void RpcService::Stub::experimental_async::Ranking(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RankingReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_Ranking_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::yyb::RankingReply>* RpcService::Stub::AsyncRankingRaw(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::yyb::RankingReply>::Create(channel_.get(), cq, rpcmethod_Ranking_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::yyb::RankingReply>* RpcService::Stub::PrepareAsyncRankingRaw(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::yyb::RankingReply>::Create(channel_.get(), cq, rpcmethod_Ranking_, context, request, false);
+}
+
+::grpc::Status RpcService::Stub::RankingList(::grpc::ClientContext* context, const ::yyb::RankingListRequest& request, ::yyb::RankingListReply* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_RankingList_, context, request, response);
+}
+
+void RpcService::Stub::experimental_async::RankingList(::grpc::ClientContext* context, const ::yyb::RankingListRequest* request, ::yyb::RankingListReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_RankingList_, context, request, response, std::move(f));
+}
+
+void RpcService::Stub::experimental_async::RankingList(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RankingListReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_RankingList_, context, request, response, std::move(f));
+}
+
+void RpcService::Stub::experimental_async::RankingList(::grpc::ClientContext* context, const ::yyb::RankingListRequest* request, ::yyb::RankingListReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_RankingList_, context, request, response, reactor);
+}
+
+void RpcService::Stub::experimental_async::RankingList(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RankingListReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_RankingList_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::yyb::RankingListReply>* RpcService::Stub::AsyncRankingListRaw(::grpc::ClientContext* context, const ::yyb::RankingListRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::yyb::RankingListReply>::Create(channel_.get(), cq, rpcmethod_RankingList_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::yyb::RankingListReply>* RpcService::Stub::PrepareAsyncRankingListRaw(::grpc::ClientContext* context, const ::yyb::RankingListRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::yyb::RankingListReply>::Create(channel_.get(), cq, rpcmethod_RankingList_, context, request, false);
+}
+
 RpcService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       RpcService_method_names[0],
@@ -127,6 +187,16 @@ RpcService::Service::Service() {
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RpcService::Service, ::yyb::LoginRequest, ::yyb::LoginReply>(
           std::mem_fn(&RpcService::Service::Login), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RpcService_method_names[3],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RpcService::Service, ::yyb::RankingRequest, ::yyb::RankingReply>(
+          std::mem_fn(&RpcService::Service::Ranking), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RpcService_method_names[4],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RpcService::Service, ::yyb::RankingListRequest, ::yyb::RankingListReply>(
+          std::mem_fn(&RpcService::Service::RankingList), this)));
 }
 
 RpcService::Service::~Service() {
@@ -147,6 +217,20 @@ RpcService::Service::~Service() {
 }
 
 ::grpc::Status RpcService::Service::Login(::grpc::ServerContext* context, const ::yyb::LoginRequest* request, ::yyb::LoginReply* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RpcService::Service::Ranking(::grpc::ServerContext* context, const ::yyb::RankingRequest* request, ::yyb::RankingReply* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RpcService::Service::RankingList(::grpc::ServerContext* context, const ::yyb::RankingListRequest* request, ::yyb::RankingListReply* response) {
   (void) context;
   (void) request;
   (void) response;

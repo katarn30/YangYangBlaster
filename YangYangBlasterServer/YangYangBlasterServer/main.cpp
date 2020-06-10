@@ -4,12 +4,17 @@
 #include "stdafx.h"
 #include "rpc_service.pb.h"
 #include "rpc_service.grpc.pb.h"
+#include "health_check_service.pb.h"
+#include "health_check_service.grpc.pb.h"
 #include "GlobalDefine.h"
 #include "Cache.h"
 #include "DB.h"
 #include "Python.h"
 #include "RpcServiceImpl.h"
 #include "RpcServerImpl.h"
+#include "HealthCheckServiceImpl.h"
+#include "UserManager.h"
+#include "User.h"
 
 namespace yyb
 {
@@ -58,12 +63,19 @@ namespace yyb
     // 동기 서버
     void RunServer() {
         std::string server_address("0.0.0.0:20051");
-        RpcServiceImpl service;
+        RpcServiceImpl rpcService;
+        HealthCheckServiceImpl healthCheckService;
 
-        grpc::EnableDefaultHealthCheckService(true);
+        grpc::EnableDefaultHealthCheckService(false);
         grpc::reflection::InitProtoReflectionServerBuilderPlugin();
         grpc::ServerBuilder builder;
         // Options..
+        std::unique_ptr<grpc::HealthCheckServiceInterface> service(
+            new CustomHealthCheckService(&healthCheckService));
+        std::unique_ptr<grpc::ServerBuilderOption> option(
+            new grpc::HealthCheckServiceServerBuilderOption(std::move(service)));
+        builder.SetOption(std::move(option));
+
         /*builder.AddChannelArgument(GRPC_ARG_KEEPALIVE_TIME_MS, 2000);
         builder.AddChannelArgument(GRPC_ARG_KEEPALIVE_TIMEOUT_MS, 1000);
         builder.AddChannelArgument(GRPC_ARG_HTTP2_BDP_PROBE, 1);
@@ -72,7 +84,16 @@ namespace yyb
         builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
         // Register "service" as the instance through which we'll communicate with
         // clients. In this case it corresponds to an *synchronous* service.
-        builder.RegisterService(&service);
+        builder.RegisterService(&rpcService);
+        builder.RegisterService(&healthCheckService);
+
+        /*std::vector<
+            std::unique_ptr<grpc::experimental::ServerInterceptorFactoryInterface>>
+            creators;
+        creators.push_back(
+            std::unique_ptr<grpc::experimental::ServerInterceptorFactoryInterface>(
+                new SyncSendMessageVerifierFactory()));
+        builder.experimental().SetInterceptorCreators(std::move(creators));*/
         //auto cq = builder.AddCompletionQueue();
         /*grpc::ResourceQuota rq;
         rq.SetMaxThreads(static_cast<int>(std::thread::hardware_concurrency()) * 2);
@@ -254,8 +275,152 @@ void test_process()
     //}
 //}
 
+void test_cache()
+{
+    auto redis = yyb::Cache::Instance().GetCache(yyb::CACHE_INDEX_GLOBAL);
+    if (redis)
+    {
+        /*std::multimap< std::string, std::string> score_members;
+        std::vector< std::string > options;*/
+
+        //std::string key = "ranking";
+        //std::string value = "a";
+        //std::string score = "3";
+
+        ///*score_members.insert(
+        //    { score, value });*/
+
+        //score_members.insert({ "10", "a" });
+        //score_members.insert({ "20", "b" });
+        //score_members.insert({ "30", "c" });
+        //score_members.insert({ "40", "d" });
+        //score_members.insert({ "50", "e" });
+
+        //// 자기 랭킹+1
+        //auto reply = redis->zrank(key, value);
+
+        // 특정 점수대 누군지?
+        //redis->zrangebyscore(key, min, max, withscore);
+
+        // 랭킹 추가
+        //reply = redis->zadd(key, options, score_members);
+        
+        // 특정 점수대 몇명인지
+        //redis->zcount(key, min, max);
+
+        //redis->sync_commit();
+
+        std::string key = "ranking";
+        std::string value = "e";
+        int score = 50;
+        int storedScore = 0;
+        std::string start = "0";
+        std::string stop = "14"; // max
+
+        //// 내 저장된 랭킹 점수
+        //auto reply = redis->zrank(key, value);
+        //redis->sync_commit();
+
+        //if (reply.get().is_integer())
+        //{
+        //	storedScore = reply.get().as_integer();
+        //}
+
+        //// 내 저장된 랭킹 점수와 지금 획득한 점수 비교
+        //if (storedScore < score)
+        //{
+        //	std::vector< std::string > members;
+
+        //	members.push_back(value);
+
+        //	// 지금 획득한 점수가 더 크면 저장된 랭킹 점수 제거
+        //	redis->zrem(key, members);
+        //}
+
+        // 지금 획득한 점수 저장
+        std::multimap<std::string, std::string> score_members;
+        std::vector<std::string> options;
+
+        std::string scoreStr = std::to_string(score);
+        score_members.insert({ scoreStr, value });
+
+        redis->zadd(key, options, score_members);
+
+        redis->sync_commit();
+
+
+        // 랭킹, 점수 획득
+        auto futureReply1 = redis->zrevrange(key, start, stop, true);
+        auto futureReply2 = redis->zrevrank(key, value);
+        auto futureReply3 = redis->zscore(key, value);
+
+        redis->sync_commit();
+
+        auto reply1 = futureReply1.get();
+
+        if (reply1)
+        {
+            auto arr = reply1.as_array();
+
+            for (int i = 0; i < arr.size(); i += 2)
+            {
+                std::string nickName = arr[i].as_string();
+                int score = boost::lexical_cast<int>(arr[i + 1].as_string());
+            }
+        }
+
+        auto reply2 = futureReply2.get();
+        if (reply2)
+        {
+            int rank = reply2.as_integer();
+            rank += 1;
+        }
+
+        auto reply3 = futureReply3.get();
+        if (reply3)
+        {
+            int score = boost::lexical_cast<int>(reply3.as_string());
+        }
+    }
+}
+
+//void test_interceptor()
+//{
+//
+//}
+//
+//#define HANDLER_MACRO(KEWORD)   \
+//    AsyncHandler##KEWORD##::CreateRequest(service, cq, io_service,  \
+//    std::move(std::bind(&grpc::RpcService::AsyncService::Request##KEWORD##, service,   \
+//        std::placeholders::_1, std::placeholders::_2,   \
+//        std::placeholders::_3, std::placeholders::_4,   \
+//        std::placeholders::_5, std::placeholders::_6)), \
+//        [] {return new AsyncHandler##KEWORD##; })
+
+//void RpcServerImpl::createHandlers(RpcService::AsyncService* service,
+//	grpc::ServerCompletionQueue* cq, boost::asio::io_service* io_service)
+//{
+//	HANDLER_MACRO(RpcServiceExample);
+//	//HANDLER_MACRO(Listen);
+//	HANDLER_MACRO(Login);
+//	HANDLER_MACRO(Ranking);
+//	HANDLER_MACRO(RankingList);
+//}
+
 int main()
 {
+#ifdef _WIN32
+    //! Windows netword DLL init
+    WORD version = MAKEWORD(2, 2);
+    WSADATA data;
+
+    if (WSAStartup(version, &data) != 0)
+    {
+        std::cerr << "WSAStartup() failure" << std::endl;
+        return 0;
+    }
+#endif
+
     //test_http();
 
     //std::thread t(test_process);
@@ -278,12 +443,17 @@ int main()
         return 0;
     }
 
-    //yyb::RunServer();
-    yyb::RpcServerImpl server;
+    //test_cache();
+
+	//yyb::RunServer();
+	yyb::RpcServerImpl server;
     server.Run();
-    
 
     //t.join();
+
+#ifdef _WIN32
+    WSACleanup();
+#endif 
 
     return 0;
 }

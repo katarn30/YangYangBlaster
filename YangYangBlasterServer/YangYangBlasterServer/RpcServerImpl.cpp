@@ -1,7 +1,9 @@
 #include "RpcServerImpl.h"
+#include "HealthCheckServiceImpl.h"
 #include "AsyncHandler.h"
-#include "AsyncHandlerRpcServiceExample.h"
-#include "AsyncHandlerLogin.h"
+#include "UserManager.h"
+#include "User.h"
+#include "CreateHandler.h"
 
 namespace yyb
 {
@@ -19,8 +21,9 @@ namespace yyb
     {
         std::string server_address("0.0.0.0:20051");
         //RpcServiceImpl service;
+        HealthCheckServiceImpl healthCheckService;
 
-        grpc::EnableDefaultHealthCheckService(true);
+        grpc::EnableDefaultHealthCheckService(false);
         grpc::reflection::InitProtoReflectionServerBuilderPlugin();
         grpc::ServerBuilder builder;
 
@@ -28,12 +31,27 @@ namespace yyb
         /*builder.AddChannelArgument(GRPC_ARG_KEEPALIVE_TIME_MS, 2000);
         builder.AddChannelArgument(GRPC_ARG_KEEPALIVE_TIMEOUT_MS, 1000);
         builder.AddChannelArgument(GRPC_ARG_HTTP2_BDP_PROBE, 1);*/
+        std::unique_ptr<grpc::HealthCheckServiceInterface> service(
+            new CustomHealthCheckService(&healthCheckService));
+        std::unique_ptr<grpc::ServerBuilderOption> option(
+            new grpc::HealthCheckServiceServerBuilderOption(std::move(service)));
+        builder.SetOption(std::move(option));
 
         // Listen on the given address without any authentication mechanism.
         builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
         // Register "service" as the instance through which we'll communicate with
         // clients. In this case it corresponds to an *synchronous* service.
         builder.RegisterService(&service_);
+        builder.RegisterService(&healthCheckService);
+
+        /*std::vector<
+            std::unique_ptr<grpc::experimental::ServerInterceptorFactoryInterface>>
+            creators;
+        creators.push_back(
+            std::unique_ptr<grpc::experimental::ServerInterceptorFactoryInterface>(
+                new SyncSendMessageVerifierFactory()));
+        builder.experimental().SetInterceptorCreators(std::move(creators));*/
+
         // Get hold of the completion queue used for the asynchronous communication
         // with the gRPC runtime.
 
@@ -77,15 +95,14 @@ namespace yyb
 	void RpcServerImpl::createHandlers(RpcService::AsyncService* service, 
         grpc::ServerCompletionQueue* cq, boost::asio::io_service* io_service)
 	{
-        HANDLER_MACRO(RpcServiceExample);
-        //HANDLER_MACRO(Listen);
-        HANDLER_MACRO(Login);
+        CreateHandler(service, cq, io_service);
 	}
 
     void RpcServerImpl::handleRpcs(RpcService::AsyncService* service, 
         grpc::ServerCompletionQueue* cq, boost::asio::io_service* io_service)
     {
         createHandlers(service, cq, io_service);
+        //createHandler(service, cq, io_service);
 
         void* tag = nullptr;
         bool ok = false;
@@ -111,4 +128,47 @@ namespace yyb
             }
         }
     }
+
+    //void SyncSendMessageVerifier::Intercept(
+    //    grpc::experimental::InterceptorBatchMethods* methods)
+    //{
+    //    if (methods->QueryInterceptionHookPoint(
+    //        grpc::experimental::InterceptionHookPoints::POST_RECV_INITIAL_METADATA)) {
+    //        // Make sure that the changes made in SyncSendMessageTester persisted
+    //        /*std::string old_msg =
+    //            static_cast<const grpc::health::v1::HealthCheckRequest*>(
+    //                methods->GetSendMessage())->message();*/
+
+    //        //const auto* metadata = methods->GetRecvInitialMetadata();
+    //        //if (metadata)
+    //        //{
+    //        //    auto metadataIter = metadata->find("access_key");
+    //        //    if (metadataIter != metadata->end())
+    //        //    {
+    //        //        //std::string accessKey = metadataIter->second.data();
+    //        //        std::string accessKey(metadataIter->second.begin(),
+    //        //            metadataIter->second.end());
+    //        //        yyb::user_ptr user = yyb::UserManager::Instance().GetUser(
+    //        //            accessKey);
+
+    //        //        if (user)
+    //        //        {
+    //        //        }
+    //        //    }
+    //        //}
+
+    //        //methods->GetInterceptedChannel()->GetState(true);
+    //        //methods->Hijack();
+    //        methods->FailHijackedRecvMessage();
+
+    //        //EXPECT_EQ(old_msg.find("World"), 0u);
+
+    //        // Remove the "World" part of the string that we added earlier
+    //        /*new_msg_.set_message(old_msg.erase(0, 5));
+    //        methods->ModifySendMessage(&new_msg_);*/
+
+    //        // LoggingInterceptor verifies that changes got reverted
+    //    }
+    //    methods->Proceed();
+    //}
 }
