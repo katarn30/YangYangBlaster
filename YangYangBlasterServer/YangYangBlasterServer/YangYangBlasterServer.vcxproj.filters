@@ -1,110 +1,131 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="AsyncHandler">
+      <UniqueIdentifier>{69014d96-baa4-4f23-883e-dac49a390b36}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{aeae7dd6-28aa-4897-b687-6d86eab5979b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="proto">
+    <Filter Include="Proto">
       <UniqueIdentifier>{933fdbfb-785b-467e-9706-cf4bd7fa8547}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Impl">
+      <UniqueIdentifier>{99150019-0899-4dde-8989-85fa025e711b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="rpc_service.grpc.pb.cc">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="rpc_service.pb.cc">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="RpcServiceImpl.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="DB.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="RpcServerImpl.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="AsyncHandler.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="AsyncHandlerRpcServiceExample.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>AsyncHandler</Filter>
     </ClCompile>
     <ClCompile Include="AsyncHandlerLogin.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>AsyncHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="AsyncHandlerRpcServiceExample.cpp">
+      <Filter>AsyncHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="DB.cpp">
+      <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="Cache.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="User.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="UserManager.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="health_check_service.grpc.pb.cc">
+      <Filter>Proto</Filter>
+    </ClCompile>
+    <ClCompile Include="health_check_service.pb.cc">
+      <Filter>Proto</Filter>
+    </ClCompile>
+    <ClCompile Include="HealthCheckServiceImpl.cpp">
+      <Filter>Impl</Filter>
+    </ClCompile>
+    <ClCompile Include="RpcServerImpl.cpp">
+      <Filter>Impl</Filter>
+    </ClCompile>
+    <ClCompile Include="RpcServiceImpl.cpp">
+      <Filter>Impl</Filter>
+    </ClCompile>
+    <ClCompile Include="rpc_service.grpc.pb.cc">
+      <Filter>Proto</Filter>
+    </ClCompile>
+    <ClCompile Include="rpc_service.pb.cc">
+      <Filter>Proto</Filter>
     </ClCompile>
     <ClCompile Include="Python.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="AsyncHandlerRanking.cpp">
+      <Filter>AsyncHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="AsyncHandlerRankingList.cpp">
+      <Filter>AsyncHandler</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="rpc_service.grpc.pb.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="rpc_service.pb.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="RpcServiceImpl.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="DB.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="GlobalDefine.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="RpcServerImpl.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="AsyncHandler.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="AsyncHandlerRpcServiceExample.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>AsyncHandler</Filter>
     </ClInclude>
     <ClInclude Include="AsyncHandlerLogin.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>AsyncHandler</Filter>
     </ClInclude>
-    <ClInclude Include="Cache.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="User.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="AsyncHandlerRpcServiceExample.h">
+      <Filter>AsyncHandler</Filter>
     </ClInclude>
     <ClInclude Include="UserManager.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="DB.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Cache.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="health_check_service.grpc.pb.h">
+      <Filter>Proto</Filter>
+    </ClInclude>
+    <ClInclude Include="health_check_service.pb.h">
+      <Filter>Proto</Filter>
+    </ClInclude>
+    <ClInclude Include="HealthCheckServiceImpl.h">
+      <Filter>Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="RpcServerImpl.h">
+      <Filter>Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="RpcServiceImpl.h">
+      <Filter>Impl</Filter>
+    </ClInclude>
+    <ClInclude Include="rpc_service.grpc.pb.h">
+      <Filter>Proto</Filter>
+    </ClInclude>
+    <ClInclude Include="rpc_service.pb.h">
+      <Filter>Proto</Filter>
     </ClInclude>
     <ClInclude Include="Python.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="GlobalDefine.h" />
+    <ClInclude Include="CreateHandler.h" />
+    <ClInclude Include="AsyncHandlerRanking.h">
+      <Filter>AsyncHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="AsyncHandlerRankingList.h">
+      <Filter>AsyncHandler</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="proto\rpc_service.proto">
-      <Filter>proto</Filter>
+      <Filter>Proto</Filter>
+    </None>
+    <None Include="proto\health_check_service.proto">
+      <Filter>Proto</Filter>
     </None>
   </ItemGroup>
 </Project>
