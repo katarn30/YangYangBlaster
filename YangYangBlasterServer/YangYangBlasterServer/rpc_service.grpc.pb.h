@@ -37,6 +37,7 @@ class RpcService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
+    // rpc 예시
     virtual ::grpc::Status RpcServiceExample(::grpc::ClientContext* context, const ::yyb::RpcServiceExampleRequest& request, ::yyb::RpcServiceExampleReply* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RpcServiceExampleReply>> AsyncRpcServiceExample(::grpc::ClientContext* context, const ::yyb::RpcServiceExampleRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RpcServiceExampleReply>>(AsyncRpcServiceExampleRaw(context, request, cq));
@@ -44,6 +45,7 @@ class RpcService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RpcServiceExampleReply>> PrepareAsyncRpcServiceExample(::grpc::ClientContext* context, const ::yyb::RpcServiceExampleRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RpcServiceExampleReply>>(PrepareAsyncRpcServiceExampleRaw(context, request, cq));
     }
+    // 푸시용 리슨 (서버 -> 클라)
     std::unique_ptr< ::grpc::ClientReaderInterface< ::yyb::PushNotification>> Listen(::grpc::ClientContext* context, const ::yyb::Empty& request) {
       return std::unique_ptr< ::grpc::ClientReaderInterface< ::yyb::PushNotification>>(ListenRaw(context, request));
     }
@@ -53,6 +55,7 @@ class RpcService final {
     std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::yyb::PushNotification>> PrepareAsyncListen(::grpc::ClientContext* context, const ::yyb::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncReaderInterface< ::yyb::PushNotification>>(PrepareAsyncListenRaw(context, request, cq));
     }
+    // 로그인 요청
     virtual ::grpc::Status Login(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::yyb::LoginReply* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::LoginReply>> AsyncLogin(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::LoginReply>>(AsyncLoginRaw(context, request, cq));
@@ -60,9 +63,26 @@ class RpcService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::LoginReply>> PrepareAsyncLogin(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::LoginReply>>(PrepareAsyncLoginRaw(context, request, cq));
     }
+    // 랭킹 기록 요청
+    virtual ::grpc::Status Ranking(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::yyb::RankingReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RankingReply>> AsyncRanking(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RankingReply>>(AsyncRankingRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RankingReply>> PrepareAsyncRanking(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RankingReply>>(PrepareAsyncRankingRaw(context, request, cq));
+    }
+    // 랭킹 리스트 요청
+    virtual ::grpc::Status RankingList(::grpc::ClientContext* context, const ::yyb::RankingListRequest& request, ::yyb::RankingListReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RankingListReply>> AsyncRankingList(::grpc::ClientContext* context, const ::yyb::RankingListRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RankingListReply>>(AsyncRankingListRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RankingListReply>> PrepareAsyncRankingList(::grpc::ClientContext* context, const ::yyb::RankingListRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RankingListReply>>(PrepareAsyncRankingListRaw(context, request, cq));
+    }
     class experimental_async_interface {
      public:
       virtual ~experimental_async_interface() {}
+      // rpc 예시
       virtual void RpcServiceExample(::grpc::ClientContext* context, const ::yyb::RpcServiceExampleRequest* request, ::yyb::RpcServiceExampleReply* response, std::function<void(::grpc::Status)>) = 0;
       virtual void RpcServiceExample(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RpcServiceExampleReply* response, std::function<void(::grpc::Status)>) = 0;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -75,11 +95,13 @@ class RpcService final {
       #else
       virtual void RpcServiceExample(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RpcServiceExampleReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
+      // 푸시용 리슨 (서버 -> 클라)
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void Listen(::grpc::ClientContext* context, ::yyb::Empty* request, ::grpc::ClientReadReactor< ::yyb::PushNotification>* reactor) = 0;
       #else
       virtual void Listen(::grpc::ClientContext* context, ::yyb::Empty* request, ::grpc::experimental::ClientReadReactor< ::yyb::PushNotification>* reactor) = 0;
       #endif
+      // 로그인 요청
       virtual void Login(::grpc::ClientContext* context, const ::yyb::LoginRequest* request, ::yyb::LoginReply* response, std::function<void(::grpc::Status)>) = 0;
       virtual void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::LoginReply* response, std::function<void(::grpc::Status)>) = 0;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -91,6 +113,32 @@ class RpcService final {
       virtual void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::LoginReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       #else
       virtual void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::LoginReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      // 랭킹 기록 요청
+      virtual void Ranking(::grpc::ClientContext* context, const ::yyb::RankingRequest* request, ::yyb::RankingReply* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void Ranking(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RankingReply* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void Ranking(::grpc::ClientContext* context, const ::yyb::RankingRequest* request, ::yyb::RankingReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void Ranking(::grpc::ClientContext* context, const ::yyb::RankingRequest* request, ::yyb::RankingReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void Ranking(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RankingReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void Ranking(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RankingReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      // 랭킹 리스트 요청
+      virtual void RankingList(::grpc::ClientContext* context, const ::yyb::RankingListRequest* request, ::yyb::RankingListReply* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void RankingList(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RankingListReply* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void RankingList(::grpc::ClientContext* context, const ::yyb::RankingListRequest* request, ::yyb::RankingListReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void RankingList(::grpc::ClientContext* context, const ::yyb::RankingListRequest* request, ::yyb::RankingListReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void RankingList(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RankingListReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void RankingList(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RankingListReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
     };
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -108,6 +156,10 @@ class RpcService final {
     virtual ::grpc::ClientAsyncReaderInterface< ::yyb::PushNotification>* PrepareAsyncListenRaw(::grpc::ClientContext* context, const ::yyb::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::yyb::LoginReply>* AsyncLoginRaw(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::yyb::LoginReply>* PrepareAsyncLoginRaw(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RankingReply>* AsyncRankingRaw(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RankingReply>* PrepareAsyncRankingRaw(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RankingListReply>* AsyncRankingListRaw(::grpc::ClientContext* context, const ::yyb::RankingListRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RankingListReply>* PrepareAsyncRankingListRaw(::grpc::ClientContext* context, const ::yyb::RankingListRequest& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -134,6 +186,20 @@ class RpcService final {
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::LoginReply>> PrepareAsyncLogin(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::LoginReply>>(PrepareAsyncLoginRaw(context, request, cq));
+    }
+    ::grpc::Status Ranking(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::yyb::RankingReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::RankingReply>> AsyncRanking(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::RankingReply>>(AsyncRankingRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::RankingReply>> PrepareAsyncRanking(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::RankingReply>>(PrepareAsyncRankingRaw(context, request, cq));
+    }
+    ::grpc::Status RankingList(::grpc::ClientContext* context, const ::yyb::RankingListRequest& request, ::yyb::RankingListReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::RankingListReply>> AsyncRankingList(::grpc::ClientContext* context, const ::yyb::RankingListRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::RankingListReply>>(AsyncRankingListRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::RankingListReply>> PrepareAsyncRankingList(::grpc::ClientContext* context, const ::yyb::RankingListRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::RankingListReply>>(PrepareAsyncRankingListRaw(context, request, cq));
     }
     class experimental_async final :
       public StubInterface::experimental_async_interface {
@@ -167,6 +233,30 @@ class RpcService final {
       #else
       void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::LoginReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
+      void Ranking(::grpc::ClientContext* context, const ::yyb::RankingRequest* request, ::yyb::RankingReply* response, std::function<void(::grpc::Status)>) override;
+      void Ranking(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RankingReply* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void Ranking(::grpc::ClientContext* context, const ::yyb::RankingRequest* request, ::yyb::RankingReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void Ranking(::grpc::ClientContext* context, const ::yyb::RankingRequest* request, ::yyb::RankingReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void Ranking(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RankingReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void Ranking(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RankingReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      void RankingList(::grpc::ClientContext* context, const ::yyb::RankingListRequest* request, ::yyb::RankingListReply* response, std::function<void(::grpc::Status)>) override;
+      void RankingList(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RankingListReply* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void RankingList(::grpc::ClientContext* context, const ::yyb::RankingListRequest* request, ::yyb::RankingListReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void RankingList(::grpc::ClientContext* context, const ::yyb::RankingListRequest* request, ::yyb::RankingListReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void RankingList(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RankingListReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void RankingList(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RankingListReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
      private:
       friend class Stub;
       explicit experimental_async(Stub* stub): stub_(stub) { }
@@ -185,9 +275,15 @@ class RpcService final {
     ::grpc::ClientAsyncReader< ::yyb::PushNotification>* PrepareAsyncListenRaw(::grpc::ClientContext* context, const ::yyb::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::yyb::LoginReply>* AsyncLoginRaw(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::yyb::LoginReply>* PrepareAsyncLoginRaw(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::yyb::RankingReply>* AsyncRankingRaw(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::yyb::RankingReply>* PrepareAsyncRankingRaw(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::yyb::RankingListReply>* AsyncRankingListRaw(::grpc::ClientContext* context, const ::yyb::RankingListRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::yyb::RankingListReply>* PrepareAsyncRankingListRaw(::grpc::ClientContext* context, const ::yyb::RankingListRequest& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_RpcServiceExample_;
     const ::grpc::internal::RpcMethod rpcmethod_Listen_;
     const ::grpc::internal::RpcMethod rpcmethod_Login_;
+    const ::grpc::internal::RpcMethod rpcmethod_Ranking_;
+    const ::grpc::internal::RpcMethod rpcmethod_RankingList_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -195,9 +291,16 @@ class RpcService final {
    public:
     Service();
     virtual ~Service();
+    // rpc 예시
     virtual ::grpc::Status RpcServiceExample(::grpc::ServerContext* context, const ::yyb::RpcServiceExampleRequest* request, ::yyb::RpcServiceExampleReply* response);
+    // 푸시용 리슨 (서버 -> 클라)
     virtual ::grpc::Status Listen(::grpc::ServerContext* context, const ::yyb::Empty* request, ::grpc::ServerWriter< ::yyb::PushNotification>* writer);
+    // 로그인 요청
     virtual ::grpc::Status Login(::grpc::ServerContext* context, const ::yyb::LoginRequest* request, ::yyb::LoginReply* response);
+    // 랭킹 기록 요청
+    virtual ::grpc::Status Ranking(::grpc::ServerContext* context, const ::yyb::RankingRequest* request, ::yyb::RankingReply* response);
+    // 랭킹 리스트 요청
+    virtual ::grpc::Status RankingList(::grpc::ServerContext* context, const ::yyb::RankingListRequest* request, ::yyb::RankingListReply* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_RpcServiceExample : public BaseClass {
@@ -259,7 +362,47 @@ class RpcService final {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_RpcServiceExample<WithAsyncMethod_Listen<WithAsyncMethod_Login<Service > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_Ranking : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_Ranking() {
+      ::grpc::Service::MarkMethodAsync(3);
+    }
+    ~WithAsyncMethod_Ranking() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Ranking(::grpc::ServerContext* /*context*/, const ::yyb::RankingRequest* /*request*/, ::yyb::RankingReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRanking(::grpc::ServerContext* context, ::yyb::RankingRequest* request, ::grpc::ServerAsyncResponseWriter< ::yyb::RankingReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_RankingList : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_RankingList() {
+      ::grpc::Service::MarkMethodAsync(4);
+    }
+    ~WithAsyncMethod_RankingList() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RankingList(::grpc::ServerContext* /*context*/, const ::yyb::RankingListRequest* /*request*/, ::yyb::RankingListReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRankingList(::grpc::ServerContext* context, ::yyb::RankingListRequest* request, ::grpc::ServerAsyncResponseWriter< ::yyb::RankingListReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_RpcServiceExample<WithAsyncMethod_Listen<WithAsyncMethod_Login<WithAsyncMethod_Ranking<WithAsyncMethod_RankingList<Service > > > > > AsyncService;
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_RpcServiceExample : public BaseClass {
    private:
@@ -392,11 +535,105 @@ class RpcService final {
     #endif
       { return nullptr; }
   };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_Ranking : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_Ranking() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(3,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::yyb::RankingRequest, ::yyb::RankingReply>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::yyb::RankingRequest* request, ::yyb::RankingReply* response) { return this->Ranking(context, request, response); }));}
+    void SetMessageAllocatorFor_Ranking(
+        ::grpc::experimental::MessageAllocator< ::yyb::RankingRequest, ::yyb::RankingReply>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(3);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::yyb::RankingRequest, ::yyb::RankingReply>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_Ranking() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Ranking(::grpc::ServerContext* /*context*/, const ::yyb::RankingRequest* /*request*/, ::yyb::RankingReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* Ranking(
+      ::grpc::CallbackServerContext* /*context*/, const ::yyb::RankingRequest* /*request*/, ::yyb::RankingReply* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* Ranking(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::yyb::RankingRequest* /*request*/, ::yyb::RankingReply* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_RankingList : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_RankingList() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(4,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::yyb::RankingListRequest, ::yyb::RankingListReply>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::yyb::RankingListRequest* request, ::yyb::RankingListReply* response) { return this->RankingList(context, request, response); }));}
+    void SetMessageAllocatorFor_RankingList(
+        ::grpc::experimental::MessageAllocator< ::yyb::RankingListRequest, ::yyb::RankingListReply>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(4);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::yyb::RankingListRequest, ::yyb::RankingListReply>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_RankingList() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RankingList(::grpc::ServerContext* /*context*/, const ::yyb::RankingListRequest* /*request*/, ::yyb::RankingListReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* RankingList(
+      ::grpc::CallbackServerContext* /*context*/, const ::yyb::RankingListRequest* /*request*/, ::yyb::RankingListReply* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* RankingList(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::yyb::RankingListRequest* /*request*/, ::yyb::RankingListReply* /*response*/)
+    #endif
+      { return nullptr; }
+  };
   #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-  typedef ExperimentalWithCallbackMethod_RpcServiceExample<ExperimentalWithCallbackMethod_Listen<ExperimentalWithCallbackMethod_Login<Service > > > CallbackService;
+  typedef ExperimentalWithCallbackMethod_RpcServiceExample<ExperimentalWithCallbackMethod_Listen<ExperimentalWithCallbackMethod_Login<ExperimentalWithCallbackMethod_Ranking<ExperimentalWithCallbackMethod_RankingList<Service > > > > > CallbackService;
   #endif
 
-  typedef ExperimentalWithCallbackMethod_RpcServiceExample<ExperimentalWithCallbackMethod_Listen<ExperimentalWithCallbackMethod_Login<Service > > > ExperimentalCallbackService;
+  typedef ExperimentalWithCallbackMethod_RpcServiceExample<ExperimentalWithCallbackMethod_Listen<ExperimentalWithCallbackMethod_Login<ExperimentalWithCallbackMethod_Ranking<ExperimentalWithCallbackMethod_RankingList<Service > > > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_RpcServiceExample : public BaseClass {
    private:
@@ -444,6 +681,40 @@ class RpcService final {
     }
     // disable synchronous version of this method
     ::grpc::Status Login(::grpc::ServerContext* /*context*/, const ::yyb::LoginRequest* /*request*/, ::yyb::LoginReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_Ranking : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_Ranking() {
+      ::grpc::Service::MarkMethodGeneric(3);
+    }
+    ~WithGenericMethod_Ranking() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Ranking(::grpc::ServerContext* /*context*/, const ::yyb::RankingRequest* /*request*/, ::yyb::RankingReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_RankingList : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_RankingList() {
+      ::grpc::Service::MarkMethodGeneric(4);
+    }
+    ~WithGenericMethod_RankingList() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RankingList(::grpc::ServerContext* /*context*/, const ::yyb::RankingListRequest* /*request*/, ::yyb::RankingListReply* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -506,6 +777,46 @@ class RpcService final {
     }
     void RequestLogin(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_Ranking : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_Ranking() {
+      ::grpc::Service::MarkMethodRaw(3);
+    }
+    ~WithRawMethod_Ranking() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Ranking(::grpc::ServerContext* /*context*/, const ::yyb::RankingRequest* /*request*/, ::yyb::RankingReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRanking(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_RankingList : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_RankingList() {
+      ::grpc::Service::MarkMethodRaw(4);
+    }
+    ~WithRawMethod_RankingList() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RankingList(::grpc::ServerContext* /*context*/, const ::yyb::RankingListRequest* /*request*/, ::yyb::RankingListReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestRankingList(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -623,6 +934,82 @@ class RpcService final {
       { return nullptr; }
   };
   template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_Ranking : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_Ranking() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(3,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Ranking(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_Ranking() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status Ranking(::grpc::ServerContext* /*context*/, const ::yyb::RankingRequest* /*request*/, ::yyb::RankingReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* Ranking(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* Ranking(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_RankingList : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_RankingList() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(4,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->RankingList(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_RankingList() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status RankingList(::grpc::ServerContext* /*context*/, const ::yyb::RankingListRequest* /*request*/, ::yyb::RankingListReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* RankingList(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* RankingList(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_RpcServiceExample : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -662,7 +1049,47 @@ class RpcService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedLogin(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::yyb::LoginRequest,::yyb::LoginReply>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_RpcServiceExample<WithStreamedUnaryMethod_Login<Service > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_Ranking : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_Ranking() {
+      ::grpc::Service::MarkMethodStreamed(3,
+        new ::grpc::internal::StreamedUnaryHandler< ::yyb::RankingRequest, ::yyb::RankingReply>(std::bind(&WithStreamedUnaryMethod_Ranking<BaseClass>::StreamedRanking, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_Ranking() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status Ranking(::grpc::ServerContext* /*context*/, const ::yyb::RankingRequest* /*request*/, ::yyb::RankingReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedRanking(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::yyb::RankingRequest,::yyb::RankingReply>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_RankingList : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_RankingList() {
+      ::grpc::Service::MarkMethodStreamed(4,
+        new ::grpc::internal::StreamedUnaryHandler< ::yyb::RankingListRequest, ::yyb::RankingListReply>(std::bind(&WithStreamedUnaryMethod_RankingList<BaseClass>::StreamedRankingList, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_RankingList() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status RankingList(::grpc::ServerContext* /*context*/, const ::yyb::RankingListRequest* /*request*/, ::yyb::RankingListReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedRankingList(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::yyb::RankingListRequest,::yyb::RankingListReply>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_RpcServiceExample<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Ranking<WithStreamedUnaryMethod_RankingList<Service > > > > StreamedUnaryService;
   template <class BaseClass>
   class WithSplitStreamingMethod_Listen : public BaseClass {
    private:
@@ -684,7 +1111,7 @@ class RpcService final {
     virtual ::grpc::Status StreamedListen(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::yyb::Empty,::yyb::PushNotification>* server_split_streamer) = 0;
   };
   typedef WithSplitStreamingMethod_Listen<Service > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_RpcServiceExample<WithSplitStreamingMethod_Listen<WithStreamedUnaryMethod_Login<Service > > > StreamedService;
+  typedef WithStreamedUnaryMethod_RpcServiceExample<WithSplitStreamingMethod_Listen<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Ranking<WithStreamedUnaryMethod_RankingList<Service > > > > > StreamedService;
 };
 
 }  // namespace yyb

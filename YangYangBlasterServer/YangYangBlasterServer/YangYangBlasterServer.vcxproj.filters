@@ -59,12 +59,6 @@
     </ClCompile>
     <ClCompile Include="User.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="AsyncHandlerRanking.cpp">
-      <Filter>AsyncHandler</Filter>
-    </ClCompile>
-    <ClCompile Include="AsyncHandlerRankingList.cpp">
-      <Filter>AsyncHandler</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AsyncHandler.h">
@@ -113,12 +107,6 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="GlobalDefine.h" />
     <ClInclude Include="CreateHandler.h" />
-    <ClInclude Include="AsyncHandlerRanking.h">
-      <Filter>AsyncHandler</Filter>
-    </ClInclude>
-    <ClInclude Include="AsyncHandlerRankingList.h">
-      <Filter>AsyncHandler</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="proto\rpc_service.proto">

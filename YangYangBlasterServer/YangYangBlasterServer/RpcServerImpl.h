@@ -3,11 +3,13 @@
 #include "stdafx.h"
 #include "rpc_service.pb.h"
 #include "rpc_service.grpc.pb.h"
+#include "health_check_service.pb.h"
+#include "health_check_service.grpc.pb.h"
 
 namespace yyb
 {
     using scq_ptr = std::unique_ptr<grpc::ServerCompletionQueue>;
-
+    
 	class RpcServerImpl final
 	{
 	public:
@@ -29,5 +31,23 @@ namespace yyb
         boost::asio::io_service io_service_;
         boost::asio::io_service::work work_;
 	};
-}
 
+    //class SyncSendMessageVerifier : public grpc::experimental::Interceptor {
+    //public:
+    //    SyncSendMessageVerifier(grpc::experimental::ServerRpcInfo* info) {}
+
+    //    void Intercept(grpc::experimental::InterceptorBatchMethods* methods) override;
+
+    //private:
+    //    //grpc::health::v1::HealthCheckRequest new_msg_;
+    //};
+
+    //class SyncSendMessageVerifierFactory
+    //    : public grpc::experimental::ServerInterceptorFactoryInterface {
+    //public:
+    //    virtual grpc::experimental::Interceptor* CreateServerInterceptor(
+    //        grpc::experimental::ServerRpcInfo* info) override {
+    //        return new SyncSendMessageVerifier(info);
+    //    }
+    //};
+}

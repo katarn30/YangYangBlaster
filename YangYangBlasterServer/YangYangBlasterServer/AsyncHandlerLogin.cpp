@@ -8,6 +8,13 @@
 
 namespace yyb
 {
+	bool AsyncHandlerLogin::VerifyMessage(
+		const grpc_impl::ServerContext& context,
+		const LoginRequest& request, LoginReply& reply)
+	{
+		return true;
+	}
+
 	void AsyncHandlerLogin::OnRead(const LoginRequest& request,
 		LoginReply& reply)
 	{
@@ -20,14 +27,14 @@ namespace yyb
 		{
 			if (request.idtoken().empty())
 			{
-				reply.set_error(LoginReply::ERROR_CODE_EMPTY_ID_TOKEN);
+				reply.set_error(ERROR_CODE_EMPTY_ID_TOKEN);
 				return;
 			}
 
 			// idToken으로 구글 유저 접속 정보 확인
 			if (false == CallGoogleVerifyOauth2Token(request.idtoken(), sub))
 			{
-				reply.set_error(LoginReply::ERROR_CODE_GOOGLE_AUTH_FAILED);
+				reply.set_error(ERROR_CODE_GOOGLE_AUTH_FAILED);
 				return;
 			}
 		}
@@ -38,7 +45,7 @@ namespace yyb
 			// 유저 새로 만들어야하는데 닉네임이 없음..
 			if (request.nickname().empty())
 			{
-				reply.set_error(LoginReply::ERROR_CODE_EMPTY_NICKNAME);
+				reply.set_error(ERROR_CODE_EMPTY_NICKNAME);
 				return;
 			}
 
@@ -46,14 +53,14 @@ namespace yyb
 			if (DoesNickNameHaveSpecialCharacters(request.nickname()))
 			{
 				reply.set_error(
-					LoginReply::ERROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS);
+					ERROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS);
 				return;
 			}
 
 			// nickName 중복 체크
 			if (IsNickNameDuplication(request.nickname()))
 			{
-				reply.set_error(LoginReply::ERROR_CODE_DUP_NICKNAME);
+				reply.set_error(ERROR_CODE_DUP_NICKNAME);
 				return;
 			}
 
@@ -61,7 +68,7 @@ namespace yyb
 			if (false == CreateUser(request.nickname(), request.logintype(),
 				"KR", 0, sub, user))
 			{
-				reply.set_error(LoginReply::ERROR_CODE_UNABLE_TO_CREATE_USER);
+				reply.set_error(ERROR_CODE_UNABLE_TO_CREATE_USER);
 				return;
 			}
 		}
@@ -74,7 +81,7 @@ namespace yyb
 				if (false == UpdateUserLoginKey(request.loginkey(), sub))
 				{
 					reply.set_error(
-						LoginReply::ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY);
+						ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY);
 					return;
 				}
 
@@ -83,7 +90,7 @@ namespace yyb
 					request.logintype()))
 				{
 					reply.set_error(
-						LoginReply::ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE);
+						ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE);
 					return;
 				}
 
@@ -91,7 +98,7 @@ namespace yyb
 				if (false == GetUser(sub, user))
 				{
 					reply.set_error(
-						LoginReply::ERROR_CODE_FAILED_TO_ACQUIRE_USER_INFO);
+						ERROR_CODE_FAILED_TO_GET_USER);
 					return;
 				}
 			}
@@ -101,7 +108,7 @@ namespace yyb
 				if (false == GetUser(request.loginkey(), user))
 				{
 					reply.set_error(
-						LoginReply::ERROR_CODE_FAILED_TO_ACQUIRE_USER_INFO);
+						ERROR_CODE_FAILED_TO_GET_USER);
 					return;
 				}
 			}
@@ -112,7 +119,7 @@ namespace yyb
 			if (false == GetUser(request.loginkey(), user))
 			{
 				reply.set_error(
-					LoginReply::ERROR_CODE_FAILED_TO_ACQUIRE_USER_INFO);
+					ERROR_CODE_FAILED_TO_GET_USER);
 				return;
 			}
 
@@ -127,7 +134,7 @@ namespace yyb
 						request.logintype()))
 					{
 						reply.set_error(
-							LoginReply::ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE);
+							ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE);
 						return;
 					}
 
@@ -135,129 +142,26 @@ namespace yyb
 					if (false == GetUser(request.loginkey(), user))
 					{
 						reply.set_error(
-							LoginReply::ERROR_CODE_FAILED_TO_ACQUIRE_USER_INFO);
+							ERROR_CODE_FAILED_TO_GET_USER);
 						return;
 					}
 				}
 				else
 				{
+					// 로그인 타입이 다름. (ex: 이전 구글, 지금 페북)
 					reply.set_error(
-						LoginReply::ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT);
+						ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT);
 					return;
 				}
 			}
 		}
 
-		//if (LoginRequest::LOGIN_TYPE_NON_CERT == request.logintype())
-		//{
-		//	// LOGINTYPE == 0
-
-		//	// usn == 0 이면 DB에 새 계정 입력하고 usn 발급. 아니면 DB 조회
-		//	if (0 == request.usn() || request.loginkey().empty())
-		//	{
-		//		// 특수문자 체크
-		//		if (DoesNickNameHaveSpecialCharacters(request.nickname()))
-		//		{
-		//			reply.set_error(
-		//				LoginReply::ERROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS);
-		//			return;
-		//		}
-
-		//		// nickName 중복 체크
-		//		if (IsNickNameDuplication(request.nickname()))
-		//		{
-		//			reply.set_error(LoginReply::ERROR_CODE_DUP_NICKNAME);
-		//			return;
-		//		}
-
-		//		// 유저 생성. 새 usn, login_key 발급
-		//		if (false == CreateUser(request.nickname(), request.logintype(),
-		//			"KR", 0, user))
-		//		{
-		//			reply.set_error(LoginReply::ERROR_CODE_UNABLE_TO_CREATE_USER);
-		//			return;
-		//		}
-		//	}
-		//	else
-		//	{
-		//		// 유저 정보 획득
-		//		if (false == GetUser(request.usn(), request.nickname(), user))
-		//		{
-		//			reply.set_error(
-		//				LoginReply::ERROR_CODE_FAILED_TO_ACQUIRE_USER_INFO);
-		//			return;
-		//		}
-		//	}
-		//}
-		//else if (LoginRequest::LOGIN_TYPE_GOOGLE == request.logintype())
-		//{
-		//	// LOGINTYPE == 1
-		//	// usn == 0 이면 DB에 새 계정 입력하고 usn 발급.아니면 DB 조회
-		//	if (0 == request.usn())
-		//	{
-		//		// 특수문자 체크
-		//		if (DoesNickNameHaveSpecialCharacters(request.nickname()))
-		//		{
-		//			reply.set_error(
-		//				LoginReply::ERROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS);
-		//			return;
-		//		}
-
-		//		// idToken으로 구글 유저 접속 정보 확인
-		//		if (false == CallHttpGoogleApiTokenInfo(request.idtoken()))
-		//		{
-		//			reply.set_error(LoginReply::ERROR_CODE_GOOGLE_AUTH_FAILED);
-		//			return;
-		//		}
-
-		//		// nickName 중복 체크
-		//		if (IsNickNameDuplication(request.nickname()))
-		//		{
-		//			reply.set_error(LoginReply::ERROR_CODE_DUP_NICKNAME);
-		//			return;
-		//		}
-
-		//		// 유저 생성. 새 usn 발급
-		//		if (false == CreateUser(request.nickname(), request.logintype(),
-		//			"KR", 0, user))
-		//		{
-		//			reply.set_error(LoginReply::ERROR_CODE_UNABLE_TO_CREATE_USER);
-		//			return;
-		//		}
-		//	}
-		//	else
-		//	{
-		//		// idToken으로 구글 유저 접속 정보 확인
-		//		if (false == CallHttpGoogleApiTokenInfo(request.idtoken()))
-		//		{
-		//			reply.set_error(LoginReply::ERROR_CODE_GOOGLE_AUTH_FAILED);
-		//			return;
-		//		}
-
-		//		// 유저 정보 획득
-		//		if (false == GetUser(request.usn(), request.nickname(), user))
-		//		{
-		//			reply.set_error(
-		//				LoginReply::ERROR_CODE_FAILED_TO_ACQUIRE_USER_INFO);
-		//			return;
-		//		}
-		//	}
-		//}
-		//else if (LoginRequest::LOGIN_TYPE_FACEBOOK == request.logintype())
-		//{
-
-		//}
-		//else
-		//{
-		//	// logintype error
-		//}
-
 		// 유저정보 획득하여 메모리에 올림
-		UserManager::Instance().AddUser(user.usn_,
+		UserManager::Instance().AddUser(user.accessKey_,
 			std::make_shared<User>(user));
 
 		// 결과 리턴
-		reply.set_error(LoginReply::ERROR_CODE_OK);
+		reply.set_error(ERROR_CODE_OK);
 		reply.set_usn(user.usn_);
 		reply.set_nickname(user.nickName_);
 		reply.set_loginkey(user.loginKey_);
@@ -499,8 +403,6 @@ namespace yyb
 	bool AsyncHandlerLogin::GetUser(const std::string& loginKey, OUT User& outUser)
 	{
 		int usn = 0;
-		/*LoginRequest::LOGIN_TYPE loginType =
-			LoginRequest::LOGIN_TYPE_NON_CERT;*/
 		int loginType = 0;
 		std::string nickName = "";
 		std::string countryCode = "";
@@ -623,14 +525,4 @@ namespace yyb
 
 		return true;
 	}
-
-	/*bool AsyncHandlerLogin::UpdateUserAccessKey(int usn)
-	{
-		return true;
-	}
-	bool AsyncHandlerLogin::GetUserAccessKey(int usn, OUT std::string& outAccessKey,
-		OUT int outAccessKeyUpdateTime)
-	{
-		return true;
-	}*/
 }

@@ -3,7 +3,8 @@
 #include "stdafx.h"
 #include "rpc_service.pb.h"
 #include "rpc_service.grpc.pb.h"
-#include <mutex>
+#include "UserManager.h"
+#include "User.h"
 //namespace boost
 //{
 //    namespace asio
@@ -31,7 +32,8 @@ namespace yyb
         using CREATE_FUNC = std::function<AsyncHandlerType*()>;
 
         AsyncHandler()
-            : service_(nullptr), cq_(nullptr), io_service_(nullptr),
+            : service_(nullptr), cq_(nullptr), 
+            io_service_(nullptr), user_(nullptr),
             responder_(&ctx_), status_(PROCESS) {}
 
         void Proceed() override
@@ -42,12 +44,21 @@ namespace yyb
                 AsyncHandlerType::CreateRequest(service_, cq_, io_service_, 
                     requestFunc_, createFunc_);
 
-				io_service_->post([this]
-					{
-						io_service_->dispatch(boost::bind(&AsyncHandlerType::OnRead, this,
-							boost::ref(request_), boost::ref(reply_)));
+                io_service_->post([this]
+                    {
+                        /*io_service_->dispatch(boost::bind(&AsyncHandlerType::OnRead, this,
+                            boost::ref(request_), boost::ref(reply_)));
 
-                        io_service_->dispatch([this] {Finish(); });
+                        io_service_->dispatch([this] {Finish(); });*/
+
+                        bool verified = VerifyMessage(ctx_, request_, reply_);
+
+                        if (verified)
+                        {
+                            OnRead(request_, reply_);
+                        }
+
+                        Finish();
 					});
                 //OnRead(request_, reply_);
                                 
@@ -61,9 +72,13 @@ namespace yyb
             {
                 io_service_->post([this]
                     {
-                        io_service_->dispatch(boost::bind(&AsyncHandlerType::OnWrite, this));
+                        /*io_service_->dispatch(boost::bind(&AsyncHandlerType::OnWrite, this));
 
-                        io_service_->dispatch([this] { delete this; });
+                        io_service_->dispatch([this] { delete this; });*/
+
+                        OnWrite();
+
+                        delete this;
                     });
 
                 //OnWrite();
@@ -76,6 +91,36 @@ namespace yyb
             }
         }
 
+        virtual bool VerifyMessage(const grpc_impl::ServerContext& context, 
+            const REQUEST& request, REPLY& reply)
+        {
+            // Access key 체크. 로그인할때는 체크 안함
+            const auto& metadata = context.client_metadata();
+            auto metadataIter = metadata.find("access_key");
+            if (metadataIter != metadata.end())
+            {
+                std::string accessKey(metadataIter->second.begin(),
+                    metadataIter->second.end());
+                user_ = UserManager::Instance().GetUser(accessKey);
+
+                // 메모리에 유저 정보가 없음
+				if (nullptr == user_)
+				{
+                    reply_.set_error(ERROR_CODE_FAILED_TO_GET_USER);
+                    return false;
+				}
+
+                // 키 만료 체크
+				if (user_->GetAccessKeyUpdateTime() + 20 * 60 * 1000
+					< time(0))
+				{
+					reply_.set_error(ERROR_CODE_ACCESS_KEY_HAS_EXPIRED);
+					return false;
+				}
+            }
+
+            return true;
+        }
         virtual void OnRead(const REQUEST& request, REPLY& reply) {}
         virtual void OnWrite() {}
         
@@ -124,6 +169,11 @@ namespace yyb
             responder_.Finish(reply_, grpc::Status::OK, this);
         }
 
+        user_ptr GetUser()
+        {
+            return user_;
+        }
+
     protected:
         //std::mutex mutex_;
         RpcService::AsyncService* service_;
@@ -142,6 +192,8 @@ namespace yyb
 
         boost::asio::io_service* io_service_;
         std::unique_ptr<boost::asio::io_service::strand> strand_;
+
+        user_ptr user_;
 	};
 }
 

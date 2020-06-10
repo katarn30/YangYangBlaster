@@ -24,4 +24,5 @@ namespace yyb
     };
 
     const std::string CACHE_KEY_USER_ID_TOKEN = "user_id_token";
+    const std::string CACHE_KEY_RANKING = "ranking";
 }

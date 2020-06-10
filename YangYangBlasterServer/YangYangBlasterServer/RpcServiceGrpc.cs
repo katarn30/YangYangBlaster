@@ -21,6 +21,10 @@ namespace Yyb {
     static readonly grpc::Marshaller<global::Yyb.PushNotification> __Marshaller_yyb_PushNotification = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Yyb.PushNotification.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Yyb.LoginRequest> __Marshaller_yyb_LoginRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Yyb.LoginRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Yyb.LoginReply> __Marshaller_yyb_LoginReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Yyb.LoginReply.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Yyb.RankingRequest> __Marshaller_yyb_RankingRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Yyb.RankingRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Yyb.RankingReply> __Marshaller_yyb_RankingReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Yyb.RankingReply.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Yyb.RankingListRequest> __Marshaller_yyb_RankingListRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Yyb.RankingListRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Yyb.RankingListReply> __Marshaller_yyb_RankingListReply = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Yyb.RankingListReply.Parser.ParseFrom);
 
     static readonly grpc::Method<global::Yyb.RpcServiceExampleRequest, global::Yyb.RpcServiceExampleReply> __Method_RpcServiceExample = new grpc::Method<global::Yyb.RpcServiceExampleRequest, global::Yyb.RpcServiceExampleReply>(
         grpc::MethodType.Unary,
@@ -43,6 +47,20 @@ namespace Yyb {
         __Marshaller_yyb_LoginRequest,
         __Marshaller_yyb_LoginReply);
 
+    static readonly grpc::Method<global::Yyb.RankingRequest, global::Yyb.RankingReply> __Method_Ranking = new grpc::Method<global::Yyb.RankingRequest, global::Yyb.RankingReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Ranking",
+        __Marshaller_yyb_RankingRequest,
+        __Marshaller_yyb_RankingReply);
+
+    static readonly grpc::Method<global::Yyb.RankingListRequest, global::Yyb.RankingListReply> __Method_RankingList = new grpc::Method<global::Yyb.RankingListRequest, global::Yyb.RankingListReply>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "RankingList",
+        __Marshaller_yyb_RankingListRequest,
+        __Marshaller_yyb_RankingListReply);
+
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
@@ -53,17 +71,58 @@ namespace Yyb {
     [grpc::BindServiceMethod(typeof(RpcService), "BindService")]
     public abstract partial class RpcServiceBase
     {
+      /// <summary>
+      /// rpc 예시
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
       public virtual global::System.Threading.Tasks.Task<global::Yyb.RpcServiceExampleReply> RpcServiceExample(global::Yyb.RpcServiceExampleRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      /// <summary>
+      /// 푸시용 리슨 (서버 -> 클라)
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="responseStream">Used for sending responses back to the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>A task indicating completion of the handler.</returns>
       public virtual global::System.Threading.Tasks.Task Listen(global::Yyb.Empty request, grpc::IServerStreamWriter<global::Yyb.PushNotification> responseStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      /// <summary>
+      /// 로그인 요청
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
       public virtual global::System.Threading.Tasks.Task<global::Yyb.LoginReply> Login(global::Yyb.LoginRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// 랭킹 기록 요청
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      public virtual global::System.Threading.Tasks.Task<global::Yyb.RankingReply> Ranking(global::Yyb.RankingRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// 랭킹 리스트 요청
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      public virtual global::System.Threading.Tasks.Task<global::Yyb.RankingListReply> RankingList(global::Yyb.RankingListRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -93,45 +152,203 @@ namespace Yyb {
       {
       }
 
+      /// <summary>
+      /// rpc 예시
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
       public virtual global::Yyb.RpcServiceExampleReply RpcServiceExample(global::Yyb.RpcServiceExampleRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return RpcServiceExample(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
+      /// <summary>
+      /// rpc 예시
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
       public virtual global::Yyb.RpcServiceExampleReply RpcServiceExample(global::Yyb.RpcServiceExampleRequest request, grpc::CallOptions options)
       {
         return CallInvoker.BlockingUnaryCall(__Method_RpcServiceExample, null, options, request);
       }
+      /// <summary>
+      /// rpc 예시
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
       public virtual grpc::AsyncUnaryCall<global::Yyb.RpcServiceExampleReply> RpcServiceExampleAsync(global::Yyb.RpcServiceExampleRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return RpcServiceExampleAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
+      /// <summary>
+      /// rpc 예시
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
       public virtual grpc::AsyncUnaryCall<global::Yyb.RpcServiceExampleReply> RpcServiceExampleAsync(global::Yyb.RpcServiceExampleRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_RpcServiceExample, null, options, request);
       }
+      /// <summary>
+      /// 푸시용 리슨 (서버 -> 클라)
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
       public virtual grpc::AsyncServerStreamingCall<global::Yyb.PushNotification> Listen(global::Yyb.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return Listen(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
+      /// <summary>
+      /// 푸시용 리슨 (서버 -> 클라)
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
       public virtual grpc::AsyncServerStreamingCall<global::Yyb.PushNotification> Listen(global::Yyb.Empty request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncServerStreamingCall(__Method_Listen, null, options, request);
       }
+      /// <summary>
+      /// 로그인 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
       public virtual global::Yyb.LoginReply Login(global::Yyb.LoginRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return Login(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
+      /// <summary>
+      /// 로그인 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
       public virtual global::Yyb.LoginReply Login(global::Yyb.LoginRequest request, grpc::CallOptions options)
       {
         return CallInvoker.BlockingUnaryCall(__Method_Login, null, options, request);
       }
+      /// <summary>
+      /// 로그인 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
       public virtual grpc::AsyncUnaryCall<global::Yyb.LoginReply> LoginAsync(global::Yyb.LoginRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return LoginAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
+      /// <summary>
+      /// 로그인 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
       public virtual grpc::AsyncUnaryCall<global::Yyb.LoginReply> LoginAsync(global::Yyb.LoginRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_Login, null, options, request);
+      }
+      /// <summary>
+      /// 랭킹 기록 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Yyb.RankingReply Ranking(global::Yyb.RankingRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Ranking(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 랭킹 기록 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Yyb.RankingReply Ranking(global::Yyb.RankingRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Ranking, null, options, request);
+      }
+      /// <summary>
+      /// 랭킹 기록 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Yyb.RankingReply> RankingAsync(global::Yyb.RankingRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return RankingAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 랭킹 기록 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Yyb.RankingReply> RankingAsync(global::Yyb.RankingRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Ranking, null, options, request);
+      }
+      /// <summary>
+      /// 랭킹 리스트 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Yyb.RankingListReply RankingList(global::Yyb.RankingListRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return RankingList(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 랭킹 리스트 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Yyb.RankingListReply RankingList(global::Yyb.RankingListRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_RankingList, null, options, request);
+      }
+      /// <summary>
+      /// 랭킹 리스트 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Yyb.RankingListReply> RankingListAsync(global::Yyb.RankingListRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return RankingListAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// 랭킹 리스트 요청
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Yyb.RankingListReply> RankingListAsync(global::Yyb.RankingListRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_RankingList, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override RpcServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -147,7 +364,9 @@ namespace Yyb {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_RpcServiceExample, serviceImpl.RpcServiceExample)
           .AddMethod(__Method_Listen, serviceImpl.Listen)
-          .AddMethod(__Method_Login, serviceImpl.Login).Build();
+          .AddMethod(__Method_Login, serviceImpl.Login)
+          .AddMethod(__Method_Ranking, serviceImpl.Ranking)
+          .AddMethod(__Method_RankingList, serviceImpl.RankingList).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the  service binding logic.
@@ -159,6 +378,8 @@ namespace Yyb {
       serviceBinder.AddMethod(__Method_RpcServiceExample, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Yyb.RpcServiceExampleRequest, global::Yyb.RpcServiceExampleReply>(serviceImpl.RpcServiceExample));
       serviceBinder.AddMethod(__Method_Listen, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::Yyb.Empty, global::Yyb.PushNotification>(serviceImpl.Listen));
       serviceBinder.AddMethod(__Method_Login, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Yyb.LoginRequest, global::Yyb.LoginReply>(serviceImpl.Login));
+      serviceBinder.AddMethod(__Method_Ranking, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Yyb.RankingRequest, global::Yyb.RankingReply>(serviceImpl.Ranking));
+      serviceBinder.AddMethod(__Method_RankingList, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Yyb.RankingListRequest, global::Yyb.RankingListReply>(serviceImpl.RankingList));
     }
 
   }

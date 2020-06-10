@@ -14,6 +14,7 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
+extern PROTOBUF_INTERNAL_EXPORT_rpc_5fservice_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RankingListReply_Ranking_rpc_5fservice_2eproto;
 namespace yyb {
 class RpcServiceExampleRequestDefaultTypeInternal {
  public:
@@ -39,6 +40,26 @@ class LoginReplyDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<LoginReply> _instance;
 } _LoginReply_default_instance_;
+class RankingRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RankingRequest> _instance;
+} _RankingRequest_default_instance_;
+class RankingReplyDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RankingReply> _instance;
+} _RankingReply_default_instance_;
+class RankingListRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RankingListRequest> _instance;
+} _RankingListRequest_default_instance_;
+class RankingListReply_RankingDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RankingListReply_Ranking> _instance;
+} _RankingListReply_Ranking_default_instance_;
+class RankingListReplyDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RankingListReply> _instance;
+} _RankingListReply_default_instance_;
 }  // namespace yyb
 static void InitDefaultsscc_info_Empty_rpc_5fservice_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -96,6 +117,77 @@ static void InitDefaultsscc_info_PushNotification_rpc_5fservice_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_PushNotification_rpc_5fservice_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_PushNotification_rpc_5fservice_2eproto}, {}};
 
+static void InitDefaultsscc_info_RankingListReply_rpc_5fservice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::yyb::_RankingListReply_default_instance_;
+    new (ptr) ::yyb::RankingListReply();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::yyb::RankingListReply::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<1> scc_info_RankingListReply_rpc_5fservice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 1, 0, InitDefaultsscc_info_RankingListReply_rpc_5fservice_2eproto}, {
+      &scc_info_RankingListReply_Ranking_rpc_5fservice_2eproto.base,}};
+
+static void InitDefaultsscc_info_RankingListReply_Ranking_rpc_5fservice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::yyb::_RankingListReply_Ranking_default_instance_;
+    new (ptr) ::yyb::RankingListReply_Ranking();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::yyb::RankingListReply_Ranking::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RankingListReply_Ranking_rpc_5fservice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_RankingListReply_Ranking_rpc_5fservice_2eproto}, {}};
+
+static void InitDefaultsscc_info_RankingListRequest_rpc_5fservice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::yyb::_RankingListRequest_default_instance_;
+    new (ptr) ::yyb::RankingListRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::yyb::RankingListRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RankingListRequest_rpc_5fservice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_RankingListRequest_rpc_5fservice_2eproto}, {}};
+
+static void InitDefaultsscc_info_RankingReply_rpc_5fservice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::yyb::_RankingReply_default_instance_;
+    new (ptr) ::yyb::RankingReply();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::yyb::RankingReply::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RankingReply_rpc_5fservice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_RankingReply_rpc_5fservice_2eproto}, {}};
+
+static void InitDefaultsscc_info_RankingRequest_rpc_5fservice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::yyb::_RankingRequest_default_instance_;
+    new (ptr) ::yyb::RankingRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::yyb::RankingRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RankingRequest_rpc_5fservice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_RankingRequest_rpc_5fservice_2eproto}, {}};
+
 static void InitDefaultsscc_info_RpcServiceExampleReply_rpc_5fservice_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -124,7 +216,7 @@ static void InitDefaultsscc_info_RpcServiceExampleRequest_rpc_5fservice_2eproto(
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RpcServiceExampleRequest_rpc_5fservice_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_RpcServiceExampleRequest_rpc_5fservice_2eproto}, {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_rpc_5fservice_2eproto[6];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_rpc_5fservice_2eproto[11];
 static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_rpc_5fservice_2eproto[2];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_rpc_5fservice_2eproto = nullptr;
 
@@ -175,6 +267,39 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_rpc_5fservice_2eproto::offsets
   PROTOBUF_FIELD_OFFSET(::yyb::LoginReply, nickname_),
   PROTOBUF_FIELD_OFFSET(::yyb::LoginReply, loginkey_),
   PROTOBUF_FIELD_OFFSET(::yyb::LoginReply, accesskey_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::yyb::RankingRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::yyb::RankingRequest, score_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::yyb::RankingReply, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::yyb::RankingReply, error_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::yyb::RankingListRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::yyb::RankingListReply_Ranking, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::yyb::RankingListReply_Ranking, nickname_),
+  PROTOBUF_FIELD_OFFSET(::yyb::RankingListReply_Ranking, rank_),
+  PROTOBUF_FIELD_OFFSET(::yyb::RankingListReply_Ranking, score_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::yyb::RankingListReply, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::yyb::RankingListReply, error_),
+  PROTOBUF_FIELD_OFFSET(::yyb::RankingListReply, myranking_),
+  PROTOBUF_FIELD_OFFSET(::yyb::RankingListReply, rankings_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::yyb::RpcServiceExampleRequest)},
@@ -183,6 +308,11 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 21, -1, sizeof(::yyb::PushNotification)},
   { 27, -1, sizeof(::yyb::LoginRequest)},
   { 36, -1, sizeof(::yyb::LoginReply)},
+  { 46, -1, sizeof(::yyb::RankingRequest)},
+  { 52, -1, sizeof(::yyb::RankingReply)},
+  { 58, -1, sizeof(::yyb::RankingListRequest)},
+  { 63, -1, sizeof(::yyb::RankingListReply_Ranking)},
+  { 71, -1, sizeof(::yyb::RankingListReply)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -192,57 +322,79 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_PushNotification_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_LoginRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_LoginReply_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_RankingRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_RankingReply_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_RankingListRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_RankingListReply_Ranking_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_RankingListReply_default_instance_),
 };
 
 const char descriptor_table_protodef_rpc_5fservice_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\021rpc_service.proto\022\003yyb\"`\n\030RpcServiceEx"
   "ampleRequest\022\014\n\004arg1\030\001 \001(\005\022\014\n\004arg2\030\002 \001(\002"
   "\022\014\n\004arg3\030\003 \001(\t\022\014\n\004arg4\030\004 \001(\010\022\014\n\004arg5\030\005 \003"
-  "(\005\"\'\n\026RpcServiceExampleReply\022\r\n\005error\030\001 "
-  "\001(\t\"\007\n\005Empty\"#\n\020PushNotification\022\017\n\007payl"
-  "oad\030\001 \001(\t\"\313\001\n\014LoginRequest\022/\n\tloginType\030"
-  "\001 \001(\0162\034.yyb.LoginRequest.LOGIN_TYPE\022\020\n\010l"
-  "oginKey\030\002 \001(\t\022\017\n\007idToken\030\003 \001(\t\022\020\n\010nickNa"
-  "me\030\004 \001(\t\"U\n\nLOGIN_TYPE\022\027\n\023LOGIN_TYPE_NON"
-  "_CERT\020\000\022\025\n\021LOGIN_TYPE_GOOGLE\020\001\022\027\n\023LOGIN_"
-  "TYPE_FACEBOOK\020\002\"\235\004\n\nLoginReply\022)\n\005error\030"
-  "\001 \001(\0162\032.yyb.LoginReply.ERROR_CODE\022\013\n\003usn"
-  "\030\002 \001(\005\022\020\n\010nickName\030\003 \001(\t\022\020\n\010loginKey\030\004 \001"
-  "(\t\022\021\n\taccessKey\030\005 \001(\t\"\237\003\n\nERROR_CODE\022\021\n\r"
-  "ERROR_CODE_OK\020\000\022\035\n\031ERROR_CODE_EMPTY_NICK"
-  "NAME\020\001\022\033\n\027ERROR_CODE_DUP_NICKNAME\020\002\022/\n+E"
-  "RROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTE"
-  "RS\020\003\022$\n ERROR_CODE_UNABLE_TO_CREATE_USER"
-  "\020\004\022*\n&ERROR_CODE_FAILED_TO_ACQUIRE_USER_"
-  "INFO\020\005\022!\n\035ERROR_CODE_GOOGLE_AUTH_FAILED\020"
-  "\006\022\035\n\031ERROR_CODE_EMPTY_ID_TOKEN\020\007\022)\n%ERRO"
-  "R_CODE_FAILED_TO_UPDATE_LOGIN_KEY\020\010\022*\n&E"
-  "RROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE\020\t\022"
-  "&\n\"ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT\020\n2"
-  "\277\001\n\nRpcService\022Q\n\021RpcServiceExample\022\035.yy"
-  "b.RpcServiceExampleRequest\032\033.yyb.RpcServ"
-  "iceExampleReply\"\000\022/\n\006Listen\022\n.yyb.Empty\032"
-  "\025.yyb.PushNotification\"\0000\001\022-\n\005Login\022\021.yy"
-  "b.LoginRequest\032\017.yyb.LoginReply\"\000b\006proto"
-  "3"
+  "(\005\"8\n\026RpcServiceExampleReply\022\036\n\005error\030\001 "
+  "\001(\0162\017.yyb.ERROR_CODE\"\007\n\005Empty\"#\n\020PushNot"
+  "ification\022\017\n\007payload\030\001 \001(\t\"\313\001\n\014LoginRequ"
+  "est\022/\n\tloginType\030\001 \001(\0162\034.yyb.LoginReques"
+  "t.LOGIN_TYPE\022\020\n\010loginKey\030\002 \001(\t\022\017\n\007idToke"
+  "n\030\003 \001(\t\022\020\n\010nickName\030\004 \001(\t\"U\n\nLOGIN_TYPE\022"
+  "\027\n\023LOGIN_TYPE_NON_CERT\020\000\022\025\n\021LOGIN_TYPE_G"
+  "OOGLE\020\001\022\027\n\023LOGIN_TYPE_FACEBOOK\020\002\"p\n\nLogi"
+  "nReply\022\036\n\005error\030\001 \001(\0162\017.yyb.ERROR_CODE\022\013"
+  "\n\003usn\030\002 \001(\005\022\020\n\010nickName\030\003 \001(\t\022\020\n\010loginKe"
+  "y\030\004 \001(\t\022\021\n\taccessKey\030\005 \001(\t\"\037\n\016RankingReq"
+  "uest\022\r\n\005score\030\001 \001(\003\".\n\014RankingReply\022\036\n\005e"
+  "rror\030\001 \001(\0162\017.yyb.ERROR_CODE\"\024\n\022RankingLi"
+  "stRequest\"\317\001\n\020RankingListReply\022\036\n\005error\030"
+  "\001 \001(\0162\017.yyb.ERROR_CODE\0220\n\tmyRanking\030\002 \001("
+  "\0132\035.yyb.RankingListReply.Ranking\022/\n\010rank"
+  "ings\030\003 \003(\0132\035.yyb.RankingListReply.Rankin"
+  "g\0328\n\007Ranking\022\020\n\010nickName\030\001 \001(\t\022\014\n\004rank\030\002"
+  " \001(\005\022\r\n\005score\030\003 \001(\005*\324\003\n\nERROR_CODE\022\021\n\rER"
+  "ROR_CODE_OK\020\000\022\035\n\031ERROR_CODE_EMPTY_NICKNA"
+  "ME\020\001\022\033\n\027ERROR_CODE_DUP_NICKNAME\020\002\022/\n+ERR"
+  "OR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS"
+  "\020\003\022$\n ERROR_CODE_UNABLE_TO_CREATE_USER\020\004"
+  "\022!\n\035ERROR_CODE_FAILED_TO_GET_USER\020\005\022!\n\035E"
+  "RROR_CODE_GOOGLE_AUTH_FAILED\020\006\022\035\n\031ERROR_"
+  "CODE_EMPTY_ID_TOKEN\020\007\022)\n%ERROR_CODE_FAIL"
+  "ED_TO_UPDATE_LOGIN_KEY\020\010\022*\n&ERROR_CODE_F"
+  "AILED_TO_CHANGE_LOGIN_TYPE\020\t\022&\n\"ERROR_CO"
+  "DE_LOGIN_TYPE_IS_DIFFERENT\020\n\022%\n!ERROR_CO"
+  "DE_ACCESS_KEY_HAS_EXPIRED\020\013\022\025\n\021ERROR_COD"
+  "E_SYSTME\020\0142\265\002\n\nRpcService\022Q\n\021RpcServiceE"
+  "xample\022\035.yyb.RpcServiceExampleRequest\032\033."
+  "yyb.RpcServiceExampleReply\"\000\022/\n\006Listen\022\n"
+  ".yyb.Empty\032\025.yyb.PushNotification\"\0000\001\022-\n"
+  "\005Login\022\021.yyb.LoginRequest\032\017.yyb.LoginRep"
+  "ly\"\000\0223\n\007Ranking\022\023.yyb.RankingRequest\032\021.y"
+  "yb.RankingReply\"\000\022\?\n\013RankingList\022\027.yyb.R"
+  "ankingListRequest\032\025.yyb.RankingListReply"
+  "\"\000b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_rpc_5fservice_2eproto_deps[1] = {
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_rpc_5fservice_2eproto_sccs[6] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_rpc_5fservice_2eproto_sccs[11] = {
   &scc_info_Empty_rpc_5fservice_2eproto.base,
   &scc_info_LoginReply_rpc_5fservice_2eproto.base,
   &scc_info_LoginRequest_rpc_5fservice_2eproto.base,
   &scc_info_PushNotification_rpc_5fservice_2eproto.base,
+  &scc_info_RankingListReply_rpc_5fservice_2eproto.base,
+  &scc_info_RankingListReply_Ranking_rpc_5fservice_2eproto.base,
+  &scc_info_RankingListRequest_rpc_5fservice_2eproto.base,
+  &scc_info_RankingReply_rpc_5fservice_2eproto.base,
+  &scc_info_RankingRequest_rpc_5fservice_2eproto.base,
   &scc_info_RpcServiceExampleReply_rpc_5fservice_2eproto.base,
   &scc_info_RpcServiceExampleRequest_rpc_5fservice_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_rpc_5fservice_2eproto_once;
 static bool descriptor_table_rpc_5fservice_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_rpc_5fservice_2eproto = {
-  &descriptor_table_rpc_5fservice_2eproto_initialized, descriptor_table_protodef_rpc_5fservice_2eproto, "rpc_service.proto", 1161,
-  &descriptor_table_rpc_5fservice_2eproto_once, descriptor_table_rpc_5fservice_2eproto_sccs, descriptor_table_rpc_5fservice_2eproto_deps, 6, 0,
+  &descriptor_table_rpc_5fservice_2eproto_initialized, descriptor_table_protodef_rpc_5fservice_2eproto, "rpc_service.proto", 1650,
+  &descriptor_table_rpc_5fservice_2eproto_once, descriptor_table_rpc_5fservice_2eproto_sccs, descriptor_table_rpc_5fservice_2eproto_deps, 11, 0,
   schemas, file_default_instances, TableStruct_rpc_5fservice_2eproto::offsets,
-  file_level_metadata_rpc_5fservice_2eproto, 6, file_level_enum_descriptors_rpc_5fservice_2eproto, file_level_service_descriptors_rpc_5fservice_2eproto,
+  file_level_metadata_rpc_5fservice_2eproto, 11, file_level_enum_descriptors_rpc_5fservice_2eproto, file_level_service_descriptors_rpc_5fservice_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -271,11 +423,11 @@ constexpr LoginRequest_LOGIN_TYPE LoginRequest::LOGIN_TYPE_MIN;
 constexpr LoginRequest_LOGIN_TYPE LoginRequest::LOGIN_TYPE_MAX;
 constexpr int LoginRequest::LOGIN_TYPE_ARRAYSIZE;
 #endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* LoginReply_ERROR_CODE_descriptor() {
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ERROR_CODE_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_rpc_5fservice_2eproto);
   return file_level_enum_descriptors_rpc_5fservice_2eproto[1];
 }
-bool LoginReply_ERROR_CODE_IsValid(int value) {
+bool ERROR_CODE_IsValid(int value) {
   switch (value) {
     case 0:
     case 1:
@@ -288,28 +440,14 @@ bool LoginReply_ERROR_CODE_IsValid(int value) {
     case 8:
     case 9:
     case 10:
+    case 11:
+    case 12:
       return true;
     default:
       return false;
   }
 }
 
-#if (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
-constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_OK;
-constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_EMPTY_NICKNAME;
-constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_DUP_NICKNAME;
-constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS;
-constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_UNABLE_TO_CREATE_USER;
-constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_FAILED_TO_ACQUIRE_USER_INFO;
-constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_GOOGLE_AUTH_FAILED;
-constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_EMPTY_ID_TOKEN;
-constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY;
-constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE;
-constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT;
-constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_MIN;
-constexpr LoginReply_ERROR_CODE LoginReply::ERROR_CODE_MAX;
-constexpr int LoginReply::ERROR_CODE_ARRAYSIZE;
-#endif  // (__cplusplus < 201703) && (!defined(_MSC_VER) || _MSC_VER >= 1900)
 
 // ===================================================================
 
@@ -642,16 +780,12 @@ RpcServiceExampleReply::RpcServiceExampleReply(const RpcServiceExampleReply& fro
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _internal_metadata_(nullptr) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  error_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_error().empty()) {
-    error_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.error_);
-  }
+  error_ = from.error_;
   // @@protoc_insertion_point(copy_constructor:yyb.RpcServiceExampleReply)
 }
 
 void RpcServiceExampleReply::SharedCtor() {
-  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_RpcServiceExampleReply_rpc_5fservice_2eproto.base);
-  error_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  error_ = 0;
 }
 
 RpcServiceExampleReply::~RpcServiceExampleReply() {
@@ -660,7 +794,6 @@ RpcServiceExampleReply::~RpcServiceExampleReply() {
 }
 
 void RpcServiceExampleReply::SharedDtor() {
-  error_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void RpcServiceExampleReply::SetCachedSize(int size) const {
@@ -678,7 +811,7 @@ void RpcServiceExampleReply::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  error_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  error_ = 0;
   _internal_metadata_.Clear();
 }
 
@@ -689,13 +822,12 @@ const char* RpcServiceExampleReply::_InternalParse(const char* ptr, ::PROTOBUF_N
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // string error = 1;
+      // .yyb.ERROR_CODE error = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          auto str = _internal_mutable_error();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "yyb.RpcServiceExampleReply.error"));
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
+          _internal_set_error(static_cast<::yyb::ERROR_CODE>(val));
         } else goto handle_unusual;
         continue;
       default: {
@@ -724,14 +856,11 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string error = 1;
-  if (this->error().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_error().data(), static_cast<int>(this->_internal_error().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "yyb.RpcServiceExampleReply.error");
-    target = stream->WriteStringMaybeAliased(
-        1, this->_internal_error(), target);
+  // .yyb.ERROR_CODE error = 1;
+  if (this->error() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      1, this->_internal_error(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -750,11 +879,10 @@ size_t RpcServiceExampleReply::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string error = 1;
-  if (this->error().size() > 0) {
+  // .yyb.ERROR_CODE error = 1;
+  if (this->error() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_error());
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_error());
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -788,9 +916,8 @@ void RpcServiceExampleReply::MergeFrom(const RpcServiceExampleReply& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.error().size() > 0) {
-
-    error_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.error_);
+  if (from.error() != 0) {
+    _internal_set_error(from._internal_error());
   }
 }
 
@@ -815,8 +942,7 @@ bool RpcServiceExampleReply::IsInitialized() const {
 void RpcServiceExampleReply::InternalSwap(RpcServiceExampleReply* other) {
   using std::swap;
   _internal_metadata_.Swap(&other->_internal_metadata_);
-  error_.Swap(&other->error_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-    GetArenaNoVirtual());
+  swap(error_, other->error_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata RpcServiceExampleReply::GetMetadata() const {
@@ -1569,12 +1695,12 @@ const char* LoginReply::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID:
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // .yyb.LoginReply.ERROR_CODE error = 1;
+      // .yyb.ERROR_CODE error = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
           ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
           CHK_(ptr);
-          _internal_set_error(static_cast<::yyb::LoginReply_ERROR_CODE>(val));
+          _internal_set_error(static_cast<::yyb::ERROR_CODE>(val));
         } else goto handle_unusual;
         continue;
       // int32 usn = 2;
@@ -1637,7 +1763,7 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // .yyb.LoginReply.ERROR_CODE error = 1;
+  // .yyb.ERROR_CODE error = 1;
   if (this->error() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
@@ -1717,7 +1843,7 @@ size_t LoginReply::ByteSizeLong() const {
         this->_internal_accesskey());
   }
 
-  // .yyb.LoginReply.ERROR_CODE error = 1;
+  // .yyb.ERROR_CODE error = 1;
   if (this->error() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_error());
@@ -1817,6 +1943,1053 @@ void LoginReply::InternalSwap(LoginReply* other) {
 }
 
 
+// ===================================================================
+
+void RankingRequest::InitAsDefaultInstance() {
+}
+class RankingRequest::_Internal {
+ public:
+};
+
+RankingRequest::RankingRequest()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:yyb.RankingRequest)
+}
+RankingRequest::RankingRequest(const RankingRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  score_ = from.score_;
+  // @@protoc_insertion_point(copy_constructor:yyb.RankingRequest)
+}
+
+void RankingRequest::SharedCtor() {
+  score_ = PROTOBUF_LONGLONG(0);
+}
+
+RankingRequest::~RankingRequest() {
+  // @@protoc_insertion_point(destructor:yyb.RankingRequest)
+  SharedDtor();
+}
+
+void RankingRequest::SharedDtor() {
+}
+
+void RankingRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const RankingRequest& RankingRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_RankingRequest_rpc_5fservice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void RankingRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:yyb.RankingRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  score_ = PROTOBUF_LONGLONG(0);
+  _internal_metadata_.Clear();
+}
+
+const char* RankingRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // int64 score = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          score_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* RankingRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:yyb.RankingRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int64 score = 1;
+  if (this->score() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(1, this->_internal_score(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:yyb.RankingRequest)
+  return target;
+}
+
+size_t RankingRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:yyb.RankingRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int64 score = 1;
+  if (this->score() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
+        this->_internal_score());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void RankingRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:yyb.RankingRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const RankingRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<RankingRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:yyb.RankingRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:yyb.RankingRequest)
+    MergeFrom(*source);
+  }
+}
+
+void RankingRequest::MergeFrom(const RankingRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:yyb.RankingRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.score() != 0) {
+    _internal_set_score(from._internal_score());
+  }
+}
+
+void RankingRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:yyb.RankingRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void RankingRequest::CopyFrom(const RankingRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:yyb.RankingRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RankingRequest::IsInitialized() const {
+  return true;
+}
+
+void RankingRequest::InternalSwap(RankingRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(score_, other->score_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RankingRequest::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void RankingReply::InitAsDefaultInstance() {
+}
+class RankingReply::_Internal {
+ public:
+};
+
+RankingReply::RankingReply()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:yyb.RankingReply)
+}
+RankingReply::RankingReply(const RankingReply& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  error_ = from.error_;
+  // @@protoc_insertion_point(copy_constructor:yyb.RankingReply)
+}
+
+void RankingReply::SharedCtor() {
+  error_ = 0;
+}
+
+RankingReply::~RankingReply() {
+  // @@protoc_insertion_point(destructor:yyb.RankingReply)
+  SharedDtor();
+}
+
+void RankingReply::SharedDtor() {
+}
+
+void RankingReply::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const RankingReply& RankingReply::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_RankingReply_rpc_5fservice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void RankingReply::Clear() {
+// @@protoc_insertion_point(message_clear_start:yyb.RankingReply)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  error_ = 0;
+  _internal_metadata_.Clear();
+}
+
+const char* RankingReply::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // .yyb.ERROR_CODE error = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+          _internal_set_error(static_cast<::yyb::ERROR_CODE>(val));
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* RankingReply::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:yyb.RankingReply)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .yyb.ERROR_CODE error = 1;
+  if (this->error() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      1, this->_internal_error(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:yyb.RankingReply)
+  return target;
+}
+
+size_t RankingReply::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:yyb.RankingReply)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // .yyb.ERROR_CODE error = 1;
+  if (this->error() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_error());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void RankingReply::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:yyb.RankingReply)
+  GOOGLE_DCHECK_NE(&from, this);
+  const RankingReply* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<RankingReply>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:yyb.RankingReply)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:yyb.RankingReply)
+    MergeFrom(*source);
+  }
+}
+
+void RankingReply::MergeFrom(const RankingReply& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:yyb.RankingReply)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.error() != 0) {
+    _internal_set_error(from._internal_error());
+  }
+}
+
+void RankingReply::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:yyb.RankingReply)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void RankingReply::CopyFrom(const RankingReply& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:yyb.RankingReply)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RankingReply::IsInitialized() const {
+  return true;
+}
+
+void RankingReply::InternalSwap(RankingReply* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(error_, other->error_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RankingReply::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void RankingListRequest::InitAsDefaultInstance() {
+}
+class RankingListRequest::_Internal {
+ public:
+};
+
+RankingListRequest::RankingListRequest()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:yyb.RankingListRequest)
+}
+RankingListRequest::RankingListRequest(const RankingListRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:yyb.RankingListRequest)
+}
+
+void RankingListRequest::SharedCtor() {
+}
+
+RankingListRequest::~RankingListRequest() {
+  // @@protoc_insertion_point(destructor:yyb.RankingListRequest)
+  SharedDtor();
+}
+
+void RankingListRequest::SharedDtor() {
+}
+
+void RankingListRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const RankingListRequest& RankingListRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_RankingListRequest_rpc_5fservice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void RankingListRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:yyb.RankingListRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _internal_metadata_.Clear();
+}
+
+const char* RankingListRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* RankingListRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:yyb.RankingListRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:yyb.RankingListRequest)
+  return target;
+}
+
+size_t RankingListRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:yyb.RankingListRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void RankingListRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:yyb.RankingListRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const RankingListRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<RankingListRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:yyb.RankingListRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:yyb.RankingListRequest)
+    MergeFrom(*source);
+  }
+}
+
+void RankingListRequest::MergeFrom(const RankingListRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:yyb.RankingListRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+}
+
+void RankingListRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:yyb.RankingListRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void RankingListRequest::CopyFrom(const RankingListRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:yyb.RankingListRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RankingListRequest::IsInitialized() const {
+  return true;
+}
+
+void RankingListRequest::InternalSwap(RankingListRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RankingListRequest::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void RankingListReply_Ranking::InitAsDefaultInstance() {
+}
+class RankingListReply_Ranking::_Internal {
+ public:
+};
+
+RankingListReply_Ranking::RankingListReply_Ranking()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:yyb.RankingListReply.Ranking)
+}
+RankingListReply_Ranking::RankingListReply_Ranking(const RankingListReply_Ranking& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  nickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_nickname().empty()) {
+    nickname_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.nickname_);
+  }
+  ::memcpy(&rank_, &from.rank_,
+    static_cast<size_t>(reinterpret_cast<char*>(&score_) -
+    reinterpret_cast<char*>(&rank_)) + sizeof(score_));
+  // @@protoc_insertion_point(copy_constructor:yyb.RankingListReply.Ranking)
+}
+
+void RankingListReply_Ranking::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_RankingListReply_Ranking_rpc_5fservice_2eproto.base);
+  nickname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ::memset(&rank_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&score_) -
+      reinterpret_cast<char*>(&rank_)) + sizeof(score_));
+}
+
+RankingListReply_Ranking::~RankingListReply_Ranking() {
+  // @@protoc_insertion_point(destructor:yyb.RankingListReply.Ranking)
+  SharedDtor();
+}
+
+void RankingListReply_Ranking::SharedDtor() {
+  nickname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void RankingListReply_Ranking::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const RankingListReply_Ranking& RankingListReply_Ranking::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_RankingListReply_Ranking_rpc_5fservice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void RankingListReply_Ranking::Clear() {
+// @@protoc_insertion_point(message_clear_start:yyb.RankingListReply.Ranking)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  nickname_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ::memset(&rank_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&score_) -
+      reinterpret_cast<char*>(&rank_)) + sizeof(score_));
+  _internal_metadata_.Clear();
+}
+
+const char* RankingListReply_Ranking::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string nickName = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_nickname();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "yyb.RankingListReply.Ranking.nickName"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 rank = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          rank_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 score = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          score_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* RankingListReply_Ranking::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:yyb.RankingListReply.Ranking)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string nickName = 1;
+  if (this->nickname().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_nickname().data(), static_cast<int>(this->_internal_nickname().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "yyb.RankingListReply.Ranking.nickName");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_nickname(), target);
+  }
+
+  // int32 rank = 2;
+  if (this->rank() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_rank(), target);
+  }
+
+  // int32 score = 3;
+  if (this->score() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_score(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:yyb.RankingListReply.Ranking)
+  return target;
+}
+
+size_t RankingListReply_Ranking::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:yyb.RankingListReply.Ranking)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string nickName = 1;
+  if (this->nickname().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_nickname());
+  }
+
+  // int32 rank = 2;
+  if (this->rank() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_rank());
+  }
+
+  // int32 score = 3;
+  if (this->score() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_score());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void RankingListReply_Ranking::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:yyb.RankingListReply.Ranking)
+  GOOGLE_DCHECK_NE(&from, this);
+  const RankingListReply_Ranking* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<RankingListReply_Ranking>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:yyb.RankingListReply.Ranking)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:yyb.RankingListReply.Ranking)
+    MergeFrom(*source);
+  }
+}
+
+void RankingListReply_Ranking::MergeFrom(const RankingListReply_Ranking& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:yyb.RankingListReply.Ranking)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.nickname().size() > 0) {
+
+    nickname_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.nickname_);
+  }
+  if (from.rank() != 0) {
+    _internal_set_rank(from._internal_rank());
+  }
+  if (from.score() != 0) {
+    _internal_set_score(from._internal_score());
+  }
+}
+
+void RankingListReply_Ranking::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:yyb.RankingListReply.Ranking)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void RankingListReply_Ranking::CopyFrom(const RankingListReply_Ranking& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:yyb.RankingListReply.Ranking)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RankingListReply_Ranking::IsInitialized() const {
+  return true;
+}
+
+void RankingListReply_Ranking::InternalSwap(RankingListReply_Ranking* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  nickname_.Swap(&other->nickname_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(rank_, other->rank_);
+  swap(score_, other->score_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RankingListReply_Ranking::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void RankingListReply::InitAsDefaultInstance() {
+  ::yyb::_RankingListReply_default_instance_._instance.get_mutable()->myranking_ = const_cast< ::yyb::RankingListReply_Ranking*>(
+      ::yyb::RankingListReply_Ranking::internal_default_instance());
+}
+class RankingListReply::_Internal {
+ public:
+  static const ::yyb::RankingListReply_Ranking& myranking(const RankingListReply* msg);
+};
+
+const ::yyb::RankingListReply_Ranking&
+RankingListReply::_Internal::myranking(const RankingListReply* msg) {
+  return *msg->myranking_;
+}
+RankingListReply::RankingListReply()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:yyb.RankingListReply)
+}
+RankingListReply::RankingListReply(const RankingListReply& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
+      rankings_(from.rankings_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from._internal_has_myranking()) {
+    myranking_ = new ::yyb::RankingListReply_Ranking(*from.myranking_);
+  } else {
+    myranking_ = nullptr;
+  }
+  error_ = from.error_;
+  // @@protoc_insertion_point(copy_constructor:yyb.RankingListReply)
+}
+
+void RankingListReply::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_RankingListReply_rpc_5fservice_2eproto.base);
+  ::memset(&myranking_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&error_) -
+      reinterpret_cast<char*>(&myranking_)) + sizeof(error_));
+}
+
+RankingListReply::~RankingListReply() {
+  // @@protoc_insertion_point(destructor:yyb.RankingListReply)
+  SharedDtor();
+}
+
+void RankingListReply::SharedDtor() {
+  if (this != internal_default_instance()) delete myranking_;
+}
+
+void RankingListReply::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const RankingListReply& RankingListReply::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_RankingListReply_rpc_5fservice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void RankingListReply::Clear() {
+// @@protoc_insertion_point(message_clear_start:yyb.RankingListReply)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  rankings_.Clear();
+  if (GetArenaNoVirtual() == nullptr && myranking_ != nullptr) {
+    delete myranking_;
+  }
+  myranking_ = nullptr;
+  error_ = 0;
+  _internal_metadata_.Clear();
+}
+
+const char* RankingListReply::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // .yyb.ERROR_CODE error = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+          _internal_set_error(static_cast<::yyb::ERROR_CODE>(val));
+        } else goto handle_unusual;
+        continue;
+      // .yyb.RankingListReply.Ranking myRanking = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr = ctx->ParseMessage(_internal_mutable_myranking(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // repeated .yyb.RankingListReply.Ranking rankings = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_rankings(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* RankingListReply::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:yyb.RankingListReply)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .yyb.ERROR_CODE error = 1;
+  if (this->error() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      1, this->_internal_error(), target);
+  }
+
+  // .yyb.RankingListReply.Ranking myRanking = 2;
+  if (this->has_myranking()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        2, _Internal::myranking(this), target, stream);
+  }
+
+  // repeated .yyb.RankingListReply.Ranking rankings = 3;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_rankings_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, this->_internal_rankings(i), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:yyb.RankingListReply)
+  return target;
+}
+
+size_t RankingListReply::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:yyb.RankingListReply)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .yyb.RankingListReply.Ranking rankings = 3;
+  total_size += 1UL * this->_internal_rankings_size();
+  for (const auto& msg : this->rankings_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // .yyb.RankingListReply.Ranking myRanking = 2;
+  if (this->has_myranking()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *myranking_);
+  }
+
+  // .yyb.ERROR_CODE error = 1;
+  if (this->error() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_error());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void RankingListReply::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:yyb.RankingListReply)
+  GOOGLE_DCHECK_NE(&from, this);
+  const RankingListReply* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<RankingListReply>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:yyb.RankingListReply)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:yyb.RankingListReply)
+    MergeFrom(*source);
+  }
+}
+
+void RankingListReply::MergeFrom(const RankingListReply& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:yyb.RankingListReply)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  rankings_.MergeFrom(from.rankings_);
+  if (from.has_myranking()) {
+    _internal_mutable_myranking()->::yyb::RankingListReply_Ranking::MergeFrom(from._internal_myranking());
+  }
+  if (from.error() != 0) {
+    _internal_set_error(from._internal_error());
+  }
+}
+
+void RankingListReply::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:yyb.RankingListReply)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void RankingListReply::CopyFrom(const RankingListReply& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:yyb.RankingListReply)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RankingListReply::IsInitialized() const {
+  return true;
+}
+
+void RankingListReply::InternalSwap(RankingListReply* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  rankings_.InternalSwap(&other->rankings_);
+  swap(myranking_, other->myranking_);
+  swap(error_, other->error_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata RankingListReply::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace yyb
 PROTOBUF_NAMESPACE_OPEN
@@ -1837,6 +3010,21 @@ template<> PROTOBUF_NOINLINE ::yyb::LoginRequest* Arena::CreateMaybeMessage< ::y
 }
 template<> PROTOBUF_NOINLINE ::yyb::LoginReply* Arena::CreateMaybeMessage< ::yyb::LoginReply >(Arena* arena) {
   return Arena::CreateInternal< ::yyb::LoginReply >(arena);
+}
+template<> PROTOBUF_NOINLINE ::yyb::RankingRequest* Arena::CreateMaybeMessage< ::yyb::RankingRequest >(Arena* arena) {
+  return Arena::CreateInternal< ::yyb::RankingRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::yyb::RankingReply* Arena::CreateMaybeMessage< ::yyb::RankingReply >(Arena* arena) {
+  return Arena::CreateInternal< ::yyb::RankingReply >(arena);
+}
+template<> PROTOBUF_NOINLINE ::yyb::RankingListRequest* Arena::CreateMaybeMessage< ::yyb::RankingListRequest >(Arena* arena) {
+  return Arena::CreateInternal< ::yyb::RankingListRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::yyb::RankingListReply_Ranking* Arena::CreateMaybeMessage< ::yyb::RankingListReply_Ranking >(Arena* arena) {
+  return Arena::CreateInternal< ::yyb::RankingListReply_Ranking >(arena);
+}
+template<> PROTOBUF_NOINLINE ::yyb::RankingListReply* Arena::CreateMaybeMessage< ::yyb::RankingListReply >(Arena* arena) {
+  return Arena::CreateInternal< ::yyb::RankingListReply >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

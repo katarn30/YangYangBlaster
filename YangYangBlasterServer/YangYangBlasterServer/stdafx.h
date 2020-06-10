@@ -145,8 +145,19 @@
 #include <boost/python.hpp>
 
 #include <grpcpp/grpcpp.h>
+#include <grpc/grpc.h>
+#include <grpc/support/log.h>
+#include <grpcpp/channel.h>
+#include <grpcpp/client_context.h>
+#include <grpcpp/create_channel.h>
 #include <grpcpp/health_check_service_interface.h>
+#include <grpcpp/health_check_service_interface_impl.h>
+#include <grpcpp/server.h>
+#include <grpcpp/server_builder.h>
+#include <grpcpp/server_context.h>
 #include <grpcpp/ext/proto_server_reflection_plugin.h>
+#include <grpcpp/ext/health_check_service_server_builder_option.h>
+#include <grpcpp/support/server_interceptor.h>
 
 #include <soci/soci.h>
 #include <soci/error.h>

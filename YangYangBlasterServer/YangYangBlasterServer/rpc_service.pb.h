@@ -48,7 +48,7 @@ struct TableStruct_rpc_5fservice_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[6]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[11]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -68,6 +68,21 @@ extern LoginRequestDefaultTypeInternal _LoginRequest_default_instance_;
 class PushNotification;
 class PushNotificationDefaultTypeInternal;
 extern PushNotificationDefaultTypeInternal _PushNotification_default_instance_;
+class RankingListReply;
+class RankingListReplyDefaultTypeInternal;
+extern RankingListReplyDefaultTypeInternal _RankingListReply_default_instance_;
+class RankingListReply_Ranking;
+class RankingListReply_RankingDefaultTypeInternal;
+extern RankingListReply_RankingDefaultTypeInternal _RankingListReply_Ranking_default_instance_;
+class RankingListRequest;
+class RankingListRequestDefaultTypeInternal;
+extern RankingListRequestDefaultTypeInternal _RankingListRequest_default_instance_;
+class RankingReply;
+class RankingReplyDefaultTypeInternal;
+extern RankingReplyDefaultTypeInternal _RankingReply_default_instance_;
+class RankingRequest;
+class RankingRequestDefaultTypeInternal;
+extern RankingRequestDefaultTypeInternal _RankingRequest_default_instance_;
 class RpcServiceExampleReply;
 class RpcServiceExampleReplyDefaultTypeInternal;
 extern RpcServiceExampleReplyDefaultTypeInternal _RpcServiceExampleReply_default_instance_;
@@ -80,6 +95,11 @@ template<> ::yyb::Empty* Arena::CreateMaybeMessage<::yyb::Empty>(Arena*);
 template<> ::yyb::LoginReply* Arena::CreateMaybeMessage<::yyb::LoginReply>(Arena*);
 template<> ::yyb::LoginRequest* Arena::CreateMaybeMessage<::yyb::LoginRequest>(Arena*);
 template<> ::yyb::PushNotification* Arena::CreateMaybeMessage<::yyb::PushNotification>(Arena*);
+template<> ::yyb::RankingListReply* Arena::CreateMaybeMessage<::yyb::RankingListReply>(Arena*);
+template<> ::yyb::RankingListReply_Ranking* Arena::CreateMaybeMessage<::yyb::RankingListReply_Ranking>(Arena*);
+template<> ::yyb::RankingListRequest* Arena::CreateMaybeMessage<::yyb::RankingListRequest>(Arena*);
+template<> ::yyb::RankingReply* Arena::CreateMaybeMessage<::yyb::RankingReply>(Arena*);
+template<> ::yyb::RankingRequest* Arena::CreateMaybeMessage<::yyb::RankingRequest>(Arena*);
 template<> ::yyb::RpcServiceExampleReply* Arena::CreateMaybeMessage<::yyb::RpcServiceExampleReply>(Arena*);
 template<> ::yyb::RpcServiceExampleRequest* Arena::CreateMaybeMessage<::yyb::RpcServiceExampleRequest>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
@@ -111,39 +131,41 @@ inline bool LoginRequest_LOGIN_TYPE_Parse(
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<LoginRequest_LOGIN_TYPE>(
     LoginRequest_LOGIN_TYPE_descriptor(), name, value);
 }
-enum LoginReply_ERROR_CODE : int {
-  LoginReply_ERROR_CODE_ERROR_CODE_OK = 0,
-  LoginReply_ERROR_CODE_ERROR_CODE_EMPTY_NICKNAME = 1,
-  LoginReply_ERROR_CODE_ERROR_CODE_DUP_NICKNAME = 2,
-  LoginReply_ERROR_CODE_ERROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS = 3,
-  LoginReply_ERROR_CODE_ERROR_CODE_UNABLE_TO_CREATE_USER = 4,
-  LoginReply_ERROR_CODE_ERROR_CODE_FAILED_TO_ACQUIRE_USER_INFO = 5,
-  LoginReply_ERROR_CODE_ERROR_CODE_GOOGLE_AUTH_FAILED = 6,
-  LoginReply_ERROR_CODE_ERROR_CODE_EMPTY_ID_TOKEN = 7,
-  LoginReply_ERROR_CODE_ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY = 8,
-  LoginReply_ERROR_CODE_ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE = 9,
-  LoginReply_ERROR_CODE_ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT = 10,
-  LoginReply_ERROR_CODE_LoginReply_ERROR_CODE_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
-  LoginReply_ERROR_CODE_LoginReply_ERROR_CODE_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+enum ERROR_CODE : int {
+  ERROR_CODE_OK = 0,
+  ERROR_CODE_EMPTY_NICKNAME = 1,
+  ERROR_CODE_DUP_NICKNAME = 2,
+  ERROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS = 3,
+  ERROR_CODE_UNABLE_TO_CREATE_USER = 4,
+  ERROR_CODE_FAILED_TO_GET_USER = 5,
+  ERROR_CODE_GOOGLE_AUTH_FAILED = 6,
+  ERROR_CODE_EMPTY_ID_TOKEN = 7,
+  ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY = 8,
+  ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE = 9,
+  ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT = 10,
+  ERROR_CODE_ACCESS_KEY_HAS_EXPIRED = 11,
+  ERROR_CODE_SYSTME = 12,
+  ERROR_CODE_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  ERROR_CODE_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
-bool LoginReply_ERROR_CODE_IsValid(int value);
-constexpr LoginReply_ERROR_CODE LoginReply_ERROR_CODE_ERROR_CODE_MIN = LoginReply_ERROR_CODE_ERROR_CODE_OK;
-constexpr LoginReply_ERROR_CODE LoginReply_ERROR_CODE_ERROR_CODE_MAX = LoginReply_ERROR_CODE_ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT;
-constexpr int LoginReply_ERROR_CODE_ERROR_CODE_ARRAYSIZE = LoginReply_ERROR_CODE_ERROR_CODE_MAX + 1;
+bool ERROR_CODE_IsValid(int value);
+constexpr ERROR_CODE ERROR_CODE_MIN = ERROR_CODE_OK;
+constexpr ERROR_CODE ERROR_CODE_MAX = ERROR_CODE_SYSTME;
+constexpr int ERROR_CODE_ARRAYSIZE = ERROR_CODE_MAX + 1;
 
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* LoginReply_ERROR_CODE_descriptor();
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ERROR_CODE_descriptor();
 template<typename T>
-inline const std::string& LoginReply_ERROR_CODE_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, LoginReply_ERROR_CODE>::value ||
+inline const std::string& ERROR_CODE_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, ERROR_CODE>::value ||
     ::std::is_integral<T>::value,
-    "Incorrect type passed to function LoginReply_ERROR_CODE_Name.");
+    "Incorrect type passed to function ERROR_CODE_Name.");
   return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    LoginReply_ERROR_CODE_descriptor(), enum_t_value);
+    ERROR_CODE_descriptor(), enum_t_value);
 }
-inline bool LoginReply_ERROR_CODE_Parse(
-    const std::string& name, LoginReply_ERROR_CODE* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<LoginReply_ERROR_CODE>(
-    LoginReply_ERROR_CODE_descriptor(), name, value);
+inline bool ERROR_CODE_Parse(
+    const std::string& name, ERROR_CODE* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<ERROR_CODE>(
+    ERROR_CODE_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -448,20 +470,13 @@ class RpcServiceExampleReply :
   enum : int {
     kErrorFieldNumber = 1,
   };
-  // string error = 1;
+  // .yyb.ERROR_CODE error = 1;
   void clear_error();
-  const std::string& error() const;
-  void set_error(const std::string& value);
-  void set_error(std::string&& value);
-  void set_error(const char* value);
-  void set_error(const char* value, size_t size);
-  std::string* mutable_error();
-  std::string* release_error();
-  void set_allocated_error(std::string* error);
+  ::yyb::ERROR_CODE error() const;
+  void set_error(::yyb::ERROR_CODE value);
   private:
-  const std::string& _internal_error() const;
-  void _internal_set_error(const std::string& value);
-  std::string* _internal_mutable_error();
+  ::yyb::ERROR_CODE _internal_error() const;
+  void _internal_set_error(::yyb::ERROR_CODE value);
   public:
 
   // @@protoc_insertion_point(class_scope:yyb.RpcServiceExampleReply)
@@ -469,7 +484,7 @@ class RpcServiceExampleReply :
   class _Internal;
 
   ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr error_;
+  int error_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_rpc_5fservice_2eproto;
 };
@@ -1042,54 +1057,6 @@ class LoginReply :
 
   // nested types ----------------------------------------------------
 
-  typedef LoginReply_ERROR_CODE ERROR_CODE;
-  static constexpr ERROR_CODE ERROR_CODE_OK =
-    LoginReply_ERROR_CODE_ERROR_CODE_OK;
-  static constexpr ERROR_CODE ERROR_CODE_EMPTY_NICKNAME =
-    LoginReply_ERROR_CODE_ERROR_CODE_EMPTY_NICKNAME;
-  static constexpr ERROR_CODE ERROR_CODE_DUP_NICKNAME =
-    LoginReply_ERROR_CODE_ERROR_CODE_DUP_NICKNAME;
-  static constexpr ERROR_CODE ERROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS =
-    LoginReply_ERROR_CODE_ERROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS;
-  static constexpr ERROR_CODE ERROR_CODE_UNABLE_TO_CREATE_USER =
-    LoginReply_ERROR_CODE_ERROR_CODE_UNABLE_TO_CREATE_USER;
-  static constexpr ERROR_CODE ERROR_CODE_FAILED_TO_ACQUIRE_USER_INFO =
-    LoginReply_ERROR_CODE_ERROR_CODE_FAILED_TO_ACQUIRE_USER_INFO;
-  static constexpr ERROR_CODE ERROR_CODE_GOOGLE_AUTH_FAILED =
-    LoginReply_ERROR_CODE_ERROR_CODE_GOOGLE_AUTH_FAILED;
-  static constexpr ERROR_CODE ERROR_CODE_EMPTY_ID_TOKEN =
-    LoginReply_ERROR_CODE_ERROR_CODE_EMPTY_ID_TOKEN;
-  static constexpr ERROR_CODE ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY =
-    LoginReply_ERROR_CODE_ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY;
-  static constexpr ERROR_CODE ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE =
-    LoginReply_ERROR_CODE_ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE;
-  static constexpr ERROR_CODE ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT =
-    LoginReply_ERROR_CODE_ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT;
-  static inline bool ERROR_CODE_IsValid(int value) {
-    return LoginReply_ERROR_CODE_IsValid(value);
-  }
-  static constexpr ERROR_CODE ERROR_CODE_MIN =
-    LoginReply_ERROR_CODE_ERROR_CODE_MIN;
-  static constexpr ERROR_CODE ERROR_CODE_MAX =
-    LoginReply_ERROR_CODE_ERROR_CODE_MAX;
-  static constexpr int ERROR_CODE_ARRAYSIZE =
-    LoginReply_ERROR_CODE_ERROR_CODE_ARRAYSIZE;
-  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
-  ERROR_CODE_descriptor() {
-    return LoginReply_ERROR_CODE_descriptor();
-  }
-  template<typename T>
-  static inline const std::string& ERROR_CODE_Name(T enum_t_value) {
-    static_assert(::std::is_same<T, ERROR_CODE>::value ||
-      ::std::is_integral<T>::value,
-      "Incorrect type passed to function ERROR_CODE_Name.");
-    return LoginReply_ERROR_CODE_Name(enum_t_value);
-  }
-  static inline bool ERROR_CODE_Parse(const std::string& name,
-      ERROR_CODE* value) {
-    return LoginReply_ERROR_CODE_Parse(name, value);
-  }
-
   // accessors -------------------------------------------------------
 
   enum : int {
@@ -1147,13 +1114,13 @@ class LoginReply :
   std::string* _internal_mutable_accesskey();
   public:
 
-  // .yyb.LoginReply.ERROR_CODE error = 1;
+  // .yyb.ERROR_CODE error = 1;
   void clear_error();
-  ::yyb::LoginReply_ERROR_CODE error() const;
-  void set_error(::yyb::LoginReply_ERROR_CODE value);
+  ::yyb::ERROR_CODE error() const;
+  void set_error(::yyb::ERROR_CODE value);
   private:
-  ::yyb::LoginReply_ERROR_CODE _internal_error() const;
-  void _internal_set_error(::yyb::LoginReply_ERROR_CODE value);
+  ::yyb::ERROR_CODE _internal_error() const;
+  void _internal_set_error(::yyb::ERROR_CODE value);
   public:
 
   // int32 usn = 2;
@@ -1175,6 +1142,701 @@ class LoginReply :
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr accesskey_;
   int error_;
   ::PROTOBUF_NAMESPACE_ID::int32 usn_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_rpc_5fservice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class RankingRequest :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:yyb.RankingRequest) */ {
+ public:
+  RankingRequest();
+  virtual ~RankingRequest();
+
+  RankingRequest(const RankingRequest& from);
+  RankingRequest(RankingRequest&& from) noexcept
+    : RankingRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline RankingRequest& operator=(const RankingRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RankingRequest& operator=(RankingRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const RankingRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const RankingRequest* internal_default_instance() {
+    return reinterpret_cast<const RankingRequest*>(
+               &_RankingRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(RankingRequest& a, RankingRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RankingRequest* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline RankingRequest* New() const final {
+    return CreateMaybeMessage<RankingRequest>(nullptr);
+  }
+
+  RankingRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<RankingRequest>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const RankingRequest& from);
+  void MergeFrom(const RankingRequest& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RankingRequest* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "yyb.RankingRequest";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_rpc_5fservice_2eproto);
+    return ::descriptor_table_rpc_5fservice_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kScoreFieldNumber = 1,
+  };
+  // int64 score = 1;
+  void clear_score();
+  ::PROTOBUF_NAMESPACE_ID::int64 score() const;
+  void set_score(::PROTOBUF_NAMESPACE_ID::int64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int64 _internal_score() const;
+  void _internal_set_score(::PROTOBUF_NAMESPACE_ID::int64 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:yyb.RankingRequest)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::int64 score_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_rpc_5fservice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class RankingReply :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:yyb.RankingReply) */ {
+ public:
+  RankingReply();
+  virtual ~RankingReply();
+
+  RankingReply(const RankingReply& from);
+  RankingReply(RankingReply&& from) noexcept
+    : RankingReply() {
+    *this = ::std::move(from);
+  }
+
+  inline RankingReply& operator=(const RankingReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RankingReply& operator=(RankingReply&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const RankingReply& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const RankingReply* internal_default_instance() {
+    return reinterpret_cast<const RankingReply*>(
+               &_RankingReply_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(RankingReply& a, RankingReply& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RankingReply* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline RankingReply* New() const final {
+    return CreateMaybeMessage<RankingReply>(nullptr);
+  }
+
+  RankingReply* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<RankingReply>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const RankingReply& from);
+  void MergeFrom(const RankingReply& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RankingReply* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "yyb.RankingReply";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_rpc_5fservice_2eproto);
+    return ::descriptor_table_rpc_5fservice_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kErrorFieldNumber = 1,
+  };
+  // .yyb.ERROR_CODE error = 1;
+  void clear_error();
+  ::yyb::ERROR_CODE error() const;
+  void set_error(::yyb::ERROR_CODE value);
+  private:
+  ::yyb::ERROR_CODE _internal_error() const;
+  void _internal_set_error(::yyb::ERROR_CODE value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:yyb.RankingReply)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  int error_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_rpc_5fservice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class RankingListRequest :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:yyb.RankingListRequest) */ {
+ public:
+  RankingListRequest();
+  virtual ~RankingListRequest();
+
+  RankingListRequest(const RankingListRequest& from);
+  RankingListRequest(RankingListRequest&& from) noexcept
+    : RankingListRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline RankingListRequest& operator=(const RankingListRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RankingListRequest& operator=(RankingListRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const RankingListRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const RankingListRequest* internal_default_instance() {
+    return reinterpret_cast<const RankingListRequest*>(
+               &_RankingListRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  friend void swap(RankingListRequest& a, RankingListRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RankingListRequest* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline RankingListRequest* New() const final {
+    return CreateMaybeMessage<RankingListRequest>(nullptr);
+  }
+
+  RankingListRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<RankingListRequest>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const RankingListRequest& from);
+  void MergeFrom(const RankingListRequest& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RankingListRequest* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "yyb.RankingListRequest";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_rpc_5fservice_2eproto);
+    return ::descriptor_table_rpc_5fservice_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:yyb.RankingListRequest)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_rpc_5fservice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class RankingListReply_Ranking :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:yyb.RankingListReply.Ranking) */ {
+ public:
+  RankingListReply_Ranking();
+  virtual ~RankingListReply_Ranking();
+
+  RankingListReply_Ranking(const RankingListReply_Ranking& from);
+  RankingListReply_Ranking(RankingListReply_Ranking&& from) noexcept
+    : RankingListReply_Ranking() {
+    *this = ::std::move(from);
+  }
+
+  inline RankingListReply_Ranking& operator=(const RankingListReply_Ranking& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RankingListReply_Ranking& operator=(RankingListReply_Ranking&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const RankingListReply_Ranking& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const RankingListReply_Ranking* internal_default_instance() {
+    return reinterpret_cast<const RankingListReply_Ranking*>(
+               &_RankingListReply_Ranking_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(RankingListReply_Ranking& a, RankingListReply_Ranking& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RankingListReply_Ranking* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline RankingListReply_Ranking* New() const final {
+    return CreateMaybeMessage<RankingListReply_Ranking>(nullptr);
+  }
+
+  RankingListReply_Ranking* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<RankingListReply_Ranking>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const RankingListReply_Ranking& from);
+  void MergeFrom(const RankingListReply_Ranking& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RankingListReply_Ranking* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "yyb.RankingListReply.Ranking";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_rpc_5fservice_2eproto);
+    return ::descriptor_table_rpc_5fservice_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNickNameFieldNumber = 1,
+    kRankFieldNumber = 2,
+    kScoreFieldNumber = 3,
+  };
+  // string nickName = 1;
+  void clear_nickname();
+  const std::string& nickname() const;
+  void set_nickname(const std::string& value);
+  void set_nickname(std::string&& value);
+  void set_nickname(const char* value);
+  void set_nickname(const char* value, size_t size);
+  std::string* mutable_nickname();
+  std::string* release_nickname();
+  void set_allocated_nickname(std::string* nickname);
+  private:
+  const std::string& _internal_nickname() const;
+  void _internal_set_nickname(const std::string& value);
+  std::string* _internal_mutable_nickname();
+  public:
+
+  // int32 rank = 2;
+  void clear_rank();
+  ::PROTOBUF_NAMESPACE_ID::int32 rank() const;
+  void set_rank(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_rank() const;
+  void _internal_set_rank(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 score = 3;
+  void clear_score();
+  ::PROTOBUF_NAMESPACE_ID::int32 score() const;
+  void set_score(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_score() const;
+  void _internal_set_score(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:yyb.RankingListReply.Ranking)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr nickname_;
+  ::PROTOBUF_NAMESPACE_ID::int32 rank_;
+  ::PROTOBUF_NAMESPACE_ID::int32 score_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_rpc_5fservice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class RankingListReply :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:yyb.RankingListReply) */ {
+ public:
+  RankingListReply();
+  virtual ~RankingListReply();
+
+  RankingListReply(const RankingListReply& from);
+  RankingListReply(RankingListReply&& from) noexcept
+    : RankingListReply() {
+    *this = ::std::move(from);
+  }
+
+  inline RankingListReply& operator=(const RankingListReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RankingListReply& operator=(RankingListReply&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const RankingListReply& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const RankingListReply* internal_default_instance() {
+    return reinterpret_cast<const RankingListReply*>(
+               &_RankingListReply_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(RankingListReply& a, RankingListReply& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RankingListReply* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline RankingListReply* New() const final {
+    return CreateMaybeMessage<RankingListReply>(nullptr);
+  }
+
+  RankingListReply* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<RankingListReply>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const RankingListReply& from);
+  void MergeFrom(const RankingListReply& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RankingListReply* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "yyb.RankingListReply";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_rpc_5fservice_2eproto);
+    return ::descriptor_table_rpc_5fservice_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  typedef RankingListReply_Ranking Ranking;
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kRankingsFieldNumber = 3,
+    kMyRankingFieldNumber = 2,
+    kErrorFieldNumber = 1,
+  };
+  // repeated .yyb.RankingListReply.Ranking rankings = 3;
+  int rankings_size() const;
+  private:
+  int _internal_rankings_size() const;
+  public:
+  void clear_rankings();
+  ::yyb::RankingListReply_Ranking* mutable_rankings(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::RankingListReply_Ranking >*
+      mutable_rankings();
+  private:
+  const ::yyb::RankingListReply_Ranking& _internal_rankings(int index) const;
+  ::yyb::RankingListReply_Ranking* _internal_add_rankings();
+  public:
+  const ::yyb::RankingListReply_Ranking& rankings(int index) const;
+  ::yyb::RankingListReply_Ranking* add_rankings();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::RankingListReply_Ranking >&
+      rankings() const;
+
+  // .yyb.RankingListReply.Ranking myRanking = 2;
+  bool has_myranking() const;
+  private:
+  bool _internal_has_myranking() const;
+  public:
+  void clear_myranking();
+  const ::yyb::RankingListReply_Ranking& myranking() const;
+  ::yyb::RankingListReply_Ranking* release_myranking();
+  ::yyb::RankingListReply_Ranking* mutable_myranking();
+  void set_allocated_myranking(::yyb::RankingListReply_Ranking* myranking);
+  private:
+  const ::yyb::RankingListReply_Ranking& _internal_myranking() const;
+  ::yyb::RankingListReply_Ranking* _internal_mutable_myranking();
+  public:
+
+  // .yyb.ERROR_CODE error = 1;
+  void clear_error();
+  ::yyb::ERROR_CODE error() const;
+  void set_error(::yyb::ERROR_CODE value);
+  private:
+  ::yyb::ERROR_CODE _internal_error() const;
+  void _internal_set_error(::yyb::ERROR_CODE value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:yyb.RankingListReply)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::RankingListReply_Ranking > rankings_;
+  ::yyb::RankingListReply_Ranking* myranking_;
+  int error_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_rpc_5fservice_2eproto;
 };
@@ -1360,64 +2022,24 @@ RpcServiceExampleRequest::mutable_arg5() {
 
 // RpcServiceExampleReply
 
-// string error = 1;
+// .yyb.ERROR_CODE error = 1;
 inline void RpcServiceExampleReply::clear_error() {
-  error_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  error_ = 0;
 }
-inline const std::string& RpcServiceExampleReply::error() const {
+inline ::yyb::ERROR_CODE RpcServiceExampleReply::_internal_error() const {
+  return static_cast< ::yyb::ERROR_CODE >(error_);
+}
+inline ::yyb::ERROR_CODE RpcServiceExampleReply::error() const {
   // @@protoc_insertion_point(field_get:yyb.RpcServiceExampleReply.error)
   return _internal_error();
 }
-inline void RpcServiceExampleReply::set_error(const std::string& value) {
+inline void RpcServiceExampleReply::_internal_set_error(::yyb::ERROR_CODE value) {
+  
+  error_ = value;
+}
+inline void RpcServiceExampleReply::set_error(::yyb::ERROR_CODE value) {
   _internal_set_error(value);
   // @@protoc_insertion_point(field_set:yyb.RpcServiceExampleReply.error)
-}
-inline std::string* RpcServiceExampleReply::mutable_error() {
-  // @@protoc_insertion_point(field_mutable:yyb.RpcServiceExampleReply.error)
-  return _internal_mutable_error();
-}
-inline const std::string& RpcServiceExampleReply::_internal_error() const {
-  return error_.GetNoArena();
-}
-inline void RpcServiceExampleReply::_internal_set_error(const std::string& value) {
-  
-  error_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
-}
-inline void RpcServiceExampleReply::set_error(std::string&& value) {
-  
-  error_.SetNoArena(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:yyb.RpcServiceExampleReply.error)
-}
-inline void RpcServiceExampleReply::set_error(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  error_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:yyb.RpcServiceExampleReply.error)
-}
-inline void RpcServiceExampleReply::set_error(const char* value, size_t size) {
-  
-  error_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:yyb.RpcServiceExampleReply.error)
-}
-inline std::string* RpcServiceExampleReply::_internal_mutable_error() {
-  
-  return error_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline std::string* RpcServiceExampleReply::release_error() {
-  // @@protoc_insertion_point(field_release:yyb.RpcServiceExampleReply.error)
-  
-  return error_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-}
-inline void RpcServiceExampleReply::set_allocated_error(std::string* error) {
-  if (error != nullptr) {
-    
-  } else {
-    
-  }
-  error_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), error);
-  // @@protoc_insertion_point(field_set_allocated:yyb.RpcServiceExampleReply.error)
 }
 
 // -------------------------------------------------------------------
@@ -1696,22 +2318,22 @@ inline void LoginRequest::set_allocated_nickname(std::string* nickname) {
 
 // LoginReply
 
-// .yyb.LoginReply.ERROR_CODE error = 1;
+// .yyb.ERROR_CODE error = 1;
 inline void LoginReply::clear_error() {
   error_ = 0;
 }
-inline ::yyb::LoginReply_ERROR_CODE LoginReply::_internal_error() const {
-  return static_cast< ::yyb::LoginReply_ERROR_CODE >(error_);
+inline ::yyb::ERROR_CODE LoginReply::_internal_error() const {
+  return static_cast< ::yyb::ERROR_CODE >(error_);
 }
-inline ::yyb::LoginReply_ERROR_CODE LoginReply::error() const {
+inline ::yyb::ERROR_CODE LoginReply::error() const {
   // @@protoc_insertion_point(field_get:yyb.LoginReply.error)
   return _internal_error();
 }
-inline void LoginReply::_internal_set_error(::yyb::LoginReply_ERROR_CODE value) {
+inline void LoginReply::_internal_set_error(::yyb::ERROR_CODE value) {
   
   error_ = value;
 }
-inline void LoginReply::set_error(::yyb::LoginReply_ERROR_CODE value) {
+inline void LoginReply::set_error(::yyb::ERROR_CODE value) {
   _internal_set_error(value);
   // @@protoc_insertion_point(field_set:yyb.LoginReply.error)
 }
@@ -1916,9 +2538,298 @@ inline void LoginReply::set_allocated_accesskey(std::string* accesskey) {
   // @@protoc_insertion_point(field_set_allocated:yyb.LoginReply.accessKey)
 }
 
+// -------------------------------------------------------------------
+
+// RankingRequest
+
+// int64 score = 1;
+inline void RankingRequest::clear_score() {
+  score_ = PROTOBUF_LONGLONG(0);
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 RankingRequest::_internal_score() const {
+  return score_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 RankingRequest::score() const {
+  // @@protoc_insertion_point(field_get:yyb.RankingRequest.score)
+  return _internal_score();
+}
+inline void RankingRequest::_internal_set_score(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  
+  score_ = value;
+}
+inline void RankingRequest::set_score(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  _internal_set_score(value);
+  // @@protoc_insertion_point(field_set:yyb.RankingRequest.score)
+}
+
+// -------------------------------------------------------------------
+
+// RankingReply
+
+// .yyb.ERROR_CODE error = 1;
+inline void RankingReply::clear_error() {
+  error_ = 0;
+}
+inline ::yyb::ERROR_CODE RankingReply::_internal_error() const {
+  return static_cast< ::yyb::ERROR_CODE >(error_);
+}
+inline ::yyb::ERROR_CODE RankingReply::error() const {
+  // @@protoc_insertion_point(field_get:yyb.RankingReply.error)
+  return _internal_error();
+}
+inline void RankingReply::_internal_set_error(::yyb::ERROR_CODE value) {
+  
+  error_ = value;
+}
+inline void RankingReply::set_error(::yyb::ERROR_CODE value) {
+  _internal_set_error(value);
+  // @@protoc_insertion_point(field_set:yyb.RankingReply.error)
+}
+
+// -------------------------------------------------------------------
+
+// RankingListRequest
+
+// -------------------------------------------------------------------
+
+// RankingListReply_Ranking
+
+// string nickName = 1;
+inline void RankingListReply_Ranking::clear_nickname() {
+  nickname_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& RankingListReply_Ranking::nickname() const {
+  // @@protoc_insertion_point(field_get:yyb.RankingListReply.Ranking.nickName)
+  return _internal_nickname();
+}
+inline void RankingListReply_Ranking::set_nickname(const std::string& value) {
+  _internal_set_nickname(value);
+  // @@protoc_insertion_point(field_set:yyb.RankingListReply.Ranking.nickName)
+}
+inline std::string* RankingListReply_Ranking::mutable_nickname() {
+  // @@protoc_insertion_point(field_mutable:yyb.RankingListReply.Ranking.nickName)
+  return _internal_mutable_nickname();
+}
+inline const std::string& RankingListReply_Ranking::_internal_nickname() const {
+  return nickname_.GetNoArena();
+}
+inline void RankingListReply_Ranking::_internal_set_nickname(const std::string& value) {
+  
+  nickname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void RankingListReply_Ranking::set_nickname(std::string&& value) {
+  
+  nickname_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:yyb.RankingListReply.Ranking.nickName)
+}
+inline void RankingListReply_Ranking::set_nickname(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  nickname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:yyb.RankingListReply.Ranking.nickName)
+}
+inline void RankingListReply_Ranking::set_nickname(const char* value, size_t size) {
+  
+  nickname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:yyb.RankingListReply.Ranking.nickName)
+}
+inline std::string* RankingListReply_Ranking::_internal_mutable_nickname() {
+  
+  return nickname_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* RankingListReply_Ranking::release_nickname() {
+  // @@protoc_insertion_point(field_release:yyb.RankingListReply.Ranking.nickName)
+  
+  return nickname_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void RankingListReply_Ranking::set_allocated_nickname(std::string* nickname) {
+  if (nickname != nullptr) {
+    
+  } else {
+    
+  }
+  nickname_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), nickname);
+  // @@protoc_insertion_point(field_set_allocated:yyb.RankingListReply.Ranking.nickName)
+}
+
+// int32 rank = 2;
+inline void RankingListReply_Ranking::clear_rank() {
+  rank_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 RankingListReply_Ranking::_internal_rank() const {
+  return rank_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 RankingListReply_Ranking::rank() const {
+  // @@protoc_insertion_point(field_get:yyb.RankingListReply.Ranking.rank)
+  return _internal_rank();
+}
+inline void RankingListReply_Ranking::_internal_set_rank(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  rank_ = value;
+}
+inline void RankingListReply_Ranking::set_rank(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_rank(value);
+  // @@protoc_insertion_point(field_set:yyb.RankingListReply.Ranking.rank)
+}
+
+// int32 score = 3;
+inline void RankingListReply_Ranking::clear_score() {
+  score_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 RankingListReply_Ranking::_internal_score() const {
+  return score_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 RankingListReply_Ranking::score() const {
+  // @@protoc_insertion_point(field_get:yyb.RankingListReply.Ranking.score)
+  return _internal_score();
+}
+inline void RankingListReply_Ranking::_internal_set_score(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  score_ = value;
+}
+inline void RankingListReply_Ranking::set_score(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_score(value);
+  // @@protoc_insertion_point(field_set:yyb.RankingListReply.Ranking.score)
+}
+
+// -------------------------------------------------------------------
+
+// RankingListReply
+
+// .yyb.ERROR_CODE error = 1;
+inline void RankingListReply::clear_error() {
+  error_ = 0;
+}
+inline ::yyb::ERROR_CODE RankingListReply::_internal_error() const {
+  return static_cast< ::yyb::ERROR_CODE >(error_);
+}
+inline ::yyb::ERROR_CODE RankingListReply::error() const {
+  // @@protoc_insertion_point(field_get:yyb.RankingListReply.error)
+  return _internal_error();
+}
+inline void RankingListReply::_internal_set_error(::yyb::ERROR_CODE value) {
+  
+  error_ = value;
+}
+inline void RankingListReply::set_error(::yyb::ERROR_CODE value) {
+  _internal_set_error(value);
+  // @@protoc_insertion_point(field_set:yyb.RankingListReply.error)
+}
+
+// .yyb.RankingListReply.Ranking myRanking = 2;
+inline bool RankingListReply::_internal_has_myranking() const {
+  return this != internal_default_instance() && myranking_ != nullptr;
+}
+inline bool RankingListReply::has_myranking() const {
+  return _internal_has_myranking();
+}
+inline void RankingListReply::clear_myranking() {
+  if (GetArenaNoVirtual() == nullptr && myranking_ != nullptr) {
+    delete myranking_;
+  }
+  myranking_ = nullptr;
+}
+inline const ::yyb::RankingListReply_Ranking& RankingListReply::_internal_myranking() const {
+  const ::yyb::RankingListReply_Ranking* p = myranking_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::yyb::RankingListReply_Ranking*>(
+      &::yyb::_RankingListReply_Ranking_default_instance_);
+}
+inline const ::yyb::RankingListReply_Ranking& RankingListReply::myranking() const {
+  // @@protoc_insertion_point(field_get:yyb.RankingListReply.myRanking)
+  return _internal_myranking();
+}
+inline ::yyb::RankingListReply_Ranking* RankingListReply::release_myranking() {
+  // @@protoc_insertion_point(field_release:yyb.RankingListReply.myRanking)
+  
+  ::yyb::RankingListReply_Ranking* temp = myranking_;
+  myranking_ = nullptr;
+  return temp;
+}
+inline ::yyb::RankingListReply_Ranking* RankingListReply::_internal_mutable_myranking() {
+  
+  if (myranking_ == nullptr) {
+    auto* p = CreateMaybeMessage<::yyb::RankingListReply_Ranking>(GetArenaNoVirtual());
+    myranking_ = p;
+  }
+  return myranking_;
+}
+inline ::yyb::RankingListReply_Ranking* RankingListReply::mutable_myranking() {
+  // @@protoc_insertion_point(field_mutable:yyb.RankingListReply.myRanking)
+  return _internal_mutable_myranking();
+}
+inline void RankingListReply::set_allocated_myranking(::yyb::RankingListReply_Ranking* myranking) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete myranking_;
+  }
+  if (myranking) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      myranking = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, myranking, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  myranking_ = myranking;
+  // @@protoc_insertion_point(field_set_allocated:yyb.RankingListReply.myRanking)
+}
+
+// repeated .yyb.RankingListReply.Ranking rankings = 3;
+inline int RankingListReply::_internal_rankings_size() const {
+  return rankings_.size();
+}
+inline int RankingListReply::rankings_size() const {
+  return _internal_rankings_size();
+}
+inline void RankingListReply::clear_rankings() {
+  rankings_.Clear();
+}
+inline ::yyb::RankingListReply_Ranking* RankingListReply::mutable_rankings(int index) {
+  // @@protoc_insertion_point(field_mutable:yyb.RankingListReply.rankings)
+  return rankings_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::RankingListReply_Ranking >*
+RankingListReply::mutable_rankings() {
+  // @@protoc_insertion_point(field_mutable_list:yyb.RankingListReply.rankings)
+  return &rankings_;
+}
+inline const ::yyb::RankingListReply_Ranking& RankingListReply::_internal_rankings(int index) const {
+  return rankings_.Get(index);
+}
+inline const ::yyb::RankingListReply_Ranking& RankingListReply::rankings(int index) const {
+  // @@protoc_insertion_point(field_get:yyb.RankingListReply.rankings)
+  return _internal_rankings(index);
+}
+inline ::yyb::RankingListReply_Ranking* RankingListReply::_internal_add_rankings() {
+  return rankings_.Add();
+}
+inline ::yyb::RankingListReply_Ranking* RankingListReply::add_rankings() {
+  // @@protoc_insertion_point(field_add:yyb.RankingListReply.rankings)
+  return _internal_add_rankings();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::RankingListReply_Ranking >&
+RankingListReply::rankings() const {
+  // @@protoc_insertion_point(field_list:yyb.RankingListReply.rankings)
+  return rankings_;
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
@@ -1941,10 +2852,10 @@ template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::yyb::LoginRequest_LOGIN_TYPE>() {
   return ::yyb::LoginRequest_LOGIN_TYPE_descriptor();
 }
-template <> struct is_proto_enum< ::yyb::LoginReply_ERROR_CODE> : ::std::true_type {};
+template <> struct is_proto_enum< ::yyb::ERROR_CODE> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::yyb::LoginReply_ERROR_CODE>() {
-  return ::yyb::LoginReply_ERROR_CODE_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::yyb::ERROR_CODE>() {
+  return ::yyb::ERROR_CODE_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE
