@@ -19,8 +19,15 @@ public class InGameUIController : MonoBehaviour
 
         SetCoinUI();
         StageUI();
-        SetStageGaugeUI();
-        SetBossStageGaugeUI();
+        
+        if (GameManager.Instance.isBossStage() == true)
+        {
+            SetBossStageGaugeUI();
+        }
+        else
+        {
+            SetStageGaugeUI();
+        }
     }
 
     public void GameOverUI()

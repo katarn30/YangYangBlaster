@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class ShopCatItem : MonoBehaviour
 {
+    public Animator animator;
+
     public int index;
     public Text catName;
     public Image catImage;
     public Text levelText;
-    public Text priceText;
+    public Text priceText;    
     public GameObject selectEffect;
     public List<GameObject> buttonList = new List<GameObject>();
 
@@ -26,13 +28,16 @@ public class ShopCatItem : MonoBehaviour
         levelText.text = string.Format("Lv.{0}", mercenaryData.level);
         priceText.text = string.Format("{0} {1}", mercenaryData.price, "K");
 
+        animator.runtimeAnimatorController = mercenaryData.uiRuntimeAnimator;
+
         if (GameDataManager.Instance.userData.leaderData.name == mercenaryData.name)
         {
-            isLeader = true;
+            isLeader = true;            
         }
         else
         {
             isLeader = false;
+            
         }
 
         if (isLeader == false)

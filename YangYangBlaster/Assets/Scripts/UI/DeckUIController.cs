@@ -12,6 +12,9 @@ public class DeckUIController : MonoBehaviour
     [Header("Stage UI")]
     public GameObject[] stageGauge = new GameObject[5];
 
+    [Header("Animator")]
+    public List<Animator> mercenaryAnimatorList = new List<Animator>();    
+
     public void SetDeckUI()
     {
         if(GameDataManager.Instance.userData.mercenaryDataList.Count == 0)
@@ -27,6 +30,7 @@ public class DeckUIController : MonoBehaviour
             plusButton[0].gameObject.SetActive(false);
             deckMercenary[0].gameObject.SetActive(true);
             deckMercenary[0].sprite = GameDataManager.Instance.userData.mercenaryDataList[0].catImage;
+            mercenaryAnimatorList[0].runtimeAnimatorController = GameDataManager.Instance.userData.mercenaryDataList[0].uiRuntimeAnimator;
 
             plusButton[1].gameObject.SetActive(true);
             deckMercenary[1].gameObject.SetActive(false);
@@ -36,10 +40,12 @@ public class DeckUIController : MonoBehaviour
             plusButton[0].gameObject.SetActive(false);
             deckMercenary[0].gameObject.SetActive(true);
             deckMercenary[0].sprite = GameDataManager.Instance.userData.mercenaryDataList[0].catImage;
+            mercenaryAnimatorList[0].runtimeAnimatorController = GameDataManager.Instance.userData.mercenaryDataList[0].uiRuntimeAnimator;
 
             plusButton[1].gameObject.SetActive(false);
             deckMercenary[1].gameObject.SetActive(true);
             deckMercenary[1].sprite = GameDataManager.Instance.userData.mercenaryDataList[1].catImage;
+            mercenaryAnimatorList[1].runtimeAnimatorController = GameDataManager.Instance.userData.mercenaryDataList[1].uiRuntimeAnimator;
         }     
     }
 

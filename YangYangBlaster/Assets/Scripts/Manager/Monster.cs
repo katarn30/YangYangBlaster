@@ -157,7 +157,7 @@ public class Monster : MonoBehaviour
         {
             if (monsterHp > 0)
             {
-                monsterHp = monsterHp - 1;
+                monsterHp = monsterHp - (int)BulletManager.Instance.bulletDamage;
                 hpText.text = monsterHp.ToString();
 
                 if (isPuchScaleEffect == false)
@@ -172,27 +172,30 @@ public class Monster : MonoBehaviour
                 }                
             }
             
-            if (monsterHp <= 0)
+            if (isDead == false)
             {
-                isDead = true;
-                monsterHp = 0;
-                MonsterManager.Instance.deadCount = MonsterManager.Instance.deadCount + 1;
-
-                if (spawnCount > 0)
+                if (monsterHp <= 0)
                 {
-                    MonsterManager.Instance.SetSubMonster(transform.position, isUp, spawnCount - 1, originHp);
+                    isDead = true;
+                    monsterHp = 0;
+                    MonsterManager.Instance.deadCount = MonsterManager.Instance.deadCount + 1;
+
+                    if (spawnCount > 0)
+                    {
+                        MonsterManager.Instance.SetSubMonster(transform.position, isUp, spawnCount - 1, originHp);
+                    }
+
+                    GameManager.Instance.UpdateScore(100);
+
+                    EffectManager.Instance.SetBubbleEffect(transform.position, transform.localScale, colorList[spriteNum]);
+                    EffectManager.Instance.SetCoinEffect(transform.position);
+
+                    transform.DOPause();
+
+                    gameObject.SetActive(false);
                 }
-
-                GameManager.Instance.UpdateScore(100);
-
-                EffectManager.Instance.SetBubbleEffect(transform.position, transform.localScale, colorList[spriteNum]);
-                EffectManager.Instance.SetCoinEffect(transform.position);
-
-                transform.DOPause();
-
-                gameObject.SetActive(false);
             }
-
+            
             other.gameObject.SetActive(false);
         }
     }

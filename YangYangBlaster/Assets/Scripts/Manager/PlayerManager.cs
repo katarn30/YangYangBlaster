@@ -60,7 +60,7 @@ public class PlayerManager : SingleTon<PlayerManager>
         transform.position = new Vector2(0, transform.position.y);
         attackSpeed = GameDataManager.Instance.userData.leaderData.attackSpeed;
 
-        ChangeAniState(PlayerState.Idle);
+        ChangeAniState(PlayerState.Idle);        
     }
 
     // Update is called once per frame
