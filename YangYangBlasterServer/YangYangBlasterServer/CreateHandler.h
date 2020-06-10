@@ -3,8 +3,8 @@
 #include "AsyncHandler.h"
 #include "AsyncHandlerRpcServiceExample.h"
 #include "AsyncHandlerLogin.h"
-//#include "AsyncHandlerRanking.h"
-//#include "AsyncHandlerRankingList.h"
+#include "AsyncHandlerRanking.h"
+#include "AsyncHandlerRankingList.h"
 
 namespace yyb
 {
@@ -22,7 +22,7 @@ namespace yyb
         HANDLER_MACRO(RpcServiceExample);
         //HANDLER_MACRO(Listen);
         HANDLER_MACRO(Login);
-        /*HANDLER_MACRO(Ranking);
-        HANDLER_MACRO(RankingList);*/
+        HANDLER_MACRO(Ranking);
+        HANDLER_MACRO(RankingList);
 	}
 }

@@ -130,10 +130,10 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
         {
             while (running)
             {
-                if (Time.time < intervalTime)
-                {
-                    continue;
-                }
+                //if (Time.time < intervalTime)
+                //{
+                //    continue;
+                //}
 
                 var metadata = new Metadata
                     {
