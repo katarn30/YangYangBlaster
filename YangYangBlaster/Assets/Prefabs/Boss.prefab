@@ -71,7 +71,7 @@ MonoBehaviour:
   monsterHp: 0
   isLeft: 0
   xSpeed: 3
-  xGap: 1.5
+  xGap: 1
   isUp: 0
   ySpeed: 4
   yGap: 2

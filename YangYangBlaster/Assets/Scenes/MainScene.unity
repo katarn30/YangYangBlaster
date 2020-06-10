@@ -1054,12 +1054,14 @@ MonoBehaviour:
   stageDataList: []
   BossDataList:
   - name: 
-    pattenType: 0
-    hp: 30
+    pattenType: 1
+    hp: 140
+    attackTime: 3
+    createPos: {x: 0, y: 2.35}
     colliderOffset: {x: -0.04, y: -0.24}
     radius: 1.16
     deadColor: {r: 0.3137255, g: 0.28627452, b: 0.41960785, a: 1}
-    runtimeAnimator: {fileID: 22100000, guid: 025ddcb4f496dae489cddc3e403a50e4, type: 2}
+    runtimeAnimator: {fileID: 9100000, guid: eab555710935c7548ac05c3679170b19, type: 2}
 --- !u!1001 &1148695535
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -157,8 +157,7 @@ public class Monster : MonoBehaviour
         {
             if (monsterHp > 0)
             {
-                monsterHp = monsterHp - (int)BulletManager.Instance.bulletDamage;
-                hpText.text = monsterHp.ToString();
+                monsterHp = monsterHp - (int)BulletManager.Instance.bulletDamage;                
 
                 if (isPuchScaleEffect == false)
                 {
@@ -195,7 +194,8 @@ public class Monster : MonoBehaviour
                     gameObject.SetActive(false);
                 }
             }
-            
+
+            hpText.text = monsterHp.ToString();
             other.gameObject.SetActive(false);
         }
     }

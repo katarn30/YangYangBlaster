@@ -6,6 +6,14 @@ using DG.Tweening;
 
 public class Boss : MonoBehaviour
 {
+    public enum BossState
+    {
+        idle,
+        attack
+    }
+
+    public BossState bossState = BossState.idle;
+
     public int bossPattenNum = 0;
 
     public SpriteRenderer spriteRenderer;
@@ -28,6 +36,10 @@ public class Boss : MonoBehaviour
     bool isPuchScaleEffect = false;
     public bool isDead = false;
 
+    float attackTime = 5.0f;
+    float nowAttackTime = 0.0f;
+
+    Vector3 originPos;
     Vector3 originScale;
 
     public Color deadColor = Color.white;
@@ -81,7 +93,69 @@ public class Boss : MonoBehaviour
         }
         else if (bossPattenNum == 1)
         {
+            if (bossState == BossState.idle)
+            {
+                if (transform.position.x <= GameManager.Instance.minScreenPos.x + xGap)
+                {
+                    isLeft = false;
+                }
+                else if (transform.position.x >= GameManager.Instance.maxScreenPos.x - xGap)
+                {
+                    isLeft = true;
+                }
 
+                if (isLeft == true)
+                {
+                    transform.position -= new Vector3(xSpeed * Time.deltaTime, 0);
+                }
+                else
+                {
+                    transform.position += new Vector3(xSpeed * Time.deltaTime, 0);
+                }
+
+                nowAttackTime += Time.deltaTime;
+
+                if (nowAttackTime >= attackTime)
+                {
+                    Debug.Log("Attack");
+
+                    nowAttackTime = 0;
+
+                    SetChangeState(BossState.attack);
+
+                    StartCoroutine(attackDellay());
+                }
+            }            
+        }
+    }
+
+    IEnumerator attackDellay()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        transform.DOMoveY(-4.0f, 0.4f).OnComplete(
+            () =>
+            {
+                transform.DOMoveY(originPos.y, 1).OnComplete(
+                    () =>
+                    {
+                        SetChangeState(BossState.idle);
+                    });
+            });
+    }
+
+    public void SetChangeState(BossState _bossState)
+    {
+        bossState = _bossState;
+
+        switch (bossState)
+        {
+            case BossState.idle:
+                animator.SetTrigger("Idle");
+                break;
+            case BossState.attack:
+                animator.SetTrigger("Attack");
+                break;
         }
     }
 
@@ -102,8 +176,11 @@ public class Boss : MonoBehaviour
         isUp = false;
         isLeft = false;
 
+        attackTime = _data.attackTime;
+
         originScale = transform.localScale;
-        transform.position = Vector3.zero;
+        transform.position = _data.createPos;
+        originPos = transform.position;
 
         hpText.text = monsterHp.ToString();
 
@@ -140,24 +217,28 @@ public class Boss : MonoBehaviour
                         });
                 }                
             }
-            
-            if (monsterHp <= 0)
+
+            if (isDead == false)
             {
-                isDead = true;
-                monsterHp = 0;
-                
-                EffectManager.Instance.SetBubbleEffect(transform.position, transform.localScale, deadColor);
-                EffectManager.Instance.SetCoinEffect(transform.position);
+                if (monsterHp <= 0)
+                {
+                    isDead = true;
+                    monsterHp = 0;
 
-                GameManager.Instance.UpdateScore(1000);
-                GameManager.Instance.StageClear();
+                    EffectManager.Instance.SetBubbleEffect(transform.position, transform.localScale, deadColor);
+                    EffectManager.Instance.SetCoinEffect(transform.position);
 
-                transform.DOPause();
+                    GameManager.Instance.UpdateScore(1000);
+                    GameManager.Instance.StageClear();
 
-                gameObject.SetActive(false);
+                    transform.DOPause();
+
+                    gameObject.SetActive(false);
+                }                
             }
 
             hpText.text = monsterHp.ToString();
+
             other.gameObject.SetActive(false);
         }
     }
