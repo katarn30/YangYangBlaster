@@ -103,6 +103,7 @@ public class GameManager : SingleTon<GameManager>
         EffectManager.Instance.SetLobbyInit();
 
         UIManager.Instance.SetLobbyUI();
+        SoundManager.Instance.LobbyBGMSound();
     }
 
     public void BuyMercenary(int _num)
@@ -157,6 +158,15 @@ public class GameManager : SingleTon<GameManager>
         MercenaryManager.Instance.SetInGameInit();        
         EffectManager.Instance.SetInGameInit();
         UIManager.Instance.SetInGameUI();
+
+        if (isBossStage() == true)
+        {
+            SoundManager.Instance.StageBossBGMSound();
+        }
+        else
+        {
+            SoundManager.Instance.StageBGMSound();
+        }                
     }
 
     public void GameOver()

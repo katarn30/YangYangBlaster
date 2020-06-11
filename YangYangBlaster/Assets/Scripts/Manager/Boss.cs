@@ -225,6 +225,8 @@ public class Boss : MonoBehaviour
                     isDead = true;
                     monsterHp = 0;
 
+                    SoundManager.Instance.MonsterDeadSound();
+
                     EffectManager.Instance.SetBubbleEffect(transform.position, transform.localScale, deadColor);
                     EffectManager.Instance.SetCoinEffect(transform.position);
 
