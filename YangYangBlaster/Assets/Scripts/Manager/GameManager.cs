@@ -200,7 +200,7 @@ public class GameManager : SingleTon<GameManager>
     {
         bool result = false;
         float num = ((float)GameDataManager.Instance.userData.stageNum % 6);
-        if (num == 5)
+        if (num == 3 || num == 5)
         {
             result = true;
         }

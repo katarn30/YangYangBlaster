@@ -39,9 +39,9 @@ public struct UpgradePlayer //
     public int criticalIncrease;
     public int criticalPrice;
 
-    public int skillDamageLevel;
-    public int skillDamageIncrease;
-    public int skillDamagePrice;
+    public int buffDurationLevel;
+    public int buffDurationIncrease;
+    public int buffDurationPrice;
 
     public int freeCoinLevel;
     public int freeCoinIncrease;
@@ -378,7 +378,7 @@ public class GameDataManager : SingleTon<GameDataManager>
     {
         int result = 0;
 
-        result = 100 + userData.upgradePlayer.skillDamageLevel * userData.upgradePlayer.skillDamageIncrease;
+        result = 100 + userData.upgradePlayer.buffDurationLevel * userData.upgradePlayer.buffDurationIncrease;
 
         return result;
     }
@@ -387,7 +387,7 @@ public class GameDataManager : SingleTon<GameDataManager>
     {
         int result = 0;
 
-        result = userData.upgradePlayer.skillDamageLevel * userData.upgradePlayer.skillDamagePrice;
+        result = userData.upgradePlayer.buffDurationLevel * userData.upgradePlayer.buffDurationPrice;
 
         return result;
     }
@@ -435,7 +435,7 @@ public class GameDataManager : SingleTon<GameDataManager>
     {
         userData.userCurrency.userCoin = userData.userCurrency.userCoin - _price;
 
-        userData.upgradePlayer.skillDamageLevel++;
+        userData.upgradePlayer.buffDurationLevel++;
     }
 
     public void SetUpgradeFreeCoin(int _price)
