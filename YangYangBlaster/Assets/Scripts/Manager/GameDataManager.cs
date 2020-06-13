@@ -2,26 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Yyb;
 
 [System.Serializable]
 public struct UserData
 {
-    public string nickName;
-    public int stageNum;
-    public int score;
-    public int coin;
-    public int ruby;
+    public string nickName; //
+    public int stageNum;    //
+    public int score;       //
+    public int coin;        //
+    public int ruby;        //
     public DateTime freeCoinGetTime;
     public DateTime freeCoinUpdateTime;
-    public UpgradePlayer upgradePlayer;
+    public UpgradePlayer upgradePlayer; //
 
     public MercenaryData leaderData;
     public List<MercenaryData> mercenaryDataList;
-    public Dictionary<string, MercenaryData> getMercenaryDataDic;
+    public Dictionary<string, MercenaryData> getMercenaryDataDic; //
+
+    public LoginRequest.Types.LOGIN_TYPE loginType; //
+    public string loginKey; //
+    public string accessKey;    //
 }
 
 [Serializable]
-public struct UpgradePlayer
+public struct UpgradePlayer //
 {
     public int powerLevel;
     public int powerIncrease;
@@ -106,6 +111,8 @@ public class GameDataManager : SingleTon<GameDataManager>
     public List<StageData> stageDataList = new List<StageData>();
     public List<BossData> BossDataList = new List<BossData>();
 
+    public const string PREFIX_PREFS = "yyb_";
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -113,7 +120,14 @@ public class GameDataManager : SingleTon<GameDataManager>
 
     public void SetUserData()
     {
-        userData.nickName = "멍뭉이는멍뭉";
+        LoadUserDataLoginParts();
+
+        //userData.nickName = "멍뭉이는멍뭉";
+        if (userData.loginKey.Equals("") && userData.nickName.Equals(""))
+        {
+            userData.nickName = GenerateTempUserNickName("user");
+        }
+
         userData.coin = 0;
         userData.ruby = 0;
         userData.stageNum = 1;
@@ -125,6 +139,27 @@ public class GameDataManager : SingleTon<GameDataManager>
         userData.getMercenaryDataDic = new Dictionary<string, MercenaryData>();
 
         PlayerManager.Instance.ChangeLeaderCat(userData.leaderData.catImage);
+    }
+
+    public static string GenerateTempUserNickName(string prefix)
+    {
+        return string.Format("{0}#{1:N}", prefix, Guid.NewGuid());
+    }
+
+    public void LoadUserDataLoginParts()
+    {
+        userData.loginKey = PlayerPrefs.GetString(PREFIX_PREFS + "login_key", "");
+        userData.loginType = (LoginRequest.Types.LOGIN_TYPE)PlayerPrefs.GetInt(
+            PREFIX_PREFS + "login_type",
+            (int)LoginRequest.Types.LOGIN_TYPE.NonCert);
+        userData.nickName = PlayerPrefs.GetString(PREFIX_PREFS + "nick_name", "");
+    }
+
+    public void SaveUserDataLoginParts()
+    {
+        PlayerPrefs.SetString(PREFIX_PREFS + "login_key", userData.loginKey);
+        PlayerPrefs.SetInt(PREFIX_PREFS + "login_type", (int)userData.loginType);
+        PlayerPrefs.SetString(PREFIX_PREFS + "nick_name", userData.nickName);
     }
 
     public void SetFreeCoinInfo()

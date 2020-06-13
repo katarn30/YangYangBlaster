@@ -330,50 +330,52 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_rpc_5fservice_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\021rpc_service.proto\022\003yyb\"`\n\030RpcServiceEx"
-  "ampleRequest\022\014\n\004arg1\030\001 \001(\005\022\014\n\004arg2\030\002 \001(\002"
-  "\022\014\n\004arg3\030\003 \001(\t\022\014\n\004arg4\030\004 \001(\010\022\014\n\004arg5\030\005 \003"
-  "(\005\"8\n\026RpcServiceExampleReply\022\036\n\005error\030\001 "
-  "\001(\0162\017.yyb.ERROR_CODE\"\007\n\005Empty\"#\n\020PushNot"
-  "ification\022\017\n\007payload\030\001 \001(\t\"\313\001\n\014LoginRequ"
-  "est\022/\n\tloginType\030\001 \001(\0162\034.yyb.LoginReques"
-  "t.LOGIN_TYPE\022\020\n\010loginKey\030\002 \001(\t\022\017\n\007idToke"
-  "n\030\003 \001(\t\022\020\n\010nickName\030\004 \001(\t\"U\n\nLOGIN_TYPE\022"
-  "\027\n\023LOGIN_TYPE_NON_CERT\020\000\022\025\n\021LOGIN_TYPE_G"
-  "OOGLE\020\001\022\027\n\023LOGIN_TYPE_FACEBOOK\020\002\"p\n\nLogi"
-  "nReply\022\036\n\005error\030\001 \001(\0162\017.yyb.ERROR_CODE\022\013"
-  "\n\003usn\030\002 \001(\005\022\020\n\010nickName\030\003 \001(\t\022\020\n\010loginKe"
-  "y\030\004 \001(\t\022\021\n\taccessKey\030\005 \001(\t\"\037\n\016RankingReq"
-  "uest\022\r\n\005score\030\001 \001(\003\".\n\014RankingReply\022\036\n\005e"
-  "rror\030\001 \001(\0162\017.yyb.ERROR_CODE\"\024\n\022RankingLi"
-  "stRequest\"\317\001\n\020RankingListReply\022\036\n\005error\030"
-  "\001 \001(\0162\017.yyb.ERROR_CODE\0220\n\tmyRanking\030\002 \001("
-  "\0132\035.yyb.RankingListReply.Ranking\022/\n\010rank"
-  "ings\030\003 \003(\0132\035.yyb.RankingListReply.Rankin"
-  "g\0328\n\007Ranking\022\020\n\010nickName\030\001 \001(\t\022\014\n\004rank\030\002"
-  " \001(\005\022\r\n\005score\030\003 \001(\005*\324\003\n\nERROR_CODE\022\021\n\rER"
-  "ROR_CODE_OK\020\000\022\035\n\031ERROR_CODE_EMPTY_NICKNA"
-  "ME\020\001\022\033\n\027ERROR_CODE_DUP_NICKNAME\020\002\022/\n+ERR"
-  "OR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS"
-  "\020\003\022$\n ERROR_CODE_UNABLE_TO_CREATE_USER\020\004"
-  "\022!\n\035ERROR_CODE_FAILED_TO_GET_USER\020\005\022!\n\035E"
-  "RROR_CODE_GOOGLE_AUTH_FAILED\020\006\022\035\n\031ERROR_"
-  "CODE_EMPTY_ID_TOKEN\020\007\022)\n%ERROR_CODE_FAIL"
-  "ED_TO_UPDATE_LOGIN_KEY\020\010\022*\n&ERROR_CODE_F"
-  "AILED_TO_CHANGE_LOGIN_TYPE\020\t\022&\n\"ERROR_CO"
-  "DE_LOGIN_TYPE_IS_DIFFERENT\020\n\022%\n!ERROR_CO"
-  "DE_ACCESS_KEY_HAS_EXPIRED\020\013\022\025\n\021ERROR_COD"
-  "E_SYSTME\020\0142\265\002\n\nRpcService\022Q\n\021RpcServiceE"
-  "xample\022\035.yyb.RpcServiceExampleRequest\032\033."
-  "yyb.RpcServiceExampleReply\"\000\022/\n\006Listen\022\n"
-  ".yyb.Empty\032\025.yyb.PushNotification\"\0000\001\022-\n"
-  "\005Login\022\021.yyb.LoginRequest\032\017.yyb.LoginRep"
-  "ly\"\000\0223\n\007Ranking\022\023.yyb.RankingRequest\032\021.y"
-  "yb.RankingReply\"\000\022\?\n\013RankingList\022\027.yyb.R"
-  "ankingListRequest\032\025.yyb.RankingListReply"
-  "\"\000b\006proto3"
+  "\n\021rpc_service.proto\022\003yyb\032\034google/api/ann"
+  "otations.proto\"`\n\030RpcServiceExampleReque"
+  "st\022\014\n\004arg1\030\001 \001(\005\022\014\n\004arg2\030\002 \001(\002\022\014\n\004arg3\030\003"
+  " \001(\t\022\014\n\004arg4\030\004 \001(\010\022\014\n\004arg5\030\005 \003(\005\"8\n\026RpcS"
+  "erviceExampleReply\022\036\n\005error\030\001 \001(\0162\017.yyb."
+  "ERROR_CODE\"\007\n\005Empty\"#\n\020PushNotification\022"
+  "\017\n\007payload\030\001 \001(\t\"\313\001\n\014LoginRequest\022/\n\tlog"
+  "inType\030\001 \001(\0162\034.yyb.LoginRequest.LOGIN_TY"
+  "PE\022\020\n\010loginKey\030\002 \001(\t\022\017\n\007idToken\030\003 \001(\t\022\020\n"
+  "\010nickName\030\004 \001(\t\"U\n\nLOGIN_TYPE\022\027\n\023LOGIN_T"
+  "YPE_NON_CERT\020\000\022\025\n\021LOGIN_TYPE_GOOGLE\020\001\022\027\n"
+  "\023LOGIN_TYPE_FACEBOOK\020\002\"p\n\nLoginReply\022\036\n\005"
+  "error\030\001 \001(\0162\017.yyb.ERROR_CODE\022\013\n\003usn\030\002 \001("
+  "\005\022\020\n\010nickName\030\003 \001(\t\022\020\n\010loginKey\030\004 \001(\t\022\021\n"
+  "\taccessKey\030\005 \001(\t\"\037\n\016RankingRequest\022\r\n\005sc"
+  "ore\030\001 \001(\003\".\n\014RankingReply\022\036\n\005error\030\001 \001(\016"
+  "2\017.yyb.ERROR_CODE\"\024\n\022RankingListRequest\""
+  "\317\001\n\020RankingListReply\022\036\n\005error\030\001 \001(\0162\017.yy"
+  "b.ERROR_CODE\0220\n\tmyRanking\030\002 \001(\0132\035.yyb.Ra"
+  "nkingListReply.Ranking\022/\n\010rankings\030\003 \003(\013"
+  "2\035.yyb.RankingListReply.Ranking\0328\n\007Ranki"
+  "ng\022\020\n\010nickName\030\001 \001(\t\022\014\n\004rank\030\002 \001(\005\022\r\n\005sc"
+  "ore\030\003 \001(\005*\324\003\n\nERROR_CODE\022\021\n\rERROR_CODE_O"
+  "K\020\000\022\035\n\031ERROR_CODE_EMPTY_NICKNAME\020\001\022\033\n\027ER"
+  "ROR_CODE_DUP_NICKNAME\020\002\022/\n+ERROR_CODE_NI"
+  "CKNAME_HAVE_SPECIAL_CHARACTERS\020\003\022$\n ERRO"
+  "R_CODE_UNABLE_TO_CREATE_USER\020\004\022!\n\035ERROR_"
+  "CODE_FAILED_TO_GET_USER\020\005\022!\n\035ERROR_CODE_"
+  "GOOGLE_AUTH_FAILED\020\006\022\035\n\031ERROR_CODE_EMPTY"
+  "_ID_TOKEN\020\007\022)\n%ERROR_CODE_FAILED_TO_UPDA"
+  "TE_LOGIN_KEY\020\010\022*\n&ERROR_CODE_FAILED_TO_C"
+  "HANGE_LOGIN_TYPE\020\t\022&\n\"ERROR_CODE_LOGIN_T"
+  "YPE_IS_DIFFERENT\020\n\022%\n!ERROR_CODE_ACCESS_"
+  "KEY_HAS_EXPIRED\020\013\022\025\n\021ERROR_CODE_SYSTME\020\014"
+  "2\320\002\n\nRpcService\022Q\n\021RpcServiceExample\022\035.y"
+  "yb.RpcServiceExampleRequest\032\033.yyb.RpcSer"
+  "viceExampleReply\"\000\022/\n\006Listen\022\n.yyb.Empty"
+  "\032\025.yyb.PushNotification\"\0000\001\022H\n\005Login\022\021.y"
+  "yb.LoginRequest\032\017.yyb.LoginReply\"\033\202\323\344\223\002\025"
+  "\"\020/v1/example/echo:\001*\0223\n\007Ranking\022\023.yyb.R"
+  "ankingRequest\032\021.yyb.RankingReply\"\000\022\?\n\013Ra"
+  "nkingList\022\027.yyb.RankingListRequest\032\025.yyb"
+  ".RankingListReply\"\000b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_rpc_5fservice_2eproto_deps[1] = {
+  &::descriptor_table_google_2fapi_2fannotations_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_rpc_5fservice_2eproto_sccs[11] = {
   &scc_info_Empty_rpc_5fservice_2eproto.base,
@@ -391,8 +393,8 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_rpc
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_rpc_5fservice_2eproto_once;
 static bool descriptor_table_rpc_5fservice_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_rpc_5fservice_2eproto = {
-  &descriptor_table_rpc_5fservice_2eproto_initialized, descriptor_table_protodef_rpc_5fservice_2eproto, "rpc_service.proto", 1650,
-  &descriptor_table_rpc_5fservice_2eproto_once, descriptor_table_rpc_5fservice_2eproto_sccs, descriptor_table_rpc_5fservice_2eproto_deps, 11, 0,
+  &descriptor_table_rpc_5fservice_2eproto_initialized, descriptor_table_protodef_rpc_5fservice_2eproto, "rpc_service.proto", 1707,
+  &descriptor_table_rpc_5fservice_2eproto_once, descriptor_table_rpc_5fservice_2eproto_sccs, descriptor_table_rpc_5fservice_2eproto_deps, 11, 1,
   schemas, file_default_instances, TableStruct_rpc_5fservice_2eproto::offsets,
   file_level_metadata_rpc_5fservice_2eproto, 11, file_level_enum_descriptors_rpc_5fservice_2eproto, file_level_service_descriptors_rpc_5fservice_2eproto,
 };

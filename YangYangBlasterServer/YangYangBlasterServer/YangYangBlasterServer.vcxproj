@@ -75,6 +75,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <SourcePath>google/api;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -105,7 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;WIN32;_WINDOWS;_WIN32_WINNT=0x600;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../External/protobuf-3.12.0/include;../External/boost_1_73_0/include;../External/grpc/include;../External/boringssl-with-bazel/include;../External/mysql-connector-c-6.1.11-winx64/include;../External/mysql-connector-c++-8.0.20-winx64/include;../External/soci-4.0.0/include;../External/python-3.6.5/include;../External/tacopie/include;../External/cpp_redis/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../External/protobuf-3.12.0/include;../External/boost_1_73_0/include;../External/grpc/include;../External/boringssl-with-bazel/include;../External/mysql-connector-c-6.1.11-winx64/include;../External/mysql-connector-c++-8.0.20-winx64/include;../External/soci-4.0.0/include;../External/python-3.6.5/include;../External/tacopie/include;../External/cpp_redis/include;google/api;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,7 +144,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;_WIN32_WINNT=0x600;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../External/protobuf-3.12.0/include;../External/boost_1_73_0/include;../External/grpc/include;../External/boringssl-with-bazel/include;../External/mysql-connector-c-6.1.11-winx64/include;../External/mysql-connector-c++-8.0.20-winx64/include;../External/soci-4.0.0/include;../External/python-3.6.5/include;../External/tacopie/include;../External/cpp_redis/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../External/protobuf-3.12.0/include;../External/boost_1_73_0/include;../External/grpc/include;../External/boringssl-with-bazel/include;../External/mysql-connector-c-6.1.11-winx64/include;../External/mysql-connector-c++-8.0.20-winx64/include;../External/soci-4.0.0/include;../External/python-3.6.5/include;../External/tacopie/include;../External/cpp_redis/include;google/api;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -154,6 +155,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="annotations.grpc.pb.cc" />
+    <ClCompile Include="annotations.pb.cc" />
     <ClCompile Include="AsyncHandler.cpp" />
     <ClCompile Include="AsyncHandlerLogin.cpp" />
     <ClCompile Include="AsyncHandlerRanking.cpp" />
@@ -164,6 +167,8 @@
     <ClCompile Include="HealthCheckServiceImpl.cpp" />
     <ClCompile Include="health_check_service.grpc.pb.cc" />
     <ClCompile Include="health_check_service.pb.cc" />
+    <ClCompile Include="http.grpc.pb.cc" />
+    <ClCompile Include="http.pb.cc" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RpcServerImpl.cpp" />
     <ClCompile Include="RpcServiceImpl.cpp" />
@@ -174,6 +179,8 @@
     <ClCompile Include="UserManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="annotations.grpc.pb.h" />
+    <ClInclude Include="annotations.pb.h" />
     <ClInclude Include="AsyncHandler.h" />
     <ClInclude Include="AsyncHandlerLogin.h" />
     <ClInclude Include="AsyncHandlerRanking.h" />
@@ -186,6 +193,8 @@
     <ClInclude Include="HealthCheckServiceImpl.h" />
     <ClInclude Include="health_check_service.grpc.pb.h" />
     <ClInclude Include="health_check_service.pb.h" />
+    <ClInclude Include="http.grpc.pb.h" />
+    <ClInclude Include="http.pb.h" />
     <ClInclude Include="RpcServerImpl.h" />
     <ClInclude Include="RpcServiceImpl.h" />
     <ClInclude Include="rpc_service.grpc.pb.h" />

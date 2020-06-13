@@ -65,6 +65,18 @@
     <ClCompile Include="AsyncHandlerRankingList.cpp">
       <Filter>AsyncHandler</Filter>
     </ClCompile>
+    <ClCompile Include="annotations.grpc.pb.cc">
+      <Filter>Proto</Filter>
+    </ClCompile>
+    <ClCompile Include="annotations.pb.cc">
+      <Filter>Proto</Filter>
+    </ClCompile>
+    <ClCompile Include="http.grpc.pb.cc">
+      <Filter>Proto</Filter>
+    </ClCompile>
+    <ClCompile Include="http.pb.cc">
+      <Filter>Proto</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AsyncHandler.h">
@@ -118,6 +130,18 @@
     </ClInclude>
     <ClInclude Include="AsyncHandlerRanking.h">
       <Filter>AsyncHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="annotations.grpc.pb.h">
+      <Filter>Proto</Filter>
+    </ClInclude>
+    <ClInclude Include="annotations.pb.h">
+      <Filter>Proto</Filter>
+    </ClInclude>
+    <ClInclude Include="http.grpc.pb.h">
+      <Filter>Proto</Filter>
+    </ClInclude>
+    <ClInclude Include="http.pb.h">
+      <Filter>Proto</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -34,6 +34,7 @@ public class GameManager : SingleTon<GameManager>
         Application.targetFrameRate = 60;
 
         GameDataManager.Instance.SetUserData();
+        LoginManager.Instance.DoAutoLogin();
 
         ChangeGameState(state);
     }

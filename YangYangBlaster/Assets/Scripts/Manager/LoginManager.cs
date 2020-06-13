@@ -4,19 +4,20 @@ using UnityEngine;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using Yyb;
+using Grpc.Health.V1;
 
 public class LoginManager : SingleTon<LoginManager>
 {
     public bool isWaitLogin = false;
     public UnityEngine.UI.InputField nicknameField = null;
 
-    private LoginRequest.Types.LOGIN_TYPE loginType_ = 0;
-    private string loginKey_ = "";
-    private string accessKey_ = "";
-    private string nickName_ = "";
-    private int usn_ = 0;
+    //private LoginRequest.Types.LOGIN_TYPE loginType_ = 0;
+    //private string loginKey_ = "";
+    //private string accessKey_ = "";
+    //private string nickName_ = "";
+    //private int usn_ = 0;
 
-    private const string PREFIX_PREFS = "yyb_";
+    //private const string PREFIX_PREFS = "yyb_";
     
     private void Awake()
     {
@@ -32,27 +33,28 @@ public class LoginManager : SingleTon<LoginManager>
             PlayGamesPlatform.Activate();
         }
 
-        LoadPlayerPrefs();
-        DoAutoLogin();
+        //DoAutoLogin();
     }
 
-    public void LoadPlayerPrefs()
-    {
-        loginKey_ = PlayerPrefs.GetString(PREFIX_PREFS + "login_key", "");
-        loginType_ = (LoginRequest.Types.LOGIN_TYPE)PlayerPrefs.GetInt(
-            PREFIX_PREFS + "login_type",
-            (int)LoginRequest.Types.LOGIN_TYPE.NonCert);
-        nickName_ = PlayerPrefs.GetString(PREFIX_PREFS + "nick_name", "");
+    //public void LoadPlayerPrefs()
+    //{
+    //    loginKey_ = PlayerPrefs.GetString(PREFIX_PREFS + "login_key", "");
+    //    loginType_ = (LoginRequest.Types.LOGIN_TYPE)PlayerPrefs.GetInt(
+    //        PREFIX_PREFS + "login_type",
+    //        (int)LoginRequest.Types.LOGIN_TYPE.NonCert);
+    //    nickName_ = PlayerPrefs.GetString(PREFIX_PREFS + "nick_name", "");
+    //    GameDataManager.Instance.userData.nickName = 
+    //        PlayerPrefs.GetString(PREFIX_PREFS + "nick_name", "");
 
-        //nicknameField.text = nickName_;
-    }
+    //    //nicknameField.text = nickName_;
+    //}
 
-    public void SavePlayerPrefs()
-    {
-        PlayerPrefs.SetString(PREFIX_PREFS + "login_key", loginKey_);
-        PlayerPrefs.SetInt(PREFIX_PREFS + "login_type", (int)loginType_);
-        PlayerPrefs.SetString(PREFIX_PREFS + "nick_name", nickName_);
-    }
+    //public void SavePlayerPrefs()
+    //{
+    //    PlayerPrefs.SetString(PREFIX_PREFS + "login_key", loginKey_);
+    //    PlayerPrefs.SetInt(PREFIX_PREFS + "login_type", (int)loginType_);
+    //    PlayerPrefs.SetString(PREFIX_PREFS + "nick_name", nickName_);
+    //}
 
     public void DeletePlayerPrefs()
     {
@@ -61,36 +63,48 @@ public class LoginManager : SingleTon<LoginManager>
 
     public void DoAutoLogin()
     {
-        if (LoginRequest.Types.LOGIN_TYPE.NonCert == loginType_)
+        var loginType = GameDataManager.Instance.userData.loginType;
+        var loginKey = GameDataManager.Instance.userData.loginKey;
+
+        if (LoginRequest.Types.LOGIN_TYPE.Google == loginType)
         {
-            NonCertLogin();
-        }
-        else if (LoginRequest.Types.LOGIN_TYPE.Google == loginType_)
-        {
-            if (loginKey_.Equals(""))
+            if (loginKey.Equals(""))
             {
+                NonCertLogin();
                 return;
             }
 
             GoogleLogin();
         }
+        else if (LoginRequest.Types.LOGIN_TYPE.Facebook == loginType)
+        {
+            NonCertLogin();
+        }
+        else
+        {
+            NonCertLogin();
+        }
     }
 
     public void NonCertLogin()
     {
-        //int usn = PlayerPrefs.GetInt("usn", 0);
-        //if (nickName_.Equals(""))
-        {
-            nickName_ = "이름이름이름";//nicknameField.text == null ? "" : nicknameField.text;
-        }
+        GameDataManager.Instance.userData.loginType = LoginRequest.Types.LOGIN_TYPE.NonCert;
 
-        loginType_ = LoginRequest.Types.LOGIN_TYPE.NonCert;
-
-        RpcLogin(loginType_, loginKey_, nickName_, "");
+        var loginType = GameDataManager.Instance.userData.loginType;
+        var loginKey = GameDataManager.Instance.userData.loginKey;
+        var nickName = GameDataManager.Instance.userData.nickName;
+        
+        RpcLogin(loginType, loginKey, nickName, "");
     }
 
     public void GoogleLogin()
     {
+        GameDataManager.Instance.userData.loginType = LoginRequest.Types.LOGIN_TYPE.Google;
+
+        var loginType = GameDataManager.Instance.userData.loginType;
+        var loginKey = GameDataManager.Instance.userData.loginKey;
+        var nickName = GameDataManager.Instance.userData.nickName;
+
         if (!Social.localUser.authenticated)
         {
             Social.localUser.Authenticate((bool bSuccess) =>
@@ -99,17 +113,10 @@ public class LoginManager : SingleTon<LoginManager>
                 {
                     Debug.Log("Login : " + Social.localUser.userName);
 
-                    //if (nickName_.Equals(""))
-                    {
-                        nickName_ = "이름이름이름";//nicknameField.text == null ? "" : nicknameField.text;
-                    }
-
-                    loginType_ = LoginRequest.Types.LOGIN_TYPE.Google;
-
                     string idToken = ((PlayGamesLocalUser)Social.localUser).GetIdToken() == null ?
                     "" : ((PlayGamesLocalUser)Social.localUser).GetIdToken();
 
-                    RpcLogin(loginType_, loginKey_, nickName_, idToken);
+                    RpcLogin(loginType, loginKey, nickName, idToken);
                 }
                 else
                 {
@@ -140,17 +147,36 @@ public class LoginManager : SingleTon<LoginManager>
             // 응답
             Debug.Log("LoginReply : " + reply.ToString());
 
-            if (LoginReply.Types.ERROR_CODE.Ok == reply.Error)
+            if (ERROR_CODE.Ok == reply.Error)
             {
                 Debug.Log("Ok");
 
-                //private LoginRequest.Types.LOGIN_TYPE loginType_ = 0;
-                loginKey_ = reply.LoginKey;
-                accessKey_ = reply.AccessKey;
-                nickName_ = reply.NickName;
-                usn_ = reply.Usn;
+                GameDataManager.Instance.userData.loginKey = reply.LoginKey;
+                GameDataManager.Instance.userData.accessKey = reply.AccessKey;
+                GameDataManager.Instance.userData.nickName = reply.NickName;
+                //usn_ = reply.Usn;
 
-                SavePlayerPrefs();
+                GameDataManager.Instance.SaveUserDataLoginParts();
+
+                // 헬스체크 시작
+                HealthCheckRequest healthCheckRequest = new HealthCheckRequest();
+                healthCheckRequest.Service = "yyb";
+
+                // 요청
+                RpcServiceManager.Instance.Check(healthCheckRequest, 
+                    (HealthCheckResponse HealthCheckReply) =>
+                {
+                    // 응답
+                    Debug.Log("HealthCheckResponse : " + HealthCheckReply.ToString());
+                });
+
+                // 요청
+                RpcServiceManager.Instance.Watch(healthCheckRequest, 
+                    (HealthCheckResponse HealthCheckReply) =>
+                {
+                    // 응답
+                    Debug.Log("HealthCheckResponse : " + HealthCheckReply.ToString());
+                });
             }
             else
             {
