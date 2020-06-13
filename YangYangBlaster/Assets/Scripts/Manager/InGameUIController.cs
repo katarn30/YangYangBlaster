@@ -44,7 +44,7 @@ public class InGameUIController : MonoBehaviour
 
     public void SetCoinUI()
     {
-        coinText.text = GameDataManager.Instance.userData.coin.ToString();
+        coinText.text = GameDataManager.Instance.userData.userCurrency.userCoin.ToString();
     }
 
     public void StageUI()

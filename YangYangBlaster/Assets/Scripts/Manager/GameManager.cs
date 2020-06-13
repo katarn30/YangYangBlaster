@@ -191,7 +191,7 @@ public class GameManager : SingleTon<GameManager>
 
     public void GetCoin(int _coin)
     {
-        GameDataManager.Instance.userData.coin += _coin;
+        GameDataManager.Instance.userData.userCurrency.userCoin += _coin;
 
         UIManager.Instance.inGameUI.SetCoinUI();
     }
