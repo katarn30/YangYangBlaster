@@ -157,8 +157,7 @@ public class Monster : MonoBehaviour
         {
             if (monsterHp > 0)
             {
-                monsterHp = monsterHp - (int)BulletManager.Instance.bulletDamage;
-                hpText.text = monsterHp.ToString();
+                monsterHp = monsterHp - (int)BulletManager.Instance.bulletDamage;                
 
                 if (isPuchScaleEffect == false)
                 {
@@ -180,6 +179,8 @@ public class Monster : MonoBehaviour
                     monsterHp = 0;
                     MonsterManager.Instance.deadCount = MonsterManager.Instance.deadCount + 1;
 
+                    SoundManager.Instance.MonsterDeadSound();
+
                     if (spawnCount > 0)
                     {
                         MonsterManager.Instance.SetSubMonster(transform.position, isUp, spawnCount - 1, originHp);
@@ -195,7 +196,8 @@ public class Monster : MonoBehaviour
                     gameObject.SetActive(false);
                 }
             }
-            
+
+            hpText.text = monsterHp.ToString();
             other.gameObject.SetActive(false);
         }
     }

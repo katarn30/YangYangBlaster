@@ -79,6 +79,8 @@ public struct BossData
     public string name;
     public int pattenType;
     public int hp;
+    public float attackTime;
+    public Vector2 createPos;
     public Vector2 colliderOffset;
     public float radius;
     public Color deadColor;

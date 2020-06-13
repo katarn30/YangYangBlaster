@@ -72,7 +72,8 @@ public class PlayerManager : SingleTon<PlayerManager>
         {
             bulletTime = 0;
 
-            BulletManager.Instance.ShotBullet(transform.position);               
+            BulletManager.Instance.ShotBullet(transform.position);
+            SoundManager.Instance.PlayerBulletSound();
         }
 
         ChangeAniState(PlayerState.Attack);        
@@ -129,6 +130,7 @@ public class PlayerManager : SingleTon<PlayerManager>
         }
         else if (other.gameObject.CompareTag("Coin"))
         {
+            SoundManager.Instance.CoinSound();
             getItemParticle.Stop();
             getItemParticle.Play();
         }
