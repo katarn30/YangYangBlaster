@@ -103,10 +103,10 @@ public struct UserCurrency
     public int userRubby;
 
     public int knightPiece;
-    public int piratePrice;
-    public int starPrice;
-    public int scientistPrice;
-    public int studentPrice;
+    public int piratePiece;
+    public int starPiece;
+    public int scientistPiece;
+    public int studentPiece;
 
 }
 
@@ -145,10 +145,10 @@ public class GameDataManager : SingleTon<GameDataManager>
         userData.userCurrency.userCoin = 0;
         userData.userCurrency.userRubby = 0;
         userData.userCurrency.knightPiece = 0;
-        userData.userCurrency.piratePrice = 0;
-        userData.userCurrency.starPrice = 0;
-        userData.userCurrency.scientistPrice = 0;
-        userData.userCurrency.studentPrice = 0;
+        userData.userCurrency.piratePiece = 0;
+        userData.userCurrency.starPiece = 0;
+        userData.userCurrency.scientistPiece = 0;
+        userData.userCurrency.studentPiece = 0;
         userData.stageNum = 1;
         userData.score = 0;
         SetFreeCoinInfo();
