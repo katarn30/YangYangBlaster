@@ -10,8 +10,7 @@ public struct UserData
     public string nickName; //
     public int stageNum;    //
     public int score;       //
-    public int coin;        //
-    public int ruby;        //
+    public UserCurrency userCurrency;//
     public DateTime freeCoinGetTime;
     public DateTime freeCoinUpdateTime;
     public UpgradePlayer upgradePlayer; //
@@ -40,9 +39,9 @@ public struct UpgradePlayer //
     public int criticalIncrease;
     public int criticalPrice;
 
-    public int skillDamageLevel;
-    public int skillDamageIncrease;
-    public int skillDamagePrice;
+    public int buffDurationLevel;
+    public int buffDurationIncrease;
+    public int buffDurationPrice;
 
     public int freeCoinLevel;
     public int freeCoinIncrease;
@@ -98,6 +97,19 @@ public struct StageData
     public int spawnCount;
 }
 
+public struct UserCurrency
+{
+    public int userCoin;
+    public int userRubby;
+
+    public int knightPiece;
+    public int piratePrice;
+    public int starPrice;
+    public int scientistPrice;
+    public int studentPrice;
+
+}
+
 public class GameDataManager : SingleTon<GameDataManager>
 {
     [Header("User Data")]
@@ -130,8 +142,13 @@ public class GameDataManager : SingleTon<GameDataManager>
             userData.nickName = GenerateTempUserNickName("user");
         }
 
-        userData.coin = 0;
-        userData.ruby = 0;
+        userData.userCurrency.userCoin = 0;
+        userData.userCurrency.userRubby = 0;
+        userData.userCurrency.knightPiece = 0;
+        userData.userCurrency.piratePrice = 0;
+        userData.userCurrency.starPrice = 0;
+        userData.userCurrency.scientistPrice = 0;
+        userData.userCurrency.studentPrice = 0;
         userData.stageNum = 1;
         userData.score = 0;
         SetFreeCoinInfo();
@@ -215,7 +232,7 @@ public class GameDataManager : SingleTon<GameDataManager>
             userData.getMercenaryDataDic.Add(key, mercenaryData);
         }
 
-        userData.coin = userData.coin - catPrice;
+        userData.userCurrency.userCoin = userData.userCurrency.userCoin - catPrice;
     }
 
     public void SelectMercenary(MercenaryData _mercenaryData)
@@ -263,7 +280,7 @@ public class GameDataManager : SingleTon<GameDataManager>
     {
         bool result = false;
 
-        if (userData.coin >= _coin)
+        if (userData.userCurrency.userCoin >= _coin)
         {
             result = true;
         }
@@ -361,7 +378,7 @@ public class GameDataManager : SingleTon<GameDataManager>
     {
         int result = 0;
 
-        result = 100 + userData.upgradePlayer.skillDamageLevel * userData.upgradePlayer.skillDamageIncrease;
+        result = 100 + userData.upgradePlayer.buffDurationLevel * userData.upgradePlayer.buffDurationIncrease;
 
         return result;
     }
@@ -370,7 +387,7 @@ public class GameDataManager : SingleTon<GameDataManager>
     {
         int result = 0;
 
-        result = userData.upgradePlayer.skillDamageLevel * userData.upgradePlayer.skillDamagePrice;
+        result = userData.upgradePlayer.buffDurationLevel * userData.upgradePlayer.buffDurationPrice;
 
         return result;
     }
@@ -395,35 +412,35 @@ public class GameDataManager : SingleTon<GameDataManager>
 
     public void SetUpgradeDamage(int _price)
     {
-        userData.coin = userData.coin - _price;
+        userData.userCurrency.userCoin = userData.userCurrency.userCoin - _price;
 
         userData.upgradePlayer.powerLevel++;
     }
 
     public void SetUpgradeAttackSpeed(int _price)
     {
-        userData.coin = userData.coin - _price;
+        userData.userCurrency.userCoin = userData.userCurrency.userCoin - _price;
 
         userData.upgradePlayer.attackSpeedLevel++;
     }
 
     public void SetUpgradeCritical(int _price)
     {
-        userData.coin = userData.coin - _price;
+        userData.userCurrency.userCoin = userData.userCurrency.userCoin - _price;
 
         userData.upgradePlayer.criticalLevel++;
     }
 
     public void SetUpgradeSkillDamage(int _price)
     {
-        userData.coin = userData.coin - _price;
+        userData.userCurrency.userCoin = userData.userCurrency.userCoin - _price;
 
-        userData.upgradePlayer.skillDamageLevel++;
+        userData.upgradePlayer.buffDurationLevel++;
     }
 
     public void SetUpgradeFreeCoin(int _price)
     {
-        userData.coin = userData.coin - _price;
+        userData.userCurrency.userCoin = userData.userCurrency.userCoin - _price;
 
         userData.upgradePlayer.freeCoinLevel++;
     }
@@ -432,7 +449,7 @@ public class GameDataManager : SingleTon<GameDataManager>
     {
         bool result = false;
 
-        if (userData.coin >= _price)
+        if (userData.userCurrency.userCoin >= _price)
         {
             result = true;
         }

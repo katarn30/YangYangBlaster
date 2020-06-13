@@ -109,7 +109,7 @@ public class LobbyUIController : MonoBehaviour
             return;
         }
 
-        coinText.text = GameDataManager.Instance.userData.coin.ToString();
+        coinText.text = GameDataManager.Instance.userData.userCurrency.userCoin.ToString();
     }
 
     public void UpdateFreeCoinText()
@@ -128,7 +128,7 @@ public class LobbyUIController : MonoBehaviour
 
         if (sp.TotalSeconds <= 0)
         {
-            GameDataManager.Instance.userData.coin = GameDataManager.Instance.userData.coin + GameDataManager.Instance.freeCoin;
+            GameDataManager.Instance.userData.userCurrency.userCoin = GameDataManager.Instance.userData.userCurrency.userCoin + GameDataManager.Instance.freeCoin;
             GameDataManager.Instance.SetFreeCoinInfo();
 
             UpdateFreeCoinText();
