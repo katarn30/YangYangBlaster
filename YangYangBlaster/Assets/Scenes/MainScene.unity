@@ -121,6 +121,97 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &36626458
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 522267977}
+    m_Modifications:
+    - target: {fileID: 5794041717890235026, guid: 6b366c1aec601bb46b3d39393384e248,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794041717890280236, guid: 6b366c1aec601bb46b3d39393384e248,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794041717905862718, guid: 6b366c1aec601bb46b3d39393384e248,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794041717905862718, guid: 6b366c1aec601bb46b3d39393384e248,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794041717905862718, guid: 6b366c1aec601bb46b3d39393384e248,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794041717905862718, guid: 6b366c1aec601bb46b3d39393384e248,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794041717905862718, guid: 6b366c1aec601bb46b3d39393384e248,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794041717905862718, guid: 6b366c1aec601bb46b3d39393384e248,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794041717905862718, guid: 6b366c1aec601bb46b3d39393384e248,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794041717905862718, guid: 6b366c1aec601bb46b3d39393384e248,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794041717905862718, guid: 6b366c1aec601bb46b3d39393384e248,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794041717905862718, guid: 6b366c1aec601bb46b3d39393384e248,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794041717905862718, guid: 6b366c1aec601bb46b3d39393384e248,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5794041717906132014, guid: 6b366c1aec601bb46b3d39393384e248,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerDeadEffet
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6b366c1aec601bb46b3d39393384e248, type: 3}
+--- !u!4 &36626459 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5794041717905862718, guid: 6b366c1aec601bb46b3d39393384e248,
+    type: 3}
+  m_PrefabInstance: {fileID: 36626458}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &36626460 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5794041717891759084, guid: 6b366c1aec601bb46b3d39393384e248,
+    type: 3}
+  m_PrefabInstance: {fileID: 36626458}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &235363283
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,6 +575,7 @@ Transform:
   m_Children:
   - {fileID: 2958935125573523087}
   - {fileID: 1148695537}
+  - {fileID: 36626459}
   m_Father: {fileID: 1363029900}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -799,6 +891,12 @@ MonoBehaviour:
   maxScreenPos: {x: 0, y: 0}
   isGameOver: 0
   isStageClear: 0
+  slowTime: 0
+  slowDurationTime: 0
+  isSlowMode: 0
+  frezeTime: 0
+  frezeDurationTime: 0
+  isFrezeMode: 0
 --- !u!4 &722717183
 Transform:
   m_ObjectHideFlags: 0
@@ -1141,7 +1239,7 @@ MonoBehaviour:
   monster: {fileID: 6028230092614303458, guid: e3ced1efa66a51245a007bb3634f3ae7, type: 3}
   boss: {fileID: 2607388319443178513, guid: cf4016cc4bf927348ac507de7f313b62, type: 3}
   isBossStage: 1
-  regenTime: 3.5
+  regenTime: 3
 --- !u!4 &922920861
 Transform:
   m_ObjectHideFlags: 0
@@ -1330,8 +1428,6 @@ MonoBehaviour:
     nickName: 
     stageNum: 0
     score: 0
-    coin: 0
-    ruby: 0
     upgradePlayer:
       powerLevel: 1
       powerIncrease: 10
@@ -1342,12 +1438,21 @@ MonoBehaviour:
       criticalLevel: 1
       criticalIncrease: 2
       criticalPrice: 200
-      skillDamageLevel: 1
-      skillDamageIncrease: 10
-      skillDamagePrice: 200
+      buffDurationLevel: 0
+      buffDurationIncrease: 0
+      buffDurationPrice: 0
       freeCoinLevel: 1
       freeCoinIncrease: 400
       freeCoinPrice: 200
+    milkItemList:
+    - type: 0
+      milkSprite: {fileID: 21300000, guid: 85442966ca4488e4fbc57d8e67ac49e2, type: 3}
+      milkLevel: 1
+      milkDuration: 2
+    - type: 1
+      milkSprite: {fileID: 21300000, guid: 85442966ca4488e4fbc57d8e67ac49e2, type: 3}
+      milkLevel: 1
+      milkDuration: 2
     leaderData:
       name: 
       damage: 0
@@ -1567,6 +1672,11 @@ MonoBehaviour:
   coinEffectList: []
   coinEffectMaxCount: 60
   activeCoinNum: 0
+  milkPrefab: {fileID: 6299609249032091635, guid: ca48f031d1a61204b8e477b3a70f5204,
+    type: 3}
+  milkEffectList: []
+  milkEffectMaxCount: 10
+  activeMilkNum: 0
 --- !u!4 &1175985203
 Transform:
   m_ObjectHideFlags: 0
@@ -1810,6 +1920,7 @@ MonoBehaviour:
   attackSpeed: 0.1
   originHp: 0
   bulleParticle: {fileID: 1148695536}
+  deadParticle: {fileID: 36626460}
   getItemParticle: {fileID: 2958935125573523088}
 --- !u!1 &1574255867
 GameObject:

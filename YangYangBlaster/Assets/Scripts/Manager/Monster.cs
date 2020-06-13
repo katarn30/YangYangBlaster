@@ -38,6 +38,10 @@ public class Monster : MonoBehaviour
 
     public List<Color> colorList = new List<Color>();
 
+    public float slowSpeed = 0.2f;
+
+    public ParticleSystem criticalEffect;
+
     private void Update()
     {       
         if (isDead == true)
@@ -46,48 +50,74 @@ public class Monster : MonoBehaviour
             return;
         }
 
-        if (transform.position.x <= GameManager.Instance.minScreenPos.x)
+        if (GameManager.Instance.isFrezeMode == true)
         {
-            isLeft = false;
-        }
-        else if (transform.position.x >= GameManager.Instance.maxScreenPos.x)
-        {
-            isLeft = true;
-        }        
-
-        if (isLeft == true)
-        {
-            transform.position -= new Vector3(xSpeed * Time.deltaTime, 0);
-            if (isRotLeft == false)
-            {
-                isRotLeft = true;
-                isRotRight = false;                
-                transform.DORotate(new Vector3(0, 0, 45), rotEndTime);
-            }            
+            rigidbody2D.velocity = Vector2.zero;
+            rigidbody2D.angularVelocity = 0f;
+            rigidbody2D.gravityScale = 0;
         }
         else
         {
-            transform.position += new Vector3(xSpeed * Time.deltaTime, 0);
-            if (isRotRight == false)
+            if (transform.position.x <= GameManager.Instance.minScreenPos.x)
             {
-                isRotRight = true;
-                isRotLeft = false;
-                transform.DORotate(new Vector3(0, 0, -45), rotEndTime);
-            }            
+                isLeft = false;
+            }
+            else if (transform.position.x >= GameManager.Instance.maxScreenPos.x)
+            {
+                isLeft = true;
+            }
+
+            if (isLeft == true)
+            {
+                transform.position -= new Vector3(xSpeed * Time.deltaTime, 0);
+                if (isRotLeft == false)
+                {
+                    isRotLeft = true;
+                    isRotRight = false;
+                    transform.DORotate(new Vector3(0, 0, 45), rotEndTime);
+                }
+            }
+            else
+            {
+                transform.position += new Vector3(xSpeed * Time.deltaTime, 0);
+                if (isRotRight == false)
+                {
+                    isRotRight = true;
+                    isRotLeft = false;
+                    transform.DORotate(new Vector3(0, 0, -45), rotEndTime);
+                }
+            }
+
+            if (transform.position.y <= -4.0f)
+            {
+                isUp = true;
+            }
+
+            if (isUp == true)
+            {
+                isUp = false;
+                rigidbody2D.velocity = Vector2.zero;
+                rigidbody2D.angularVelocity = 0f;
+
+                if (GameManager.Instance.isSlowMode == true)
+                {
+                    rigidbody2D.AddForce(Vector2.up * yForce * (slowSpeed * 2), ForceMode2D.Impulse);
+                }
+                else
+                {
+                    rigidbody2D.AddForce(Vector2.up * yForce, ForceMode2D.Impulse);
+                }
+            }
+
+            if (GameManager.Instance.isSlowMode == true)
+            {
+                rigidbody2D.gravityScale = slowSpeed;
+            }
         }        
 
-        if (transform.position.y <= -4.0f)
+        if (GameManager.Instance.isFrezeMode == false && GameManager.Instance.isSlowMode == false)
         {
-            isUp = true;            
-        }
-
-        if (isUp == true)
-        {
-            isUp = false;
-            rigidbody2D.velocity = Vector2.zero;
-            rigidbody2D.angularVelocity = 0f;
-            
-            rigidbody2D.AddForce(Vector2.up * yForce, ForceMode2D.Impulse);            
+            rigidbody2D.gravityScale = 1;
         }
     }
 
@@ -121,7 +151,16 @@ public class Monster : MonoBehaviour
         hpText.text = monsterHp.ToString();
 
         rigidbody2D.velocity = Vector2.zero;
-        rigidbody2D.AddForce(Vector2.up * createAddForce, ForceMode2D.Impulse);
+        criticalEffect.gameObject.SetActive(true);
+
+        if (GameManager.Instance.isSlowMode == true)
+        {            
+            rigidbody2D.AddForce(Vector2.up * createAddForce * (slowSpeed * 2), ForceMode2D.Impulse);
+        }
+        else
+        {
+            rigidbody2D.AddForce(Vector2.up * createAddForce, ForceMode2D.Impulse);
+        }
 
         spriteRender.sortingOrder = _sortOrder;
         hpText.sortingOrder = _sortOrder;
@@ -153,8 +192,14 @@ public class Monster : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Bullet"))
+        if (other.CompareTag("Bullet") || other.CompareTag("CriticalBullet"))
         {
+            if (other.CompareTag("CriticalBullet"))
+            {
+                criticalEffect.Stop();
+                criticalEffect.Play();
+            }
+
             if (monsterHp > 0)
             {
                 monsterHp = monsterHp - (int)BulletManager.Instance.bulletDamage;                
@@ -190,10 +235,12 @@ public class Monster : MonoBehaviour
 
                     EffectManager.Instance.SetBubbleEffect(transform.position, transform.localScale, colorList[spriteNum]);
                     EffectManager.Instance.SetCoinEffect(transform.position);
+                    EffectManager.Instance.SetMilkEffect(transform.position);
 
                     transform.DOPause();
 
                     gameObject.SetActive(false);
+                    criticalEffect.gameObject.SetActive(false);
                 }
             }
 

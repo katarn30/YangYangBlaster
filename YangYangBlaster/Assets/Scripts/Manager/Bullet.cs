@@ -17,6 +17,11 @@ public class Bullet : MonoBehaviour
         bulletSprite.sprite = _bulletSprite;
     }
 
+    public void SetCriticalBullet()
+    {
+        bulletSprite.color = Color.red;
+    }
+
     public void StartMove(Vector2 _createPos)
     {        
         gameObject.SetActive(true);

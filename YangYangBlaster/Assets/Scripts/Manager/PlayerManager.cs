@@ -26,6 +26,7 @@ public class PlayerManager : SingleTon<PlayerManager>
     public int originHp = 0;
 
     public ParticleSystem bulleParticle;
+    public ParticleSystem deadParticle;
     public ParticleSystem getItemParticle;
 
     private void Awake()
@@ -39,6 +40,7 @@ public class PlayerManager : SingleTon<PlayerManager>
         playerSprite.gameObject.SetActive(false);
         bulleParticle.gameObject.SetActive(false);
         getItemParticle.gameObject.SetActive(false);
+        deadParticle.gameObject.SetActive(false);
     }
 
     //인게임 상태로 바뀔때
@@ -47,6 +49,7 @@ public class PlayerManager : SingleTon<PlayerManager>
         playerSprite.gameObject.SetActive(true);
         bulleParticle.gameObject.SetActive(true);
         getItemParticle.gameObject.SetActive(true);
+        deadParticle.gameObject.SetActive(true);
 
         if (originHp == 0)
         {
@@ -102,6 +105,7 @@ public class PlayerManager : SingleTon<PlayerManager>
             case PlayerState.Skill:
                 break;
             case PlayerState.Dead:
+                deadParticle.Play();
                 break;
         }
     }
@@ -123,6 +127,7 @@ public class PlayerManager : SingleTon<PlayerManager>
             if (playerHp <= 0)
             {
                 playerHp = 0;
+                ChangeAniState(PlayerState.Dead);
                 GameManager.Instance.GameOver();
             }
             

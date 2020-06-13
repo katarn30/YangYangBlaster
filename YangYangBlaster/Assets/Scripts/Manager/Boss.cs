@@ -164,7 +164,8 @@ public class Boss : MonoBehaviour
         originHp = _data.hp;
         monsterHp = originHp;
 
-        bossPattenNum = _data.pattenType;
+        //bossPattenNum = _data.pattenType;
+        bossPattenNum = Random.Range(0, 2);
 
         deadColor = _data.deadColor;
         animator.runtimeAnimatorController = _data.runtimeAnimator;
@@ -229,6 +230,7 @@ public class Boss : MonoBehaviour
 
                     EffectManager.Instance.SetBubbleEffect(transform.position, transform.localScale, deadColor);
                     EffectManager.Instance.SetCoinEffect(transform.position);
+                    EffectManager.Instance.SetMilkEffect(transform.position);
 
                     GameManager.Instance.UpdateScore(1000);
                     GameManager.Instance.StageClear();

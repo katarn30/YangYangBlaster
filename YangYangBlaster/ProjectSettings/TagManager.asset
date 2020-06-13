@@ -8,6 +8,8 @@ TagManager:
   - Monster
   - Missile
   - Coin
+  - CriticalBullet
+  - Milk
   layers:
   - Default
   - TransparentFX
