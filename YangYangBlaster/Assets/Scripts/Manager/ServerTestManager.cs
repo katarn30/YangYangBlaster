@@ -11,26 +11,18 @@ public class ServerTestManager : SingleTon<ServerTestManager>
         DontDestroyOnLoad(this);
     }
 
+    private void Update()
+    {
+#if UNITY_EDITOR
+        if (Input.GetKey(KeyCode.Q))
+        {
+            GameManager.Instance.StageClear();
+        }
+#endif
+    }
+
     public void ServerTest()
     {
         Debug.Log("Server Test Button");
-
-        HealthCheckRequest request = new HealthCheckRequest();
-        request.Service = "yyb";
-
-        // 요청
-        RpcServiceManager.Instance.Check(request, (HealthCheckResponse reply) =>
-        {
-            // 응답
-            Debug.Log("HealthCheckResponse : " + reply.ToString());
-        });
-
-        // 요청
-        RpcServiceManager.Instance.Watch(request, 
-            (HealthCheckResponse reply) =>
-        {
-            // 응답
-            Debug.Log("HealthCheckResponse : " + reply.ToString());
-        });
     }
 }

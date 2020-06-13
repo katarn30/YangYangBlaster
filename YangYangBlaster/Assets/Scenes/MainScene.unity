@@ -980,6 +980,9 @@ MonoBehaviour:
       runtimeAnimator: {fileID: 0}
       uiRuntimeAnimator: {fileID: 0}
     mercenaryDataList: []
+    loginType: 0
+    loginKey: 
+    accessKey: 
   freeCoin: 200
   ReadMercenaryDataList:
   - name: MIA

@@ -24,63 +24,81 @@ namespace Yyb {
     static RpcServiceReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "ChFycGNfc2VydmljZS5wcm90bxIDeXliImAKGFJwY1NlcnZpY2VFeGFtcGxl",
-            "UmVxdWVzdBIMCgRhcmcxGAEgASgFEgwKBGFyZzIYAiABKAISDAoEYXJnMxgD",
-            "IAEoCRIMCgRhcmc0GAQgASgIEgwKBGFyZzUYBSADKAUiJwoWUnBjU2Vydmlj",
-            "ZUV4YW1wbGVSZXBseRINCgVlcnJvchgBIAEoCSIHCgVFbXB0eSIjChBQdXNo",
-            "Tm90aWZpY2F0aW9uEg8KB3BheWxvYWQYASABKAkiywEKDExvZ2luUmVxdWVz",
-            "dBIvCglsb2dpblR5cGUYASABKA4yHC55eWIuTG9naW5SZXF1ZXN0LkxPR0lO",
-            "X1RZUEUSEAoIbG9naW5LZXkYAiABKAkSDwoHaWRUb2tlbhgDIAEoCRIQCghu",
-            "aWNrTmFtZRgEIAEoCSJVCgpMT0dJTl9UWVBFEhcKE0xPR0lOX1RZUEVfTk9O",
-            "X0NFUlQQABIVChFMT0dJTl9UWVBFX0dPT0dMRRABEhcKE0xPR0lOX1RZUEVf",
-            "RkFDRUJPT0sQAiKdBAoKTG9naW5SZXBseRIpCgVlcnJvchgBIAEoDjIaLnl5",
-            "Yi5Mb2dpblJlcGx5LkVSUk9SX0NPREUSCwoDdXNuGAIgASgFEhAKCG5pY2tO",
-            "YW1lGAMgASgJEhAKCGxvZ2luS2V5GAQgASgJEhEKCWFjY2Vzc0tleRgFIAEo",
-            "CSKfAwoKRVJST1JfQ09ERRIRCg1FUlJPUl9DT0RFX09LEAASHQoZRVJST1Jf",
-            "Q09ERV9FTVBUWV9OSUNLTkFNRRABEhsKF0VSUk9SX0NPREVfRFVQX05JQ0tO",
-            "QU1FEAISLworRVJST1JfQ09ERV9OSUNLTkFNRV9IQVZFX1NQRUNJQUxfQ0hB",
-            "UkFDVEVSUxADEiQKIEVSUk9SX0NPREVfVU5BQkxFX1RPX0NSRUFURV9VU0VS",
-            "EAQSKgomRVJST1JfQ09ERV9GQUlMRURfVE9fQUNRVUlSRV9VU0VSX0lORk8Q",
-            "BRIhCh1FUlJPUl9DT0RFX0dPT0dMRV9BVVRIX0ZBSUxFRBAGEh0KGUVSUk9S",
-            "X0NPREVfRU1QVFlfSURfVE9LRU4QBxIpCiVFUlJPUl9DT0RFX0ZBSUxFRF9U",
-            "T19VUERBVEVfTE9HSU5fS0VZEAgSKgomRVJST1JfQ09ERV9GQUlMRURfVE9f",
-            "Q0hBTkdFX0xPR0lOX1RZUEUQCRImCiJFUlJPUl9DT0RFX0xPR0lOX1RZUEVf",
-            "SVNfRElGRkVSRU5UEAoiHwoOUmFua2luZ1JlcXVlc3QSDQoFc2NvcmUYASAB",
-            "KAMicwoMUmFua2luZ1JlcGx5EisKBWVycm9yGAEgASgOMhwueXliLlJhbmtp",
-            "bmdSZXBseS5FUlJPUl9DT0RFIjYKCkVSUk9SX0NPREUSEQoNRVJST1JfQ09E",
-            "RV9PSxAAEhUKEUVSUk9SX0NPREVfU1lTVE1FEAEiFAoSUmFua2luZ0xpc3RS",
-            "ZXF1ZXN0IpgCChBSYW5raW5nTGlzdFJlcGx5Ei8KBWVycm9yGAEgASgOMiAu",
-            "eXliLlJhbmtpbmdMaXN0UmVwbHkuRVJST1JfQ09ERRIwCglteVJhbmtpbmcY",
-            "AiABKAsyHS55eWIuUmFua2luZ0xpc3RSZXBseS5SYW5raW5nEi8KCHJhbmtp",
-            "bmdzGAMgAygLMh0ueXliLlJhbmtpbmdMaXN0UmVwbHkuUmFua2luZxo4CgdS",
-            "YW5raW5nEhAKCG5pY2tOYW1lGAEgASgJEgwKBHJhbmsYAiABKAUSDQoFc2Nv",
-            "cmUYAyABKAUiNgoKRVJST1JfQ09ERRIRCg1FUlJPUl9DT0RFX09LEAASFQoR",
-            "RVJST1JfQ09ERV9TWVNUTUUQATK1AgoKUnBjU2VydmljZRJRChFScGNTZXJ2",
-            "aWNlRXhhbXBsZRIdLnl5Yi5ScGNTZXJ2aWNlRXhhbXBsZVJlcXVlc3QaGy55",
-            "eWIuUnBjU2VydmljZUV4YW1wbGVSZXBseSIAEi8KBkxpc3RlbhIKLnl5Yi5F",
-            "bXB0eRoVLnl5Yi5QdXNoTm90aWZpY2F0aW9uIgAwARItCgVMb2dpbhIRLnl5",
-            "Yi5Mb2dpblJlcXVlc3QaDy55eWIuTG9naW5SZXBseSIAEjMKB1JhbmtpbmcS",
-            "Ey55eWIuUmFua2luZ1JlcXVlc3QaES55eWIuUmFua2luZ1JlcGx5IgASPwoL",
-            "UmFua2luZ0xpc3QSFy55eWIuUmFua2luZ0xpc3RSZXF1ZXN0GhUueXliLlJh",
-            "bmtpbmdMaXN0UmVwbHkiAGIGcHJvdG8z"));
+            "ChFycGNfc2VydmljZS5wcm90bxIDeXliGhxnb29nbGUvYXBpL2Fubm90YXRp",
+            "b25zLnByb3RvImAKGFJwY1NlcnZpY2VFeGFtcGxlUmVxdWVzdBIMCgRhcmcx",
+            "GAEgASgFEgwKBGFyZzIYAiABKAISDAoEYXJnMxgDIAEoCRIMCgRhcmc0GAQg",
+            "ASgIEgwKBGFyZzUYBSADKAUiOAoWUnBjU2VydmljZUV4YW1wbGVSZXBseRIe",
+            "CgVlcnJvchgBIAEoDjIPLnl5Yi5FUlJPUl9DT0RFIgcKBUVtcHR5IiMKEFB1",
+            "c2hOb3RpZmljYXRpb24SDwoHcGF5bG9hZBgBIAEoCSLLAQoMTG9naW5SZXF1",
+            "ZXN0Ei8KCWxvZ2luVHlwZRgBIAEoDjIcLnl5Yi5Mb2dpblJlcXVlc3QuTE9H",
+            "SU5fVFlQRRIQCghsb2dpbktleRgCIAEoCRIPCgdpZFRva2VuGAMgASgJEhAK",
+            "CG5pY2tOYW1lGAQgASgJIlUKCkxPR0lOX1RZUEUSFwoTTE9HSU5fVFlQRV9O",
+            "T05fQ0VSVBAAEhUKEUxPR0lOX1RZUEVfR09PR0xFEAESFwoTTE9HSU5fVFlQ",
+            "RV9GQUNFQk9PSxACInAKCkxvZ2luUmVwbHkSHgoFZXJyb3IYASABKA4yDy55",
+            "eWIuRVJST1JfQ09ERRILCgN1c24YAiABKAUSEAoIbmlja05hbWUYAyABKAkS",
+            "EAoIbG9naW5LZXkYBCABKAkSEQoJYWNjZXNzS2V5GAUgASgJIh8KDlJhbmtp",
+            "bmdSZXF1ZXN0Eg0KBXNjb3JlGAEgASgDIi4KDFJhbmtpbmdSZXBseRIeCgVl",
+            "cnJvchgBIAEoDjIPLnl5Yi5FUlJPUl9DT0RFIhQKElJhbmtpbmdMaXN0UmVx",
+            "dWVzdCLPAQoQUmFua2luZ0xpc3RSZXBseRIeCgVlcnJvchgBIAEoDjIPLnl5",
+            "Yi5FUlJPUl9DT0RFEjAKCW15UmFua2luZxgCIAEoCzIdLnl5Yi5SYW5raW5n",
+            "TGlzdFJlcGx5LlJhbmtpbmcSLwoIcmFua2luZ3MYAyADKAsyHS55eWIuUmFu",
+            "a2luZ0xpc3RSZXBseS5SYW5raW5nGjgKB1JhbmtpbmcSEAoIbmlja05hbWUY",
+            "ASABKAkSDAoEcmFuaxgCIAEoBRINCgVzY29yZRgDIAEoBSrUAwoKRVJST1Jf",
+            "Q09ERRIRCg1FUlJPUl9DT0RFX09LEAASHQoZRVJST1JfQ09ERV9FTVBUWV9O",
+            "SUNLTkFNRRABEhsKF0VSUk9SX0NPREVfRFVQX05JQ0tOQU1FEAISLworRVJS",
+            "T1JfQ09ERV9OSUNLTkFNRV9IQVZFX1NQRUNJQUxfQ0hBUkFDVEVSUxADEiQK",
+            "IEVSUk9SX0NPREVfVU5BQkxFX1RPX0NSRUFURV9VU0VSEAQSIQodRVJST1Jf",
+            "Q09ERV9GQUlMRURfVE9fR0VUX1VTRVIQBRIhCh1FUlJPUl9DT0RFX0dPT0dM",
+            "RV9BVVRIX0ZBSUxFRBAGEh0KGUVSUk9SX0NPREVfRU1QVFlfSURfVE9LRU4Q",
+            "BxIpCiVFUlJPUl9DT0RFX0ZBSUxFRF9UT19VUERBVEVfTE9HSU5fS0VZEAgS",
+            "KgomRVJST1JfQ09ERV9GQUlMRURfVE9fQ0hBTkdFX0xPR0lOX1RZUEUQCRIm",
+            "CiJFUlJPUl9DT0RFX0xPR0lOX1RZUEVfSVNfRElGRkVSRU5UEAoSJQohRVJS",
+            "T1JfQ09ERV9BQ0NFU1NfS0VZX0hBU19FWFBJUkVEEAsSFQoRRVJST1JfQ09E",
+            "RV9TWVNUTUUQDDLQAgoKUnBjU2VydmljZRJRChFScGNTZXJ2aWNlRXhhbXBs",
+            "ZRIdLnl5Yi5ScGNTZXJ2aWNlRXhhbXBsZVJlcXVlc3QaGy55eWIuUnBjU2Vy",
+            "dmljZUV4YW1wbGVSZXBseSIAEi8KBkxpc3RlbhIKLnl5Yi5FbXB0eRoVLnl5",
+            "Yi5QdXNoTm90aWZpY2F0aW9uIgAwARJICgVMb2dpbhIRLnl5Yi5Mb2dpblJl",
+            "cXVlc3QaDy55eWIuTG9naW5SZXBseSIbgtPkkwIVIhAvdjEvZXhhbXBsZS9l",
+            "Y2hvOgEqEjMKB1JhbmtpbmcSEy55eWIuUmFua2luZ1JlcXVlc3QaES55eWIu",
+            "UmFua2luZ1JlcGx5IgASPwoLUmFua2luZ0xpc3QSFy55eWIuUmFua2luZ0xp",
+            "c3RSZXF1ZXN0GhUueXliLlJhbmtpbmdMaXN0UmVwbHkiAGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Yyb.ERROR_CODE), }, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RpcServiceExampleRequest), global::Yyb.RpcServiceExampleRequest.Parser, new[]{ "Arg1", "Arg2", "Arg3", "Arg4", "Arg5" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RpcServiceExampleReply), global::Yyb.RpcServiceExampleReply.Parser, new[]{ "Error" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.Empty), global::Yyb.Empty.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.PushNotification), global::Yyb.PushNotification.Parser, new[]{ "Payload" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.LoginRequest), global::Yyb.LoginRequest.Parser, new[]{ "LoginType", "LoginKey", "IdToken", "NickName" }, null, new[]{ typeof(global::Yyb.LoginRequest.Types.LOGIN_TYPE) }, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.LoginReply), global::Yyb.LoginReply.Parser, new[]{ "Error", "Usn", "NickName", "LoginKey", "AccessKey" }, null, new[]{ typeof(global::Yyb.LoginReply.Types.ERROR_CODE) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.LoginReply), global::Yyb.LoginReply.Parser, new[]{ "Error", "Usn", "NickName", "LoginKey", "AccessKey" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RankingRequest), global::Yyb.RankingRequest.Parser, new[]{ "Score" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RankingReply), global::Yyb.RankingReply.Parser, new[]{ "Error" }, null, new[]{ typeof(global::Yyb.RankingReply.Types.ERROR_CODE) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RankingReply), global::Yyb.RankingReply.Parser, new[]{ "Error" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RankingListRequest), global::Yyb.RankingListRequest.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RankingListReply), global::Yyb.RankingListReply.Parser, new[]{ "Error", "MyRanking", "Rankings" }, null, new[]{ typeof(global::Yyb.RankingListReply.Types.ERROR_CODE) }, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RankingListReply.Types.Ranking), global::Yyb.RankingListReply.Types.Ranking.Parser, new[]{ "NickName", "Rank", "Score" }, null, null, null)})
+            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RankingListReply), global::Yyb.RankingListReply.Parser, new[]{ "Error", "MyRanking", "Rankings" }, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RankingListReply.Types.Ranking), global::Yyb.RankingListReply.Types.Ranking.Parser, new[]{ "NickName", "Rank", "Score" }, null, null, null)})
           }));
     }
     #endregion
 
   }
+  #region Enums
+  public enum ERROR_CODE {
+    [pbr::OriginalName("ERROR_CODE_OK")] Ok = 0,
+    [pbr::OriginalName("ERROR_CODE_EMPTY_NICKNAME")] EmptyNickname = 1,
+    [pbr::OriginalName("ERROR_CODE_DUP_NICKNAME")] DupNickname = 2,
+    [pbr::OriginalName("ERROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS")] NicknameHaveSpecialCharacters = 3,
+    [pbr::OriginalName("ERROR_CODE_UNABLE_TO_CREATE_USER")] UnableToCreateUser = 4,
+    [pbr::OriginalName("ERROR_CODE_FAILED_TO_GET_USER")] FailedToGetUser = 5,
+    [pbr::OriginalName("ERROR_CODE_GOOGLE_AUTH_FAILED")] GoogleAuthFailed = 6,
+    [pbr::OriginalName("ERROR_CODE_EMPTY_ID_TOKEN")] EmptyIdToken = 7,
+    [pbr::OriginalName("ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY")] FailedToUpdateLoginKey = 8,
+    [pbr::OriginalName("ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE")] FailedToChangeLoginType = 9,
+    [pbr::OriginalName("ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT")] LoginTypeIsDifferent = 10,
+    [pbr::OriginalName("ERROR_CODE_ACCESS_KEY_HAS_EXPIRED")] AccessKeyHasExpired = 11,
+    [pbr::OriginalName("ERROR_CODE_SYSTME")] Systme = 12,
+  }
+
+  #endregion
+
   #region Messages
   public sealed partial class RpcServiceExampleRequest : pb::IMessage<RpcServiceExampleRequest> {
     private static readonly pb::MessageParser<RpcServiceExampleRequest> _parser = new pb::MessageParser<RpcServiceExampleRequest>(() => new RpcServiceExampleRequest());
@@ -352,12 +370,12 @@ namespace Yyb {
 
     /// <summary>Field number for the "error" field.</summary>
     public const int ErrorFieldNumber = 1;
-    private string error_ = "";
+    private global::Yyb.ERROR_CODE error_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public string Error {
+    public global::Yyb.ERROR_CODE Error {
       get { return error_; }
       set {
-        error_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        error_ = value;
       }
     }
 
@@ -381,7 +399,7 @@ namespace Yyb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Error.Length != 0) hash ^= Error.GetHashCode();
+      if (Error != 0) hash ^= Error.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -395,9 +413,9 @@ namespace Yyb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Error.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Error);
+      if (Error != 0) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Error);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -407,8 +425,8 @@ namespace Yyb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Error.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Error);
+      if (Error != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Error);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -421,7 +439,7 @@ namespace Yyb {
       if (other == null) {
         return;
       }
-      if (other.Error.Length != 0) {
+      if (other.Error != 0) {
         Error = other.Error;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -435,8 +453,8 @@ namespace Yyb {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            Error = input.ReadString();
+          case 8: {
+            Error = (global::Yyb.ERROR_CODE) input.ReadEnum();
             break;
           }
         }
@@ -941,9 +959,9 @@ namespace Yyb {
 
     /// <summary>Field number for the "error" field.</summary>
     public const int ErrorFieldNumber = 1;
-    private global::Yyb.LoginReply.Types.ERROR_CODE error_ = 0;
+    private global::Yyb.ERROR_CODE error_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Yyb.LoginReply.Types.ERROR_CODE Error {
+    public global::Yyb.ERROR_CODE Error {
       get { return error_; }
       set {
         error_ = value;
@@ -1117,7 +1135,7 @@ namespace Yyb {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Error = (global::Yyb.LoginReply.Types.ERROR_CODE) input.ReadEnum();
+            Error = (global::Yyb.ERROR_CODE) input.ReadEnum();
             break;
           }
           case 16: {
@@ -1139,27 +1157,6 @@ namespace Yyb {
         }
       }
     }
-
-    #region Nested types
-    /// <summary>Container for nested types declared in the LoginReply message type.</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static partial class Types {
-      public enum ERROR_CODE {
-        [pbr::OriginalName("ERROR_CODE_OK")] Ok = 0,
-        [pbr::OriginalName("ERROR_CODE_EMPTY_NICKNAME")] EmptyNickname = 1,
-        [pbr::OriginalName("ERROR_CODE_DUP_NICKNAME")] DupNickname = 2,
-        [pbr::OriginalName("ERROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS")] NicknameHaveSpecialCharacters = 3,
-        [pbr::OriginalName("ERROR_CODE_UNABLE_TO_CREATE_USER")] UnableToCreateUser = 4,
-        [pbr::OriginalName("ERROR_CODE_FAILED_TO_ACQUIRE_USER_INFO")] FailedToAcquireUserInfo = 5,
-        [pbr::OriginalName("ERROR_CODE_GOOGLE_AUTH_FAILED")] GoogleAuthFailed = 6,
-        [pbr::OriginalName("ERROR_CODE_EMPTY_ID_TOKEN")] EmptyIdToken = 7,
-        [pbr::OriginalName("ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY")] FailedToUpdateLoginKey = 8,
-        [pbr::OriginalName("ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE")] FailedToChangeLoginType = 9,
-        [pbr::OriginalName("ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT")] LoginTypeIsDifferent = 10,
-      }
-
-    }
-    #endregion
 
   }
 
@@ -1328,9 +1325,9 @@ namespace Yyb {
 
     /// <summary>Field number for the "error" field.</summary>
     public const int ErrorFieldNumber = 1;
-    private global::Yyb.RankingReply.Types.ERROR_CODE error_ = 0;
+    private global::Yyb.ERROR_CODE error_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Yyb.RankingReply.Types.ERROR_CODE Error {
+    public global::Yyb.ERROR_CODE Error {
       get { return error_; }
       set {
         error_ = value;
@@ -1412,24 +1409,12 @@ namespace Yyb {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Error = (global::Yyb.RankingReply.Types.ERROR_CODE) input.ReadEnum();
+            Error = (global::Yyb.ERROR_CODE) input.ReadEnum();
             break;
           }
         }
       }
     }
-
-    #region Nested types
-    /// <summary>Container for nested types declared in the RankingReply message type.</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static partial class Types {
-      public enum ERROR_CODE {
-        [pbr::OriginalName("ERROR_CODE_OK")] Ok = 0,
-        [pbr::OriginalName("ERROR_CODE_SYSTME")] Systme = 1,
-      }
-
-    }
-    #endregion
 
   }
 
@@ -1572,9 +1557,9 @@ namespace Yyb {
 
     /// <summary>Field number for the "error" field.</summary>
     public const int ErrorFieldNumber = 1;
-    private global::Yyb.RankingListReply.Types.ERROR_CODE error_ = 0;
+    private global::Yyb.ERROR_CODE error_ = 0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Yyb.RankingListReply.Types.ERROR_CODE Error {
+    public global::Yyb.ERROR_CODE Error {
       get { return error_; }
       set {
         error_ = value;
@@ -1697,7 +1682,7 @@ namespace Yyb {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Error = (global::Yyb.RankingListReply.Types.ERROR_CODE) input.ReadEnum();
+            Error = (global::Yyb.ERROR_CODE) input.ReadEnum();
             break;
           }
           case 18: {
@@ -1719,11 +1704,6 @@ namespace Yyb {
     /// <summary>Container for nested types declared in the RankingListReply message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static partial class Types {
-      public enum ERROR_CODE {
-        [pbr::OriginalName("ERROR_CODE_OK")] Ok = 0,
-        [pbr::OriginalName("ERROR_CODE_SYSTME")] Systme = 1,
-      }
-
       public sealed partial class Ranking : pb::IMessage<Ranking> {
         private static readonly pb::MessageParser<Ranking> _parser = new pb::MessageParser<Ranking>(() => new Ranking());
         private pb::UnknownFieldSet _unknownFields;
