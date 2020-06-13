@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "google/api/annotations.proto";
+
 package yyb;
 
 // The rpc service definition.
@@ -9,7 +11,12 @@ service RpcService {
     // 푸시용 리슨 (서버 -> 클라)
     rpc Listen(Empty) returns (stream PushNotification) {}
     // 로그인 요청
-    rpc Login (LoginRequest) returns (LoginReply) {}
+    rpc Login (LoginRequest) returns (LoginReply) {
+        option (google.api.http) = {
+            post: "/v1/example/echo"
+            body: "*"
+        };
+    }
     // 랭킹 기록 요청
     rpc Ranking (RankingRequest) returns (RankingReply) {}
     // 랭킹 리스트 요청

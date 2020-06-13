@@ -25,15 +25,15 @@ namespace Grpc.Health.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChpoZWFsdGhfY2hlY2tfc2VydmljZS5wcm90bxIOZ3JwYy5oZWFsdGgudjEi",
-            "JQoSSGVhbHRoQ2hlY2tSZXF1ZXN0Eg8KB3NlcnZpY2UYASABKAkilAEKE0hl",
+            "JQoSSGVhbHRoQ2hlY2tSZXF1ZXN0Eg8KB3NlcnZpY2UYASABKAkiqQEKE0hl",
             "YWx0aENoZWNrUmVzcG9uc2USQQoGc3RhdHVzGAEgASgOMjEuZ3JwYy5oZWFs",
-            "dGgudjEuSGVhbHRoQ2hlY2tSZXNwb25zZS5TZXJ2aW5nU3RhdHVzIjoKDVNl",
+            "dGgudjEuSGVhbHRoQ2hlY2tSZXNwb25zZS5TZXJ2aW5nU3RhdHVzIk8KDVNl",
             "cnZpbmdTdGF0dXMSCwoHVU5LTk9XThAAEgsKB1NFUlZJTkcQARIPCgtOT1Rf",
-            "U0VSVklORxACMq4BCgZIZWFsdGgSUAoFQ2hlY2sSIi5ncnBjLmhlYWx0aC52",
-            "MS5IZWFsdGhDaGVja1JlcXVlc3QaIy5ncnBjLmhlYWx0aC52MS5IZWFsdGhD",
-            "aGVja1Jlc3BvbnNlElIKBVdhdGNoEiIuZ3JwYy5oZWFsdGgudjEuSGVhbHRo",
-            "Q2hlY2tSZXF1ZXN0GiMuZ3JwYy5oZWFsdGgudjEuSGVhbHRoQ2hlY2tSZXNw",
-            "b25zZTABYgZwcm90bzM="));
+            "U0VSVklORxACEhMKD1NFUlZJQ0VfVU5LTk9XThADMq4BCgZIZWFsdGgSUAoF",
+            "Q2hlY2sSIi5ncnBjLmhlYWx0aC52MS5IZWFsdGhDaGVja1JlcXVlc3QaIy5n",
+            "cnBjLmhlYWx0aC52MS5IZWFsdGhDaGVja1Jlc3BvbnNlElIKBVdhdGNoEiIu",
+            "Z3JwYy5oZWFsdGgudjEuSGVhbHRoQ2hlY2tSZXF1ZXN0GiMuZ3JwYy5oZWFs",
+            "dGgudjEuSGVhbHRoQ2hlY2tSZXNwb25zZTABYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
@@ -309,6 +309,7 @@ namespace Grpc.Health.V1 {
         [pbr::OriginalName("UNKNOWN")] Unknown = 0,
         [pbr::OriginalName("SERVING")] Serving = 1,
         [pbr::OriginalName("NOT_SERVING")] NotServing = 2,
+        [pbr::OriginalName("SERVICE_UNKNOWN")] ServiceUnknown = 3,
       }
 
     }

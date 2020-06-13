@@ -101,12 +101,12 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
                     //    continue;
                     //}
 
-                    var metadata = new Metadata
+                    var metaData = new Metadata
                     {
-                        { "access_key", "abcdefg" }
+                        { "access_key", GameDataManager.Instance.userData.accessKey }
                     };
 
-                    var reply = health.Check(request, metadata);
+                    var reply = health.Check(request, metaData);
 
                     handler(reply);
 
@@ -124,34 +124,34 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
         //StartCoroutine(coCheck(request, handler));
     }
 
-    IEnumerator coCheck(HealthCheckRequest request, RPCHandler<HealthCheckResponse> handler)
-    {
-        try
-        {
-            while (running)
-            {
-                //if (Time.time < intervalTime)
-                //{
-                //    continue;
-                //}
+    //IEnumerator coCheck(HealthCheckRequest request, RPCHandler<HealthCheckResponse> handler)
+    //{
+    //    try
+    //    {
+    //        while (running)
+    //        {
+    //            //if (Time.time < intervalTime)
+    //            //{
+    //            //    continue;
+    //            //}
 
-                var metadata = new Metadata
-                    {
-                        { "access_key", "abcdefg" }
-                    };
+    //            var metadata = new Metadata
+    //            {
+    //                { "access_key", GameDataManager.Instance.userData.accessKey }
+    //            };
 
-                var reply = health.Check(request, metadata);
+    //            var reply = health.Check(request, metadata);
 
-                handler(reply);
-            }
-        }
-        catch (Grpc.Core.RpcException e)
-        {
-            Debug.LogError("RPC failed " + e);
-        }
+    //            handler(reply);
+    //        }
+    //    }
+    //    catch (Grpc.Core.RpcException e)
+    //    {
+    //        Debug.LogError("RPC failed " + e);
+    //    }
 
-        yield return null;
-    }
+    //    yield return null;
+    //}
 
     // HealthCheck - Watch
     public void Watch(HealthCheckRequest request, 
@@ -169,7 +169,12 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
             {
                 while (running)
                 {
-                    using (var call = health.Watch(request))
+                    var metaData = new Metadata
+                    {
+                        { "access_key", GameDataManager.Instance.userData.accessKey }
+                    };
+
+                    using (var call = health.Watch(request, metaData))
                     {
                         while (await call.ResponseStream.MoveNext())
                         {
@@ -224,7 +229,12 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
     {
         try
         {
-            var reply = client.RpcServiceExample(request);
+            var metaData = new Metadata
+            {
+                { "access_key", GameDataManager.Instance.userData.accessKey }
+            };
+
+            var reply = client.RpcServiceExample(request, metaData);
 
             handler(reply);
         }
@@ -266,7 +276,12 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
     {
         try
         {
-            var reply = client.Ranking(request);
+            var metaData = new Metadata
+            {
+                { "access_key", GameDataManager.Instance.userData.accessKey }
+            };
+
+            var reply = client.Ranking(request, metaData);
 
             handler(reply);
         }
@@ -287,7 +302,12 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
     {
         try
         {
-            var reply = client.RankingList(request);
+            var metaData = new Metadata
+            {
+                { "access_key", GameDataManager.Instance.userData.accessKey }
+            };
+
+            var reply = client.RankingList(request, metaData);
 
             handler(reply);
         }
