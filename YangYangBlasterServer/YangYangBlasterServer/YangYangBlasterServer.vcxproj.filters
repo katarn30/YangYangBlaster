@@ -77,6 +77,12 @@
     <ClCompile Include="http.pb.cc">
       <Filter>Proto</Filter>
     </ClCompile>
+    <ClCompile Include="AsyncHandlerLoadGameData.cpp">
+      <Filter>AsyncHandler</Filter>
+    </ClCompile>
+    <ClCompile Include="AsyncHandlerSaveGameData.cpp">
+      <Filter>AsyncHandler</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AsyncHandler.h">
@@ -142,6 +148,12 @@
     </ClInclude>
     <ClInclude Include="http.pb.h">
       <Filter>Proto</Filter>
+    </ClInclude>
+    <ClInclude Include="AsyncHandlerLoadGameData.h">
+      <Filter>AsyncHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="AsyncHandlerSaveGameData.h">
+      <Filter>AsyncHandler</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

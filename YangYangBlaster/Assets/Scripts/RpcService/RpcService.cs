@@ -36,41 +36,79 @@ namespace Yyb {
             "T05fQ0VSVBAAEhUKEUxPR0lOX1RZUEVfR09PR0xFEAESFwoTTE9HSU5fVFlQ",
             "RV9GQUNFQk9PSxACInAKCkxvZ2luUmVwbHkSHgoFZXJyb3IYASABKA4yDy55",
             "eWIuRVJST1JfQ09ERRILCgN1c24YAiABKAUSEAoIbmlja05hbWUYAyABKAkS",
-            "EAoIbG9naW5LZXkYBCABKAkSEQoJYWNjZXNzS2V5GAUgASgJIh8KDlJhbmtp",
-            "bmdSZXF1ZXN0Eg0KBXNjb3JlGAEgASgDIi4KDFJhbmtpbmdSZXBseRIeCgVl",
-            "cnJvchgBIAEoDjIPLnl5Yi5FUlJPUl9DT0RFIhQKElJhbmtpbmdMaXN0UmVx",
-            "dWVzdCLPAQoQUmFua2luZ0xpc3RSZXBseRIeCgVlcnJvchgBIAEoDjIPLnl5",
-            "Yi5FUlJPUl9DT0RFEjAKCW15UmFua2luZxgCIAEoCzIdLnl5Yi5SYW5raW5n",
-            "TGlzdFJlcGx5LlJhbmtpbmcSLwoIcmFua2luZ3MYAyADKAsyHS55eWIuUmFu",
-            "a2luZ0xpc3RSZXBseS5SYW5raW5nGjgKB1JhbmtpbmcSEAoIbmlja05hbWUY",
-            "ASABKAkSDAoEcmFuaxgCIAEoBRINCgVzY29yZRgDIAEoBSrUAwoKRVJST1Jf",
-            "Q09ERRIRCg1FUlJPUl9DT0RFX09LEAASHQoZRVJST1JfQ09ERV9FTVBUWV9O",
-            "SUNLTkFNRRABEhsKF0VSUk9SX0NPREVfRFVQX05JQ0tOQU1FEAISLworRVJS",
-            "T1JfQ09ERV9OSUNLTkFNRV9IQVZFX1NQRUNJQUxfQ0hBUkFDVEVSUxADEiQK",
-            "IEVSUk9SX0NPREVfVU5BQkxFX1RPX0NSRUFURV9VU0VSEAQSIQodRVJST1Jf",
-            "Q09ERV9GQUlMRURfVE9fR0VUX1VTRVIQBRIhCh1FUlJPUl9DT0RFX0dPT0dM",
-            "RV9BVVRIX0ZBSUxFRBAGEh0KGUVSUk9SX0NPREVfRU1QVFlfSURfVE9LRU4Q",
-            "BxIpCiVFUlJPUl9DT0RFX0ZBSUxFRF9UT19VUERBVEVfTE9HSU5fS0VZEAgS",
-            "KgomRVJST1JfQ09ERV9GQUlMRURfVE9fQ0hBTkdFX0xPR0lOX1RZUEUQCRIm",
-            "CiJFUlJPUl9DT0RFX0xPR0lOX1RZUEVfSVNfRElGRkVSRU5UEAoSJQohRVJS",
-            "T1JfQ09ERV9BQ0NFU1NfS0VZX0hBU19FWFBJUkVEEAsSFQoRRVJST1JfQ09E",
-            "RV9TWVNUTUUQDDLQAgoKUnBjU2VydmljZRJRChFScGNTZXJ2aWNlRXhhbXBs",
-            "ZRIdLnl5Yi5ScGNTZXJ2aWNlRXhhbXBsZVJlcXVlc3QaGy55eWIuUnBjU2Vy",
-            "dmljZUV4YW1wbGVSZXBseSIAEi8KBkxpc3RlbhIKLnl5Yi5FbXB0eRoVLnl5",
-            "Yi5QdXNoTm90aWZpY2F0aW9uIgAwARJICgVMb2dpbhIRLnl5Yi5Mb2dpblJl",
-            "cXVlc3QaDy55eWIuTG9naW5SZXBseSIbgtPkkwIVIhAvdjEvZXhhbXBsZS9l",
-            "Y2hvOgEqEjMKB1JhbmtpbmcSEy55eWIuUmFua2luZ1JlcXVlc3QaES55eWIu",
-            "UmFua2luZ1JlcGx5IgASPwoLUmFua2luZ0xpc3QSFy55eWIuUmFua2luZ0xp",
-            "c3RSZXF1ZXN0GhUueXliLlJhbmtpbmdMaXN0UmVwbHkiAGIGcHJvdG8z"));
+            "EAoIbG9naW5LZXkYBCABKAkSEQoJYWNjZXNzS2V5GAUgASgJIncKBEl0ZW0S",
+            "EAoIaXRlbU5hbWUYASABKAkSIAoIaXRlbVR5cGUYAiABKA4yDi55eWIuSVRF",
+            "TV9UWVBFEigKDGl0ZW1DYXRlZ29yeRgDIAEoDjISLnl5Yi5JVEVNX0NBVEVH",
+            "T1JZEhEKCWl0ZW1Db3VudBgEIAEoBSI6CglNZXJjZW5hcnkSFQoNbWVyY2Vu",
+            "YXJ5TmFtZRgBIAEoCRIWCg5tZXJjZW5hcnlMZXZlbBgCIAEoBSItCgVTdGFn",
+            "ZRIQCghzdGFnZU51bRgBIAEoBRISCgpzdGFnZVNjb3JlGAIgASgDIoYBCg1V",
+            "cGdyYWRlUGxheWVyEhIKCnBvd2VyTGV2ZWwYASABKAUSGAoQYXR0YWNrU3Bl",
+            "ZWRMZXZlbBgCIAEoBRIVCg1jcml0aWNhbExldmVsGAMgASgFEhkKEWJ1ZmZE",
+            "dXJhdGlvbkxldmVsGAQgASgFEhUKDWZyZWVDb2luTGV2ZWwYBSABKAUilgEK",
+            "D0dhbWVEYXRhUmVxdWVzdBIYCgVpdGVtcxgCIAMoCzIJLnl5Yi5JdGVtEiMK",
+            "C21lcmNlbmFyaWVzGAMgAygLMg4ueXliLk1lcmNlbmFyeRIZCgVzdGFnZRgE",
+            "IAEoCzIKLnl5Yi5TdGFnZRIpCg11cGdyYWRlUGxheWVyGAUgASgLMhIueXli",
+            "LlVwZ3JhZGVQbGF5ZXIitAEKDUdhbWVEYXRhUmVwbHkSHgoFZXJyb3IYASAB",
+            "KA4yDy55eWIuRVJST1JfQ09ERRIYCgVpdGVtcxgCIAMoCzIJLnl5Yi5JdGVt",
+            "EiMKC21lcmNlbmFyaWVzGAMgAygLMg4ueXliLk1lcmNlbmFyeRIZCgVzdGFn",
+            "ZRgEIAEoCzIKLnl5Yi5TdGFnZRIpCg11cGdyYWRlUGxheWVyGAUgASgLMhIu",
+            "eXliLlVwZ3JhZGVQbGF5ZXIiHwoOUmFua2luZ1JlcXVlc3QSDQoFc2NvcmUY",
+            "ASABKAMiLgoMUmFua2luZ1JlcGx5Eh4KBWVycm9yGAEgASgOMg8ueXliLkVS",
+            "Uk9SX0NPREUiFAoSUmFua2luZ0xpc3RSZXF1ZXN0Is8BChBSYW5raW5nTGlz",
+            "dFJlcGx5Eh4KBWVycm9yGAEgASgOMg8ueXliLkVSUk9SX0NPREUSMAoJbXlS",
+            "YW5raW5nGAIgASgLMh0ueXliLlJhbmtpbmdMaXN0UmVwbHkuUmFua2luZxIv",
+            "CghyYW5raW5ncxgDIAMoCzIdLnl5Yi5SYW5raW5nTGlzdFJlcGx5LlJhbmtp",
+            "bmcaOAoHUmFua2luZxIQCghuaWNrTmFtZRgBIAEoCRIMCgRyYW5rGAIgASgF",
+            "Eg0KBXNjb3JlGAMgASgFKpQGCgpFUlJPUl9DT0RFEhEKDUVSUk9SX0NPREVf",
+            "T0sQABIdChlFUlJPUl9DT0RFX0VNUFRZX05JQ0tOQU1FEAESGwoXRVJST1Jf",
+            "Q09ERV9EVVBfTklDS05BTUUQAhIvCitFUlJPUl9DT0RFX05JQ0tOQU1FX0hB",
+            "VkVfU1BFQ0lBTF9DSEFSQUNURVJTEAMSJAogRVJST1JfQ09ERV9VTkFCTEVf",
+            "VE9fQ1JFQVRFX1VTRVIQBBIhCh1FUlJPUl9DT0RFX0ZBSUxFRF9UT19HRVRf",
+            "VVNFUhAFEiEKHUVSUk9SX0NPREVfR09PR0xFX0FVVEhfRkFJTEVEEAYSHQoZ",
+            "RVJST1JfQ09ERV9FTVBUWV9JRF9UT0tFThAHEikKJUVSUk9SX0NPREVfRkFJ",
+            "TEVEX1RPX1VQREFURV9MT0dJTl9LRVkQCBIqCiZFUlJPUl9DT0RFX0ZBSUxF",
+            "RF9UT19DSEFOR0VfTE9HSU5fVFlQRRAJEiYKIkVSUk9SX0NPREVfTE9HSU5f",
+            "VFlQRV9JU19ESUZGRVJFTlQQChIlCiFFUlJPUl9DT0RFX0FDQ0VTU19LRVlf",
+            "SEFTX0VYUElSRUQQCxIVChFFUlJPUl9DT0RFX1NZU1RNRRAMEiIKHkVSUk9S",
+            "X0NPREVfRkFJTEVEX1RPX1NBVkVfSVRFTRANEicKI0VSUk9SX0NPREVfRkFJ",
+            "TEVEX1RPX1NBVkVfTUVSQ0VOQVJZEA4SIwofRVJST1JfQ09ERV9GQUlMRURf",
+            "VE9fU0FWRV9TVEFHRRAPEiwKKEVSUk9SX0NPREVfRkFJTEVEX1RPX1NBVkVf",
+            "VVBHUkFERV9QTEFZRVIQEBIiCh5FUlJPUl9DT0RFX0ZBSUxFRF9UT19MT0FE",
+            "X0lURU0QERInCiNFUlJPUl9DT0RFX0ZBSUxFRF9UT19MT0FEX01FUkNFTkFS",
+            "WRASEiMKH0VSUk9SX0NPREVfRkFJTEVEX1RPX0xPQURfU1RBR0UQExIsCihF",
+            "UlJPUl9DT0RFX0ZBSUxFRF9UT19MT0FEX1VQR1JBREVfUExBWUVSEBQq3AEK",
+            "CUlURU1fVFlQRRISCg5JVEVNX1RZUEVfTk9ORRAAEhMKDklURU1fVFlQRV9H",
+            "T0xEEOgHEhMKDklURU1fVFlQRV9SVUJZEOkHEhsKFklURU1fVFlQRV9QSUVD",
+            "RV9LTklHSFQQ6gcSGwoWSVRFTV9UWVBFX1BJRUNFX1BJUkFURRDrBxIZChRJ",
+            "VEVNX1RZUEVfUElFQ0VfU1RBUhDsBxIeChlJVEVNX1RZUEVfUElFQ0VfU0NJ",
+            "RU5USVNUEO0HEhwKF0lURU1fVFlQRV9QSUVDRV9TVFVERU5UEO4HKkUKDUlU",
+            "RU1fQ0FURUdPUlkSGAoUSVRFTV9DQVRFR09SWV9OT1JNQUwQABIaChZJVEVN",
+            "X0NBVEVHT1JZX0NVUlJFTkNZEAEyyAMKClJwY1NlcnZpY2USUQoRUnBjU2Vy",
+            "dmljZUV4YW1wbGUSHS55eWIuUnBjU2VydmljZUV4YW1wbGVSZXF1ZXN0Ghsu",
+            "eXliLlJwY1NlcnZpY2VFeGFtcGxlUmVwbHkiABIvCgZMaXN0ZW4SCi55eWIu",
+            "RW1wdHkaFS55eWIuUHVzaE5vdGlmaWNhdGlvbiIAMAESSAoFTG9naW4SES55",
+            "eWIuTG9naW5SZXF1ZXN0Gg8ueXliLkxvZ2luUmVwbHkiG4LT5JMCFSIQL3Yx",
+            "L2V4YW1wbGUvZWNobzoBKhI6CgxMb2FkR2FtZURhdGESFC55eWIuR2FtZURh",
+            "dGFSZXF1ZXN0GhIueXliLkdhbWVEYXRhUmVwbHkiABI6CgxTYXZlR2FtZURh",
+            "dGESFC55eWIuR2FtZURhdGFSZXF1ZXN0GhIueXliLkdhbWVEYXRhUmVwbHki",
+            "ABIzCgdSYW5raW5nEhMueXliLlJhbmtpbmdSZXF1ZXN0GhEueXliLlJhbmtp",
+            "bmdSZXBseSIAEj8KC1JhbmtpbmdMaXN0EhcueXliLlJhbmtpbmdMaXN0UmVx",
+            "dWVzdBoVLnl5Yi5SYW5raW5nTGlzdFJlcGx5IgBiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Yyb.ERROR_CODE), }, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Yyb.ERROR_CODE), typeof(global::Yyb.ITEM_TYPE), typeof(global::Yyb.ITEM_CATEGORY), }, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RpcServiceExampleRequest), global::Yyb.RpcServiceExampleRequest.Parser, new[]{ "Arg1", "Arg2", "Arg3", "Arg4", "Arg5" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RpcServiceExampleReply), global::Yyb.RpcServiceExampleReply.Parser, new[]{ "Error" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.Empty), global::Yyb.Empty.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.PushNotification), global::Yyb.PushNotification.Parser, new[]{ "Payload" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.LoginRequest), global::Yyb.LoginRequest.Parser, new[]{ "LoginType", "LoginKey", "IdToken", "NickName" }, null, new[]{ typeof(global::Yyb.LoginRequest.Types.LOGIN_TYPE) }, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.LoginReply), global::Yyb.LoginReply.Parser, new[]{ "Error", "Usn", "NickName", "LoginKey", "AccessKey" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.Item), global::Yyb.Item.Parser, new[]{ "ItemName", "ItemType", "ItemCategory", "ItemCount" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.Mercenary), global::Yyb.Mercenary.Parser, new[]{ "MercenaryName", "MercenaryLevel" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.Stage), global::Yyb.Stage.Parser, new[]{ "StageNum", "StageScore" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.UpgradePlayer), global::Yyb.UpgradePlayer.Parser, new[]{ "PowerLevel", "AttackSpeedLevel", "CriticalLevel", "BuffDurationLevel", "FreeCoinLevel" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.GameDataRequest), global::Yyb.GameDataRequest.Parser, new[]{ "Items", "Mercenaries", "Stage", "UpgradePlayer" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.GameDataReply), global::Yyb.GameDataReply.Parser, new[]{ "Error", "Items", "Mercenaries", "Stage", "UpgradePlayer" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RankingRequest), global::Yyb.RankingRequest.Parser, new[]{ "Score" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RankingReply), global::Yyb.RankingReply.Parser, new[]{ "Error" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Yyb.RankingListRequest), global::Yyb.RankingListRequest.Parser, null, null, null, null),
@@ -95,6 +133,30 @@ namespace Yyb {
     [pbr::OriginalName("ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT")] LoginTypeIsDifferent = 10,
     [pbr::OriginalName("ERROR_CODE_ACCESS_KEY_HAS_EXPIRED")] AccessKeyHasExpired = 11,
     [pbr::OriginalName("ERROR_CODE_SYSTME")] Systme = 12,
+    [pbr::OriginalName("ERROR_CODE_FAILED_TO_SAVE_ITEM")] FailedToSaveItem = 13,
+    [pbr::OriginalName("ERROR_CODE_FAILED_TO_SAVE_MERCENARY")] FailedToSaveMercenary = 14,
+    [pbr::OriginalName("ERROR_CODE_FAILED_TO_SAVE_STAGE")] FailedToSaveStage = 15,
+    [pbr::OriginalName("ERROR_CODE_FAILED_TO_SAVE_UPGRADE_PLAYER")] FailedToSaveUpgradePlayer = 16,
+    [pbr::OriginalName("ERROR_CODE_FAILED_TO_LOAD_ITEM")] FailedToLoadItem = 17,
+    [pbr::OriginalName("ERROR_CODE_FAILED_TO_LOAD_MERCENARY")] FailedToLoadMercenary = 18,
+    [pbr::OriginalName("ERROR_CODE_FAILED_TO_LOAD_STAGE")] FailedToLoadStage = 19,
+    [pbr::OriginalName("ERROR_CODE_FAILED_TO_LOAD_UPGRADE_PLAYER")] FailedToLoadUpgradePlayer = 20,
+  }
+
+  public enum ITEM_TYPE {
+    [pbr::OriginalName("ITEM_TYPE_NONE")] None = 0,
+    [pbr::OriginalName("ITEM_TYPE_GOLD")] Gold = 1000,
+    [pbr::OriginalName("ITEM_TYPE_RUBY")] Ruby = 1001,
+    [pbr::OriginalName("ITEM_TYPE_PIECE_KNIGHT")] PieceKnight = 1002,
+    [pbr::OriginalName("ITEM_TYPE_PIECE_PIRATE")] PiecePirate = 1003,
+    [pbr::OriginalName("ITEM_TYPE_PIECE_STAR")] PieceStar = 1004,
+    [pbr::OriginalName("ITEM_TYPE_PIECE_SCIENTIST")] PieceScientist = 1005,
+    [pbr::OriginalName("ITEM_TYPE_PIECE_STUDENT")] PieceStudent = 1006,
+  }
+
+  public enum ITEM_CATEGORY {
+    [pbr::OriginalName("ITEM_CATEGORY_NORMAL")] Normal = 0,
+    [pbr::OriginalName("ITEM_CATEGORY_CURRENCY")] Currency = 1,
   }
 
   #endregion
@@ -1160,6 +1222,1220 @@ namespace Yyb {
 
   }
 
+  public sealed partial class Item : pb::IMessage<Item> {
+    private static readonly pb::MessageParser<Item> _parser = new pb::MessageParser<Item>(() => new Item());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Item> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Yyb.RpcServiceReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Item() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Item(Item other) : this() {
+      itemName_ = other.itemName_;
+      itemType_ = other.itemType_;
+      itemCategory_ = other.itemCategory_;
+      itemCount_ = other.itemCount_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Item Clone() {
+      return new Item(this);
+    }
+
+    /// <summary>Field number for the "itemName" field.</summary>
+    public const int ItemNameFieldNumber = 1;
+    private string itemName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ItemName {
+      get { return itemName_; }
+      set {
+        itemName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "itemType" field.</summary>
+    public const int ItemTypeFieldNumber = 2;
+    private global::Yyb.ITEM_TYPE itemType_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Yyb.ITEM_TYPE ItemType {
+      get { return itemType_; }
+      set {
+        itemType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "itemCategory" field.</summary>
+    public const int ItemCategoryFieldNumber = 3;
+    private global::Yyb.ITEM_CATEGORY itemCategory_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Yyb.ITEM_CATEGORY ItemCategory {
+      get { return itemCategory_; }
+      set {
+        itemCategory_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "itemCount" field.</summary>
+    public const int ItemCountFieldNumber = 4;
+    private int itemCount_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int ItemCount {
+      get { return itemCount_; }
+      set {
+        itemCount_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Item);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Item other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ItemName != other.ItemName) return false;
+      if (ItemType != other.ItemType) return false;
+      if (ItemCategory != other.ItemCategory) return false;
+      if (ItemCount != other.ItemCount) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ItemName.Length != 0) hash ^= ItemName.GetHashCode();
+      if (ItemType != 0) hash ^= ItemType.GetHashCode();
+      if (ItemCategory != 0) hash ^= ItemCategory.GetHashCode();
+      if (ItemCount != 0) hash ^= ItemCount.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (ItemName.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ItemName);
+      }
+      if (ItemType != 0) {
+        output.WriteRawTag(16);
+        output.WriteEnum((int) ItemType);
+      }
+      if (ItemCategory != 0) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) ItemCategory);
+      }
+      if (ItemCount != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(ItemCount);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (ItemName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ItemName);
+      }
+      if (ItemType != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ItemType);
+      }
+      if (ItemCategory != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ItemCategory);
+      }
+      if (ItemCount != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(ItemCount);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Item other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ItemName.Length != 0) {
+        ItemName = other.ItemName;
+      }
+      if (other.ItemType != 0) {
+        ItemType = other.ItemType;
+      }
+      if (other.ItemCategory != 0) {
+        ItemCategory = other.ItemCategory;
+      }
+      if (other.ItemCount != 0) {
+        ItemCount = other.ItemCount;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            ItemName = input.ReadString();
+            break;
+          }
+          case 16: {
+            ItemType = (global::Yyb.ITEM_TYPE) input.ReadEnum();
+            break;
+          }
+          case 24: {
+            ItemCategory = (global::Yyb.ITEM_CATEGORY) input.ReadEnum();
+            break;
+          }
+          case 32: {
+            ItemCount = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class Mercenary : pb::IMessage<Mercenary> {
+    private static readonly pb::MessageParser<Mercenary> _parser = new pb::MessageParser<Mercenary>(() => new Mercenary());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Mercenary> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Yyb.RpcServiceReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Mercenary() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Mercenary(Mercenary other) : this() {
+      mercenaryName_ = other.mercenaryName_;
+      mercenaryLevel_ = other.mercenaryLevel_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Mercenary Clone() {
+      return new Mercenary(this);
+    }
+
+    /// <summary>Field number for the "mercenaryName" field.</summary>
+    public const int MercenaryNameFieldNumber = 1;
+    private string mercenaryName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string MercenaryName {
+      get { return mercenaryName_; }
+      set {
+        mercenaryName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "mercenaryLevel" field.</summary>
+    public const int MercenaryLevelFieldNumber = 2;
+    private int mercenaryLevel_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int MercenaryLevel {
+      get { return mercenaryLevel_; }
+      set {
+        mercenaryLevel_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Mercenary);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Mercenary other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (MercenaryName != other.MercenaryName) return false;
+      if (MercenaryLevel != other.MercenaryLevel) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (MercenaryName.Length != 0) hash ^= MercenaryName.GetHashCode();
+      if (MercenaryLevel != 0) hash ^= MercenaryLevel.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (MercenaryName.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(MercenaryName);
+      }
+      if (MercenaryLevel != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(MercenaryLevel);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (MercenaryName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(MercenaryName);
+      }
+      if (MercenaryLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MercenaryLevel);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Mercenary other) {
+      if (other == null) {
+        return;
+      }
+      if (other.MercenaryName.Length != 0) {
+        MercenaryName = other.MercenaryName;
+      }
+      if (other.MercenaryLevel != 0) {
+        MercenaryLevel = other.MercenaryLevel;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            MercenaryName = input.ReadString();
+            break;
+          }
+          case 16: {
+            MercenaryLevel = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class Stage : pb::IMessage<Stage> {
+    private static readonly pb::MessageParser<Stage> _parser = new pb::MessageParser<Stage>(() => new Stage());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Stage> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Yyb.RpcServiceReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Stage() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Stage(Stage other) : this() {
+      stageNum_ = other.stageNum_;
+      stageScore_ = other.stageScore_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Stage Clone() {
+      return new Stage(this);
+    }
+
+    /// <summary>Field number for the "stageNum" field.</summary>
+    public const int StageNumFieldNumber = 1;
+    private int stageNum_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int StageNum {
+      get { return stageNum_; }
+      set {
+        stageNum_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "stageScore" field.</summary>
+    public const int StageScoreFieldNumber = 2;
+    private long stageScore_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public long StageScore {
+      get { return stageScore_; }
+      set {
+        stageScore_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Stage);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Stage other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (StageNum != other.StageNum) return false;
+      if (StageScore != other.StageScore) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (StageNum != 0) hash ^= StageNum.GetHashCode();
+      if (StageScore != 0L) hash ^= StageScore.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (StageNum != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(StageNum);
+      }
+      if (StageScore != 0L) {
+        output.WriteRawTag(16);
+        output.WriteInt64(StageScore);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (StageNum != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(StageNum);
+      }
+      if (StageScore != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(StageScore);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Stage other) {
+      if (other == null) {
+        return;
+      }
+      if (other.StageNum != 0) {
+        StageNum = other.StageNum;
+      }
+      if (other.StageScore != 0L) {
+        StageScore = other.StageScore;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            StageNum = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            StageScore = input.ReadInt64();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class UpgradePlayer : pb::IMessage<UpgradePlayer> {
+    private static readonly pb::MessageParser<UpgradePlayer> _parser = new pb::MessageParser<UpgradePlayer>(() => new UpgradePlayer());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<UpgradePlayer> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Yyb.RpcServiceReflection.Descriptor.MessageTypes[9]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public UpgradePlayer() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public UpgradePlayer(UpgradePlayer other) : this() {
+      powerLevel_ = other.powerLevel_;
+      attackSpeedLevel_ = other.attackSpeedLevel_;
+      criticalLevel_ = other.criticalLevel_;
+      buffDurationLevel_ = other.buffDurationLevel_;
+      freeCoinLevel_ = other.freeCoinLevel_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public UpgradePlayer Clone() {
+      return new UpgradePlayer(this);
+    }
+
+    /// <summary>Field number for the "powerLevel" field.</summary>
+    public const int PowerLevelFieldNumber = 1;
+    private int powerLevel_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int PowerLevel {
+      get { return powerLevel_; }
+      set {
+        powerLevel_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "attackSpeedLevel" field.</summary>
+    public const int AttackSpeedLevelFieldNumber = 2;
+    private int attackSpeedLevel_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int AttackSpeedLevel {
+      get { return attackSpeedLevel_; }
+      set {
+        attackSpeedLevel_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "criticalLevel" field.</summary>
+    public const int CriticalLevelFieldNumber = 3;
+    private int criticalLevel_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CriticalLevel {
+      get { return criticalLevel_; }
+      set {
+        criticalLevel_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "buffDurationLevel" field.</summary>
+    public const int BuffDurationLevelFieldNumber = 4;
+    private int buffDurationLevel_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int BuffDurationLevel {
+      get { return buffDurationLevel_; }
+      set {
+        buffDurationLevel_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "freeCoinLevel" field.</summary>
+    public const int FreeCoinLevelFieldNumber = 5;
+    private int freeCoinLevel_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int FreeCoinLevel {
+      get { return freeCoinLevel_; }
+      set {
+        freeCoinLevel_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as UpgradePlayer);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(UpgradePlayer other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (PowerLevel != other.PowerLevel) return false;
+      if (AttackSpeedLevel != other.AttackSpeedLevel) return false;
+      if (CriticalLevel != other.CriticalLevel) return false;
+      if (BuffDurationLevel != other.BuffDurationLevel) return false;
+      if (FreeCoinLevel != other.FreeCoinLevel) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (PowerLevel != 0) hash ^= PowerLevel.GetHashCode();
+      if (AttackSpeedLevel != 0) hash ^= AttackSpeedLevel.GetHashCode();
+      if (CriticalLevel != 0) hash ^= CriticalLevel.GetHashCode();
+      if (BuffDurationLevel != 0) hash ^= BuffDurationLevel.GetHashCode();
+      if (FreeCoinLevel != 0) hash ^= FreeCoinLevel.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (PowerLevel != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(PowerLevel);
+      }
+      if (AttackSpeedLevel != 0) {
+        output.WriteRawTag(16);
+        output.WriteInt32(AttackSpeedLevel);
+      }
+      if (CriticalLevel != 0) {
+        output.WriteRawTag(24);
+        output.WriteInt32(CriticalLevel);
+      }
+      if (BuffDurationLevel != 0) {
+        output.WriteRawTag(32);
+        output.WriteInt32(BuffDurationLevel);
+      }
+      if (FreeCoinLevel != 0) {
+        output.WriteRawTag(40);
+        output.WriteInt32(FreeCoinLevel);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (PowerLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(PowerLevel);
+      }
+      if (AttackSpeedLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(AttackSpeedLevel);
+      }
+      if (CriticalLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(CriticalLevel);
+      }
+      if (BuffDurationLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(BuffDurationLevel);
+      }
+      if (FreeCoinLevel != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(FreeCoinLevel);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(UpgradePlayer other) {
+      if (other == null) {
+        return;
+      }
+      if (other.PowerLevel != 0) {
+        PowerLevel = other.PowerLevel;
+      }
+      if (other.AttackSpeedLevel != 0) {
+        AttackSpeedLevel = other.AttackSpeedLevel;
+      }
+      if (other.CriticalLevel != 0) {
+        CriticalLevel = other.CriticalLevel;
+      }
+      if (other.BuffDurationLevel != 0) {
+        BuffDurationLevel = other.BuffDurationLevel;
+      }
+      if (other.FreeCoinLevel != 0) {
+        FreeCoinLevel = other.FreeCoinLevel;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            PowerLevel = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            AttackSpeedLevel = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            CriticalLevel = input.ReadInt32();
+            break;
+          }
+          case 32: {
+            BuffDurationLevel = input.ReadInt32();
+            break;
+          }
+          case 40: {
+            FreeCoinLevel = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GameDataRequest : pb::IMessage<GameDataRequest> {
+    private static readonly pb::MessageParser<GameDataRequest> _parser = new pb::MessageParser<GameDataRequest>(() => new GameDataRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GameDataRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Yyb.RpcServiceReflection.Descriptor.MessageTypes[10]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GameDataRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GameDataRequest(GameDataRequest other) : this() {
+      items_ = other.items_.Clone();
+      mercenaries_ = other.mercenaries_.Clone();
+      stage_ = other.stage_ != null ? other.stage_.Clone() : null;
+      upgradePlayer_ = other.upgradePlayer_ != null ? other.upgradePlayer_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GameDataRequest Clone() {
+      return new GameDataRequest(this);
+    }
+
+    /// <summary>Field number for the "items" field.</summary>
+    public const int ItemsFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::Yyb.Item> _repeated_items_codec
+        = pb::FieldCodec.ForMessage(18, global::Yyb.Item.Parser);
+    private readonly pbc::RepeatedField<global::Yyb.Item> items_ = new pbc::RepeatedField<global::Yyb.Item>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Yyb.Item> Items {
+      get { return items_; }
+    }
+
+    /// <summary>Field number for the "mercenaries" field.</summary>
+    public const int MercenariesFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::Yyb.Mercenary> _repeated_mercenaries_codec
+        = pb::FieldCodec.ForMessage(26, global::Yyb.Mercenary.Parser);
+    private readonly pbc::RepeatedField<global::Yyb.Mercenary> mercenaries_ = new pbc::RepeatedField<global::Yyb.Mercenary>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Yyb.Mercenary> Mercenaries {
+      get { return mercenaries_; }
+    }
+
+    /// <summary>Field number for the "stage" field.</summary>
+    public const int StageFieldNumber = 4;
+    private global::Yyb.Stage stage_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Yyb.Stage Stage {
+      get { return stage_; }
+      set {
+        stage_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "upgradePlayer" field.</summary>
+    public const int UpgradePlayerFieldNumber = 5;
+    private global::Yyb.UpgradePlayer upgradePlayer_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Yyb.UpgradePlayer UpgradePlayer {
+      get { return upgradePlayer_; }
+      set {
+        upgradePlayer_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GameDataRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GameDataRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!items_.Equals(other.items_)) return false;
+      if(!mercenaries_.Equals(other.mercenaries_)) return false;
+      if (!object.Equals(Stage, other.Stage)) return false;
+      if (!object.Equals(UpgradePlayer, other.UpgradePlayer)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= items_.GetHashCode();
+      hash ^= mercenaries_.GetHashCode();
+      if (stage_ != null) hash ^= Stage.GetHashCode();
+      if (upgradePlayer_ != null) hash ^= UpgradePlayer.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      items_.WriteTo(output, _repeated_items_codec);
+      mercenaries_.WriteTo(output, _repeated_mercenaries_codec);
+      if (stage_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Stage);
+      }
+      if (upgradePlayer_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(UpgradePlayer);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += items_.CalculateSize(_repeated_items_codec);
+      size += mercenaries_.CalculateSize(_repeated_mercenaries_codec);
+      if (stage_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Stage);
+      }
+      if (upgradePlayer_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(UpgradePlayer);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GameDataRequest other) {
+      if (other == null) {
+        return;
+      }
+      items_.Add(other.items_);
+      mercenaries_.Add(other.mercenaries_);
+      if (other.stage_ != null) {
+        if (stage_ == null) {
+          Stage = new global::Yyb.Stage();
+        }
+        Stage.MergeFrom(other.Stage);
+      }
+      if (other.upgradePlayer_ != null) {
+        if (upgradePlayer_ == null) {
+          UpgradePlayer = new global::Yyb.UpgradePlayer();
+        }
+        UpgradePlayer.MergeFrom(other.UpgradePlayer);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 18: {
+            items_.AddEntriesFrom(input, _repeated_items_codec);
+            break;
+          }
+          case 26: {
+            mercenaries_.AddEntriesFrom(input, _repeated_mercenaries_codec);
+            break;
+          }
+          case 34: {
+            if (stage_ == null) {
+              Stage = new global::Yyb.Stage();
+            }
+            input.ReadMessage(Stage);
+            break;
+          }
+          case 42: {
+            if (upgradePlayer_ == null) {
+              UpgradePlayer = new global::Yyb.UpgradePlayer();
+            }
+            input.ReadMessage(UpgradePlayer);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class GameDataReply : pb::IMessage<GameDataReply> {
+    private static readonly pb::MessageParser<GameDataReply> _parser = new pb::MessageParser<GameDataReply>(() => new GameDataReply());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<GameDataReply> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Yyb.RpcServiceReflection.Descriptor.MessageTypes[11]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GameDataReply() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GameDataReply(GameDataReply other) : this() {
+      error_ = other.error_;
+      items_ = other.items_.Clone();
+      mercenaries_ = other.mercenaries_.Clone();
+      stage_ = other.stage_ != null ? other.stage_.Clone() : null;
+      upgradePlayer_ = other.upgradePlayer_ != null ? other.upgradePlayer_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public GameDataReply Clone() {
+      return new GameDataReply(this);
+    }
+
+    /// <summary>Field number for the "error" field.</summary>
+    public const int ErrorFieldNumber = 1;
+    private global::Yyb.ERROR_CODE error_ = 0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Yyb.ERROR_CODE Error {
+      get { return error_; }
+      set {
+        error_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "items" field.</summary>
+    public const int ItemsFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::Yyb.Item> _repeated_items_codec
+        = pb::FieldCodec.ForMessage(18, global::Yyb.Item.Parser);
+    private readonly pbc::RepeatedField<global::Yyb.Item> items_ = new pbc::RepeatedField<global::Yyb.Item>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Yyb.Item> Items {
+      get { return items_; }
+    }
+
+    /// <summary>Field number for the "mercenaries" field.</summary>
+    public const int MercenariesFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::Yyb.Mercenary> _repeated_mercenaries_codec
+        = pb::FieldCodec.ForMessage(26, global::Yyb.Mercenary.Parser);
+    private readonly pbc::RepeatedField<global::Yyb.Mercenary> mercenaries_ = new pbc::RepeatedField<global::Yyb.Mercenary>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Yyb.Mercenary> Mercenaries {
+      get { return mercenaries_; }
+    }
+
+    /// <summary>Field number for the "stage" field.</summary>
+    public const int StageFieldNumber = 4;
+    private global::Yyb.Stage stage_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Yyb.Stage Stage {
+      get { return stage_; }
+      set {
+        stage_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "upgradePlayer" field.</summary>
+    public const int UpgradePlayerFieldNumber = 5;
+    private global::Yyb.UpgradePlayer upgradePlayer_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Yyb.UpgradePlayer UpgradePlayer {
+      get { return upgradePlayer_; }
+      set {
+        upgradePlayer_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as GameDataReply);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(GameDataReply other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Error != other.Error) return false;
+      if(!items_.Equals(other.items_)) return false;
+      if(!mercenaries_.Equals(other.mercenaries_)) return false;
+      if (!object.Equals(Stage, other.Stage)) return false;
+      if (!object.Equals(UpgradePlayer, other.UpgradePlayer)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Error != 0) hash ^= Error.GetHashCode();
+      hash ^= items_.GetHashCode();
+      hash ^= mercenaries_.GetHashCode();
+      if (stage_ != null) hash ^= Stage.GetHashCode();
+      if (upgradePlayer_ != null) hash ^= UpgradePlayer.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (Error != 0) {
+        output.WriteRawTag(8);
+        output.WriteEnum((int) Error);
+      }
+      items_.WriteTo(output, _repeated_items_codec);
+      mercenaries_.WriteTo(output, _repeated_mercenaries_codec);
+      if (stage_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Stage);
+      }
+      if (upgradePlayer_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(UpgradePlayer);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Error != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Error);
+      }
+      size += items_.CalculateSize(_repeated_items_codec);
+      size += mercenaries_.CalculateSize(_repeated_mercenaries_codec);
+      if (stage_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Stage);
+      }
+      if (upgradePlayer_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(UpgradePlayer);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(GameDataReply other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Error != 0) {
+        Error = other.Error;
+      }
+      items_.Add(other.items_);
+      mercenaries_.Add(other.mercenaries_);
+      if (other.stage_ != null) {
+        if (stage_ == null) {
+          Stage = new global::Yyb.Stage();
+        }
+        Stage.MergeFrom(other.Stage);
+      }
+      if (other.upgradePlayer_ != null) {
+        if (upgradePlayer_ == null) {
+          UpgradePlayer = new global::Yyb.UpgradePlayer();
+        }
+        UpgradePlayer.MergeFrom(other.UpgradePlayer);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Error = (global::Yyb.ERROR_CODE) input.ReadEnum();
+            break;
+          }
+          case 18: {
+            items_.AddEntriesFrom(input, _repeated_items_codec);
+            break;
+          }
+          case 26: {
+            mercenaries_.AddEntriesFrom(input, _repeated_mercenaries_codec);
+            break;
+          }
+          case 34: {
+            if (stage_ == null) {
+              Stage = new global::Yyb.Stage();
+            }
+            input.ReadMessage(Stage);
+            break;
+          }
+          case 42: {
+            if (upgradePlayer_ == null) {
+              UpgradePlayer = new global::Yyb.UpgradePlayer();
+            }
+            input.ReadMessage(UpgradePlayer);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class RankingRequest : pb::IMessage<RankingRequest> {
     private static readonly pb::MessageParser<RankingRequest> _parser = new pb::MessageParser<RankingRequest>(() => new RankingRequest());
     private pb::UnknownFieldSet _unknownFields;
@@ -1168,7 +2444,7 @@ namespace Yyb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Yyb.RpcServiceReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Yyb.RpcServiceReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1297,7 +2573,7 @@ namespace Yyb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Yyb.RpcServiceReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Yyb.RpcServiceReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1426,7 +2702,7 @@ namespace Yyb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Yyb.RpcServiceReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Yyb.RpcServiceReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1527,7 +2803,7 @@ namespace Yyb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Yyb.RpcServiceReflection.Descriptor.MessageTypes[9]; }
+      get { return global::Yyb.RpcServiceReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

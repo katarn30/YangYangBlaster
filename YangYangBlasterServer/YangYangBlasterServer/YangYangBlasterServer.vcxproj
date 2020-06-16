@@ -158,10 +158,12 @@
     <ClCompile Include="annotations.grpc.pb.cc" />
     <ClCompile Include="annotations.pb.cc" />
     <ClCompile Include="AsyncHandler.cpp" />
+    <ClCompile Include="AsyncHandlerLoadGameData.cpp" />
     <ClCompile Include="AsyncHandlerLogin.cpp" />
     <ClCompile Include="AsyncHandlerRanking.cpp" />
     <ClCompile Include="AsyncHandlerRankingList.cpp" />
     <ClCompile Include="AsyncHandlerRpcServiceExample.cpp" />
+    <ClCompile Include="AsyncHandlerSaveGameData.cpp" />
     <ClCompile Include="Cache.cpp" />
     <ClCompile Include="DB.cpp" />
     <ClCompile Include="HealthCheckServiceImpl.cpp" />
@@ -182,10 +184,12 @@
     <ClInclude Include="annotations.grpc.pb.h" />
     <ClInclude Include="annotations.pb.h" />
     <ClInclude Include="AsyncHandler.h" />
+    <ClInclude Include="AsyncHandlerLoadGameData.h" />
     <ClInclude Include="AsyncHandlerLogin.h" />
     <ClInclude Include="AsyncHandlerRanking.h" />
     <ClInclude Include="AsyncHandlerRankingList.h" />
     <ClInclude Include="AsyncHandlerRpcServiceExample.h" />
+    <ClInclude Include="AsyncHandlerSaveGameData.h" />
     <ClInclude Include="Cache.h" />
     <ClInclude Include="CreateHandler.h" />
     <ClInclude Include="DB.h" />

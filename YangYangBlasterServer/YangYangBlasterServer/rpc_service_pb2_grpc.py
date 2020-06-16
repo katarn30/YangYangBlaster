@@ -29,6 +29,16 @@ class RpcServiceStub(object):
                 request_serializer=rpc__service__pb2.LoginRequest.SerializeToString,
                 response_deserializer=rpc__service__pb2.LoginReply.FromString,
                 )
+        self.LoadGameData = channel.unary_unary(
+                '/yyb.RpcService/LoadGameData',
+                request_serializer=rpc__service__pb2.GameDataRequest.SerializeToString,
+                response_deserializer=rpc__service__pb2.GameDataReply.FromString,
+                )
+        self.SaveGameData = channel.unary_unary(
+                '/yyb.RpcService/SaveGameData',
+                request_serializer=rpc__service__pb2.GameDataRequest.SerializeToString,
+                response_deserializer=rpc__service__pb2.GameDataReply.FromString,
+                )
         self.Ranking = channel.unary_unary(
                 '/yyb.RpcService/Ranking',
                 request_serializer=rpc__service__pb2.RankingRequest.SerializeToString,
@@ -66,6 +76,20 @@ class RpcServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def LoadGameData(self, request, context):
+        """게임 데이터 획득 요청
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SaveGameData(self, request, context):
+        """게임 데이터 저장 요청
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
     def Ranking(self, request, context):
         """랭킹 기록 요청
         """
@@ -97,6 +121,16 @@ def add_RpcServiceServicer_to_server(servicer, server):
                     servicer.Login,
                     request_deserializer=rpc__service__pb2.LoginRequest.FromString,
                     response_serializer=rpc__service__pb2.LoginReply.SerializeToString,
+            ),
+            'LoadGameData': grpc.unary_unary_rpc_method_handler(
+                    servicer.LoadGameData,
+                    request_deserializer=rpc__service__pb2.GameDataRequest.FromString,
+                    response_serializer=rpc__service__pb2.GameDataReply.SerializeToString,
+            ),
+            'SaveGameData': grpc.unary_unary_rpc_method_handler(
+                    servicer.SaveGameData,
+                    request_deserializer=rpc__service__pb2.GameDataRequest.FromString,
+                    response_serializer=rpc__service__pb2.GameDataReply.SerializeToString,
             ),
             'Ranking': grpc.unary_unary_rpc_method_handler(
                     servicer.Ranking,
@@ -164,6 +198,38 @@ class RpcService(object):
         return grpc.experimental.unary_unary(request, target, '/yyb.RpcService/Login',
             rpc__service__pb2.LoginRequest.SerializeToString,
             rpc__service__pb2.LoginReply.FromString,
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def LoadGameData(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/yyb.RpcService/LoadGameData',
+            rpc__service__pb2.GameDataRequest.SerializeToString,
+            rpc__service__pb2.GameDataReply.FromString,
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def SaveGameData(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/yyb.RpcService/SaveGameData',
+            rpc__service__pb2.GameDataRequest.SerializeToString,
+            rpc__service__pb2.GameDataReply.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)
 

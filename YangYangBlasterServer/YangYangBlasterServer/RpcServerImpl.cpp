@@ -9,6 +9,8 @@ namespace yyb
 {
 	RpcServerImpl::~RpcServerImpl()
 	{
+        running_ = false;
+
 		server_->Shutdown();
 
 		for (auto& cq : scqs_)
@@ -73,24 +75,41 @@ namespace yyb
 
         for (int i = 0; i < completionThreadCount; ++i)
         {
-            thread_group_.create_thread(boost::bind(&boost::asio::io_service::run, &io_service_));
+            thread_group_.create_thread(boost::bind(
+                &boost::asio::io_service::run, &io_service_));
         }
 
         for (int i = 0; i < completionThreadCount; ++i)
         {
-            thread_group_.create_thread(boost::bind(handleRpcs, &service_, scqs_[i].get(), &io_service_));
+            thread_group_.create_thread(boost::bind(
+                handleRpcs, &service_, scqs_[i].get(), &io_service_));
+        }
+
+        {
+            thread_group_.create_thread(boost::bind(
+                &RpcServerImpl::MainLoop, this));
         }
 
         thread_group_.join_all();
     }
 
-#define HANDLER_MACRO(KEWORD)   \
-    AsyncHandler##KEWORD##::CreateRequest(service, cq, io_service,  \
-    std::move(std::bind(&RpcService::AsyncService::Request##KEWORD##, service,   \
-        std::placeholders::_1, std::placeholders::_2,   \
-        std::placeholders::_3, std::placeholders::_4,   \
-        std::placeholders::_5, std::placeholders::_6)), \
-        [] {return new AsyncHandler##KEWORD##; })
+    void RpcServerImpl::MainLoop()
+    {
+        while (running_)
+        {
+            UserManager::Instance().CheckUserAll();
+
+            std::this_thread::sleep_for(std::chrono::seconds(10));
+        }
+    }
+
+//#define HANDLER_MACRO(KEWORD)   \
+//    AsyncHandler##KEWORD##::CreateRequest(service, cq, io_service,  \
+//    std::move(std::bind(&RpcService::AsyncService::Request##KEWORD##, service,   \
+//        std::placeholders::_1, std::placeholders::_2,   \
+//        std::placeholders::_3, std::placeholders::_4,   \
+//        std::placeholders::_5, std::placeholders::_6)), \
+//        [] {return new AsyncHandler##KEWORD##; })
 
 	void RpcServerImpl::createHandlers(RpcService::AsyncService* service, 
         grpc::ServerCompletionQueue* cq, boost::asio::io_service* io_service)

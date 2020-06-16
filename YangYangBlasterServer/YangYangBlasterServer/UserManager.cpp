@@ -53,6 +53,37 @@ namespace yyb
 		}
 	}
 
+	void UserManager::CheckUserAll()
+	{
+		std::lock_guard<std::mutex> lock(mtx_);
+
+		int now = std::time(nullptr);
+
+		auto userIter = users_.begin();
+		for (userIter; userIter != users_.end();)
+		{
+			const auto user = userIter->second;
+			if (user)
+			{
+				int validTime = 
+					user->GetAccessKeyUpdateTime() + 20 * 60; // 20Ка
+
+				if (validTime < now)
+				{
+					userIter = users_.erase(userIter);
+				}
+				else
+				{
+					++userIter;
+				}
+			}
+			else
+			{
+				++userIter;
+			}
+		}
+	}
+
 	void UserManager::addUser(int usn, user_ptr user)
 	{
 		std::lock_guard<std::mutex> lock(mtx_);

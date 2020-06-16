@@ -15,6 +15,7 @@ namespace yyb
 		void AddUser(const std::string& accesskey, user_ptr user);
 		user_ptr GetUser(const std::string& accesskey);
 		void DeleteUser(const std::string& accesskey);
+		void CheckUserAll();
 
 	private:
 		UserManager() {}
