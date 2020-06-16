@@ -167,29 +167,6 @@ namespace yyb
 		reply.set_loginkey(user.loginKey_);
 		reply.set_accesskey(user.accessKey_);
 		return;
-
-		// 토큰으로 구글 유저 접속 정보 확인
-		/*if (false == CallHttpGoogleApiTokenInfo())
-		{
-			reply.set_error("System error");
-			return;
-		}
-		
-		if (false == GetCacheTokenInfo(request.serial_key()))
-		{
-			reply.set_error("System error");
-			return;
-		}*/
-
-		/*std::cout << "name : " << request.name() << 
-			", id_token : " << request.serial_key() << std::endl;*/
-
-		// DB에 user 정보 존재하는지 확인하고 있으면 얻어옴
-		/*if (false == GetDBUserInfo(request.name(), request.serial_key()))
-		{
-			reply.set_error("System error");
-			return;
-		}*/
 	}
 
 	void AsyncHandlerLogin::OnWrite()

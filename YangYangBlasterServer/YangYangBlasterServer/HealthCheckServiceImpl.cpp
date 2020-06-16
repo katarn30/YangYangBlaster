@@ -163,7 +163,7 @@ namespace yyb
             }
             
             gpr_sleep_until(gpr_time_add(gpr_now(GPR_CLOCK_MONOTONIC),
-                gpr_time_from_millis(1000, GPR_TIMESPAN)));
+                gpr_time_from_millis(3000, GPR_TIMESPAN)));
         }
 
 		return grpc::Status::OK;

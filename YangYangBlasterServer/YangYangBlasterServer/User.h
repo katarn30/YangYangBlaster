@@ -33,6 +33,14 @@ namespace yyb
 		{
 			return nickName_;
 		}
+		inline void SetUsn(int usn)
+		{
+			usn_ = usn;
+		}
+		inline int GetUsn() const
+		{
+			return usn_;
+		}
 
 		int usn_;
 		int loginType_;

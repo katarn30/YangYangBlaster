@@ -63,6 +63,22 @@ class RpcService final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::LoginReply>> PrepareAsyncLogin(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::LoginReply>>(PrepareAsyncLoginRaw(context, request, cq));
     }
+    // 게임 데이터 획득 요청
+    virtual ::grpc::Status LoadGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::yyb::GameDataReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::GameDataReply>> AsyncLoadGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::GameDataReply>>(AsyncLoadGameDataRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::GameDataReply>> PrepareAsyncLoadGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::GameDataReply>>(PrepareAsyncLoadGameDataRaw(context, request, cq));
+    }
+    // 게임 데이터 저장 요청
+    virtual ::grpc::Status SaveGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::yyb::GameDataReply* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::GameDataReply>> AsyncSaveGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::GameDataReply>>(AsyncSaveGameDataRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::GameDataReply>> PrepareAsyncSaveGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::GameDataReply>>(PrepareAsyncSaveGameDataRaw(context, request, cq));
+    }
     // 랭킹 기록 요청
     virtual ::grpc::Status Ranking(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::yyb::RankingReply* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RankingReply>> AsyncRanking(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::grpc::CompletionQueue* cq) {
@@ -114,6 +130,32 @@ class RpcService final {
       #else
       virtual void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::LoginReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
+      // 게임 데이터 획득 요청
+      virtual void LoadGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void LoadGameData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::GameDataReply* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void LoadGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void LoadGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void LoadGameData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::GameDataReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void LoadGameData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::GameDataReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      // 게임 데이터 저장 요청
+      virtual void SaveGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void SaveGameData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::GameDataReply* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void SaveGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void SaveGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void SaveGameData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::GameDataReply* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void SaveGameData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::GameDataReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
       // 랭킹 기록 요청
       virtual void Ranking(::grpc::ClientContext* context, const ::yyb::RankingRequest* request, ::yyb::RankingReply* response, std::function<void(::grpc::Status)>) = 0;
       virtual void Ranking(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RankingReply* response, std::function<void(::grpc::Status)>) = 0;
@@ -156,6 +198,10 @@ class RpcService final {
     virtual ::grpc::ClientAsyncReaderInterface< ::yyb::PushNotification>* PrepareAsyncListenRaw(::grpc::ClientContext* context, const ::yyb::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::yyb::LoginReply>* AsyncLoginRaw(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::yyb::LoginReply>* PrepareAsyncLoginRaw(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::yyb::GameDataReply>* AsyncLoadGameDataRaw(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::yyb::GameDataReply>* PrepareAsyncLoadGameDataRaw(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::yyb::GameDataReply>* AsyncSaveGameDataRaw(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::yyb::GameDataReply>* PrepareAsyncSaveGameDataRaw(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RankingReply>* AsyncRankingRaw(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RankingReply>* PrepareAsyncRankingRaw(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::yyb::RankingListReply>* AsyncRankingListRaw(::grpc::ClientContext* context, const ::yyb::RankingListRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -186,6 +232,20 @@ class RpcService final {
     }
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::LoginReply>> PrepareAsyncLogin(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::LoginReply>>(PrepareAsyncLoginRaw(context, request, cq));
+    }
+    ::grpc::Status LoadGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::yyb::GameDataReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::GameDataReply>> AsyncLoadGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::GameDataReply>>(AsyncLoadGameDataRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::GameDataReply>> PrepareAsyncLoadGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::GameDataReply>>(PrepareAsyncLoadGameDataRaw(context, request, cq));
+    }
+    ::grpc::Status SaveGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::yyb::GameDataReply* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::GameDataReply>> AsyncSaveGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::GameDataReply>>(AsyncSaveGameDataRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::GameDataReply>> PrepareAsyncSaveGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::GameDataReply>>(PrepareAsyncSaveGameDataRaw(context, request, cq));
     }
     ::grpc::Status Ranking(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::yyb::RankingReply* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::yyb::RankingReply>> AsyncRanking(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::grpc::CompletionQueue* cq) {
@@ -233,6 +293,30 @@ class RpcService final {
       #else
       void Login(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::LoginReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
+      void LoadGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response, std::function<void(::grpc::Status)>) override;
+      void LoadGameData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::GameDataReply* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void LoadGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void LoadGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void LoadGameData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::GameDataReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void LoadGameData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::GameDataReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      void SaveGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response, std::function<void(::grpc::Status)>) override;
+      void SaveGameData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::GameDataReply* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void SaveGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void SaveGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void SaveGameData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::GameDataReply* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void SaveGameData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::GameDataReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
       void Ranking(::grpc::ClientContext* context, const ::yyb::RankingRequest* request, ::yyb::RankingReply* response, std::function<void(::grpc::Status)>) override;
       void Ranking(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::RankingReply* response, std::function<void(::grpc::Status)>) override;
       #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -275,6 +359,10 @@ class RpcService final {
     ::grpc::ClientAsyncReader< ::yyb::PushNotification>* PrepareAsyncListenRaw(::grpc::ClientContext* context, const ::yyb::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::yyb::LoginReply>* AsyncLoginRaw(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::yyb::LoginReply>* PrepareAsyncLoginRaw(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::yyb::GameDataReply>* AsyncLoadGameDataRaw(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::yyb::GameDataReply>* PrepareAsyncLoadGameDataRaw(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::yyb::GameDataReply>* AsyncSaveGameDataRaw(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::yyb::GameDataReply>* PrepareAsyncSaveGameDataRaw(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::yyb::RankingReply>* AsyncRankingRaw(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::yyb::RankingReply>* PrepareAsyncRankingRaw(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::yyb::RankingListReply>* AsyncRankingListRaw(::grpc::ClientContext* context, const ::yyb::RankingListRequest& request, ::grpc::CompletionQueue* cq) override;
@@ -282,6 +370,8 @@ class RpcService final {
     const ::grpc::internal::RpcMethod rpcmethod_RpcServiceExample_;
     const ::grpc::internal::RpcMethod rpcmethod_Listen_;
     const ::grpc::internal::RpcMethod rpcmethod_Login_;
+    const ::grpc::internal::RpcMethod rpcmethod_LoadGameData_;
+    const ::grpc::internal::RpcMethod rpcmethod_SaveGameData_;
     const ::grpc::internal::RpcMethod rpcmethod_Ranking_;
     const ::grpc::internal::RpcMethod rpcmethod_RankingList_;
   };
@@ -297,6 +387,10 @@ class RpcService final {
     virtual ::grpc::Status Listen(::grpc::ServerContext* context, const ::yyb::Empty* request, ::grpc::ServerWriter< ::yyb::PushNotification>* writer);
     // 로그인 요청
     virtual ::grpc::Status Login(::grpc::ServerContext* context, const ::yyb::LoginRequest* request, ::yyb::LoginReply* response);
+    // 게임 데이터 획득 요청
+    virtual ::grpc::Status LoadGameData(::grpc::ServerContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response);
+    // 게임 데이터 저장 요청
+    virtual ::grpc::Status SaveGameData(::grpc::ServerContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response);
     // 랭킹 기록 요청
     virtual ::grpc::Status Ranking(::grpc::ServerContext* context, const ::yyb::RankingRequest* request, ::yyb::RankingReply* response);
     // 랭킹 리스트 요청
@@ -363,12 +457,52 @@ class RpcService final {
     }
   };
   template <class BaseClass>
+  class WithAsyncMethod_LoadGameData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_LoadGameData() {
+      ::grpc::Service::MarkMethodAsync(3);
+    }
+    ~WithAsyncMethod_LoadGameData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status LoadGameData(::grpc::ServerContext* /*context*/, const ::yyb::GameDataRequest* /*request*/, ::yyb::GameDataReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestLoadGameData(::grpc::ServerContext* context, ::yyb::GameDataRequest* request, ::grpc::ServerAsyncResponseWriter< ::yyb::GameDataReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_SaveGameData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_SaveGameData() {
+      ::grpc::Service::MarkMethodAsync(4);
+    }
+    ~WithAsyncMethod_SaveGameData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SaveGameData(::grpc::ServerContext* /*context*/, const ::yyb::GameDataRequest* /*request*/, ::yyb::GameDataReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSaveGameData(::grpc::ServerContext* context, ::yyb::GameDataRequest* request, ::grpc::ServerAsyncResponseWriter< ::yyb::GameDataReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithAsyncMethod_Ranking : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_Ranking() {
-      ::grpc::Service::MarkMethodAsync(3);
+      ::grpc::Service::MarkMethodAsync(5);
     }
     ~WithAsyncMethod_Ranking() override {
       BaseClassMustBeDerivedFromService(this);
@@ -379,7 +513,7 @@ class RpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestRanking(::grpc::ServerContext* context, ::yyb::RankingRequest* request, ::grpc::ServerAsyncResponseWriter< ::yyb::RankingReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -388,7 +522,7 @@ class RpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithAsyncMethod_RankingList() {
-      ::grpc::Service::MarkMethodAsync(4);
+      ::grpc::Service::MarkMethodAsync(6);
     }
     ~WithAsyncMethod_RankingList() override {
       BaseClassMustBeDerivedFromService(this);
@@ -399,10 +533,10 @@ class RpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestRankingList(::grpc::ServerContext* context, ::yyb::RankingListRequest* request, ::grpc::ServerAsyncResponseWriter< ::yyb::RankingListReply>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_RpcServiceExample<WithAsyncMethod_Listen<WithAsyncMethod_Login<WithAsyncMethod_Ranking<WithAsyncMethod_RankingList<Service > > > > > AsyncService;
+  typedef WithAsyncMethod_RpcServiceExample<WithAsyncMethod_Listen<WithAsyncMethod_Login<WithAsyncMethod_LoadGameData<WithAsyncMethod_SaveGameData<WithAsyncMethod_Ranking<WithAsyncMethod_RankingList<Service > > > > > > > AsyncService;
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_RpcServiceExample : public BaseClass {
    private:
@@ -536,6 +670,100 @@ class RpcService final {
       { return nullptr; }
   };
   template <class BaseClass>
+  class ExperimentalWithCallbackMethod_LoadGameData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_LoadGameData() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(3,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::yyb::GameDataRequest, ::yyb::GameDataReply>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response) { return this->LoadGameData(context, request, response); }));}
+    void SetMessageAllocatorFor_LoadGameData(
+        ::grpc::experimental::MessageAllocator< ::yyb::GameDataRequest, ::yyb::GameDataReply>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(3);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::yyb::GameDataRequest, ::yyb::GameDataReply>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_LoadGameData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status LoadGameData(::grpc::ServerContext* /*context*/, const ::yyb::GameDataRequest* /*request*/, ::yyb::GameDataReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* LoadGameData(
+      ::grpc::CallbackServerContext* /*context*/, const ::yyb::GameDataRequest* /*request*/, ::yyb::GameDataReply* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* LoadGameData(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::yyb::GameDataRequest* /*request*/, ::yyb::GameDataReply* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_SaveGameData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_SaveGameData() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(4,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::yyb::GameDataRequest, ::yyb::GameDataReply>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response) { return this->SaveGameData(context, request, response); }));}
+    void SetMessageAllocatorFor_SaveGameData(
+        ::grpc::experimental::MessageAllocator< ::yyb::GameDataRequest, ::yyb::GameDataReply>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(4);
+    #endif
+      static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::yyb::GameDataRequest, ::yyb::GameDataReply>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_SaveGameData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SaveGameData(::grpc::ServerContext* /*context*/, const ::yyb::GameDataRequest* /*request*/, ::yyb::GameDataReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* SaveGameData(
+      ::grpc::CallbackServerContext* /*context*/, const ::yyb::GameDataRequest* /*request*/, ::yyb::GameDataReply* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* SaveGameData(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::yyb::GameDataRequest* /*request*/, ::yyb::GameDataReply* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
   class ExperimentalWithCallbackMethod_Ranking : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -546,7 +774,7 @@ class RpcService final {
     #else
       ::grpc::Service::experimental().
     #endif
-        MarkMethodCallback(3,
+        MarkMethodCallback(5,
           new ::grpc_impl::internal::CallbackUnaryHandler< ::yyb::RankingRequest, ::yyb::RankingReply>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -558,9 +786,9 @@ class RpcService final {
     void SetMessageAllocatorFor_Ranking(
         ::grpc::experimental::MessageAllocator< ::yyb::RankingRequest, ::yyb::RankingReply>* allocator) {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(5);
     #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(3);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(5);
     #endif
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::yyb::RankingRequest, ::yyb::RankingReply>*>(handler)
               ->SetMessageAllocator(allocator);
@@ -593,7 +821,7 @@ class RpcService final {
     #else
       ::grpc::Service::experimental().
     #endif
-        MarkMethodCallback(4,
+        MarkMethodCallback(6,
           new ::grpc_impl::internal::CallbackUnaryHandler< ::yyb::RankingListRequest, ::yyb::RankingListReply>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -605,9 +833,9 @@ class RpcService final {
     void SetMessageAllocatorFor_RankingList(
         ::grpc::experimental::MessageAllocator< ::yyb::RankingListRequest, ::yyb::RankingListReply>* allocator) {
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(6);
     #else
-      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(4);
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(6);
     #endif
       static_cast<::grpc_impl::internal::CallbackUnaryHandler< ::yyb::RankingListRequest, ::yyb::RankingListReply>*>(handler)
               ->SetMessageAllocator(allocator);
@@ -630,10 +858,10 @@ class RpcService final {
       { return nullptr; }
   };
   #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-  typedef ExperimentalWithCallbackMethod_RpcServiceExample<ExperimentalWithCallbackMethod_Listen<ExperimentalWithCallbackMethod_Login<ExperimentalWithCallbackMethod_Ranking<ExperimentalWithCallbackMethod_RankingList<Service > > > > > CallbackService;
+  typedef ExperimentalWithCallbackMethod_RpcServiceExample<ExperimentalWithCallbackMethod_Listen<ExperimentalWithCallbackMethod_Login<ExperimentalWithCallbackMethod_LoadGameData<ExperimentalWithCallbackMethod_SaveGameData<ExperimentalWithCallbackMethod_Ranking<ExperimentalWithCallbackMethod_RankingList<Service > > > > > > > CallbackService;
   #endif
 
-  typedef ExperimentalWithCallbackMethod_RpcServiceExample<ExperimentalWithCallbackMethod_Listen<ExperimentalWithCallbackMethod_Login<ExperimentalWithCallbackMethod_Ranking<ExperimentalWithCallbackMethod_RankingList<Service > > > > > ExperimentalCallbackService;
+  typedef ExperimentalWithCallbackMethod_RpcServiceExample<ExperimentalWithCallbackMethod_Listen<ExperimentalWithCallbackMethod_Login<ExperimentalWithCallbackMethod_LoadGameData<ExperimentalWithCallbackMethod_SaveGameData<ExperimentalWithCallbackMethod_Ranking<ExperimentalWithCallbackMethod_RankingList<Service > > > > > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_RpcServiceExample : public BaseClass {
    private:
@@ -686,12 +914,46 @@ class RpcService final {
     }
   };
   template <class BaseClass>
+  class WithGenericMethod_LoadGameData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_LoadGameData() {
+      ::grpc::Service::MarkMethodGeneric(3);
+    }
+    ~WithGenericMethod_LoadGameData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status LoadGameData(::grpc::ServerContext* /*context*/, const ::yyb::GameDataRequest* /*request*/, ::yyb::GameDataReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_SaveGameData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_SaveGameData() {
+      ::grpc::Service::MarkMethodGeneric(4);
+    }
+    ~WithGenericMethod_SaveGameData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SaveGameData(::grpc::ServerContext* /*context*/, const ::yyb::GameDataRequest* /*request*/, ::yyb::GameDataReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
   class WithGenericMethod_Ranking : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_Ranking() {
-      ::grpc::Service::MarkMethodGeneric(3);
+      ::grpc::Service::MarkMethodGeneric(5);
     }
     ~WithGenericMethod_Ranking() override {
       BaseClassMustBeDerivedFromService(this);
@@ -708,7 +970,7 @@ class RpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithGenericMethod_RankingList() {
-      ::grpc::Service::MarkMethodGeneric(4);
+      ::grpc::Service::MarkMethodGeneric(6);
     }
     ~WithGenericMethod_RankingList() override {
       BaseClassMustBeDerivedFromService(this);
@@ -780,12 +1042,52 @@ class RpcService final {
     }
   };
   template <class BaseClass>
+  class WithRawMethod_LoadGameData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_LoadGameData() {
+      ::grpc::Service::MarkMethodRaw(3);
+    }
+    ~WithRawMethod_LoadGameData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status LoadGameData(::grpc::ServerContext* /*context*/, const ::yyb::GameDataRequest* /*request*/, ::yyb::GameDataReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestLoadGameData(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_SaveGameData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_SaveGameData() {
+      ::grpc::Service::MarkMethodRaw(4);
+    }
+    ~WithRawMethod_SaveGameData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SaveGameData(::grpc::ServerContext* /*context*/, const ::yyb::GameDataRequest* /*request*/, ::yyb::GameDataReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestSaveGameData(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
   class WithRawMethod_Ranking : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_Ranking() {
-      ::grpc::Service::MarkMethodRaw(3);
+      ::grpc::Service::MarkMethodRaw(5);
     }
     ~WithRawMethod_Ranking() override {
       BaseClassMustBeDerivedFromService(this);
@@ -796,7 +1098,7 @@ class RpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestRanking(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -805,7 +1107,7 @@ class RpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithRawMethod_RankingList() {
-      ::grpc::Service::MarkMethodRaw(4);
+      ::grpc::Service::MarkMethodRaw(6);
     }
     ~WithRawMethod_RankingList() override {
       BaseClassMustBeDerivedFromService(this);
@@ -816,7 +1118,7 @@ class RpcService final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     void RequestRankingList(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
-      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -934,6 +1236,82 @@ class RpcService final {
       { return nullptr; }
   };
   template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_LoadGameData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_LoadGameData() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(3,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->LoadGameData(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_LoadGameData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status LoadGameData(::grpc::ServerContext* /*context*/, const ::yyb::GameDataRequest* /*request*/, ::yyb::GameDataReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* LoadGameData(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* LoadGameData(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_SaveGameData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_SaveGameData() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(4,
+          new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->SaveGameData(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_SaveGameData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status SaveGameData(::grpc::ServerContext* /*context*/, const ::yyb::GameDataRequest* /*request*/, ::yyb::GameDataReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* SaveGameData(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* SaveGameData(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
   class ExperimentalWithRawCallbackMethod_Ranking : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -944,7 +1322,7 @@ class RpcService final {
     #else
       ::grpc::Service::experimental().
     #endif
-        MarkMethodRawCallback(3,
+        MarkMethodRawCallback(5,
           new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -982,7 +1360,7 @@ class RpcService final {
     #else
       ::grpc::Service::experimental().
     #endif
-        MarkMethodRawCallback(4,
+        MarkMethodRawCallback(6,
           new ::grpc_impl::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
@@ -1050,12 +1428,52 @@ class RpcService final {
     virtual ::grpc::Status StreamedLogin(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::yyb::LoginRequest,::yyb::LoginReply>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
+  class WithStreamedUnaryMethod_LoadGameData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_LoadGameData() {
+      ::grpc::Service::MarkMethodStreamed(3,
+        new ::grpc::internal::StreamedUnaryHandler< ::yyb::GameDataRequest, ::yyb::GameDataReply>(std::bind(&WithStreamedUnaryMethod_LoadGameData<BaseClass>::StreamedLoadGameData, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_LoadGameData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status LoadGameData(::grpc::ServerContext* /*context*/, const ::yyb::GameDataRequest* /*request*/, ::yyb::GameDataReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedLoadGameData(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::yyb::GameDataRequest,::yyb::GameDataReply>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_SaveGameData : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_SaveGameData() {
+      ::grpc::Service::MarkMethodStreamed(4,
+        new ::grpc::internal::StreamedUnaryHandler< ::yyb::GameDataRequest, ::yyb::GameDataReply>(std::bind(&WithStreamedUnaryMethod_SaveGameData<BaseClass>::StreamedSaveGameData, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_SaveGameData() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status SaveGameData(::grpc::ServerContext* /*context*/, const ::yyb::GameDataRequest* /*request*/, ::yyb::GameDataReply* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedSaveGameData(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::yyb::GameDataRequest,::yyb::GameDataReply>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_Ranking : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_Ranking() {
-      ::grpc::Service::MarkMethodStreamed(3,
+      ::grpc::Service::MarkMethodStreamed(5,
         new ::grpc::internal::StreamedUnaryHandler< ::yyb::RankingRequest, ::yyb::RankingReply>(std::bind(&WithStreamedUnaryMethod_Ranking<BaseClass>::StreamedRanking, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_Ranking() override {
@@ -1075,7 +1493,7 @@ class RpcService final {
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
     WithStreamedUnaryMethod_RankingList() {
-      ::grpc::Service::MarkMethodStreamed(4,
+      ::grpc::Service::MarkMethodStreamed(6,
         new ::grpc::internal::StreamedUnaryHandler< ::yyb::RankingListRequest, ::yyb::RankingListReply>(std::bind(&WithStreamedUnaryMethod_RankingList<BaseClass>::StreamedRankingList, this, std::placeholders::_1, std::placeholders::_2)));
     }
     ~WithStreamedUnaryMethod_RankingList() override {
@@ -1089,7 +1507,7 @@ class RpcService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedRankingList(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::yyb::RankingListRequest,::yyb::RankingListReply>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_RpcServiceExample<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Ranking<WithStreamedUnaryMethod_RankingList<Service > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_RpcServiceExample<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_LoadGameData<WithStreamedUnaryMethod_SaveGameData<WithStreamedUnaryMethod_Ranking<WithStreamedUnaryMethod_RankingList<Service > > > > > > StreamedUnaryService;
   template <class BaseClass>
   class WithSplitStreamingMethod_Listen : public BaseClass {
    private:
@@ -1111,7 +1529,7 @@ class RpcService final {
     virtual ::grpc::Status StreamedListen(::grpc::ServerContext* context, ::grpc::ServerSplitStreamer< ::yyb::Empty,::yyb::PushNotification>* server_split_streamer) = 0;
   };
   typedef WithSplitStreamingMethod_Listen<Service > SplitStreamedService;
-  typedef WithStreamedUnaryMethod_RpcServiceExample<WithSplitStreamingMethod_Listen<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_Ranking<WithStreamedUnaryMethod_RankingList<Service > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_RpcServiceExample<WithSplitStreamingMethod_Listen<WithStreamedUnaryMethod_Login<WithStreamedUnaryMethod_LoadGameData<WithStreamedUnaryMethod_SaveGameData<WithStreamedUnaryMethod_Ranking<WithStreamedUnaryMethod_RankingList<Service > > > > > > > StreamedService;
 };
 
 }  // namespace yyb

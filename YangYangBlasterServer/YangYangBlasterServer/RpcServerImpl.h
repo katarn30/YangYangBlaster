@@ -13,10 +13,11 @@ namespace yyb
 	class RpcServerImpl final
 	{
 	public:
-        RpcServerImpl() : work_(io_service_) {}
+        RpcServerImpl() : work_(io_service_), running_(true) {}
         ~RpcServerImpl();
 
         void Run();
+        void MainLoop();
 
 	private:
         static void createHandlers(RpcService::AsyncService* service, 
@@ -30,6 +31,7 @@ namespace yyb
         boost::thread_group thread_group_;
         boost::asio::io_service io_service_;
         boost::asio::io_service::work work_;
+        bool running_;
 	};
 
     //class SyncSendMessageVerifier : public grpc::experimental::Interceptor {

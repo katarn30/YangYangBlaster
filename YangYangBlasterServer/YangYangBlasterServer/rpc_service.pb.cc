@@ -14,7 +14,11 @@
 #include <google/protobuf/wire_format.h>
 // @@protoc_insertion_point(includes)
 #include <google/protobuf/port_def.inc>
+extern PROTOBUF_INTERNAL_EXPORT_rpc_5fservice_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Item_rpc_5fservice_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_rpc_5fservice_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Mercenary_rpc_5fservice_2eproto;
 extern PROTOBUF_INTERNAL_EXPORT_rpc_5fservice_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RankingListReply_Ranking_rpc_5fservice_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_rpc_5fservice_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Stage_rpc_5fservice_2eproto;
+extern PROTOBUF_INTERNAL_EXPORT_rpc_5fservice_2eproto ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_UpgradePlayer_rpc_5fservice_2eproto;
 namespace yyb {
 class RpcServiceExampleRequestDefaultTypeInternal {
  public:
@@ -40,6 +44,30 @@ class LoginReplyDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<LoginReply> _instance;
 } _LoginReply_default_instance_;
+class ItemDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Item> _instance;
+} _Item_default_instance_;
+class MercenaryDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Mercenary> _instance;
+} _Mercenary_default_instance_;
+class StageDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<Stage> _instance;
+} _Stage_default_instance_;
+class UpgradePlayerDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<UpgradePlayer> _instance;
+} _UpgradePlayer_default_instance_;
+class GameDataRequestDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<GameDataRequest> _instance;
+} _GameDataRequest_default_instance_;
+class GameDataReplyDefaultTypeInternal {
+ public:
+  ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<GameDataReply> _instance;
+} _GameDataReply_default_instance_;
 class RankingRequestDefaultTypeInternal {
  public:
   ::PROTOBUF_NAMESPACE_ID::internal::ExplicitlyConstructed<RankingRequest> _instance;
@@ -75,6 +103,56 @@ static void InitDefaultsscc_info_Empty_rpc_5fservice_2eproto() {
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Empty_rpc_5fservice_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Empty_rpc_5fservice_2eproto}, {}};
 
+static void InitDefaultsscc_info_GameDataReply_rpc_5fservice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::yyb::_GameDataReply_default_instance_;
+    new (ptr) ::yyb::GameDataReply();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::yyb::GameDataReply::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<4> scc_info_GameDataReply_rpc_5fservice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 4, 0, InitDefaultsscc_info_GameDataReply_rpc_5fservice_2eproto}, {
+      &scc_info_Item_rpc_5fservice_2eproto.base,
+      &scc_info_Mercenary_rpc_5fservice_2eproto.base,
+      &scc_info_Stage_rpc_5fservice_2eproto.base,
+      &scc_info_UpgradePlayer_rpc_5fservice_2eproto.base,}};
+
+static void InitDefaultsscc_info_GameDataRequest_rpc_5fservice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::yyb::_GameDataRequest_default_instance_;
+    new (ptr) ::yyb::GameDataRequest();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::yyb::GameDataRequest::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<4> scc_info_GameDataRequest_rpc_5fservice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 4, 0, InitDefaultsscc_info_GameDataRequest_rpc_5fservice_2eproto}, {
+      &scc_info_Item_rpc_5fservice_2eproto.base,
+      &scc_info_Mercenary_rpc_5fservice_2eproto.base,
+      &scc_info_Stage_rpc_5fservice_2eproto.base,
+      &scc_info_UpgradePlayer_rpc_5fservice_2eproto.base,}};
+
+static void InitDefaultsscc_info_Item_rpc_5fservice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::yyb::_Item_default_instance_;
+    new (ptr) ::yyb::Item();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::yyb::Item::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Item_rpc_5fservice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Item_rpc_5fservice_2eproto}, {}};
+
 static void InitDefaultsscc_info_LoginReply_rpc_5fservice_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
@@ -102,6 +180,20 @@ static void InitDefaultsscc_info_LoginRequest_rpc_5fservice_2eproto() {
 
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_LoginRequest_rpc_5fservice_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_LoginRequest_rpc_5fservice_2eproto}, {}};
+
+static void InitDefaultsscc_info_Mercenary_rpc_5fservice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::yyb::_Mercenary_default_instance_;
+    new (ptr) ::yyb::Mercenary();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::yyb::Mercenary::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Mercenary_rpc_5fservice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Mercenary_rpc_5fservice_2eproto}, {}};
 
 static void InitDefaultsscc_info_PushNotification_rpc_5fservice_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
@@ -216,8 +308,36 @@ static void InitDefaultsscc_info_RpcServiceExampleRequest_rpc_5fservice_2eproto(
 ::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_RpcServiceExampleRequest_rpc_5fservice_2eproto =
     {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_RpcServiceExampleRequest_rpc_5fservice_2eproto}, {}};
 
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_rpc_5fservice_2eproto[11];
-static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_rpc_5fservice_2eproto[2];
+static void InitDefaultsscc_info_Stage_rpc_5fservice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::yyb::_Stage_default_instance_;
+    new (ptr) ::yyb::Stage();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::yyb::Stage::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_Stage_rpc_5fservice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_Stage_rpc_5fservice_2eproto}, {}};
+
+static void InitDefaultsscc_info_UpgradePlayer_rpc_5fservice_2eproto() {
+  GOOGLE_PROTOBUF_VERIFY_VERSION;
+
+  {
+    void* ptr = &::yyb::_UpgradePlayer_default_instance_;
+    new (ptr) ::yyb::UpgradePlayer();
+    ::PROTOBUF_NAMESPACE_ID::internal::OnShutdownDestroyMessage(ptr);
+  }
+  ::yyb::UpgradePlayer::InitAsDefaultInstance();
+}
+
+::PROTOBUF_NAMESPACE_ID::internal::SCCInfo<0> scc_info_UpgradePlayer_rpc_5fservice_2eproto =
+    {{ATOMIC_VAR_INIT(::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase::kUninitialized), 0, 0, InitDefaultsscc_info_UpgradePlayer_rpc_5fservice_2eproto}, {}};
+
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_rpc_5fservice_2eproto[17];
+static const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* file_level_enum_descriptors_rpc_5fservice_2eproto[4];
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_rpc_5fservice_2eproto = nullptr;
 
 const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_rpc_5fservice_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
@@ -268,6 +388,58 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_rpc_5fservice_2eproto::offsets
   PROTOBUF_FIELD_OFFSET(::yyb::LoginReply, loginkey_),
   PROTOBUF_FIELD_OFFSET(::yyb::LoginReply, accesskey_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::yyb::Item, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::yyb::Item, itemname_),
+  PROTOBUF_FIELD_OFFSET(::yyb::Item, itemtype_),
+  PROTOBUF_FIELD_OFFSET(::yyb::Item, itemcategory_),
+  PROTOBUF_FIELD_OFFSET(::yyb::Item, itemcount_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::yyb::Mercenary, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::yyb::Mercenary, mercenaryname_),
+  PROTOBUF_FIELD_OFFSET(::yyb::Mercenary, mercenarylevel_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::yyb::Stage, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::yyb::Stage, stagenum_),
+  PROTOBUF_FIELD_OFFSET(::yyb::Stage, stagescore_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::yyb::UpgradePlayer, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::yyb::UpgradePlayer, powerlevel_),
+  PROTOBUF_FIELD_OFFSET(::yyb::UpgradePlayer, attackspeedlevel_),
+  PROTOBUF_FIELD_OFFSET(::yyb::UpgradePlayer, criticallevel_),
+  PROTOBUF_FIELD_OFFSET(::yyb::UpgradePlayer, buffdurationlevel_),
+  PROTOBUF_FIELD_OFFSET(::yyb::UpgradePlayer, freecoinlevel_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::yyb::GameDataRequest, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::yyb::GameDataRequest, items_),
+  PROTOBUF_FIELD_OFFSET(::yyb::GameDataRequest, mercenaries_),
+  PROTOBUF_FIELD_OFFSET(::yyb::GameDataRequest, stage_),
+  PROTOBUF_FIELD_OFFSET(::yyb::GameDataRequest, upgradeplayer_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::yyb::GameDataReply, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::yyb::GameDataReply, error_),
+  PROTOBUF_FIELD_OFFSET(::yyb::GameDataReply, items_),
+  PROTOBUF_FIELD_OFFSET(::yyb::GameDataReply, mercenaries_),
+  PROTOBUF_FIELD_OFFSET(::yyb::GameDataReply, stage_),
+  PROTOBUF_FIELD_OFFSET(::yyb::GameDataReply, upgradeplayer_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::yyb::RankingRequest, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -308,11 +480,17 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 21, -1, sizeof(::yyb::PushNotification)},
   { 27, -1, sizeof(::yyb::LoginRequest)},
   { 36, -1, sizeof(::yyb::LoginReply)},
-  { 46, -1, sizeof(::yyb::RankingRequest)},
-  { 52, -1, sizeof(::yyb::RankingReply)},
-  { 58, -1, sizeof(::yyb::RankingListRequest)},
-  { 63, -1, sizeof(::yyb::RankingListReply_Ranking)},
-  { 71, -1, sizeof(::yyb::RankingListReply)},
+  { 46, -1, sizeof(::yyb::Item)},
+  { 55, -1, sizeof(::yyb::Mercenary)},
+  { 62, -1, sizeof(::yyb::Stage)},
+  { 69, -1, sizeof(::yyb::UpgradePlayer)},
+  { 79, -1, sizeof(::yyb::GameDataRequest)},
+  { 88, -1, sizeof(::yyb::GameDataReply)},
+  { 98, -1, sizeof(::yyb::RankingRequest)},
+  { 104, -1, sizeof(::yyb::RankingReply)},
+  { 110, -1, sizeof(::yyb::RankingListRequest)},
+  { 115, -1, sizeof(::yyb::RankingListReply_Ranking)},
+  { 123, -1, sizeof(::yyb::RankingListReply)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -322,6 +500,12 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_PushNotification_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_LoginRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_LoginReply_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_Item_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_Mercenary_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_Stage_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_UpgradePlayer_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_GameDataRequest_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_GameDataReply_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_RankingRequest_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_RankingReply_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::yyb::_RankingListRequest_default_instance_),
@@ -344,43 +528,83 @@ const char descriptor_table_protodef_rpc_5fservice_2eproto[] PROTOBUF_SECTION_VA
   "\023LOGIN_TYPE_FACEBOOK\020\002\"p\n\nLoginReply\022\036\n\005"
   "error\030\001 \001(\0162\017.yyb.ERROR_CODE\022\013\n\003usn\030\002 \001("
   "\005\022\020\n\010nickName\030\003 \001(\t\022\020\n\010loginKey\030\004 \001(\t\022\021\n"
-  "\taccessKey\030\005 \001(\t\"\037\n\016RankingRequest\022\r\n\005sc"
-  "ore\030\001 \001(\003\".\n\014RankingReply\022\036\n\005error\030\001 \001(\016"
-  "2\017.yyb.ERROR_CODE\"\024\n\022RankingListRequest\""
-  "\317\001\n\020RankingListReply\022\036\n\005error\030\001 \001(\0162\017.yy"
-  "b.ERROR_CODE\0220\n\tmyRanking\030\002 \001(\0132\035.yyb.Ra"
-  "nkingListReply.Ranking\022/\n\010rankings\030\003 \003(\013"
-  "2\035.yyb.RankingListReply.Ranking\0328\n\007Ranki"
-  "ng\022\020\n\010nickName\030\001 \001(\t\022\014\n\004rank\030\002 \001(\005\022\r\n\005sc"
-  "ore\030\003 \001(\005*\324\003\n\nERROR_CODE\022\021\n\rERROR_CODE_O"
-  "K\020\000\022\035\n\031ERROR_CODE_EMPTY_NICKNAME\020\001\022\033\n\027ER"
-  "ROR_CODE_DUP_NICKNAME\020\002\022/\n+ERROR_CODE_NI"
-  "CKNAME_HAVE_SPECIAL_CHARACTERS\020\003\022$\n ERRO"
-  "R_CODE_UNABLE_TO_CREATE_USER\020\004\022!\n\035ERROR_"
-  "CODE_FAILED_TO_GET_USER\020\005\022!\n\035ERROR_CODE_"
-  "GOOGLE_AUTH_FAILED\020\006\022\035\n\031ERROR_CODE_EMPTY"
-  "_ID_TOKEN\020\007\022)\n%ERROR_CODE_FAILED_TO_UPDA"
-  "TE_LOGIN_KEY\020\010\022*\n&ERROR_CODE_FAILED_TO_C"
-  "HANGE_LOGIN_TYPE\020\t\022&\n\"ERROR_CODE_LOGIN_T"
-  "YPE_IS_DIFFERENT\020\n\022%\n!ERROR_CODE_ACCESS_"
-  "KEY_HAS_EXPIRED\020\013\022\025\n\021ERROR_CODE_SYSTME\020\014"
-  "2\320\002\n\nRpcService\022Q\n\021RpcServiceExample\022\035.y"
-  "yb.RpcServiceExampleRequest\032\033.yyb.RpcSer"
-  "viceExampleReply\"\000\022/\n\006Listen\022\n.yyb.Empty"
-  "\032\025.yyb.PushNotification\"\0000\001\022H\n\005Login\022\021.y"
-  "yb.LoginRequest\032\017.yyb.LoginReply\"\033\202\323\344\223\002\025"
-  "\"\020/v1/example/echo:\001*\0223\n\007Ranking\022\023.yyb.R"
-  "ankingRequest\032\021.yyb.RankingReply\"\000\022\?\n\013Ra"
-  "nkingList\022\027.yyb.RankingListRequest\032\025.yyb"
-  ".RankingListReply\"\000b\006proto3"
+  "\taccessKey\030\005 \001(\t\"w\n\004Item\022\020\n\010itemName\030\001 \001"
+  "(\t\022 \n\010itemType\030\002 \001(\0162\016.yyb.ITEM_TYPE\022(\n\014"
+  "itemCategory\030\003 \001(\0162\022.yyb.ITEM_CATEGORY\022\021"
+  "\n\titemCount\030\004 \001(\005\":\n\tMercenary\022\025\n\rmercen"
+  "aryName\030\001 \001(\t\022\026\n\016mercenaryLevel\030\002 \001(\005\"-\n"
+  "\005Stage\022\020\n\010stageNum\030\001 \001(\005\022\022\n\nstageScore\030\002"
+  " \001(\003\"\206\001\n\rUpgradePlayer\022\022\n\npowerLevel\030\001 \001"
+  "(\005\022\030\n\020attackSpeedLevel\030\002 \001(\005\022\025\n\rcritical"
+  "Level\030\003 \001(\005\022\031\n\021buffDurationLevel\030\004 \001(\005\022\025"
+  "\n\rfreeCoinLevel\030\005 \001(\005\"\226\001\n\017GameDataReques"
+  "t\022\030\n\005items\030\002 \003(\0132\t.yyb.Item\022#\n\013mercenari"
+  "es\030\003 \003(\0132\016.yyb.Mercenary\022\031\n\005stage\030\004 \001(\0132"
+  "\n.yyb.Stage\022)\n\rupgradePlayer\030\005 \001(\0132\022.yyb"
+  ".UpgradePlayer\"\264\001\n\rGameDataReply\022\036\n\005erro"
+  "r\030\001 \001(\0162\017.yyb.ERROR_CODE\022\030\n\005items\030\002 \003(\0132"
+  "\t.yyb.Item\022#\n\013mercenaries\030\003 \003(\0132\016.yyb.Me"
+  "rcenary\022\031\n\005stage\030\004 \001(\0132\n.yyb.Stage\022)\n\rup"
+  "gradePlayer\030\005 \001(\0132\022.yyb.UpgradePlayer\"\037\n"
+  "\016RankingRequest\022\r\n\005score\030\001 \001(\003\".\n\014Rankin"
+  "gReply\022\036\n\005error\030\001 \001(\0162\017.yyb.ERROR_CODE\"\024"
+  "\n\022RankingListRequest\"\317\001\n\020RankingListRepl"
+  "y\022\036\n\005error\030\001 \001(\0162\017.yyb.ERROR_CODE\0220\n\tmyR"
+  "anking\030\002 \001(\0132\035.yyb.RankingListReply.Rank"
+  "ing\022/\n\010rankings\030\003 \003(\0132\035.yyb.RankingListR"
+  "eply.Ranking\0328\n\007Ranking\022\020\n\010nickName\030\001 \001("
+  "\t\022\014\n\004rank\030\002 \001(\005\022\r\n\005score\030\003 \001(\005*\224\006\n\nERROR"
+  "_CODE\022\021\n\rERROR_CODE_OK\020\000\022\035\n\031ERROR_CODE_E"
+  "MPTY_NICKNAME\020\001\022\033\n\027ERROR_CODE_DUP_NICKNA"
+  "ME\020\002\022/\n+ERROR_CODE_NICKNAME_HAVE_SPECIAL"
+  "_CHARACTERS\020\003\022$\n ERROR_CODE_UNABLE_TO_CR"
+  "EATE_USER\020\004\022!\n\035ERROR_CODE_FAILED_TO_GET_"
+  "USER\020\005\022!\n\035ERROR_CODE_GOOGLE_AUTH_FAILED\020"
+  "\006\022\035\n\031ERROR_CODE_EMPTY_ID_TOKEN\020\007\022)\n%ERRO"
+  "R_CODE_FAILED_TO_UPDATE_LOGIN_KEY\020\010\022*\n&E"
+  "RROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE\020\t\022"
+  "&\n\"ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT\020\n\022"
+  "%\n!ERROR_CODE_ACCESS_KEY_HAS_EXPIRED\020\013\022\025"
+  "\n\021ERROR_CODE_SYSTME\020\014\022\"\n\036ERROR_CODE_FAIL"
+  "ED_TO_SAVE_ITEM\020\r\022\'\n#ERROR_CODE_FAILED_T"
+  "O_SAVE_MERCENARY\020\016\022#\n\037ERROR_CODE_FAILED_"
+  "TO_SAVE_STAGE\020\017\022,\n(ERROR_CODE_FAILED_TO_"
+  "SAVE_UPGRADE_PLAYER\020\020\022\"\n\036ERROR_CODE_FAIL"
+  "ED_TO_LOAD_ITEM\020\021\022\'\n#ERROR_CODE_FAILED_T"
+  "O_LOAD_MERCENARY\020\022\022#\n\037ERROR_CODE_FAILED_"
+  "TO_LOAD_STAGE\020\023\022,\n(ERROR_CODE_FAILED_TO_"
+  "LOAD_UPGRADE_PLAYER\020\024*\334\001\n\tITEM_TYPE\022\022\n\016I"
+  "TEM_TYPE_NONE\020\000\022\023\n\016ITEM_TYPE_GOLD\020\350\007\022\023\n\016"
+  "ITEM_TYPE_RUBY\020\351\007\022\033\n\026ITEM_TYPE_PIECE_KNI"
+  "GHT\020\352\007\022\033\n\026ITEM_TYPE_PIECE_PIRATE\020\353\007\022\031\n\024I"
+  "TEM_TYPE_PIECE_STAR\020\354\007\022\036\n\031ITEM_TYPE_PIEC"
+  "E_SCIENTIST\020\355\007\022\034\n\027ITEM_TYPE_PIECE_STUDEN"
+  "T\020\356\007*E\n\rITEM_CATEGORY\022\030\n\024ITEM_CATEGORY_N"
+  "ORMAL\020\000\022\032\n\026ITEM_CATEGORY_CURRENCY\020\0012\310\003\n\n"
+  "RpcService\022Q\n\021RpcServiceExample\022\035.yyb.Rp"
+  "cServiceExampleRequest\032\033.yyb.RpcServiceE"
+  "xampleReply\"\000\022/\n\006Listen\022\n.yyb.Empty\032\025.yy"
+  "b.PushNotification\"\0000\001\022H\n\005Login\022\021.yyb.Lo"
+  "ginRequest\032\017.yyb.LoginReply\"\033\202\323\344\223\002\025\"\020/v1"
+  "/example/echo:\001*\022:\n\014LoadGameData\022\024.yyb.G"
+  "ameDataRequest\032\022.yyb.GameDataReply\"\000\022:\n\014"
+  "SaveGameData\022\024.yyb.GameDataRequest\032\022.yyb"
+  ".GameDataReply\"\000\0223\n\007Ranking\022\023.yyb.Rankin"
+  "gRequest\032\021.yyb.RankingReply\"\000\022\?\n\013Ranking"
+  "List\022\027.yyb.RankingListRequest\032\025.yyb.Rank"
+  "ingListReply\"\000b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_rpc_5fservice_2eproto_deps[1] = {
   &::descriptor_table_google_2fapi_2fannotations_2eproto,
 };
-static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_rpc_5fservice_2eproto_sccs[11] = {
+static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_rpc_5fservice_2eproto_sccs[17] = {
   &scc_info_Empty_rpc_5fservice_2eproto.base,
+  &scc_info_GameDataReply_rpc_5fservice_2eproto.base,
+  &scc_info_GameDataRequest_rpc_5fservice_2eproto.base,
+  &scc_info_Item_rpc_5fservice_2eproto.base,
   &scc_info_LoginReply_rpc_5fservice_2eproto.base,
   &scc_info_LoginRequest_rpc_5fservice_2eproto.base,
+  &scc_info_Mercenary_rpc_5fservice_2eproto.base,
   &scc_info_PushNotification_rpc_5fservice_2eproto.base,
   &scc_info_RankingListReply_rpc_5fservice_2eproto.base,
   &scc_info_RankingListReply_Ranking_rpc_5fservice_2eproto.base,
@@ -389,14 +613,16 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_rpc
   &scc_info_RankingRequest_rpc_5fservice_2eproto.base,
   &scc_info_RpcServiceExampleReply_rpc_5fservice_2eproto.base,
   &scc_info_RpcServiceExampleRequest_rpc_5fservice_2eproto.base,
+  &scc_info_Stage_rpc_5fservice_2eproto.base,
+  &scc_info_UpgradePlayer_rpc_5fservice_2eproto.base,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_rpc_5fservice_2eproto_once;
 static bool descriptor_table_rpc_5fservice_2eproto_initialized = false;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_rpc_5fservice_2eproto = {
-  &descriptor_table_rpc_5fservice_2eproto_initialized, descriptor_table_protodef_rpc_5fservice_2eproto, "rpc_service.proto", 1707,
-  &descriptor_table_rpc_5fservice_2eproto_once, descriptor_table_rpc_5fservice_2eproto_sccs, descriptor_table_rpc_5fservice_2eproto_deps, 11, 1,
+  &descriptor_table_rpc_5fservice_2eproto_initialized, descriptor_table_protodef_rpc_5fservice_2eproto, "rpc_service.proto", 3142,
+  &descriptor_table_rpc_5fservice_2eproto_once, descriptor_table_rpc_5fservice_2eproto_sccs, descriptor_table_rpc_5fservice_2eproto_deps, 17, 1,
   schemas, file_default_instances, TableStruct_rpc_5fservice_2eproto::offsets,
-  file_level_metadata_rpc_5fservice_2eproto, 11, file_level_enum_descriptors_rpc_5fservice_2eproto, file_level_service_descriptors_rpc_5fservice_2eproto,
+  file_level_metadata_rpc_5fservice_2eproto, 17, file_level_enum_descriptors_rpc_5fservice_2eproto, file_level_service_descriptors_rpc_5fservice_2eproto,
 };
 
 // Force running AddDescriptors() at dynamic initialization time.
@@ -444,6 +670,48 @@ bool ERROR_CODE_IsValid(int value) {
     case 10:
     case 11:
     case 12:
+    case 13:
+    case 14:
+    case 15:
+    case 16:
+    case 17:
+    case 18:
+    case 19:
+    case 20:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ITEM_TYPE_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_rpc_5fservice_2eproto);
+  return file_level_enum_descriptors_rpc_5fservice_2eproto[2];
+}
+bool ITEM_TYPE_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1000:
+    case 1001:
+    case 1002:
+    case 1003:
+    case 1004:
+    case 1005:
+    case 1006:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ITEM_CATEGORY_descriptor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_rpc_5fservice_2eproto);
+  return file_level_enum_descriptors_rpc_5fservice_2eproto[3];
+}
+bool ITEM_CATEGORY_IsValid(int value) {
+  switch (value) {
+    case 0:
+    case 1:
       return true;
     default:
       return false;
@@ -1947,6 +2215,1667 @@ void LoginReply::InternalSwap(LoginReply* other) {
 
 // ===================================================================
 
+void Item::InitAsDefaultInstance() {
+}
+class Item::_Internal {
+ public:
+};
+
+Item::Item()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:yyb.Item)
+}
+Item::Item(const Item& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  itemname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_itemname().empty()) {
+    itemname_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.itemname_);
+  }
+  ::memcpy(&itemtype_, &from.itemtype_,
+    static_cast<size_t>(reinterpret_cast<char*>(&itemcount_) -
+    reinterpret_cast<char*>(&itemtype_)) + sizeof(itemcount_));
+  // @@protoc_insertion_point(copy_constructor:yyb.Item)
+}
+
+void Item::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Item_rpc_5fservice_2eproto.base);
+  itemname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ::memset(&itemtype_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&itemcount_) -
+      reinterpret_cast<char*>(&itemtype_)) + sizeof(itemcount_));
+}
+
+Item::~Item() {
+  // @@protoc_insertion_point(destructor:yyb.Item)
+  SharedDtor();
+}
+
+void Item::SharedDtor() {
+  itemname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void Item::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Item& Item::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Item_rpc_5fservice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Item::Clear() {
+// @@protoc_insertion_point(message_clear_start:yyb.Item)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  itemname_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  ::memset(&itemtype_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&itemcount_) -
+      reinterpret_cast<char*>(&itemtype_)) + sizeof(itemcount_));
+  _internal_metadata_.Clear();
+}
+
+const char* Item::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string itemName = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_itemname();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "yyb.Item.itemName"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .yyb.ITEM_TYPE itemType = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+          _internal_set_itemtype(static_cast<::yyb::ITEM_TYPE>(val));
+        } else goto handle_unusual;
+        continue;
+      // .yyb.ITEM_CATEGORY itemCategory = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+          _internal_set_itemcategory(static_cast<::yyb::ITEM_CATEGORY>(val));
+        } else goto handle_unusual;
+        continue;
+      // int32 itemCount = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
+          itemcount_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* Item::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:yyb.Item)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string itemName = 1;
+  if (this->itemname().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_itemname().data(), static_cast<int>(this->_internal_itemname().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "yyb.Item.itemName");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_itemname(), target);
+  }
+
+  // .yyb.ITEM_TYPE itemType = 2;
+  if (this->itemtype() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      2, this->_internal_itemtype(), target);
+  }
+
+  // .yyb.ITEM_CATEGORY itemCategory = 3;
+  if (this->itemcategory() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      3, this->_internal_itemcategory(), target);
+  }
+
+  // int32 itemCount = 4;
+  if (this->itemcount() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_itemcount(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:yyb.Item)
+  return target;
+}
+
+size_t Item::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:yyb.Item)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string itemName = 1;
+  if (this->itemname().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_itemname());
+  }
+
+  // .yyb.ITEM_TYPE itemType = 2;
+  if (this->itemtype() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_itemtype());
+  }
+
+  // .yyb.ITEM_CATEGORY itemCategory = 3;
+  if (this->itemcategory() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_itemcategory());
+  }
+
+  // int32 itemCount = 4;
+  if (this->itemcount() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_itemcount());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Item::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:yyb.Item)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Item* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Item>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:yyb.Item)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:yyb.Item)
+    MergeFrom(*source);
+  }
+}
+
+void Item::MergeFrom(const Item& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:yyb.Item)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.itemname().size() > 0) {
+
+    itemname_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.itemname_);
+  }
+  if (from.itemtype() != 0) {
+    _internal_set_itemtype(from._internal_itemtype());
+  }
+  if (from.itemcategory() != 0) {
+    _internal_set_itemcategory(from._internal_itemcategory());
+  }
+  if (from.itemcount() != 0) {
+    _internal_set_itemcount(from._internal_itemcount());
+  }
+}
+
+void Item::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:yyb.Item)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Item::CopyFrom(const Item& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:yyb.Item)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Item::IsInitialized() const {
+  return true;
+}
+
+void Item::InternalSwap(Item* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  itemname_.Swap(&other->itemname_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(itemtype_, other->itemtype_);
+  swap(itemcategory_, other->itemcategory_);
+  swap(itemcount_, other->itemcount_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Item::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void Mercenary::InitAsDefaultInstance() {
+}
+class Mercenary::_Internal {
+ public:
+};
+
+Mercenary::Mercenary()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:yyb.Mercenary)
+}
+Mercenary::Mercenary(const Mercenary& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  mercenaryname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_mercenaryname().empty()) {
+    mercenaryname_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.mercenaryname_);
+  }
+  mercenarylevel_ = from.mercenarylevel_;
+  // @@protoc_insertion_point(copy_constructor:yyb.Mercenary)
+}
+
+void Mercenary::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_Mercenary_rpc_5fservice_2eproto.base);
+  mercenaryname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  mercenarylevel_ = 0;
+}
+
+Mercenary::~Mercenary() {
+  // @@protoc_insertion_point(destructor:yyb.Mercenary)
+  SharedDtor();
+}
+
+void Mercenary::SharedDtor() {
+  mercenaryname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+
+void Mercenary::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Mercenary& Mercenary::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Mercenary_rpc_5fservice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Mercenary::Clear() {
+// @@protoc_insertion_point(message_clear_start:yyb.Mercenary)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  mercenaryname_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  mercenarylevel_ = 0;
+  _internal_metadata_.Clear();
+}
+
+const char* Mercenary::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // string mercenaryName = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          auto str = _internal_mutable_mercenaryname();
+          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "yyb.Mercenary.mercenaryName"));
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 mercenaryLevel = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          mercenarylevel_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* Mercenary::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:yyb.Mercenary)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // string mercenaryName = 1;
+  if (this->mercenaryname().size() > 0) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_mercenaryname().data(), static_cast<int>(this->_internal_mercenaryname().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "yyb.Mercenary.mercenaryName");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_mercenaryname(), target);
+  }
+
+  // int32 mercenaryLevel = 2;
+  if (this->mercenarylevel() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_mercenarylevel(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:yyb.Mercenary)
+  return target;
+}
+
+size_t Mercenary::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:yyb.Mercenary)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // string mercenaryName = 1;
+  if (this->mercenaryname().size() > 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_mercenaryname());
+  }
+
+  // int32 mercenaryLevel = 2;
+  if (this->mercenarylevel() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_mercenarylevel());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Mercenary::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:yyb.Mercenary)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Mercenary* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Mercenary>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:yyb.Mercenary)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:yyb.Mercenary)
+    MergeFrom(*source);
+  }
+}
+
+void Mercenary::MergeFrom(const Mercenary& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:yyb.Mercenary)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.mercenaryname().size() > 0) {
+
+    mercenaryname_.AssignWithDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from.mercenaryname_);
+  }
+  if (from.mercenarylevel() != 0) {
+    _internal_set_mercenarylevel(from._internal_mercenarylevel());
+  }
+}
+
+void Mercenary::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:yyb.Mercenary)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Mercenary::CopyFrom(const Mercenary& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:yyb.Mercenary)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Mercenary::IsInitialized() const {
+  return true;
+}
+
+void Mercenary::InternalSwap(Mercenary* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  mercenaryname_.Swap(&other->mercenaryname_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+    GetArenaNoVirtual());
+  swap(mercenarylevel_, other->mercenarylevel_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Mercenary::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void Stage::InitAsDefaultInstance() {
+}
+class Stage::_Internal {
+ public:
+};
+
+Stage::Stage()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:yyb.Stage)
+}
+Stage::Stage(const Stage& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&stagescore_, &from.stagescore_,
+    static_cast<size_t>(reinterpret_cast<char*>(&stagenum_) -
+    reinterpret_cast<char*>(&stagescore_)) + sizeof(stagenum_));
+  // @@protoc_insertion_point(copy_constructor:yyb.Stage)
+}
+
+void Stage::SharedCtor() {
+  ::memset(&stagescore_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&stagenum_) -
+      reinterpret_cast<char*>(&stagescore_)) + sizeof(stagenum_));
+}
+
+Stage::~Stage() {
+  // @@protoc_insertion_point(destructor:yyb.Stage)
+  SharedDtor();
+}
+
+void Stage::SharedDtor() {
+}
+
+void Stage::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const Stage& Stage::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_Stage_rpc_5fservice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void Stage::Clear() {
+// @@protoc_insertion_point(message_clear_start:yyb.Stage)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&stagescore_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&stagenum_) -
+      reinterpret_cast<char*>(&stagescore_)) + sizeof(stagenum_));
+  _internal_metadata_.Clear();
+}
+
+const char* Stage::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // int32 stageNum = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          stagenum_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int64 stageScore = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          stagescore_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* Stage::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:yyb.Stage)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 stageNum = 1;
+  if (this->stagenum() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_stagenum(), target);
+  }
+
+  // int64 stageScore = 2;
+  if (this->stagescore() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_stagescore(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:yyb.Stage)
+  return target;
+}
+
+size_t Stage::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:yyb.Stage)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int64 stageScore = 2;
+  if (this->stagescore() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
+        this->_internal_stagescore());
+  }
+
+  // int32 stageNum = 1;
+  if (this->stagenum() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_stagenum());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Stage::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:yyb.Stage)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Stage* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Stage>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:yyb.Stage)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:yyb.Stage)
+    MergeFrom(*source);
+  }
+}
+
+void Stage::MergeFrom(const Stage& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:yyb.Stage)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.stagescore() != 0) {
+    _internal_set_stagescore(from._internal_stagescore());
+  }
+  if (from.stagenum() != 0) {
+    _internal_set_stagenum(from._internal_stagenum());
+  }
+}
+
+void Stage::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:yyb.Stage)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Stage::CopyFrom(const Stage& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:yyb.Stage)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Stage::IsInitialized() const {
+  return true;
+}
+
+void Stage::InternalSwap(Stage* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(stagescore_, other->stagescore_);
+  swap(stagenum_, other->stagenum_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Stage::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void UpgradePlayer::InitAsDefaultInstance() {
+}
+class UpgradePlayer::_Internal {
+ public:
+};
+
+UpgradePlayer::UpgradePlayer()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:yyb.UpgradePlayer)
+}
+UpgradePlayer::UpgradePlayer(const UpgradePlayer& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::memcpy(&powerlevel_, &from.powerlevel_,
+    static_cast<size_t>(reinterpret_cast<char*>(&freecoinlevel_) -
+    reinterpret_cast<char*>(&powerlevel_)) + sizeof(freecoinlevel_));
+  // @@protoc_insertion_point(copy_constructor:yyb.UpgradePlayer)
+}
+
+void UpgradePlayer::SharedCtor() {
+  ::memset(&powerlevel_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&freecoinlevel_) -
+      reinterpret_cast<char*>(&powerlevel_)) + sizeof(freecoinlevel_));
+}
+
+UpgradePlayer::~UpgradePlayer() {
+  // @@protoc_insertion_point(destructor:yyb.UpgradePlayer)
+  SharedDtor();
+}
+
+void UpgradePlayer::SharedDtor() {
+}
+
+void UpgradePlayer::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const UpgradePlayer& UpgradePlayer::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_UpgradePlayer_rpc_5fservice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void UpgradePlayer::Clear() {
+// @@protoc_insertion_point(message_clear_start:yyb.UpgradePlayer)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&powerlevel_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&freecoinlevel_) -
+      reinterpret_cast<char*>(&powerlevel_)) + sizeof(freecoinlevel_));
+  _internal_metadata_.Clear();
+}
+
+const char* UpgradePlayer::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // int32 powerLevel = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          powerlevel_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 attackSpeedLevel = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
+          attackspeedlevel_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 criticalLevel = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+          criticallevel_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 buffDurationLevel = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 32)) {
+          buffdurationlevel_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 freeCoinLevel = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 40)) {
+          freecoinlevel_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* UpgradePlayer::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:yyb.UpgradePlayer)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 powerLevel = 1;
+  if (this->powerlevel() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_powerlevel(), target);
+  }
+
+  // int32 attackSpeedLevel = 2;
+  if (this->attackspeedlevel() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_attackspeedlevel(), target);
+  }
+
+  // int32 criticalLevel = 3;
+  if (this->criticallevel() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(3, this->_internal_criticallevel(), target);
+  }
+
+  // int32 buffDurationLevel = 4;
+  if (this->buffdurationlevel() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(4, this->_internal_buffdurationlevel(), target);
+  }
+
+  // int32 freeCoinLevel = 5;
+  if (this->freecoinlevel() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(5, this->_internal_freecoinlevel(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:yyb.UpgradePlayer)
+  return target;
+}
+
+size_t UpgradePlayer::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:yyb.UpgradePlayer)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 powerLevel = 1;
+  if (this->powerlevel() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_powerlevel());
+  }
+
+  // int32 attackSpeedLevel = 2;
+  if (this->attackspeedlevel() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_attackspeedlevel());
+  }
+
+  // int32 criticalLevel = 3;
+  if (this->criticallevel() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_criticallevel());
+  }
+
+  // int32 buffDurationLevel = 4;
+  if (this->buffdurationlevel() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_buffdurationlevel());
+  }
+
+  // int32 freeCoinLevel = 5;
+  if (this->freecoinlevel() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_freecoinlevel());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void UpgradePlayer::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:yyb.UpgradePlayer)
+  GOOGLE_DCHECK_NE(&from, this);
+  const UpgradePlayer* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<UpgradePlayer>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:yyb.UpgradePlayer)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:yyb.UpgradePlayer)
+    MergeFrom(*source);
+  }
+}
+
+void UpgradePlayer::MergeFrom(const UpgradePlayer& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:yyb.UpgradePlayer)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.powerlevel() != 0) {
+    _internal_set_powerlevel(from._internal_powerlevel());
+  }
+  if (from.attackspeedlevel() != 0) {
+    _internal_set_attackspeedlevel(from._internal_attackspeedlevel());
+  }
+  if (from.criticallevel() != 0) {
+    _internal_set_criticallevel(from._internal_criticallevel());
+  }
+  if (from.buffdurationlevel() != 0) {
+    _internal_set_buffdurationlevel(from._internal_buffdurationlevel());
+  }
+  if (from.freecoinlevel() != 0) {
+    _internal_set_freecoinlevel(from._internal_freecoinlevel());
+  }
+}
+
+void UpgradePlayer::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:yyb.UpgradePlayer)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void UpgradePlayer::CopyFrom(const UpgradePlayer& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:yyb.UpgradePlayer)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool UpgradePlayer::IsInitialized() const {
+  return true;
+}
+
+void UpgradePlayer::InternalSwap(UpgradePlayer* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  swap(powerlevel_, other->powerlevel_);
+  swap(attackspeedlevel_, other->attackspeedlevel_);
+  swap(criticallevel_, other->criticallevel_);
+  swap(buffdurationlevel_, other->buffdurationlevel_);
+  swap(freecoinlevel_, other->freecoinlevel_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata UpgradePlayer::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void GameDataRequest::InitAsDefaultInstance() {
+  ::yyb::_GameDataRequest_default_instance_._instance.get_mutable()->stage_ = const_cast< ::yyb::Stage*>(
+      ::yyb::Stage::internal_default_instance());
+  ::yyb::_GameDataRequest_default_instance_._instance.get_mutable()->upgradeplayer_ = const_cast< ::yyb::UpgradePlayer*>(
+      ::yyb::UpgradePlayer::internal_default_instance());
+}
+class GameDataRequest::_Internal {
+ public:
+  static const ::yyb::Stage& stage(const GameDataRequest* msg);
+  static const ::yyb::UpgradePlayer& upgradeplayer(const GameDataRequest* msg);
+};
+
+const ::yyb::Stage&
+GameDataRequest::_Internal::stage(const GameDataRequest* msg) {
+  return *msg->stage_;
+}
+const ::yyb::UpgradePlayer&
+GameDataRequest::_Internal::upgradeplayer(const GameDataRequest* msg) {
+  return *msg->upgradeplayer_;
+}
+GameDataRequest::GameDataRequest()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:yyb.GameDataRequest)
+}
+GameDataRequest::GameDataRequest(const GameDataRequest& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
+      items_(from.items_),
+      mercenaries_(from.mercenaries_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from._internal_has_stage()) {
+    stage_ = new ::yyb::Stage(*from.stage_);
+  } else {
+    stage_ = nullptr;
+  }
+  if (from._internal_has_upgradeplayer()) {
+    upgradeplayer_ = new ::yyb::UpgradePlayer(*from.upgradeplayer_);
+  } else {
+    upgradeplayer_ = nullptr;
+  }
+  // @@protoc_insertion_point(copy_constructor:yyb.GameDataRequest)
+}
+
+void GameDataRequest::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_GameDataRequest_rpc_5fservice_2eproto.base);
+  ::memset(&stage_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&upgradeplayer_) -
+      reinterpret_cast<char*>(&stage_)) + sizeof(upgradeplayer_));
+}
+
+GameDataRequest::~GameDataRequest() {
+  // @@protoc_insertion_point(destructor:yyb.GameDataRequest)
+  SharedDtor();
+}
+
+void GameDataRequest::SharedDtor() {
+  if (this != internal_default_instance()) delete stage_;
+  if (this != internal_default_instance()) delete upgradeplayer_;
+}
+
+void GameDataRequest::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const GameDataRequest& GameDataRequest::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_GameDataRequest_rpc_5fservice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void GameDataRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:yyb.GameDataRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  items_.Clear();
+  mercenaries_.Clear();
+  if (GetArenaNoVirtual() == nullptr && stage_ != nullptr) {
+    delete stage_;
+  }
+  stage_ = nullptr;
+  if (GetArenaNoVirtual() == nullptr && upgradeplayer_ != nullptr) {
+    delete upgradeplayer_;
+  }
+  upgradeplayer_ = nullptr;
+  _internal_metadata_.Clear();
+}
+
+const char* GameDataRequest::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // repeated .yyb.Item items = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_items(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // repeated .yyb.Mercenary mercenaries = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_mercenaries(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // .yyb.Stage stage = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+          ptr = ctx->ParseMessage(_internal_mutable_stage(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .yyb.UpgradePlayer upgradePlayer = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
+          ptr = ctx->ParseMessage(_internal_mutable_upgradeplayer(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* GameDataRequest::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:yyb.GameDataRequest)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .yyb.Item items = 2;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_items_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, this->_internal_items(i), target, stream);
+  }
+
+  // repeated .yyb.Mercenary mercenaries = 3;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_mercenaries_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, this->_internal_mercenaries(i), target, stream);
+  }
+
+  // .yyb.Stage stage = 4;
+  if (this->has_stage()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        4, _Internal::stage(this), target, stream);
+  }
+
+  // .yyb.UpgradePlayer upgradePlayer = 5;
+  if (this->has_upgradeplayer()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        5, _Internal::upgradeplayer(this), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:yyb.GameDataRequest)
+  return target;
+}
+
+size_t GameDataRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:yyb.GameDataRequest)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .yyb.Item items = 2;
+  total_size += 1UL * this->_internal_items_size();
+  for (const auto& msg : this->items_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // repeated .yyb.Mercenary mercenaries = 3;
+  total_size += 1UL * this->_internal_mercenaries_size();
+  for (const auto& msg : this->mercenaries_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // .yyb.Stage stage = 4;
+  if (this->has_stage()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *stage_);
+  }
+
+  // .yyb.UpgradePlayer upgradePlayer = 5;
+  if (this->has_upgradeplayer()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *upgradeplayer_);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void GameDataRequest::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:yyb.GameDataRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  const GameDataRequest* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<GameDataRequest>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:yyb.GameDataRequest)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:yyb.GameDataRequest)
+    MergeFrom(*source);
+  }
+}
+
+void GameDataRequest::MergeFrom(const GameDataRequest& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:yyb.GameDataRequest)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  items_.MergeFrom(from.items_);
+  mercenaries_.MergeFrom(from.mercenaries_);
+  if (from.has_stage()) {
+    _internal_mutable_stage()->::yyb::Stage::MergeFrom(from._internal_stage());
+  }
+  if (from.has_upgradeplayer()) {
+    _internal_mutable_upgradeplayer()->::yyb::UpgradePlayer::MergeFrom(from._internal_upgradeplayer());
+  }
+}
+
+void GameDataRequest::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:yyb.GameDataRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GameDataRequest::CopyFrom(const GameDataRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:yyb.GameDataRequest)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GameDataRequest::IsInitialized() const {
+  return true;
+}
+
+void GameDataRequest::InternalSwap(GameDataRequest* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  items_.InternalSwap(&other->items_);
+  mercenaries_.InternalSwap(&other->mercenaries_);
+  swap(stage_, other->stage_);
+  swap(upgradeplayer_, other->upgradeplayer_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata GameDataRequest::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
+void GameDataReply::InitAsDefaultInstance() {
+  ::yyb::_GameDataReply_default_instance_._instance.get_mutable()->stage_ = const_cast< ::yyb::Stage*>(
+      ::yyb::Stage::internal_default_instance());
+  ::yyb::_GameDataReply_default_instance_._instance.get_mutable()->upgradeplayer_ = const_cast< ::yyb::UpgradePlayer*>(
+      ::yyb::UpgradePlayer::internal_default_instance());
+}
+class GameDataReply::_Internal {
+ public:
+  static const ::yyb::Stage& stage(const GameDataReply* msg);
+  static const ::yyb::UpgradePlayer& upgradeplayer(const GameDataReply* msg);
+};
+
+const ::yyb::Stage&
+GameDataReply::_Internal::stage(const GameDataReply* msg) {
+  return *msg->stage_;
+}
+const ::yyb::UpgradePlayer&
+GameDataReply::_Internal::upgradeplayer(const GameDataReply* msg) {
+  return *msg->upgradeplayer_;
+}
+GameDataReply::GameDataReply()
+  : ::PROTOBUF_NAMESPACE_ID::Message(), _internal_metadata_(nullptr) {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:yyb.GameDataReply)
+}
+GameDataReply::GameDataReply(const GameDataReply& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      _internal_metadata_(nullptr),
+      items_(from.items_),
+      mercenaries_(from.mercenaries_) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from._internal_has_stage()) {
+    stage_ = new ::yyb::Stage(*from.stage_);
+  } else {
+    stage_ = nullptr;
+  }
+  if (from._internal_has_upgradeplayer()) {
+    upgradeplayer_ = new ::yyb::UpgradePlayer(*from.upgradeplayer_);
+  } else {
+    upgradeplayer_ = nullptr;
+  }
+  error_ = from.error_;
+  // @@protoc_insertion_point(copy_constructor:yyb.GameDataReply)
+}
+
+void GameDataReply::SharedCtor() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_GameDataReply_rpc_5fservice_2eproto.base);
+  ::memset(&stage_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&error_) -
+      reinterpret_cast<char*>(&stage_)) + sizeof(error_));
+}
+
+GameDataReply::~GameDataReply() {
+  // @@protoc_insertion_point(destructor:yyb.GameDataReply)
+  SharedDtor();
+}
+
+void GameDataReply::SharedDtor() {
+  if (this != internal_default_instance()) delete stage_;
+  if (this != internal_default_instance()) delete upgradeplayer_;
+}
+
+void GameDataReply::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+const GameDataReply& GameDataReply::default_instance() {
+  ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&::scc_info_GameDataReply_rpc_5fservice_2eproto.base);
+  return *internal_default_instance();
+}
+
+
+void GameDataReply::Clear() {
+// @@protoc_insertion_point(message_clear_start:yyb.GameDataReply)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  items_.Clear();
+  mercenaries_.Clear();
+  if (GetArenaNoVirtual() == nullptr && stage_ != nullptr) {
+    delete stage_;
+  }
+  stage_ = nullptr;
+  if (GetArenaNoVirtual() == nullptr && upgradeplayer_ != nullptr) {
+    delete upgradeplayer_;
+  }
+  upgradeplayer_ = nullptr;
+  error_ = 0;
+  _internal_metadata_.Clear();
+}
+
+const char* GameDataReply::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    CHK_(ptr);
+    switch (tag >> 3) {
+      // .yyb.ERROR_CODE error = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          ::PROTOBUF_NAMESPACE_ID::uint64 val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint(&ptr);
+          CHK_(ptr);
+          _internal_set_error(static_cast<::yyb::ERROR_CODE>(val));
+        } else goto handle_unusual;
+        continue;
+      // repeated .yyb.Item items = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_items(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // repeated .yyb.Mercenary mercenaries = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 26)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_mercenaries(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<26>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // .yyb.Stage stage = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 34)) {
+          ptr = ctx->ParseMessage(_internal_mutable_stage(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // .yyb.UpgradePlayer upgradePlayer = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 42)) {
+          ptr = ctx->ParseMessage(_internal_mutable_upgradeplayer(), ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag & 7) == 4 || tag == 0) {
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag, &_internal_metadata_, ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* GameDataReply::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:yyb.GameDataReply)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // .yyb.ERROR_CODE error = 1;
+  if (this->error() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
+      1, this->_internal_error(), target);
+  }
+
+  // repeated .yyb.Item items = 2;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_items_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, this->_internal_items(i), target, stream);
+  }
+
+  // repeated .yyb.Mercenary mercenaries = 3;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_mercenaries_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(3, this->_internal_mercenaries(i), target, stream);
+  }
+
+  // .yyb.Stage stage = 4;
+  if (this->has_stage()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        4, _Internal::stage(this), target, stream);
+  }
+
+  // .yyb.UpgradePlayer upgradePlayer = 5;
+  if (this->has_upgradeplayer()) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(
+        5, _Internal::upgradeplayer(this), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields(), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:yyb.GameDataReply)
+  return target;
+}
+
+size_t GameDataReply::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:yyb.GameDataReply)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .yyb.Item items = 2;
+  total_size += 1UL * this->_internal_items_size();
+  for (const auto& msg : this->items_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // repeated .yyb.Mercenary mercenaries = 3;
+  total_size += 1UL * this->_internal_mercenaries_size();
+  for (const auto& msg : this->mercenaries_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // .yyb.Stage stage = 4;
+  if (this->has_stage()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *stage_);
+  }
+
+  // .yyb.UpgradePlayer upgradePlayer = 5;
+  if (this->has_upgradeplayer()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
+        *upgradeplayer_);
+  }
+
+  // .yyb.ERROR_CODE error = 1;
+  if (this->error() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_error());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void GameDataReply::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:yyb.GameDataReply)
+  GOOGLE_DCHECK_NE(&from, this);
+  const GameDataReply* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<GameDataReply>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:yyb.GameDataReply)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:yyb.GameDataReply)
+    MergeFrom(*source);
+  }
+}
+
+void GameDataReply::MergeFrom(const GameDataReply& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:yyb.GameDataReply)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  items_.MergeFrom(from.items_);
+  mercenaries_.MergeFrom(from.mercenaries_);
+  if (from.has_stage()) {
+    _internal_mutable_stage()->::yyb::Stage::MergeFrom(from._internal_stage());
+  }
+  if (from.has_upgradeplayer()) {
+    _internal_mutable_upgradeplayer()->::yyb::UpgradePlayer::MergeFrom(from._internal_upgradeplayer());
+  }
+  if (from.error() != 0) {
+    _internal_set_error(from._internal_error());
+  }
+}
+
+void GameDataReply::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:yyb.GameDataReply)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void GameDataReply::CopyFrom(const GameDataReply& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:yyb.GameDataReply)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool GameDataReply::IsInitialized() const {
+  return true;
+}
+
+void GameDataReply::InternalSwap(GameDataReply* other) {
+  using std::swap;
+  _internal_metadata_.Swap(&other->_internal_metadata_);
+  items_.InternalSwap(&other->items_);
+  mercenaries_.InternalSwap(&other->mercenaries_);
+  swap(stage_, other->stage_);
+  swap(upgradeplayer_, other->upgradeplayer_);
+  swap(error_, other->error_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata GameDataReply::GetMetadata() const {
+  return GetMetadataStatic();
+}
+
+
+// ===================================================================
+
 void RankingRequest::InitAsDefaultInstance() {
 }
 class RankingRequest::_Internal {
@@ -3012,6 +4941,24 @@ template<> PROTOBUF_NOINLINE ::yyb::LoginRequest* Arena::CreateMaybeMessage< ::y
 }
 template<> PROTOBUF_NOINLINE ::yyb::LoginReply* Arena::CreateMaybeMessage< ::yyb::LoginReply >(Arena* arena) {
   return Arena::CreateInternal< ::yyb::LoginReply >(arena);
+}
+template<> PROTOBUF_NOINLINE ::yyb::Item* Arena::CreateMaybeMessage< ::yyb::Item >(Arena* arena) {
+  return Arena::CreateInternal< ::yyb::Item >(arena);
+}
+template<> PROTOBUF_NOINLINE ::yyb::Mercenary* Arena::CreateMaybeMessage< ::yyb::Mercenary >(Arena* arena) {
+  return Arena::CreateInternal< ::yyb::Mercenary >(arena);
+}
+template<> PROTOBUF_NOINLINE ::yyb::Stage* Arena::CreateMaybeMessage< ::yyb::Stage >(Arena* arena) {
+  return Arena::CreateInternal< ::yyb::Stage >(arena);
+}
+template<> PROTOBUF_NOINLINE ::yyb::UpgradePlayer* Arena::CreateMaybeMessage< ::yyb::UpgradePlayer >(Arena* arena) {
+  return Arena::CreateInternal< ::yyb::UpgradePlayer >(arena);
+}
+template<> PROTOBUF_NOINLINE ::yyb::GameDataRequest* Arena::CreateMaybeMessage< ::yyb::GameDataRequest >(Arena* arena) {
+  return Arena::CreateInternal< ::yyb::GameDataRequest >(arena);
+}
+template<> PROTOBUF_NOINLINE ::yyb::GameDataReply* Arena::CreateMaybeMessage< ::yyb::GameDataReply >(Arena* arena) {
+  return Arena::CreateInternal< ::yyb::GameDataReply >(arena);
 }
 template<> PROTOBUF_NOINLINE ::yyb::RankingRequest* Arena::CreateMaybeMessage< ::yyb::RankingRequest >(Arena* arena) {
   return Arena::CreateInternal< ::yyb::RankingRequest >(arena);
