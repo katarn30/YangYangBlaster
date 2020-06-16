@@ -22,6 +22,15 @@ public class GameManager : SingleTon<GameManager>
     public bool isGameOver = false;
     public bool isStageClear = false;
 
+    [Header("InGameMode")]
+    public float slowTime = 0.0f;
+    public float slowDurationTime = 0.0f;
+    public bool isSlowMode = false;
+
+    public float frezeTime = 0.0f;
+    public float frezeDurationTime = 0.0f;
+    public bool isFrezeMode = false;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -70,6 +79,30 @@ public class GameManager : SingleTon<GameManager>
                 MercenaryManager.Instance.MercenaryMovePoint();
 
                 UIManager.Instance.InGameUIUpdate();
+
+                if (isSlowMode == true)
+                {
+                    slowTime = slowTime + Time.deltaTime;
+
+                    if (slowTime >= slowDurationTime)
+                    {
+                        Debug.Log("Slow End");
+                        isSlowMode = false;
+                        slowTime = 0;
+                    }
+                }
+
+                if (isFrezeMode == true)
+                {
+                    frezeTime = frezeTime + Time.deltaTime;
+
+                    if (frezeTime >= frezeDurationTime)
+                    {
+                        Debug.Log("Freze End");
+                        isFrezeMode = false;
+                        frezeTime = 0;
+                    }
+                }
             }            
         }
         else if (state == GameState.Lobby)
@@ -136,8 +169,7 @@ public class GameManager : SingleTon<GameManager>
     public void SetInGame()
     {
         Debug.Log("Set InGame");
-        isGameOver = false;
-
+        
         if (isStageClear == true)
         {
             GameDataManager.Instance.userData.stageNum = GameDataManager.Instance.userData.stageNum + 1;       
@@ -147,8 +179,16 @@ public class GameManager : SingleTon<GameManager>
             MonsterManager.Instance.monsterHp = MonsterManager.Instance.monsterHp + 2;            
         }
 
+        isGameOver = false;
         isStageClear = false;
-        
+
+        slowTime = 0.0f;
+        slowDurationTime = 0.0f;
+        isSlowMode = false;
+
+        frezeTime = 0.0f;
+        frezeDurationTime = 0.0f;
+        isFrezeMode = false;
 
         minScreenPos = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         maxScreenPos = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
@@ -206,6 +246,22 @@ public class GameManager : SingleTon<GameManager>
         }
 
         return result;
+    }
+
+    public void SetMilkItem(MilkItem _item)
+    {
+        if (_item.type == MilkType.Slow)
+        {
+            isSlowMode = true;
+            slowTime = 0;
+            slowDurationTime = _item.milkDuration;            
+        }
+        else if (_item.type == MilkType.Freze)
+        {
+            isFrezeMode = true;
+            frezeTime = 0;
+            frezeDurationTime = _item.milkDuration;
+        }
     }
     #endregion
 }

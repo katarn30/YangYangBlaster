@@ -14,6 +14,7 @@ public struct UserData
     public DateTime freeCoinGetTime;
     public DateTime freeCoinUpdateTime;
     public UpgradePlayer upgradePlayer; //
+    public List<MilkItem> milkItemList;
 
     public MercenaryData leaderData;
     public List<MercenaryData> mercenaryDataList;
@@ -46,6 +47,21 @@ public struct UpgradePlayer //
     public int freeCoinLevel;
     public int freeCoinIncrease;
     public int freeCoinPrice;
+}
+
+public enum MilkType
+{
+    Slow,
+    Freze
+}
+
+[Serializable]
+public struct MilkItem //
+{
+    public MilkType type;
+    public Sprite milkSprite;
+    public int milkLevel;
+    public float milkDuration;
 }
 
 public enum MercenaryGetType
@@ -352,6 +368,15 @@ public class GameDataManager : SingleTon<GameDataManager>
         int result = 0;
 
         result = userData.upgradePlayer.attackSpeedLevel * userData.upgradePlayer.attackSpeedPrice;
+
+        return result;
+    }
+    
+    public float getPlayerCritical()
+    {
+        float result = 0.0f;
+
+        result = (userData.upgradePlayer.criticalLevel * userData.upgradePlayer.criticalIncrease);
 
         return result;
     }

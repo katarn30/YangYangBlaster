@@ -53,7 +53,7 @@ public class BulletManager : SingleTon<BulletManager>
             SetBulletSprite();
 
             CreateBullet();
-            
+
             CreateMercenary1Bullet();
             CreateMercenary2Bullet();
         }
@@ -62,6 +62,8 @@ public class BulletManager : SingleTon<BulletManager>
             bulletParent.gameObject.SetActive(true);
 
             SetBulletSprite();
+
+            RefreshBullet();
         }        
 
         activeBullet = 0;
@@ -72,13 +74,39 @@ public class BulletManager : SingleTon<BulletManager>
     }
 
     public void CreateBullet()
-    {        
+    {
         for (int i = 0; i < bulletCount; i++)
         {
             Bullet b = Instantiate(bullet, bulletParent);
             b.gameObject.SetActive(false);
+            b.SetBulletSprite(bulletSprite);
+
+            if (isCriticalBullet() == true)
+            {
+                b.gameObject.tag = "CriticalBullet";
+                b.SetCriticalBullet();
+            }
+            else
+            {
+                b.gameObject.tag = "Bullet";                
+            }
 
             bulletList.Add(b);
+        }
+    }
+
+    public void RefreshBullet()
+    {
+        for (int i = 0; i < bulletList.Count; i++)
+        {
+            if (isCriticalBullet() == true)
+            {
+                bulletList[i].gameObject.tag = "CriticalBullet";
+            }
+            else
+            {
+                bulletList[i].gameObject.tag = "Bullet";
+            }
         }
     }
 
@@ -106,6 +134,20 @@ public class BulletManager : SingleTon<BulletManager>
         {
             activeBullet = 0;
         }
+    }
+
+    public bool isCriticalBullet()
+    {
+        bool result = false;
+
+        int rand = Random.Range(0, 101);
+
+        if (rand <= GameDataManager.Instance.getPlayerCritical())
+        {
+            result = true;
+        }
+
+        return result;
     }
 
     public void CreateMercenary1Bullet()

@@ -18,6 +18,12 @@ public class EffectManager : SingleTon<EffectManager>
     public int coinEffectMaxCount = 0;
     public int activeCoinNum = 0;
 
+    [Header("Milk Effect")]
+    public MilkEffect milkPrefab;
+    public List<MilkEffect> milkEffectList = new List<MilkEffect>();
+    public int milkEffectMaxCount = 0;
+    public int activeMilkNum = 0;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -41,6 +47,7 @@ public class EffectManager : SingleTon<EffectManager>
 
             CreateBubbleEffect();
             CreateCoinEffect();
+            CreateMilkEffect();
         }
         else
         {
@@ -51,6 +58,7 @@ public class EffectManager : SingleTon<EffectManager>
         activeCoinNum = 0;
     }
 
+    #region Bubble
     public void CreateBubbleEffect()
     {
         for (int i = 0; i < bubbleEffectMaxCount; i++)
@@ -75,6 +83,9 @@ public class EffectManager : SingleTon<EffectManager>
         bubbleEffectList[activeBubbleNum].gameObject.SetActive(true);
         bubbleEffectList[activeBubbleNum].SetBubbleEffect(_pos, _scale, _color);
     }
+    #endregion
+
+    #region Coin
 
     public void CreateCoinEffect()
     {
@@ -112,4 +123,45 @@ public class EffectManager : SingleTon<EffectManager>
             coinEffectList[activeCoinNum].SetCoinEffect(_pos);
         }        
     }
+    #endregion
+
+    #region Milk
+    public void CreateMilkEffect()
+    {
+        for (int i = 0; i < coinEffectMaxCount; i++)
+        {
+            MilkEffect milk = Instantiate(milkPrefab, parent);
+
+            milk.gameObject.SetActive(false);
+
+            milkEffectList.Add(milk);
+        }
+    }
+
+    public void SetMilkEffect(Vector2 _pos)
+    {
+        int dropRan = Random.Range(0,10);
+
+        if (dropRan <= 0)
+        {
+            int ran = Random.Range(0, GameDataManager.Instance.userData.milkItemList.Count);
+
+            Debug.Log(ran);
+
+            MilkItem item = GameDataManager.Instance.userData.milkItemList[ran];
+
+            activeMilkNum = activeMilkNum + 1;
+
+            if (activeMilkNum >= milkEffectList.Count)
+            {
+                activeMilkNum = 0;
+            }
+            if (milkEffectList[activeMilkNum].gameObject.activeInHierarchy == false)
+            {
+                milkEffectList[activeMilkNum].gameObject.SetActive(true);
+                milkEffectList[activeMilkNum].SetMilkEffect(item, _pos);
+            }
+        }        
+    }
+    #endregion
 }
