@@ -63,6 +63,8 @@ public class LoginManager : SingleTon<LoginManager>
 
     public void DoAutoLogin()
     {
+        GameDataManager.Instance.LoadUserDataLoginParts();
+
         var loginType = GameDataManager.Instance.userData.loginType;
         var loginKey = GameDataManager.Instance.userData.loginKey;
 
@@ -157,6 +159,7 @@ public class LoginManager : SingleTon<LoginManager>
                 //usn_ = reply.Usn;
 
                 GameDataManager.Instance.SaveUserDataLoginParts();
+                GameDataManager.Instance.LoadGameData();
 
                 // 헬스체크 시작
                 HealthCheckRequest healthCheckRequest = new HealthCheckRequest();
@@ -167,7 +170,7 @@ public class LoginManager : SingleTon<LoginManager>
                     (HealthCheckResponse HealthCheckReply) =>
                 {
                     // 응답
-                    Debug.Log("HealthCheckResponse : " + HealthCheckReply.ToString());
+                    Debug.Log("Check Response : " + HealthCheckReply.ToString());
                 });
 
                 // 요청
@@ -175,7 +178,7 @@ public class LoginManager : SingleTon<LoginManager>
                     (HealthCheckResponse HealthCheckReply) =>
                 {
                     // 응답
-                    Debug.Log("HealthCheckResponse : " + HealthCheckReply.ToString());
+                    Debug.Log("Watch Response : " + HealthCheckReply.ToString());
                 });
             }
             else

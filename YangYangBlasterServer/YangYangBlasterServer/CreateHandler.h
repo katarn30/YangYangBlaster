@@ -5,6 +5,8 @@
 #include "AsyncHandlerLogin.h"
 #include "AsyncHandlerRanking.h"
 #include "AsyncHandlerRankingList.h"
+#include "AsyncHandlerLoadGameData.h"
+#include "AsyncHandlerSaveGameData.h"
 
 namespace yyb
 {
@@ -23,6 +25,7 @@ namespace yyb
         //HANDLER_MACRO(Listen);
         HANDLER_MACRO(Login);
         HANDLER_MACRO(Ranking);
-        HANDLER_MACRO(RankingList);
+        HANDLER_MACRO(LoadGameData);
+        HANDLER_MACRO(SaveGameData);
 	}
 }

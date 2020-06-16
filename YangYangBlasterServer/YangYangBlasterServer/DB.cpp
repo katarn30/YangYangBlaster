@@ -36,13 +36,87 @@ namespace yyb
 		}
 	};
 
+	DB::QueryScopeTran::QueryScopeTran(int dbPoolIndex) : handled_(false)
+	{
+		auto pool = DB::Instance().GetDBConnectionPool(dbPoolIndex);
+		if (pool)
+		{
+			sql_ = std::make_shared<soci::session>(*pool);
+			tr_ = std::make_shared<soci::transaction>(*sql_);
+		}
+	}
+
+	DB::QueryScopeTran::~QueryScopeTran()
+	{
+		if (false == handled_)
+		{
+			if (tr_)
+			{
+				tr_->rollback();
+			}
+		}
+	}
+
+	bool DB::QueryScopeTran::Execute(std::function<bool(soci::session&)> query)
+	{
+		try
+		{
+			if (sql_)
+			{
+				return query(*sql_);
+			}
+			else
+			{
+				return false;
+			}
+		}
+		catch (soci::mysql_soci_error const& e)
+		{
+			if (2013 == e.err_num_)
+			{
+				if (sql_)
+				{
+					sql_->reconnect();
+				}
+			}
+
+			std::cerr << "MySQL error: " << e.err_num_
+				<< " " << e.what() << std::endl;
+
+			return false;
+		}
+		catch (std::exception const& e)
+		{
+			std::cerr << "Standard error: " << e.what() << std::endl;
+			return false;
+		}
+		catch (...)
+		{
+			std::cerr << "Some other error" << std::endl;
+			return false;
+		}
+		
+		return true;
+	}
+
+	void DB::QueryScopeTran::Commit()
+	{
+		if (tr_)
+		{
+			tr_->commit();
+
+			handled_ = true;
+		}
+	}
+
 	DB& DB::Instance()
 	{
 		static DB db;
 		return db;
 	}
 
-	bool DB::QueryScope(int dbPoolIndex, std::function<bool(soci::session&)> query)
+	bool DB::QueryScope(int dbPoolIndex, 
+		std::function<bool(soci::session&)> query)
 	{
 		auto pool = DB::Instance().GetDBConnectionPool(dbPoolIndex);
 		if (pool)

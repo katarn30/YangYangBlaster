@@ -267,6 +267,58 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
         yield return null;
     }
 
+    // LoadGameData
+    public void LoadGameData(GameDataRequest request, RPCHandler<GameDataReply> handler)
+    {
+        StartCoroutine(coLoadGameData(request, handler));
+    }
+    IEnumerator coLoadGameData(GameDataRequest request, RPCHandler<GameDataReply> handler)
+    {
+        try
+        {
+            var metaData = new Metadata
+            {
+                { "access_key", GameDataManager.Instance.userData.accessKey }
+            };
+
+            var reply = client.LoadGameData(request, metaData);
+
+            handler(reply);
+        }
+        catch (Grpc.Core.RpcException e)
+        {
+            Debug.LogError("RPC failed " + e);
+        }
+
+        yield return null;
+    }
+
+    // SaveGameData
+    public void SaveGameData(GameDataRequest request, RPCHandler<GameDataReply> handler)
+    {
+        StartCoroutine(coSaveGameData(request, handler));
+    }
+    IEnumerator coSaveGameData(GameDataRequest request, RPCHandler<GameDataReply> handler)
+    {
+        try
+        {
+            var metaData = new Metadata
+            {
+                { "access_key", GameDataManager.Instance.userData.accessKey }
+            };
+
+            var reply = client.SaveGameData(request, metaData);
+
+            handler(reply);
+        }
+        catch (Grpc.Core.RpcException e)
+        {
+            Debug.LogError("RPC failed " + e);
+        }
+
+        yield return null;
+    }
+
     // Ranking
     public void Ranking(RankingRequest request, RPCHandler<RankingReply> handler)
     {

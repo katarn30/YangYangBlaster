@@ -17,6 +17,10 @@ service RpcService {
             body: "*"
         };
     }
+    // 게임 데이터 획득 요청
+    rpc LoadGameData(GameDataRequest) returns (GameDataReply) {}
+    // 게임 데이터 저장 요청
+    rpc SaveGameData(GameDataRequest) returns (GameDataReply) {}
     // 랭킹 기록 요청
     rpc Ranking (RankingRequest) returns (RankingReply) {}
     // 랭킹 리스트 요청
@@ -37,6 +41,30 @@ enum ERROR_CODE {
     ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT = 10;
     ERROR_CODE_ACCESS_KEY_HAS_EXPIRED = 11;
     ERROR_CODE_SYSTME = 12;
+    ERROR_CODE_FAILED_TO_SAVE_ITEM = 13;
+    ERROR_CODE_FAILED_TO_SAVE_MERCENARY = 14;
+    ERROR_CODE_FAILED_TO_SAVE_STAGE = 15;
+    ERROR_CODE_FAILED_TO_SAVE_UPGRADE_PLAYER = 16;
+    ERROR_CODE_FAILED_TO_LOAD_ITEM = 17;
+    ERROR_CODE_FAILED_TO_LOAD_MERCENARY = 18;
+    ERROR_CODE_FAILED_TO_LOAD_STAGE = 19;
+    ERROR_CODE_FAILED_TO_LOAD_UPGRADE_PLAYER = 20;
+}
+
+enum ITEM_TYPE {
+    ITEM_TYPE_NONE = 0;
+    ITEM_TYPE_GOLD = 1000;
+    ITEM_TYPE_RUBY = 1001;
+    ITEM_TYPE_PIECE_KNIGHT = 1002;
+    ITEM_TYPE_PIECE_PIRATE = 1003;
+    ITEM_TYPE_PIECE_STAR = 1004;
+    ITEM_TYPE_PIECE_SCIENTIST = 1005;
+    ITEM_TYPE_PIECE_STUDENT = 1006;
+}
+
+enum ITEM_CATEGORY {
+    ITEM_CATEGORY_NORMAL = 0;
+    ITEM_CATEGORY_CURRENCY = 1;
 }
 
 message RpcServiceExampleRequest {
@@ -68,7 +96,6 @@ message LoginRequest {
     string loginKey = 2;
     string idToken = 3;
     string nickName = 4;
-    
 }
 
 message LoginReply {
@@ -77,6 +104,46 @@ message LoginReply {
     string nickName = 3;
     string loginKey = 4;
     string accessKey = 5;
+}
+
+message Item {
+    string itemName = 1;
+    ITEM_TYPE itemType = 2;
+    ITEM_CATEGORY itemCategory = 3;
+    int32 itemCount = 4;
+}
+
+message Mercenary {
+    string mercenaryName = 1;
+    int32 mercenaryLevel = 2;
+}
+
+message Stage {
+    int32 stageNum = 1;
+    int64 stageScore = 2; 
+}
+
+message UpgradePlayer {
+    int32 powerLevel = 1;
+    int32 attackSpeedLevel = 2;
+    int32 criticalLevel = 3;
+    int32 buffDurationLevel = 4;
+    int32 freeCoinLevel = 5;
+}
+
+message GameDataRequest {
+    repeated Item items = 2;
+    repeated Mercenary mercenaries = 3;
+    Stage stage = 4;
+    UpgradePlayer upgradePlayer = 5;
+}
+
+message GameDataReply {
+    ERROR_CODE error = 1;
+    repeated Item items = 2;
+    repeated Mercenary mercenaries = 3;
+    Stage stage = 4;
+    UpgradePlayer upgradePlayer = 5;
 }
 
 message RankingRequest {

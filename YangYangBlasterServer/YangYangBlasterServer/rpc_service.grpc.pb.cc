@@ -25,6 +25,8 @@ static const char* RpcService_method_names[] = {
   "/yyb.RpcService/RpcServiceExample",
   "/yyb.RpcService/Listen",
   "/yyb.RpcService/Login",
+  "/yyb.RpcService/LoadGameData",
+  "/yyb.RpcService/SaveGameData",
   "/yyb.RpcService/Ranking",
   "/yyb.RpcService/RankingList",
 };
@@ -39,8 +41,10 @@ RpcService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel
   : channel_(channel), rpcmethod_RpcServiceExample_(RpcService_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Listen_(RpcService_method_names[1], ::grpc::internal::RpcMethod::SERVER_STREAMING, channel)
   , rpcmethod_Login_(RpcService_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_Ranking_(RpcService_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_RankingList_(RpcService_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_LoadGameData_(RpcService_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_SaveGameData_(RpcService_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_Ranking_(RpcService_method_names[5], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_RankingList_(RpcService_method_names[6], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status RpcService::Stub::RpcServiceExample(::grpc::ClientContext* context, const ::yyb::RpcServiceExampleRequest& request, ::yyb::RpcServiceExampleReply* response) {
@@ -113,6 +117,62 @@ void RpcService::Stub::experimental_async::Login(::grpc::ClientContext* context,
 
 ::grpc::ClientAsyncResponseReader< ::yyb::LoginReply>* RpcService::Stub::PrepareAsyncLoginRaw(::grpc::ClientContext* context, const ::yyb::LoginRequest& request, ::grpc::CompletionQueue* cq) {
   return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::yyb::LoginReply>::Create(channel_.get(), cq, rpcmethod_Login_, context, request, false);
+}
+
+::grpc::Status RpcService::Stub::LoadGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::yyb::GameDataReply* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_LoadGameData_, context, request, response);
+}
+
+void RpcService::Stub::experimental_async::LoadGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_LoadGameData_, context, request, response, std::move(f));
+}
+
+void RpcService::Stub::experimental_async::LoadGameData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::GameDataReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_LoadGameData_, context, request, response, std::move(f));
+}
+
+void RpcService::Stub::experimental_async::LoadGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_LoadGameData_, context, request, response, reactor);
+}
+
+void RpcService::Stub::experimental_async::LoadGameData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::GameDataReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_LoadGameData_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::yyb::GameDataReply>* RpcService::Stub::AsyncLoadGameDataRaw(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::yyb::GameDataReply>::Create(channel_.get(), cq, rpcmethod_LoadGameData_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::yyb::GameDataReply>* RpcService::Stub::PrepareAsyncLoadGameDataRaw(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::yyb::GameDataReply>::Create(channel_.get(), cq, rpcmethod_LoadGameData_, context, request, false);
+}
+
+::grpc::Status RpcService::Stub::SaveGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::yyb::GameDataReply* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_SaveGameData_, context, request, response);
+}
+
+void RpcService::Stub::experimental_async::SaveGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SaveGameData_, context, request, response, std::move(f));
+}
+
+void RpcService::Stub::experimental_async::SaveGameData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::GameDataReply* response, std::function<void(::grpc::Status)> f) {
+  ::grpc_impl::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_SaveGameData_, context, request, response, std::move(f));
+}
+
+void RpcService::Stub::experimental_async::SaveGameData(::grpc::ClientContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SaveGameData_, context, request, response, reactor);
+}
+
+void RpcService::Stub::experimental_async::SaveGameData(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::yyb::GameDataReply* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc_impl::internal::ClientCallbackUnaryFactory::Create(stub_->channel_.get(), stub_->rpcmethod_SaveGameData_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::yyb::GameDataReply>* RpcService::Stub::AsyncSaveGameDataRaw(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::yyb::GameDataReply>::Create(channel_.get(), cq, rpcmethod_SaveGameData_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::yyb::GameDataReply>* RpcService::Stub::PrepareAsyncSaveGameDataRaw(::grpc::ClientContext* context, const ::yyb::GameDataRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc_impl::internal::ClientAsyncResponseReaderFactory< ::yyb::GameDataReply>::Create(channel_.get(), cq, rpcmethod_SaveGameData_, context, request, false);
 }
 
 ::grpc::Status RpcService::Stub::Ranking(::grpc::ClientContext* context, const ::yyb::RankingRequest& request, ::yyb::RankingReply* response) {
@@ -190,10 +250,20 @@ RpcService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       RpcService_method_names[3],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RpcService::Service, ::yyb::GameDataRequest, ::yyb::GameDataReply>(
+          std::mem_fn(&RpcService::Service::LoadGameData), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RpcService_method_names[4],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< RpcService::Service, ::yyb::GameDataRequest, ::yyb::GameDataReply>(
+          std::mem_fn(&RpcService::Service::SaveGameData), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      RpcService_method_names[5],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RpcService::Service, ::yyb::RankingRequest, ::yyb::RankingReply>(
           std::mem_fn(&RpcService::Service::Ranking), this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
-      RpcService_method_names[4],
+      RpcService_method_names[6],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
       new ::grpc::internal::RpcMethodHandler< RpcService::Service, ::yyb::RankingListRequest, ::yyb::RankingListReply>(
           std::mem_fn(&RpcService::Service::RankingList), this)));
@@ -217,6 +287,20 @@ RpcService::Service::~Service() {
 }
 
 ::grpc::Status RpcService::Service::Login(::grpc::ServerContext* context, const ::yyb::LoginRequest* request, ::yyb::LoginReply* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RpcService::Service::LoadGameData(::grpc::ServerContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status RpcService::Service::SaveGameData(::grpc::ServerContext* context, const ::yyb::GameDataRequest* request, ::yyb::GameDataReply* response) {
   (void) context;
   (void) request;
   (void) response;

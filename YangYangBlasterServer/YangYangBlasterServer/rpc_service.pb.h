@@ -49,7 +49,7 @@ struct TableStruct_rpc_5fservice_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[11]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[17]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -60,12 +60,24 @@ namespace yyb {
 class Empty;
 class EmptyDefaultTypeInternal;
 extern EmptyDefaultTypeInternal _Empty_default_instance_;
+class GameDataReply;
+class GameDataReplyDefaultTypeInternal;
+extern GameDataReplyDefaultTypeInternal _GameDataReply_default_instance_;
+class GameDataRequest;
+class GameDataRequestDefaultTypeInternal;
+extern GameDataRequestDefaultTypeInternal _GameDataRequest_default_instance_;
+class Item;
+class ItemDefaultTypeInternal;
+extern ItemDefaultTypeInternal _Item_default_instance_;
 class LoginReply;
 class LoginReplyDefaultTypeInternal;
 extern LoginReplyDefaultTypeInternal _LoginReply_default_instance_;
 class LoginRequest;
 class LoginRequestDefaultTypeInternal;
 extern LoginRequestDefaultTypeInternal _LoginRequest_default_instance_;
+class Mercenary;
+class MercenaryDefaultTypeInternal;
+extern MercenaryDefaultTypeInternal _Mercenary_default_instance_;
 class PushNotification;
 class PushNotificationDefaultTypeInternal;
 extern PushNotificationDefaultTypeInternal _PushNotification_default_instance_;
@@ -90,11 +102,21 @@ extern RpcServiceExampleReplyDefaultTypeInternal _RpcServiceExampleReply_default
 class RpcServiceExampleRequest;
 class RpcServiceExampleRequestDefaultTypeInternal;
 extern RpcServiceExampleRequestDefaultTypeInternal _RpcServiceExampleRequest_default_instance_;
+class Stage;
+class StageDefaultTypeInternal;
+extern StageDefaultTypeInternal _Stage_default_instance_;
+class UpgradePlayer;
+class UpgradePlayerDefaultTypeInternal;
+extern UpgradePlayerDefaultTypeInternal _UpgradePlayer_default_instance_;
 }  // namespace yyb
 PROTOBUF_NAMESPACE_OPEN
 template<> ::yyb::Empty* Arena::CreateMaybeMessage<::yyb::Empty>(Arena*);
+template<> ::yyb::GameDataReply* Arena::CreateMaybeMessage<::yyb::GameDataReply>(Arena*);
+template<> ::yyb::GameDataRequest* Arena::CreateMaybeMessage<::yyb::GameDataRequest>(Arena*);
+template<> ::yyb::Item* Arena::CreateMaybeMessage<::yyb::Item>(Arena*);
 template<> ::yyb::LoginReply* Arena::CreateMaybeMessage<::yyb::LoginReply>(Arena*);
 template<> ::yyb::LoginRequest* Arena::CreateMaybeMessage<::yyb::LoginRequest>(Arena*);
+template<> ::yyb::Mercenary* Arena::CreateMaybeMessage<::yyb::Mercenary>(Arena*);
 template<> ::yyb::PushNotification* Arena::CreateMaybeMessage<::yyb::PushNotification>(Arena*);
 template<> ::yyb::RankingListReply* Arena::CreateMaybeMessage<::yyb::RankingListReply>(Arena*);
 template<> ::yyb::RankingListReply_Ranking* Arena::CreateMaybeMessage<::yyb::RankingListReply_Ranking>(Arena*);
@@ -103,6 +125,8 @@ template<> ::yyb::RankingReply* Arena::CreateMaybeMessage<::yyb::RankingReply>(A
 template<> ::yyb::RankingRequest* Arena::CreateMaybeMessage<::yyb::RankingRequest>(Arena*);
 template<> ::yyb::RpcServiceExampleReply* Arena::CreateMaybeMessage<::yyb::RpcServiceExampleReply>(Arena*);
 template<> ::yyb::RpcServiceExampleRequest* Arena::CreateMaybeMessage<::yyb::RpcServiceExampleRequest>(Arena*);
+template<> ::yyb::Stage* Arena::CreateMaybeMessage<::yyb::Stage>(Arena*);
+template<> ::yyb::UpgradePlayer* Arena::CreateMaybeMessage<::yyb::UpgradePlayer>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace yyb {
 
@@ -146,12 +170,20 @@ enum ERROR_CODE : int {
   ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT = 10,
   ERROR_CODE_ACCESS_KEY_HAS_EXPIRED = 11,
   ERROR_CODE_SYSTME = 12,
+  ERROR_CODE_FAILED_TO_SAVE_ITEM = 13,
+  ERROR_CODE_FAILED_TO_SAVE_MERCENARY = 14,
+  ERROR_CODE_FAILED_TO_SAVE_STAGE = 15,
+  ERROR_CODE_FAILED_TO_SAVE_UPGRADE_PLAYER = 16,
+  ERROR_CODE_FAILED_TO_LOAD_ITEM = 17,
+  ERROR_CODE_FAILED_TO_LOAD_MERCENARY = 18,
+  ERROR_CODE_FAILED_TO_LOAD_STAGE = 19,
+  ERROR_CODE_FAILED_TO_LOAD_UPGRADE_PLAYER = 20,
   ERROR_CODE_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
   ERROR_CODE_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
 bool ERROR_CODE_IsValid(int value);
 constexpr ERROR_CODE ERROR_CODE_MIN = ERROR_CODE_OK;
-constexpr ERROR_CODE ERROR_CODE_MAX = ERROR_CODE_SYSTME;
+constexpr ERROR_CODE ERROR_CODE_MAX = ERROR_CODE_FAILED_TO_LOAD_UPGRADE_PLAYER;
 constexpr int ERROR_CODE_ARRAYSIZE = ERROR_CODE_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ERROR_CODE_descriptor();
@@ -167,6 +199,62 @@ inline bool ERROR_CODE_Parse(
     const std::string& name, ERROR_CODE* value) {
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<ERROR_CODE>(
     ERROR_CODE_descriptor(), name, value);
+}
+enum ITEM_TYPE : int {
+  ITEM_TYPE_NONE = 0,
+  ITEM_TYPE_GOLD = 1000,
+  ITEM_TYPE_RUBY = 1001,
+  ITEM_TYPE_PIECE_KNIGHT = 1002,
+  ITEM_TYPE_PIECE_PIRATE = 1003,
+  ITEM_TYPE_PIECE_STAR = 1004,
+  ITEM_TYPE_PIECE_SCIENTIST = 1005,
+  ITEM_TYPE_PIECE_STUDENT = 1006,
+  ITEM_TYPE_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  ITEM_TYPE_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+};
+bool ITEM_TYPE_IsValid(int value);
+constexpr ITEM_TYPE ITEM_TYPE_MIN = ITEM_TYPE_NONE;
+constexpr ITEM_TYPE ITEM_TYPE_MAX = ITEM_TYPE_PIECE_STUDENT;
+constexpr int ITEM_TYPE_ARRAYSIZE = ITEM_TYPE_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ITEM_TYPE_descriptor();
+template<typename T>
+inline const std::string& ITEM_TYPE_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, ITEM_TYPE>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function ITEM_TYPE_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    ITEM_TYPE_descriptor(), enum_t_value);
+}
+inline bool ITEM_TYPE_Parse(
+    const std::string& name, ITEM_TYPE* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<ITEM_TYPE>(
+    ITEM_TYPE_descriptor(), name, value);
+}
+enum ITEM_CATEGORY : int {
+  ITEM_CATEGORY_NORMAL = 0,
+  ITEM_CATEGORY_CURRENCY = 1,
+  ITEM_CATEGORY_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  ITEM_CATEGORY_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+};
+bool ITEM_CATEGORY_IsValid(int value);
+constexpr ITEM_CATEGORY ITEM_CATEGORY_MIN = ITEM_CATEGORY_NORMAL;
+constexpr ITEM_CATEGORY ITEM_CATEGORY_MAX = ITEM_CATEGORY_CURRENCY;
+constexpr int ITEM_CATEGORY_ARRAYSIZE = ITEM_CATEGORY_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* ITEM_CATEGORY_descriptor();
+template<typename T>
+inline const std::string& ITEM_CATEGORY_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, ITEM_CATEGORY>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function ITEM_CATEGORY_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    ITEM_CATEGORY_descriptor(), enum_t_value);
+}
+inline bool ITEM_CATEGORY_Parse(
+    const std::string& name, ITEM_CATEGORY* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<ITEM_CATEGORY>(
+    ITEM_CATEGORY_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -1148,6 +1236,1024 @@ class LoginReply :
 };
 // -------------------------------------------------------------------
 
+class Item :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:yyb.Item) */ {
+ public:
+  Item();
+  virtual ~Item();
+
+  Item(const Item& from);
+  Item(Item&& from) noexcept
+    : Item() {
+    *this = ::std::move(from);
+  }
+
+  inline Item& operator=(const Item& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Item& operator=(Item&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const Item& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Item* internal_default_instance() {
+    return reinterpret_cast<const Item*>(
+               &_Item_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  friend void swap(Item& a, Item& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Item* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Item* New() const final {
+    return CreateMaybeMessage<Item>(nullptr);
+  }
+
+  Item* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<Item>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const Item& from);
+  void MergeFrom(const Item& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Item* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "yyb.Item";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_rpc_5fservice_2eproto);
+    return ::descriptor_table_rpc_5fservice_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kItemNameFieldNumber = 1,
+    kItemTypeFieldNumber = 2,
+    kItemCategoryFieldNumber = 3,
+    kItemCountFieldNumber = 4,
+  };
+  // string itemName = 1;
+  void clear_itemname();
+  const std::string& itemname() const;
+  void set_itemname(const std::string& value);
+  void set_itemname(std::string&& value);
+  void set_itemname(const char* value);
+  void set_itemname(const char* value, size_t size);
+  std::string* mutable_itemname();
+  std::string* release_itemname();
+  void set_allocated_itemname(std::string* itemname);
+  private:
+  const std::string& _internal_itemname() const;
+  void _internal_set_itemname(const std::string& value);
+  std::string* _internal_mutable_itemname();
+  public:
+
+  // .yyb.ITEM_TYPE itemType = 2;
+  void clear_itemtype();
+  ::yyb::ITEM_TYPE itemtype() const;
+  void set_itemtype(::yyb::ITEM_TYPE value);
+  private:
+  ::yyb::ITEM_TYPE _internal_itemtype() const;
+  void _internal_set_itemtype(::yyb::ITEM_TYPE value);
+  public:
+
+  // .yyb.ITEM_CATEGORY itemCategory = 3;
+  void clear_itemcategory();
+  ::yyb::ITEM_CATEGORY itemcategory() const;
+  void set_itemcategory(::yyb::ITEM_CATEGORY value);
+  private:
+  ::yyb::ITEM_CATEGORY _internal_itemcategory() const;
+  void _internal_set_itemcategory(::yyb::ITEM_CATEGORY value);
+  public:
+
+  // int32 itemCount = 4;
+  void clear_itemcount();
+  ::PROTOBUF_NAMESPACE_ID::int32 itemcount() const;
+  void set_itemcount(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_itemcount() const;
+  void _internal_set_itemcount(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:yyb.Item)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr itemname_;
+  int itemtype_;
+  int itemcategory_;
+  ::PROTOBUF_NAMESPACE_ID::int32 itemcount_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_rpc_5fservice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Mercenary :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:yyb.Mercenary) */ {
+ public:
+  Mercenary();
+  virtual ~Mercenary();
+
+  Mercenary(const Mercenary& from);
+  Mercenary(Mercenary&& from) noexcept
+    : Mercenary() {
+    *this = ::std::move(from);
+  }
+
+  inline Mercenary& operator=(const Mercenary& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Mercenary& operator=(Mercenary&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const Mercenary& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Mercenary* internal_default_instance() {
+    return reinterpret_cast<const Mercenary*>(
+               &_Mercenary_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  friend void swap(Mercenary& a, Mercenary& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Mercenary* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Mercenary* New() const final {
+    return CreateMaybeMessage<Mercenary>(nullptr);
+  }
+
+  Mercenary* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<Mercenary>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const Mercenary& from);
+  void MergeFrom(const Mercenary& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Mercenary* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "yyb.Mercenary";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_rpc_5fservice_2eproto);
+    return ::descriptor_table_rpc_5fservice_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMercenaryNameFieldNumber = 1,
+    kMercenaryLevelFieldNumber = 2,
+  };
+  // string mercenaryName = 1;
+  void clear_mercenaryname();
+  const std::string& mercenaryname() const;
+  void set_mercenaryname(const std::string& value);
+  void set_mercenaryname(std::string&& value);
+  void set_mercenaryname(const char* value);
+  void set_mercenaryname(const char* value, size_t size);
+  std::string* mutable_mercenaryname();
+  std::string* release_mercenaryname();
+  void set_allocated_mercenaryname(std::string* mercenaryname);
+  private:
+  const std::string& _internal_mercenaryname() const;
+  void _internal_set_mercenaryname(const std::string& value);
+  std::string* _internal_mutable_mercenaryname();
+  public:
+
+  // int32 mercenaryLevel = 2;
+  void clear_mercenarylevel();
+  ::PROTOBUF_NAMESPACE_ID::int32 mercenarylevel() const;
+  void set_mercenarylevel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_mercenarylevel() const;
+  void _internal_set_mercenarylevel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:yyb.Mercenary)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr mercenaryname_;
+  ::PROTOBUF_NAMESPACE_ID::int32 mercenarylevel_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_rpc_5fservice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class Stage :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:yyb.Stage) */ {
+ public:
+  Stage();
+  virtual ~Stage();
+
+  Stage(const Stage& from);
+  Stage(Stage&& from) noexcept
+    : Stage() {
+    *this = ::std::move(from);
+  }
+
+  inline Stage& operator=(const Stage& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Stage& operator=(Stage&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const Stage& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const Stage* internal_default_instance() {
+    return reinterpret_cast<const Stage*>(
+               &_Stage_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  friend void swap(Stage& a, Stage& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Stage* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline Stage* New() const final {
+    return CreateMaybeMessage<Stage>(nullptr);
+  }
+
+  Stage* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<Stage>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const Stage& from);
+  void MergeFrom(const Stage& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Stage* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "yyb.Stage";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_rpc_5fservice_2eproto);
+    return ::descriptor_table_rpc_5fservice_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kStageScoreFieldNumber = 2,
+    kStageNumFieldNumber = 1,
+  };
+  // int64 stageScore = 2;
+  void clear_stagescore();
+  ::PROTOBUF_NAMESPACE_ID::int64 stagescore() const;
+  void set_stagescore(::PROTOBUF_NAMESPACE_ID::int64 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int64 _internal_stagescore() const;
+  void _internal_set_stagescore(::PROTOBUF_NAMESPACE_ID::int64 value);
+  public:
+
+  // int32 stageNum = 1;
+  void clear_stagenum();
+  ::PROTOBUF_NAMESPACE_ID::int32 stagenum() const;
+  void set_stagenum(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_stagenum() const;
+  void _internal_set_stagenum(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:yyb.Stage)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::int64 stagescore_;
+  ::PROTOBUF_NAMESPACE_ID::int32 stagenum_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_rpc_5fservice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class UpgradePlayer :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:yyb.UpgradePlayer) */ {
+ public:
+  UpgradePlayer();
+  virtual ~UpgradePlayer();
+
+  UpgradePlayer(const UpgradePlayer& from);
+  UpgradePlayer(UpgradePlayer&& from) noexcept
+    : UpgradePlayer() {
+    *this = ::std::move(from);
+  }
+
+  inline UpgradePlayer& operator=(const UpgradePlayer& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline UpgradePlayer& operator=(UpgradePlayer&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const UpgradePlayer& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const UpgradePlayer* internal_default_instance() {
+    return reinterpret_cast<const UpgradePlayer*>(
+               &_UpgradePlayer_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(UpgradePlayer& a, UpgradePlayer& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(UpgradePlayer* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline UpgradePlayer* New() const final {
+    return CreateMaybeMessage<UpgradePlayer>(nullptr);
+  }
+
+  UpgradePlayer* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<UpgradePlayer>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const UpgradePlayer& from);
+  void MergeFrom(const UpgradePlayer& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(UpgradePlayer* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "yyb.UpgradePlayer";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_rpc_5fservice_2eproto);
+    return ::descriptor_table_rpc_5fservice_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kPowerLevelFieldNumber = 1,
+    kAttackSpeedLevelFieldNumber = 2,
+    kCriticalLevelFieldNumber = 3,
+    kBuffDurationLevelFieldNumber = 4,
+    kFreeCoinLevelFieldNumber = 5,
+  };
+  // int32 powerLevel = 1;
+  void clear_powerlevel();
+  ::PROTOBUF_NAMESPACE_ID::int32 powerlevel() const;
+  void set_powerlevel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_powerlevel() const;
+  void _internal_set_powerlevel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 attackSpeedLevel = 2;
+  void clear_attackspeedlevel();
+  ::PROTOBUF_NAMESPACE_ID::int32 attackspeedlevel() const;
+  void set_attackspeedlevel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_attackspeedlevel() const;
+  void _internal_set_attackspeedlevel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 criticalLevel = 3;
+  void clear_criticallevel();
+  ::PROTOBUF_NAMESPACE_ID::int32 criticallevel() const;
+  void set_criticallevel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_criticallevel() const;
+  void _internal_set_criticallevel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 buffDurationLevel = 4;
+  void clear_buffdurationlevel();
+  ::PROTOBUF_NAMESPACE_ID::int32 buffdurationlevel() const;
+  void set_buffdurationlevel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_buffdurationlevel() const;
+  void _internal_set_buffdurationlevel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 freeCoinLevel = 5;
+  void clear_freecoinlevel();
+  ::PROTOBUF_NAMESPACE_ID::int32 freecoinlevel() const;
+  void set_freecoinlevel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_freecoinlevel() const;
+  void _internal_set_freecoinlevel(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:yyb.UpgradePlayer)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::int32 powerlevel_;
+  ::PROTOBUF_NAMESPACE_ID::int32 attackspeedlevel_;
+  ::PROTOBUF_NAMESPACE_ID::int32 criticallevel_;
+  ::PROTOBUF_NAMESPACE_ID::int32 buffdurationlevel_;
+  ::PROTOBUF_NAMESPACE_ID::int32 freecoinlevel_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_rpc_5fservice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GameDataRequest :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:yyb.GameDataRequest) */ {
+ public:
+  GameDataRequest();
+  virtual ~GameDataRequest();
+
+  GameDataRequest(const GameDataRequest& from);
+  GameDataRequest(GameDataRequest&& from) noexcept
+    : GameDataRequest() {
+    *this = ::std::move(from);
+  }
+
+  inline GameDataRequest& operator=(const GameDataRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GameDataRequest& operator=(GameDataRequest&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const GameDataRequest& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const GameDataRequest* internal_default_instance() {
+    return reinterpret_cast<const GameDataRequest*>(
+               &_GameDataRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  friend void swap(GameDataRequest& a, GameDataRequest& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GameDataRequest* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GameDataRequest* New() const final {
+    return CreateMaybeMessage<GameDataRequest>(nullptr);
+  }
+
+  GameDataRequest* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<GameDataRequest>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const GameDataRequest& from);
+  void MergeFrom(const GameDataRequest& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GameDataRequest* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "yyb.GameDataRequest";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_rpc_5fservice_2eproto);
+    return ::descriptor_table_rpc_5fservice_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kItemsFieldNumber = 2,
+    kMercenariesFieldNumber = 3,
+    kStageFieldNumber = 4,
+    kUpgradePlayerFieldNumber = 5,
+  };
+  // repeated .yyb.Item items = 2;
+  int items_size() const;
+  private:
+  int _internal_items_size() const;
+  public:
+  void clear_items();
+  ::yyb::Item* mutable_items(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Item >*
+      mutable_items();
+  private:
+  const ::yyb::Item& _internal_items(int index) const;
+  ::yyb::Item* _internal_add_items();
+  public:
+  const ::yyb::Item& items(int index) const;
+  ::yyb::Item* add_items();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Item >&
+      items() const;
+
+  // repeated .yyb.Mercenary mercenaries = 3;
+  int mercenaries_size() const;
+  private:
+  int _internal_mercenaries_size() const;
+  public:
+  void clear_mercenaries();
+  ::yyb::Mercenary* mutable_mercenaries(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Mercenary >*
+      mutable_mercenaries();
+  private:
+  const ::yyb::Mercenary& _internal_mercenaries(int index) const;
+  ::yyb::Mercenary* _internal_add_mercenaries();
+  public:
+  const ::yyb::Mercenary& mercenaries(int index) const;
+  ::yyb::Mercenary* add_mercenaries();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Mercenary >&
+      mercenaries() const;
+
+  // .yyb.Stage stage = 4;
+  bool has_stage() const;
+  private:
+  bool _internal_has_stage() const;
+  public:
+  void clear_stage();
+  const ::yyb::Stage& stage() const;
+  ::yyb::Stage* release_stage();
+  ::yyb::Stage* mutable_stage();
+  void set_allocated_stage(::yyb::Stage* stage);
+  private:
+  const ::yyb::Stage& _internal_stage() const;
+  ::yyb::Stage* _internal_mutable_stage();
+  public:
+
+  // .yyb.UpgradePlayer upgradePlayer = 5;
+  bool has_upgradeplayer() const;
+  private:
+  bool _internal_has_upgradeplayer() const;
+  public:
+  void clear_upgradeplayer();
+  const ::yyb::UpgradePlayer& upgradeplayer() const;
+  ::yyb::UpgradePlayer* release_upgradeplayer();
+  ::yyb::UpgradePlayer* mutable_upgradeplayer();
+  void set_allocated_upgradeplayer(::yyb::UpgradePlayer* upgradeplayer);
+  private:
+  const ::yyb::UpgradePlayer& _internal_upgradeplayer() const;
+  ::yyb::UpgradePlayer* _internal_mutable_upgradeplayer();
+  public:
+
+  // @@protoc_insertion_point(class_scope:yyb.GameDataRequest)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Item > items_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Mercenary > mercenaries_;
+  ::yyb::Stage* stage_;
+  ::yyb::UpgradePlayer* upgradeplayer_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_rpc_5fservice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GameDataReply :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:yyb.GameDataReply) */ {
+ public:
+  GameDataReply();
+  virtual ~GameDataReply();
+
+  GameDataReply(const GameDataReply& from);
+  GameDataReply(GameDataReply&& from) noexcept
+    : GameDataReply() {
+    *this = ::std::move(from);
+  }
+
+  inline GameDataReply& operator=(const GameDataReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline GameDataReply& operator=(GameDataReply&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return GetMetadataStatic().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return GetMetadataStatic().reflection;
+  }
+  static const GameDataReply& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const GameDataReply* internal_default_instance() {
+    return reinterpret_cast<const GameDataReply*>(
+               &_GameDataReply_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  friend void swap(GameDataReply& a, GameDataReply& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(GameDataReply* other) {
+    if (other == this) return;
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GameDataReply* New() const final {
+    return CreateMaybeMessage<GameDataReply>(nullptr);
+  }
+
+  GameDataReply* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<GameDataReply>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const GameDataReply& from);
+  void MergeFrom(const GameDataReply& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  inline void SharedCtor();
+  inline void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GameDataReply* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "yyb.GameDataReply";
+  }
+  private:
+  inline ::PROTOBUF_NAMESPACE_ID::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+  private:
+  static ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadataStatic() {
+    ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&::descriptor_table_rpc_5fservice_2eproto);
+    return ::descriptor_table_rpc_5fservice_2eproto.file_level_metadata[kIndexInFileMessages];
+  }
+
+  public:
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kItemsFieldNumber = 2,
+    kMercenariesFieldNumber = 3,
+    kStageFieldNumber = 4,
+    kUpgradePlayerFieldNumber = 5,
+    kErrorFieldNumber = 1,
+  };
+  // repeated .yyb.Item items = 2;
+  int items_size() const;
+  private:
+  int _internal_items_size() const;
+  public:
+  void clear_items();
+  ::yyb::Item* mutable_items(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Item >*
+      mutable_items();
+  private:
+  const ::yyb::Item& _internal_items(int index) const;
+  ::yyb::Item* _internal_add_items();
+  public:
+  const ::yyb::Item& items(int index) const;
+  ::yyb::Item* add_items();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Item >&
+      items() const;
+
+  // repeated .yyb.Mercenary mercenaries = 3;
+  int mercenaries_size() const;
+  private:
+  int _internal_mercenaries_size() const;
+  public:
+  void clear_mercenaries();
+  ::yyb::Mercenary* mutable_mercenaries(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Mercenary >*
+      mutable_mercenaries();
+  private:
+  const ::yyb::Mercenary& _internal_mercenaries(int index) const;
+  ::yyb::Mercenary* _internal_add_mercenaries();
+  public:
+  const ::yyb::Mercenary& mercenaries(int index) const;
+  ::yyb::Mercenary* add_mercenaries();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Mercenary >&
+      mercenaries() const;
+
+  // .yyb.Stage stage = 4;
+  bool has_stage() const;
+  private:
+  bool _internal_has_stage() const;
+  public:
+  void clear_stage();
+  const ::yyb::Stage& stage() const;
+  ::yyb::Stage* release_stage();
+  ::yyb::Stage* mutable_stage();
+  void set_allocated_stage(::yyb::Stage* stage);
+  private:
+  const ::yyb::Stage& _internal_stage() const;
+  ::yyb::Stage* _internal_mutable_stage();
+  public:
+
+  // .yyb.UpgradePlayer upgradePlayer = 5;
+  bool has_upgradeplayer() const;
+  private:
+  bool _internal_has_upgradeplayer() const;
+  public:
+  void clear_upgradeplayer();
+  const ::yyb::UpgradePlayer& upgradeplayer() const;
+  ::yyb::UpgradePlayer* release_upgradeplayer();
+  ::yyb::UpgradePlayer* mutable_upgradeplayer();
+  void set_allocated_upgradeplayer(::yyb::UpgradePlayer* upgradeplayer);
+  private:
+  const ::yyb::UpgradePlayer& _internal_upgradeplayer() const;
+  ::yyb::UpgradePlayer* _internal_mutable_upgradeplayer();
+  public:
+
+  // .yyb.ERROR_CODE error = 1;
+  void clear_error();
+  ::yyb::ERROR_CODE error() const;
+  void set_error(::yyb::ERROR_CODE value);
+  private:
+  ::yyb::ERROR_CODE _internal_error() const;
+  void _internal_set_error(::yyb::ERROR_CODE value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:yyb.GameDataReply)
+ private:
+  class _Internal;
+
+  ::PROTOBUF_NAMESPACE_ID::internal::InternalMetadataWithArena _internal_metadata_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Item > items_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Mercenary > mercenaries_;
+  ::yyb::Stage* stage_;
+  ::yyb::UpgradePlayer* upgradeplayer_;
+  int error_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_rpc_5fservice_2eproto;
+};
+// -------------------------------------------------------------------
+
 class RankingRequest :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:yyb.RankingRequest) */ {
  public:
@@ -1190,7 +2296,7 @@ class RankingRequest :
                &_RankingRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    6;
+    12;
 
   friend void swap(RankingRequest& a, RankingRequest& b) {
     a.Swap(&b);
@@ -1318,7 +2424,7 @@ class RankingReply :
                &_RankingReply_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    7;
+    13;
 
   friend void swap(RankingReply& a, RankingReply& b) {
     a.Swap(&b);
@@ -1446,7 +2552,7 @@ class RankingListRequest :
                &_RankingListRequest_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    8;
+    14;
 
   friend void swap(RankingListRequest& a, RankingListRequest& b) {
     a.Swap(&b);
@@ -1561,7 +2667,7 @@ class RankingListReply_Ranking :
                &_RankingListReply_Ranking_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    15;
 
   friend void swap(RankingListReply_Ranking& a, RankingListReply_Ranking& b) {
     a.Swap(&b);
@@ -1718,7 +2824,7 @@ class RankingListReply :
                &_RankingListReply_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    10;
+    16;
 
   friend void swap(RankingListReply& a, RankingListReply& b) {
     a.Swap(&b);
@@ -2541,6 +3647,786 @@ inline void LoginReply::set_allocated_accesskey(std::string* accesskey) {
 
 // -------------------------------------------------------------------
 
+// Item
+
+// string itemName = 1;
+inline void Item::clear_itemname() {
+  itemname_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& Item::itemname() const {
+  // @@protoc_insertion_point(field_get:yyb.Item.itemName)
+  return _internal_itemname();
+}
+inline void Item::set_itemname(const std::string& value) {
+  _internal_set_itemname(value);
+  // @@protoc_insertion_point(field_set:yyb.Item.itemName)
+}
+inline std::string* Item::mutable_itemname() {
+  // @@protoc_insertion_point(field_mutable:yyb.Item.itemName)
+  return _internal_mutable_itemname();
+}
+inline const std::string& Item::_internal_itemname() const {
+  return itemname_.GetNoArena();
+}
+inline void Item::_internal_set_itemname(const std::string& value) {
+  
+  itemname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void Item::set_itemname(std::string&& value) {
+  
+  itemname_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:yyb.Item.itemName)
+}
+inline void Item::set_itemname(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  itemname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:yyb.Item.itemName)
+}
+inline void Item::set_itemname(const char* value, size_t size) {
+  
+  itemname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:yyb.Item.itemName)
+}
+inline std::string* Item::_internal_mutable_itemname() {
+  
+  return itemname_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* Item::release_itemname() {
+  // @@protoc_insertion_point(field_release:yyb.Item.itemName)
+  
+  return itemname_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void Item::set_allocated_itemname(std::string* itemname) {
+  if (itemname != nullptr) {
+    
+  } else {
+    
+  }
+  itemname_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), itemname);
+  // @@protoc_insertion_point(field_set_allocated:yyb.Item.itemName)
+}
+
+// .yyb.ITEM_TYPE itemType = 2;
+inline void Item::clear_itemtype() {
+  itemtype_ = 0;
+}
+inline ::yyb::ITEM_TYPE Item::_internal_itemtype() const {
+  return static_cast< ::yyb::ITEM_TYPE >(itemtype_);
+}
+inline ::yyb::ITEM_TYPE Item::itemtype() const {
+  // @@protoc_insertion_point(field_get:yyb.Item.itemType)
+  return _internal_itemtype();
+}
+inline void Item::_internal_set_itemtype(::yyb::ITEM_TYPE value) {
+  
+  itemtype_ = value;
+}
+inline void Item::set_itemtype(::yyb::ITEM_TYPE value) {
+  _internal_set_itemtype(value);
+  // @@protoc_insertion_point(field_set:yyb.Item.itemType)
+}
+
+// .yyb.ITEM_CATEGORY itemCategory = 3;
+inline void Item::clear_itemcategory() {
+  itemcategory_ = 0;
+}
+inline ::yyb::ITEM_CATEGORY Item::_internal_itemcategory() const {
+  return static_cast< ::yyb::ITEM_CATEGORY >(itemcategory_);
+}
+inline ::yyb::ITEM_CATEGORY Item::itemcategory() const {
+  // @@protoc_insertion_point(field_get:yyb.Item.itemCategory)
+  return _internal_itemcategory();
+}
+inline void Item::_internal_set_itemcategory(::yyb::ITEM_CATEGORY value) {
+  
+  itemcategory_ = value;
+}
+inline void Item::set_itemcategory(::yyb::ITEM_CATEGORY value) {
+  _internal_set_itemcategory(value);
+  // @@protoc_insertion_point(field_set:yyb.Item.itemCategory)
+}
+
+// int32 itemCount = 4;
+inline void Item::clear_itemcount() {
+  itemcount_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Item::_internal_itemcount() const {
+  return itemcount_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Item::itemcount() const {
+  // @@protoc_insertion_point(field_get:yyb.Item.itemCount)
+  return _internal_itemcount();
+}
+inline void Item::_internal_set_itemcount(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  itemcount_ = value;
+}
+inline void Item::set_itemcount(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_itemcount(value);
+  // @@protoc_insertion_point(field_set:yyb.Item.itemCount)
+}
+
+// -------------------------------------------------------------------
+
+// Mercenary
+
+// string mercenaryName = 1;
+inline void Mercenary::clear_mercenaryname() {
+  mercenaryname_.ClearToEmptyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline const std::string& Mercenary::mercenaryname() const {
+  // @@protoc_insertion_point(field_get:yyb.Mercenary.mercenaryName)
+  return _internal_mercenaryname();
+}
+inline void Mercenary::set_mercenaryname(const std::string& value) {
+  _internal_set_mercenaryname(value);
+  // @@protoc_insertion_point(field_set:yyb.Mercenary.mercenaryName)
+}
+inline std::string* Mercenary::mutable_mercenaryname() {
+  // @@protoc_insertion_point(field_mutable:yyb.Mercenary.mercenaryName)
+  return _internal_mutable_mercenaryname();
+}
+inline const std::string& Mercenary::_internal_mercenaryname() const {
+  return mercenaryname_.GetNoArena();
+}
+inline void Mercenary::_internal_set_mercenaryname(const std::string& value) {
+  
+  mercenaryname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value);
+}
+inline void Mercenary::set_mercenaryname(std::string&& value) {
+  
+  mercenaryname_.SetNoArena(
+    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
+  // @@protoc_insertion_point(field_set_rvalue:yyb.Mercenary.mercenaryName)
+}
+inline void Mercenary::set_mercenaryname(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  
+  mercenaryname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
+  // @@protoc_insertion_point(field_set_char:yyb.Mercenary.mercenaryName)
+}
+inline void Mercenary::set_mercenaryname(const char* value, size_t size) {
+  
+  mercenaryname_.SetNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      ::std::string(reinterpret_cast<const char*>(value), size));
+  // @@protoc_insertion_point(field_set_pointer:yyb.Mercenary.mercenaryName)
+}
+inline std::string* Mercenary::_internal_mutable_mercenaryname() {
+  
+  return mercenaryname_.MutableNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline std::string* Mercenary::release_mercenaryname() {
+  // @@protoc_insertion_point(field_release:yyb.Mercenary.mercenaryName)
+  
+  return mercenaryname_.ReleaseNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+}
+inline void Mercenary::set_allocated_mercenaryname(std::string* mercenaryname) {
+  if (mercenaryname != nullptr) {
+    
+  } else {
+    
+  }
+  mercenaryname_.SetAllocatedNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), mercenaryname);
+  // @@protoc_insertion_point(field_set_allocated:yyb.Mercenary.mercenaryName)
+}
+
+// int32 mercenaryLevel = 2;
+inline void Mercenary::clear_mercenarylevel() {
+  mercenarylevel_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Mercenary::_internal_mercenarylevel() const {
+  return mercenarylevel_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Mercenary::mercenarylevel() const {
+  // @@protoc_insertion_point(field_get:yyb.Mercenary.mercenaryLevel)
+  return _internal_mercenarylevel();
+}
+inline void Mercenary::_internal_set_mercenarylevel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  mercenarylevel_ = value;
+}
+inline void Mercenary::set_mercenarylevel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_mercenarylevel(value);
+  // @@protoc_insertion_point(field_set:yyb.Mercenary.mercenaryLevel)
+}
+
+// -------------------------------------------------------------------
+
+// Stage
+
+// int32 stageNum = 1;
+inline void Stage::clear_stagenum() {
+  stagenum_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Stage::_internal_stagenum() const {
+  return stagenum_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Stage::stagenum() const {
+  // @@protoc_insertion_point(field_get:yyb.Stage.stageNum)
+  return _internal_stagenum();
+}
+inline void Stage::_internal_set_stagenum(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  stagenum_ = value;
+}
+inline void Stage::set_stagenum(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_stagenum(value);
+  // @@protoc_insertion_point(field_set:yyb.Stage.stageNum)
+}
+
+// int64 stageScore = 2;
+inline void Stage::clear_stagescore() {
+  stagescore_ = PROTOBUF_LONGLONG(0);
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 Stage::_internal_stagescore() const {
+  return stagescore_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int64 Stage::stagescore() const {
+  // @@protoc_insertion_point(field_get:yyb.Stage.stageScore)
+  return _internal_stagescore();
+}
+inline void Stage::_internal_set_stagescore(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  
+  stagescore_ = value;
+}
+inline void Stage::set_stagescore(::PROTOBUF_NAMESPACE_ID::int64 value) {
+  _internal_set_stagescore(value);
+  // @@protoc_insertion_point(field_set:yyb.Stage.stageScore)
+}
+
+// -------------------------------------------------------------------
+
+// UpgradePlayer
+
+// int32 powerLevel = 1;
+inline void UpgradePlayer::clear_powerlevel() {
+  powerlevel_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 UpgradePlayer::_internal_powerlevel() const {
+  return powerlevel_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 UpgradePlayer::powerlevel() const {
+  // @@protoc_insertion_point(field_get:yyb.UpgradePlayer.powerLevel)
+  return _internal_powerlevel();
+}
+inline void UpgradePlayer::_internal_set_powerlevel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  powerlevel_ = value;
+}
+inline void UpgradePlayer::set_powerlevel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_powerlevel(value);
+  // @@protoc_insertion_point(field_set:yyb.UpgradePlayer.powerLevel)
+}
+
+// int32 attackSpeedLevel = 2;
+inline void UpgradePlayer::clear_attackspeedlevel() {
+  attackspeedlevel_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 UpgradePlayer::_internal_attackspeedlevel() const {
+  return attackspeedlevel_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 UpgradePlayer::attackspeedlevel() const {
+  // @@protoc_insertion_point(field_get:yyb.UpgradePlayer.attackSpeedLevel)
+  return _internal_attackspeedlevel();
+}
+inline void UpgradePlayer::_internal_set_attackspeedlevel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  attackspeedlevel_ = value;
+}
+inline void UpgradePlayer::set_attackspeedlevel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_attackspeedlevel(value);
+  // @@protoc_insertion_point(field_set:yyb.UpgradePlayer.attackSpeedLevel)
+}
+
+// int32 criticalLevel = 3;
+inline void UpgradePlayer::clear_criticallevel() {
+  criticallevel_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 UpgradePlayer::_internal_criticallevel() const {
+  return criticallevel_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 UpgradePlayer::criticallevel() const {
+  // @@protoc_insertion_point(field_get:yyb.UpgradePlayer.criticalLevel)
+  return _internal_criticallevel();
+}
+inline void UpgradePlayer::_internal_set_criticallevel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  criticallevel_ = value;
+}
+inline void UpgradePlayer::set_criticallevel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_criticallevel(value);
+  // @@protoc_insertion_point(field_set:yyb.UpgradePlayer.criticalLevel)
+}
+
+// int32 buffDurationLevel = 4;
+inline void UpgradePlayer::clear_buffdurationlevel() {
+  buffdurationlevel_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 UpgradePlayer::_internal_buffdurationlevel() const {
+  return buffdurationlevel_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 UpgradePlayer::buffdurationlevel() const {
+  // @@protoc_insertion_point(field_get:yyb.UpgradePlayer.buffDurationLevel)
+  return _internal_buffdurationlevel();
+}
+inline void UpgradePlayer::_internal_set_buffdurationlevel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  buffdurationlevel_ = value;
+}
+inline void UpgradePlayer::set_buffdurationlevel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_buffdurationlevel(value);
+  // @@protoc_insertion_point(field_set:yyb.UpgradePlayer.buffDurationLevel)
+}
+
+// int32 freeCoinLevel = 5;
+inline void UpgradePlayer::clear_freecoinlevel() {
+  freecoinlevel_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 UpgradePlayer::_internal_freecoinlevel() const {
+  return freecoinlevel_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 UpgradePlayer::freecoinlevel() const {
+  // @@protoc_insertion_point(field_get:yyb.UpgradePlayer.freeCoinLevel)
+  return _internal_freecoinlevel();
+}
+inline void UpgradePlayer::_internal_set_freecoinlevel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  freecoinlevel_ = value;
+}
+inline void UpgradePlayer::set_freecoinlevel(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_freecoinlevel(value);
+  // @@protoc_insertion_point(field_set:yyb.UpgradePlayer.freeCoinLevel)
+}
+
+// -------------------------------------------------------------------
+
+// GameDataRequest
+
+// repeated .yyb.Item items = 2;
+inline int GameDataRequest::_internal_items_size() const {
+  return items_.size();
+}
+inline int GameDataRequest::items_size() const {
+  return _internal_items_size();
+}
+inline void GameDataRequest::clear_items() {
+  items_.Clear();
+}
+inline ::yyb::Item* GameDataRequest::mutable_items(int index) {
+  // @@protoc_insertion_point(field_mutable:yyb.GameDataRequest.items)
+  return items_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Item >*
+GameDataRequest::mutable_items() {
+  // @@protoc_insertion_point(field_mutable_list:yyb.GameDataRequest.items)
+  return &items_;
+}
+inline const ::yyb::Item& GameDataRequest::_internal_items(int index) const {
+  return items_.Get(index);
+}
+inline const ::yyb::Item& GameDataRequest::items(int index) const {
+  // @@protoc_insertion_point(field_get:yyb.GameDataRequest.items)
+  return _internal_items(index);
+}
+inline ::yyb::Item* GameDataRequest::_internal_add_items() {
+  return items_.Add();
+}
+inline ::yyb::Item* GameDataRequest::add_items() {
+  // @@protoc_insertion_point(field_add:yyb.GameDataRequest.items)
+  return _internal_add_items();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Item >&
+GameDataRequest::items() const {
+  // @@protoc_insertion_point(field_list:yyb.GameDataRequest.items)
+  return items_;
+}
+
+// repeated .yyb.Mercenary mercenaries = 3;
+inline int GameDataRequest::_internal_mercenaries_size() const {
+  return mercenaries_.size();
+}
+inline int GameDataRequest::mercenaries_size() const {
+  return _internal_mercenaries_size();
+}
+inline void GameDataRequest::clear_mercenaries() {
+  mercenaries_.Clear();
+}
+inline ::yyb::Mercenary* GameDataRequest::mutable_mercenaries(int index) {
+  // @@protoc_insertion_point(field_mutable:yyb.GameDataRequest.mercenaries)
+  return mercenaries_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Mercenary >*
+GameDataRequest::mutable_mercenaries() {
+  // @@protoc_insertion_point(field_mutable_list:yyb.GameDataRequest.mercenaries)
+  return &mercenaries_;
+}
+inline const ::yyb::Mercenary& GameDataRequest::_internal_mercenaries(int index) const {
+  return mercenaries_.Get(index);
+}
+inline const ::yyb::Mercenary& GameDataRequest::mercenaries(int index) const {
+  // @@protoc_insertion_point(field_get:yyb.GameDataRequest.mercenaries)
+  return _internal_mercenaries(index);
+}
+inline ::yyb::Mercenary* GameDataRequest::_internal_add_mercenaries() {
+  return mercenaries_.Add();
+}
+inline ::yyb::Mercenary* GameDataRequest::add_mercenaries() {
+  // @@protoc_insertion_point(field_add:yyb.GameDataRequest.mercenaries)
+  return _internal_add_mercenaries();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Mercenary >&
+GameDataRequest::mercenaries() const {
+  // @@protoc_insertion_point(field_list:yyb.GameDataRequest.mercenaries)
+  return mercenaries_;
+}
+
+// .yyb.Stage stage = 4;
+inline bool GameDataRequest::_internal_has_stage() const {
+  return this != internal_default_instance() && stage_ != nullptr;
+}
+inline bool GameDataRequest::has_stage() const {
+  return _internal_has_stage();
+}
+inline void GameDataRequest::clear_stage() {
+  if (GetArenaNoVirtual() == nullptr && stage_ != nullptr) {
+    delete stage_;
+  }
+  stage_ = nullptr;
+}
+inline const ::yyb::Stage& GameDataRequest::_internal_stage() const {
+  const ::yyb::Stage* p = stage_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::yyb::Stage*>(
+      &::yyb::_Stage_default_instance_);
+}
+inline const ::yyb::Stage& GameDataRequest::stage() const {
+  // @@protoc_insertion_point(field_get:yyb.GameDataRequest.stage)
+  return _internal_stage();
+}
+inline ::yyb::Stage* GameDataRequest::release_stage() {
+  // @@protoc_insertion_point(field_release:yyb.GameDataRequest.stage)
+  
+  ::yyb::Stage* temp = stage_;
+  stage_ = nullptr;
+  return temp;
+}
+inline ::yyb::Stage* GameDataRequest::_internal_mutable_stage() {
+  
+  if (stage_ == nullptr) {
+    auto* p = CreateMaybeMessage<::yyb::Stage>(GetArenaNoVirtual());
+    stage_ = p;
+  }
+  return stage_;
+}
+inline ::yyb::Stage* GameDataRequest::mutable_stage() {
+  // @@protoc_insertion_point(field_mutable:yyb.GameDataRequest.stage)
+  return _internal_mutable_stage();
+}
+inline void GameDataRequest::set_allocated_stage(::yyb::Stage* stage) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete stage_;
+  }
+  if (stage) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      stage = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, stage, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  stage_ = stage;
+  // @@protoc_insertion_point(field_set_allocated:yyb.GameDataRequest.stage)
+}
+
+// .yyb.UpgradePlayer upgradePlayer = 5;
+inline bool GameDataRequest::_internal_has_upgradeplayer() const {
+  return this != internal_default_instance() && upgradeplayer_ != nullptr;
+}
+inline bool GameDataRequest::has_upgradeplayer() const {
+  return _internal_has_upgradeplayer();
+}
+inline void GameDataRequest::clear_upgradeplayer() {
+  if (GetArenaNoVirtual() == nullptr && upgradeplayer_ != nullptr) {
+    delete upgradeplayer_;
+  }
+  upgradeplayer_ = nullptr;
+}
+inline const ::yyb::UpgradePlayer& GameDataRequest::_internal_upgradeplayer() const {
+  const ::yyb::UpgradePlayer* p = upgradeplayer_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::yyb::UpgradePlayer*>(
+      &::yyb::_UpgradePlayer_default_instance_);
+}
+inline const ::yyb::UpgradePlayer& GameDataRequest::upgradeplayer() const {
+  // @@protoc_insertion_point(field_get:yyb.GameDataRequest.upgradePlayer)
+  return _internal_upgradeplayer();
+}
+inline ::yyb::UpgradePlayer* GameDataRequest::release_upgradeplayer() {
+  // @@protoc_insertion_point(field_release:yyb.GameDataRequest.upgradePlayer)
+  
+  ::yyb::UpgradePlayer* temp = upgradeplayer_;
+  upgradeplayer_ = nullptr;
+  return temp;
+}
+inline ::yyb::UpgradePlayer* GameDataRequest::_internal_mutable_upgradeplayer() {
+  
+  if (upgradeplayer_ == nullptr) {
+    auto* p = CreateMaybeMessage<::yyb::UpgradePlayer>(GetArenaNoVirtual());
+    upgradeplayer_ = p;
+  }
+  return upgradeplayer_;
+}
+inline ::yyb::UpgradePlayer* GameDataRequest::mutable_upgradeplayer() {
+  // @@protoc_insertion_point(field_mutable:yyb.GameDataRequest.upgradePlayer)
+  return _internal_mutable_upgradeplayer();
+}
+inline void GameDataRequest::set_allocated_upgradeplayer(::yyb::UpgradePlayer* upgradeplayer) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete upgradeplayer_;
+  }
+  if (upgradeplayer) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      upgradeplayer = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, upgradeplayer, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  upgradeplayer_ = upgradeplayer;
+  // @@protoc_insertion_point(field_set_allocated:yyb.GameDataRequest.upgradePlayer)
+}
+
+// -------------------------------------------------------------------
+
+// GameDataReply
+
+// .yyb.ERROR_CODE error = 1;
+inline void GameDataReply::clear_error() {
+  error_ = 0;
+}
+inline ::yyb::ERROR_CODE GameDataReply::_internal_error() const {
+  return static_cast< ::yyb::ERROR_CODE >(error_);
+}
+inline ::yyb::ERROR_CODE GameDataReply::error() const {
+  // @@protoc_insertion_point(field_get:yyb.GameDataReply.error)
+  return _internal_error();
+}
+inline void GameDataReply::_internal_set_error(::yyb::ERROR_CODE value) {
+  
+  error_ = value;
+}
+inline void GameDataReply::set_error(::yyb::ERROR_CODE value) {
+  _internal_set_error(value);
+  // @@protoc_insertion_point(field_set:yyb.GameDataReply.error)
+}
+
+// repeated .yyb.Item items = 2;
+inline int GameDataReply::_internal_items_size() const {
+  return items_.size();
+}
+inline int GameDataReply::items_size() const {
+  return _internal_items_size();
+}
+inline void GameDataReply::clear_items() {
+  items_.Clear();
+}
+inline ::yyb::Item* GameDataReply::mutable_items(int index) {
+  // @@protoc_insertion_point(field_mutable:yyb.GameDataReply.items)
+  return items_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Item >*
+GameDataReply::mutable_items() {
+  // @@protoc_insertion_point(field_mutable_list:yyb.GameDataReply.items)
+  return &items_;
+}
+inline const ::yyb::Item& GameDataReply::_internal_items(int index) const {
+  return items_.Get(index);
+}
+inline const ::yyb::Item& GameDataReply::items(int index) const {
+  // @@protoc_insertion_point(field_get:yyb.GameDataReply.items)
+  return _internal_items(index);
+}
+inline ::yyb::Item* GameDataReply::_internal_add_items() {
+  return items_.Add();
+}
+inline ::yyb::Item* GameDataReply::add_items() {
+  // @@protoc_insertion_point(field_add:yyb.GameDataReply.items)
+  return _internal_add_items();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Item >&
+GameDataReply::items() const {
+  // @@protoc_insertion_point(field_list:yyb.GameDataReply.items)
+  return items_;
+}
+
+// repeated .yyb.Mercenary mercenaries = 3;
+inline int GameDataReply::_internal_mercenaries_size() const {
+  return mercenaries_.size();
+}
+inline int GameDataReply::mercenaries_size() const {
+  return _internal_mercenaries_size();
+}
+inline void GameDataReply::clear_mercenaries() {
+  mercenaries_.Clear();
+}
+inline ::yyb::Mercenary* GameDataReply::mutable_mercenaries(int index) {
+  // @@protoc_insertion_point(field_mutable:yyb.GameDataReply.mercenaries)
+  return mercenaries_.Mutable(index);
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Mercenary >*
+GameDataReply::mutable_mercenaries() {
+  // @@protoc_insertion_point(field_mutable_list:yyb.GameDataReply.mercenaries)
+  return &mercenaries_;
+}
+inline const ::yyb::Mercenary& GameDataReply::_internal_mercenaries(int index) const {
+  return mercenaries_.Get(index);
+}
+inline const ::yyb::Mercenary& GameDataReply::mercenaries(int index) const {
+  // @@protoc_insertion_point(field_get:yyb.GameDataReply.mercenaries)
+  return _internal_mercenaries(index);
+}
+inline ::yyb::Mercenary* GameDataReply::_internal_add_mercenaries() {
+  return mercenaries_.Add();
+}
+inline ::yyb::Mercenary* GameDataReply::add_mercenaries() {
+  // @@protoc_insertion_point(field_add:yyb.GameDataReply.mercenaries)
+  return _internal_add_mercenaries();
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::yyb::Mercenary >&
+GameDataReply::mercenaries() const {
+  // @@protoc_insertion_point(field_list:yyb.GameDataReply.mercenaries)
+  return mercenaries_;
+}
+
+// .yyb.Stage stage = 4;
+inline bool GameDataReply::_internal_has_stage() const {
+  return this != internal_default_instance() && stage_ != nullptr;
+}
+inline bool GameDataReply::has_stage() const {
+  return _internal_has_stage();
+}
+inline void GameDataReply::clear_stage() {
+  if (GetArenaNoVirtual() == nullptr && stage_ != nullptr) {
+    delete stage_;
+  }
+  stage_ = nullptr;
+}
+inline const ::yyb::Stage& GameDataReply::_internal_stage() const {
+  const ::yyb::Stage* p = stage_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::yyb::Stage*>(
+      &::yyb::_Stage_default_instance_);
+}
+inline const ::yyb::Stage& GameDataReply::stage() const {
+  // @@protoc_insertion_point(field_get:yyb.GameDataReply.stage)
+  return _internal_stage();
+}
+inline ::yyb::Stage* GameDataReply::release_stage() {
+  // @@protoc_insertion_point(field_release:yyb.GameDataReply.stage)
+  
+  ::yyb::Stage* temp = stage_;
+  stage_ = nullptr;
+  return temp;
+}
+inline ::yyb::Stage* GameDataReply::_internal_mutable_stage() {
+  
+  if (stage_ == nullptr) {
+    auto* p = CreateMaybeMessage<::yyb::Stage>(GetArenaNoVirtual());
+    stage_ = p;
+  }
+  return stage_;
+}
+inline ::yyb::Stage* GameDataReply::mutable_stage() {
+  // @@protoc_insertion_point(field_mutable:yyb.GameDataReply.stage)
+  return _internal_mutable_stage();
+}
+inline void GameDataReply::set_allocated_stage(::yyb::Stage* stage) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete stage_;
+  }
+  if (stage) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      stage = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, stage, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  stage_ = stage;
+  // @@protoc_insertion_point(field_set_allocated:yyb.GameDataReply.stage)
+}
+
+// .yyb.UpgradePlayer upgradePlayer = 5;
+inline bool GameDataReply::_internal_has_upgradeplayer() const {
+  return this != internal_default_instance() && upgradeplayer_ != nullptr;
+}
+inline bool GameDataReply::has_upgradeplayer() const {
+  return _internal_has_upgradeplayer();
+}
+inline void GameDataReply::clear_upgradeplayer() {
+  if (GetArenaNoVirtual() == nullptr && upgradeplayer_ != nullptr) {
+    delete upgradeplayer_;
+  }
+  upgradeplayer_ = nullptr;
+}
+inline const ::yyb::UpgradePlayer& GameDataReply::_internal_upgradeplayer() const {
+  const ::yyb::UpgradePlayer* p = upgradeplayer_;
+  return p != nullptr ? *p : *reinterpret_cast<const ::yyb::UpgradePlayer*>(
+      &::yyb::_UpgradePlayer_default_instance_);
+}
+inline const ::yyb::UpgradePlayer& GameDataReply::upgradeplayer() const {
+  // @@protoc_insertion_point(field_get:yyb.GameDataReply.upgradePlayer)
+  return _internal_upgradeplayer();
+}
+inline ::yyb::UpgradePlayer* GameDataReply::release_upgradeplayer() {
+  // @@protoc_insertion_point(field_release:yyb.GameDataReply.upgradePlayer)
+  
+  ::yyb::UpgradePlayer* temp = upgradeplayer_;
+  upgradeplayer_ = nullptr;
+  return temp;
+}
+inline ::yyb::UpgradePlayer* GameDataReply::_internal_mutable_upgradeplayer() {
+  
+  if (upgradeplayer_ == nullptr) {
+    auto* p = CreateMaybeMessage<::yyb::UpgradePlayer>(GetArenaNoVirtual());
+    upgradeplayer_ = p;
+  }
+  return upgradeplayer_;
+}
+inline ::yyb::UpgradePlayer* GameDataReply::mutable_upgradeplayer() {
+  // @@protoc_insertion_point(field_mutable:yyb.GameDataReply.upgradePlayer)
+  return _internal_mutable_upgradeplayer();
+}
+inline void GameDataReply::set_allocated_upgradeplayer(::yyb::UpgradePlayer* upgradeplayer) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete upgradeplayer_;
+  }
+  if (upgradeplayer) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      upgradeplayer = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, upgradeplayer, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  upgradeplayer_ = upgradeplayer;
+  // @@protoc_insertion_point(field_set_allocated:yyb.GameDataReply.upgradePlayer)
+}
+
+// -------------------------------------------------------------------
+
 // RankingRequest
 
 // int64 score = 1;
@@ -2841,6 +4727,18 @@ RankingListReply::rankings() const {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -2857,6 +4755,16 @@ template <> struct is_proto_enum< ::yyb::ERROR_CODE> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::yyb::ERROR_CODE>() {
   return ::yyb::ERROR_CODE_descriptor();
+}
+template <> struct is_proto_enum< ::yyb::ITEM_TYPE> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::yyb::ITEM_TYPE>() {
+  return ::yyb::ITEM_TYPE_descriptor();
+}
+template <> struct is_proto_enum< ::yyb::ITEM_CATEGORY> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::yyb::ITEM_CATEGORY>() {
+  return ::yyb::ITEM_CATEGORY_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE
