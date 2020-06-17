@@ -110,7 +110,7 @@ public class Monster : MonoBehaviour
             }
 
             if (GameManager.Instance.isSlowMode == true)
-            {
+            {                
                 rigidbody2D.gravityScale = slowSpeed;
             }
         }        

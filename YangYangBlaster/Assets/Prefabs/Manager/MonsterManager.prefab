@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1167406635313074071
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1167406635313074065}
+  - component: {fileID: 1167406635313074064}
+  m_Layer: 0
+  m_Name: MonsterManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1167406635313074065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167406635313074071}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1167406635313074064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167406635313074071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f880e635da845049a6270291fd6dd13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterSpriteList:
+  - {fileID: 21300000, guid: 503c2354a95c9974eabc782e3dd5ce4a, type: 3}
+  - {fileID: 21300000, guid: a57635d2cf34e8b44af0e49e934c19dc, type: 3}
+  - {fileID: 21300000, guid: 6891f9a7ce1d0f2498429456a1761480, type: 3}
+  - {fileID: 21300000, guid: 50fc28d2237ed2648b82603eb9971572, type: 3}
+  - {fileID: 21300000, guid: 15a7b7c14136781409ca2931ad1641da, type: 3}
+  - {fileID: 21300000, guid: 4aeac89842ea0024cac3ebe6eb6b3bd4, type: 3}
+  - {fileID: 21300000, guid: 9ab96c73f08f1e745a2488b498a98a68, type: 3}
+  - {fileID: 21300000, guid: d6aea66b8aada3a4bafa03a0bfec5afe, type: 3}
+  monsterMaxSpawnCount: 40
+  monsterList: []
+  activeMonster: 0
+  monsterHp: 5
+  monsterStageCount: 5
+  nowMonsterCount: 0
+  allSpawnCount: 0
+  deadCount: 0
+  bossMaxSpawnCount: 2
+  bossList: []
+  activeBoss: 0
+  monster: {fileID: 6028230092614303458, guid: e3ced1efa66a51245a007bb3634f3ae7, type: 3}
+  boss: {fileID: 2607388319443178513, guid: cf4016cc4bf927348ac507de7f313b62, type: 3}
+  isBossStage: 1
+  regenTime: 3

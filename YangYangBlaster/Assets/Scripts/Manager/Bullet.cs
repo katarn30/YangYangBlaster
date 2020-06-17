@@ -23,12 +23,25 @@ public class Bullet : MonoBehaviour
     }
 
     public void StartMove(Vector2 _createPos)
-    {        
+    {
+        int rand = Random.Range(0, 101);
+
+        if (rand <= GameDataManager.Instance.getPlayerCritical())
+        {
+            gameObject.tag = "CriticalBullet";
+            bulletSprite.color = Color.red;
+        }
+        else
+        {
+            gameObject.tag = "Bullet";
+            bulletSprite.color = Color.white;
+        }
+
         gameObject.SetActive(true);
         transform.position = _createPos;
 
         transform
-            .DOMove(new Vector2(_createPos.x, 8f), 1f)
+            .DOMove(new Vector2(_createPos.x, 7f), 1f)
             .OnComplete(()=> {
                 gameObject.SetActive(false);
             });

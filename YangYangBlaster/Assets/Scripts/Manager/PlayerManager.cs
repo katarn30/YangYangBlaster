@@ -69,6 +69,15 @@ public class PlayerManager : SingleTon<PlayerManager>
     // Update is called once per frame
     public void PlayerShot()
     {
+        if (GameManager.Instance.isSpeedMode == true)
+        {
+            attackSpeed = GameDataManager.Instance.userData.leaderData.attackSpeed - 0.4f;
+        }
+        else
+        {
+            attackSpeed = GameDataManager.Instance.userData.leaderData.attackSpeed;
+        }
+
         bulletTime += Time.deltaTime;
 
         if (bulletTime >= attackSpeed)

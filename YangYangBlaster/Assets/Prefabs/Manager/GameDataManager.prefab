@@ -1,0 +1,199 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8427192857296199403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8427192857296199400}
+  - component: {fileID: 8427192857296199401}
+  m_Layer: 0
+  m_Name: GameDataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8427192857296199400
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427192857296199403}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8427192857296199401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427192857296199403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce99b1a652f815e4095f10ad4a045409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userData:
+    nickName: 
+    stageNum: 0
+    score: 0
+    upgradePlayer:
+      powerLevel: 1
+      powerIncrease: 10
+      powerPrice: 200
+      attackSpeedLevel: 1
+      attackSpeedIncrease: 5
+      attackSpeedPrice: 200
+      criticalLevel: 1
+      criticalIncrease: 2
+      criticalPrice: 200
+      buffDurationLevel: 1
+      buffDurationIncrease: 1
+      buffDurationPrice: 200
+      freeCoinLevel: 1
+      freeCoinIncrease: 400
+      freeCoinPrice: 200
+    milkItemList:
+    - type: 0
+      milkSprite: {fileID: 21300000, guid: e2f5e03ae2793e643885a661a8389a55, type: 3}
+      milkLevel: 1
+      milkDuration: 2
+      milkInfo: The monster slows down for the duration.
+    - type: 1
+      milkSprite: {fileID: 21300000, guid: 816bd94a366063e46974550a246ba92b, type: 3}
+      milkLevel: 1
+      milkDuration: 2
+      milkInfo: The monster pauses for the duration.
+    - type: 2
+      milkSprite: {fileID: 21300000, guid: 816bd94a366063e46974550a246ba92b, type: 3}
+      milkLevel: 1
+      milkDuration: 2
+      milkInfo: movement speed is increased for the duration.
+    - type: 3
+      milkSprite: {fileID: 21300000, guid: f89f2eeff1b62de42bf730452915ae27, type: 3}
+      milkLevel: 1
+      milkDuration: 2
+      milkInfo: During the duration, the attack power increases.
+    - type: 4
+      milkSprite: {fileID: 21300000, guid: 3ca4420baf2da3b449881c458e6533fb, type: 3}
+      milkLevel: 1
+      milkDuration: 2
+      milkInfo: During the duration, the earned coins increase.
+    - type: 5
+      milkSprite: {fileID: 21300000, guid: 66870979ea05f644eaaa2076c4db30ad, type: 3}
+      milkLevel: 1
+      milkDuration: 2
+      milkInfo: It grows in size for the duration.
+    - type: 6
+      milkSprite: {fileID: 21300000, guid: 9a7fab3474d575e46bbdf4922a007cd5, type: 3}
+      milkLevel: 1
+      milkDuration: 2
+      milkInfo: Become invincible for the duration.
+    leaderData:
+      name: 
+      damage: 0
+      moveSpeed: 0
+      attackSpeed: 0
+      catImage: {fileID: 0}
+      level: 0
+      price: 0
+      mercenaryGetType: 0
+      bulletImage: {fileID: 0}
+      runtimeAnimator: {fileID: 0}
+      uiRuntimeAnimator: {fileID: 0}
+    mercenaryDataList: []
+    loginType: 0
+    loginKey: 
+    accessKey: 
+  freeCoin: 200
+  ReadMercenaryDataList:
+  - name: MIA
+    damage: 1
+    moveSpeed: 3
+    attackSpeed: 0.12
+    catImage: {fileID: 21300000, guid: 6d9744f12bdcc584cba80104c51f1c05, type: 3}
+    level: 1
+    price: 0
+    mercenaryGetType: 0
+    bulletImage: {fileID: 21300000, guid: 675bfd46ae1b77646b42df56d80483ee, type: 3}
+    runtimeAnimator: {fileID: 9100000, guid: b8f0392a872b265458d542292082b6ac, type: 2}
+    uiRuntimeAnimator: {fileID: 9100000, guid: fa2f38e69171eee40b437a805cdf4fe2, type: 2}
+  - name: MEOWMEOW
+    damage: 1
+    moveSpeed: 3
+    attackSpeed: 1
+    catImage: {fileID: 21300000, guid: b4911ee06e40d1d4c8b7fa10cd118cdb, type: 3}
+    level: 0
+    price: 100
+    mercenaryGetType: 0
+    bulletImage: {fileID: 21300000, guid: 85442966ca4488e4fbc57d8e67ac49e2, type: 3}
+    runtimeAnimator: {fileID: 9100000, guid: 600847ea57b3d0c45964ad416bf9f9a5, type: 2}
+    uiRuntimeAnimator: {fileID: 22100000, guid: def7752d062eb954bb6c66a1caa3329b,
+      type: 2}
+  - name: BABABA
+    damage: 1
+    moveSpeed: 3
+    attackSpeed: 1
+    catImage: {fileID: 21300000, guid: 32c4e6cdde238cf4e9cb0773bdac172f, type: 3}
+    level: 0
+    price: 100
+    mercenaryGetType: 2
+    bulletImage: {fileID: 21300000, guid: c114196b329a17a4d8955edbb5f6200a, type: 3}
+    runtimeAnimator: {fileID: 22100000, guid: b1de54e23b2d5554c9bcf376e5099ace, type: 2}
+    uiRuntimeAnimator: {fileID: 22100000, guid: 440999379b3615c408c0a4ecb0b1eef8,
+      type: 2}
+  - name: STAR
+    damage: 1
+    moveSpeed: 3
+    attackSpeed: 1
+    catImage: {fileID: 21300000, guid: 35998915734498141b95cadb26231553, type: 3}
+    level: 0
+    price: 100
+    mercenaryGetType: 0
+    bulletImage: {fileID: 21300000, guid: bf89af1cceee0e94eb3e47cace36b9eb, type: 3}
+    runtimeAnimator: {fileID: 22100000, guid: 8e73525f5c2691a4980273bffd53ee3d, type: 2}
+    uiRuntimeAnimator: {fileID: 22100000, guid: 34a8ebeeca8a4f74fadf0a08061196d0,
+      type: 2}
+  - name: YAKYAK
+    damage: 1
+    moveSpeed: 3
+    attackSpeed: 1
+    catImage: {fileID: 21300000, guid: c48acaf034ec5ab499762bab96a56693, type: 3}
+    level: 0
+    price: 100
+    mercenaryGetType: 0
+    bulletImage: {fileID: 21300000, guid: 4ec063cee31e9f1459f8d5517c32c8a1, type: 3}
+    runtimeAnimator: {fileID: 0}
+    uiRuntimeAnimator: {fileID: 0}
+  - name: STUDY
+    damage: 1
+    moveSpeed: 3
+    attackSpeed: 1
+    catImage: {fileID: 21300000, guid: 2372ec25010351a4e9bf0b8749780fdd, type: 3}
+    level: 0
+    price: 100
+    mercenaryGetType: 0
+    bulletImage: {fileID: 21300000, guid: 4ec063cee31e9f1459f8d5517c32c8a1, type: 3}
+    runtimeAnimator: {fileID: 0}
+    uiRuntimeAnimator: {fileID: 0}
+  stageDataList: []
+  BossDataList:
+  - name: 
+    pattenType: 1
+    hp: 140
+    attackTime: 3
+    createPos: {x: 0, y: 2.35}
+    colliderOffset: {x: -0.04, y: -0.24}
+    radius: 1.16
+    deadColor: {r: 0.3137255, g: 0.28627452, b: 0.41960785, a: 1}
+    runtimeAnimator: {fileID: 9100000, guid: eab555710935c7548ac05c3679170b19, type: 2}

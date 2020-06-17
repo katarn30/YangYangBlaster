@@ -14,8 +14,7 @@ public struct UserData
     public DateTime freeCoinGetTime;
     public DateTime freeCoinUpdateTime;
     public UpgradePlayer upgradePlayer;
-    public List<MilkItem> milkItemList;
-    public UpgradePlayer upgradePlayer;
+    public List<MilkItem> milkItemList;   
 
     public MercenaryData leaderData;
     public List<MercenaryData> mercenaryDataList;
@@ -52,8 +51,13 @@ public struct UpgradePlayer
 
 public enum MilkType
 {
-    Slow,
-    Freze
+    SLOW,
+    FREZE,
+    SPEED,
+    POWER,
+    MONEY,
+    GIANT,
+    SHIELD
 }
 
 [Serializable]
@@ -63,6 +67,7 @@ public struct MilkItem //
     public Sprite milkSprite;
     public int milkLevel;
     public float milkDuration;
+    public string milkInfo;
 }
 
 public enum MercenaryGetType

@@ -31,6 +31,26 @@ public class GameManager : SingleTon<GameManager>
     public float frezeDurationTime = 0.0f;
     public bool isFrezeMode = false;
 
+    public float speedTime = 0.0f;
+    public float speedDurationTime = 0.0f;
+    public bool isSpeedMode = false;
+
+    public float powerTime = 0.0f;
+    public float powerDurationTime = 0.0f;
+    public bool isPowerMode = false;
+
+    public float moneyTime = 0.0f;
+    public float moneyDurationTime = 0.0f;
+    public bool isMoneyMode = false;
+
+    public float shieldTime = 0.0f;
+    public float shieldDurationTime = 0.0f;
+    public bool isShieldMode = false;
+
+    public float giantTime = 0.0f;
+    public float giantDurationTime = 0.0f;
+    public bool isGiantMode = false;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -80,34 +100,99 @@ public class GameManager : SingleTon<GameManager>
 
                 UIManager.Instance.InGameUIUpdate();
 
-                if (isSlowMode == true)
-                {
-                    slowTime = slowTime + Time.deltaTime;
-
-                    if (slowTime >= slowDurationTime)
-                    {
-                        Debug.Log("Slow End");
-                        isSlowMode = false;
-                        slowTime = 0;
-                    }
-                }
-
-                if (isFrezeMode == true)
-                {
-                    frezeTime = frezeTime + Time.deltaTime;
-
-                    if (frezeTime >= frezeDurationTime)
-                    {
-                        Debug.Log("Freze End");
-                        isFrezeMode = false;
-                        frezeTime = 0;
-                    }
-                }
+                SetMilkMode();
             }            
         }
         else if (state == GameState.Lobby)
         {
             UIManager.Instance.LobbyUIUpdate();
+        }
+    }
+
+    public void SetMilkMode()
+    {
+        if (isSlowMode == true)
+        {
+            slowTime = slowTime + Time.deltaTime;
+
+            if (slowTime >= slowDurationTime)
+            {
+                Debug.Log("Slow End");
+                isSlowMode = false;
+                slowTime = 0;
+            }
+        }
+
+        if (isFrezeMode == true)
+        {
+            frezeTime = frezeTime + Time.deltaTime;
+
+            if (frezeTime >= frezeDurationTime)
+            {
+                Debug.Log("Freze End");
+                isFrezeMode = false;
+                frezeTime = 0;
+            }
+        }
+
+        if (isSpeedMode == true)
+        {
+            speedTime = speedTime + Time.deltaTime;
+
+            if (speedTime >= speedDurationTime)
+            {
+                Debug.Log("Speed End");
+                isSpeedMode = false;
+                speedTime = 0;
+            }
+        }
+
+        if (isShieldMode == true)
+        {
+            shieldTime = shieldTime + Time.deltaTime;
+
+            if (shieldTime >= shieldDurationTime)
+            {
+                Debug.Log("Shield End");
+                isShieldMode = false;
+                shieldTime = 0;
+            }
+        }
+
+        if (isMoneyMode == true)
+        {
+            moneyTime = moneyTime + Time.deltaTime;
+
+            if (moneyTime >= moneyDurationTime)
+            {
+                Debug.Log("Money End");
+                isMoneyMode = false;
+                moneyTime = 0;
+            }
+        }
+
+        if (isGiantMode == true)
+        {
+            giantTime = giantTime + Time.deltaTime;
+
+            if (giantTime >= giantDurationTime)
+            {
+                Debug.Log("Giant End");
+                isGiantMode = false;
+                giantTime = 0;
+            }
+        }
+
+        if (isPowerMode == true)
+        {
+            powerTime = powerTime + Time.deltaTime;
+
+            if (powerTime >= powerDurationTime)
+            {
+                Debug.Log("Power End");
+                isPowerMode = false;
+                powerTime = 0;
+            }
         }
     }
 
@@ -250,17 +335,47 @@ public class GameManager : SingleTon<GameManager>
 
     public void SetMilkItem(MilkItem _item)
     {
-        if (_item.type == MilkType.Slow)
+        if (_item.type == MilkType.SLOW)
         {
             isSlowMode = true;
             slowTime = 0;
             slowDurationTime = _item.milkDuration;            
         }
-        else if (_item.type == MilkType.Freze)
+        else if (_item.type == MilkType.FREZE)
         {
             isFrezeMode = true;
             frezeTime = 0;
             frezeDurationTime = _item.milkDuration;
+        }
+        else if (_item.type == MilkType.GIANT)
+        {
+            isGiantMode = true;
+            giantTime = 0;
+            giantDurationTime = _item.milkDuration;
+        }
+        else if (_item.type == MilkType.MONEY)
+        {
+            isMoneyMode = true;
+            moneyTime = 0;
+            moneyDurationTime = _item.milkDuration;
+        }
+        else if (_item.type == MilkType.POWER)
+        {
+            isPowerMode = true;
+            powerTime = 0;
+            powerDurationTime = _item.milkDuration;
+        }
+        else if (_item.type == MilkType.SHIELD)
+        {
+            isShieldMode = true;
+            shieldTime = 0;
+            shieldDurationTime = _item.milkDuration;
+        }
+        else if (_item.type == MilkType.SPEED)
+        {
+            isSpeedMode = true;
+            speedTime = 0;
+            speedDurationTime = _item.milkDuration;
         }
     }
     #endregion

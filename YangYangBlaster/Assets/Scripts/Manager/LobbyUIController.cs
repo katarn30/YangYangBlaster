@@ -10,6 +10,7 @@ public class LobbyUIController : MonoBehaviour
     public LeaderCatShopController leaderCatShopController;
     public ShopController shopController;
     public DeckUIController deckUIController;
+    public MilkShopController milkShopController;
 
     [Header("TOP UI")]
     public Text scoreText;
@@ -73,6 +74,13 @@ public class LobbyUIController : MonoBehaviour
     public void MilkSkillButton()
     {
         AllClosePopup();
+
+        if (milkShopController.gameObject.activeInHierarchy == false)
+        {
+            milkShopController.gameObject.SetActive(true);
+        }
+
+        milkShopController.SetMilkShopList();
     }
 
     public void ShopButton()

@@ -38,6 +38,8 @@ public class MilkEffect : MonoBehaviour
         rig.bodyType = RigidbodyType2D.Dynamic;
         milkItem = _milkItem;
 
+        sprite.sprite = milkItem.milkSprite;
+
         rig.AddForce(new Vector2(ranX, ranY), ForceMode2D.Impulse);
     }
 
