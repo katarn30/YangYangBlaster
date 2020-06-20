@@ -231,7 +231,7 @@ public class Monster : MonoBehaviour
                         MonsterManager.Instance.SetSubMonster(transform.position, isUp, spawnCount - 1, originHp);
                     }
 
-                    GameManager.Instance.UpdateScore(100);
+                    GameManager.Instance.UpdateNowStageScore(100);
 
                     EffectManager.Instance.SetBubbleEffect(transform.position, transform.localScale, colorList[spriteNum]);
                     EffectManager.Instance.SetCoinEffect(transform.position);

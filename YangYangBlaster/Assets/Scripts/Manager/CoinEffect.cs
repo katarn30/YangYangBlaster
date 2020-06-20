@@ -82,7 +82,7 @@ public class CoinEffect : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            GameManager.Instance.GetCoin(100);
+            GameManager.Instance.UpdateNowGetCoin(100);
 
             if (dellayCoinCor != null)
             {

@@ -7,15 +7,29 @@ using TMPro;
 
 public class InGameUIController : MonoBehaviour
 {
-    public TextMeshProUGUI text;
+    [Header ("TOP")]
     public Text coinText;
     public Text stageText;
     public Text nextStageText;
     public Image stageGauge;
 
+    [Header("CENTER")]
+    public GameObject continueUI;
+    public Image continueGauge;
+    public Text continueCountText;
+    float nowContinueTime = 0.0f;
+
+
+    public GameObject resultUI;
+    public Text resultScoreText;
+    public Text resultCoinText;
+
     public void OnInitialized()
     {
-        text.gameObject.SetActive(false);
+        continueUI.SetActive(false);
+        resultUI.SetActive(false);
+
+        nowContinueTime = 0;
 
         SetCoinUI();
         StageUI();
@@ -30,21 +44,50 @@ public class InGameUIController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (continueUI.activeInHierarchy == true)
+        {
+            nowContinueTime += Time.deltaTime;
+            
+            if (nowContinueTime >= 10)
+            {
+                nowContinueTime = 0;
+
+                GameManager.Instance.GameOver();
+            }
+
+            continueCountText.text = (10 - nowContinueTime).ToString("N0");
+            continueGauge.fillAmount = (10 - nowContinueTime) / 10;
+        }
+    }
+
     public void GameOverUI()
     {
-        text.text = "GAME OVER";
-        text.gameObject.SetActive(true);
+        continueUI.SetActive(false);
+        resultUI.SetActive(false);
+
+        if (GameManager.Instance.gameOverCount > 1)
+        {
+            StageClearUI();
+        }
+        else
+        {
+            continueUI.SetActive(true);
+        }
     }
 
     public void StageClearUI()
     {
-        text.text = "STAGE CLEAR !!";
-        text.gameObject.SetActive(true);
+        resultUI.SetActive(true);
+        resultScoreText.text = GameManager.Instance.nowStageScore.ToString();
+        //resultCoinText.text = GameManager.Instance.nowStageCoin.ToString();
     }
 
     public void SetCoinUI()
     {
-        coinText.text = GameDataManager.Instance.userData.userCurrency.userCoin.ToString();
+        coinText.text = GameManager.Instance.nowStageCoin.ToString();
+        resultCoinText.text = GameManager.Instance.nowStageCoin.ToString();
     }
 
     public void StageUI()
@@ -63,22 +106,25 @@ public class InGameUIController : MonoBehaviour
         stageGauge.fillAmount = 1;
     }
 
-    public void ContinueButton()
-    {
-        GameManager.Instance.SetInGame();
+    public void ContinueVideoButton()
+    {        
+        GoogleAdmobManager.Instance.ShowReward(GameManager.Instance.SetContinueInGame);
     }
 
-    public void BuyMercenaryButton()
+    public void ResultVideoButton()
     {
-        if (GameDataManager.Instance.userData.score >= 1200)
-        {
-            GameManager.Instance.UpdateScore(-1200);
-            
-        }        
+        GoogleAdmobManager.Instance.ShowReward(GameManager.Instance.ResultVideoReward);
+    }
+
+    public void ResultOkButton()
+    {
+        GameManager.Instance.ResultReward();
+        GameManager.Instance.SetInGame();
     }
 
     public void ExitLobby()
     {
+        GameManager.Instance.ResultReward();
         GameManager.Instance.ChangeGameState(GameManager.GameState.Lobby);
     }
 }

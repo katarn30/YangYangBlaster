@@ -77,8 +77,8 @@ MonoBehaviour:
     - type: 2
       milkSprite: {fileID: 21300000, guid: 816bd94a366063e46974550a246ba92b, type: 3}
       milkLevel: 1
-      milkDuration: 2
-      milkInfo: movement speed is increased for the duration.
+      milkDuration: 3
+      milkInfo: attack, movement speed is increased for the duration.
     - type: 3
       milkSprite: {fileID: 21300000, guid: f89f2eeff1b62de42bf730452915ae27, type: 3}
       milkLevel: 1
@@ -97,7 +97,7 @@ MonoBehaviour:
     - type: 6
       milkSprite: {fileID: 21300000, guid: 9a7fab3474d575e46bbdf4922a007cd5, type: 3}
       milkLevel: 1
-      milkDuration: 2
+      milkDuration: 5
       milkInfo: Become invincible for the duration.
     leaderData:
       name: 

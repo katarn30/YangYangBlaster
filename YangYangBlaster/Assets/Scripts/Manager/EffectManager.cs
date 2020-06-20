@@ -24,6 +24,11 @@ public class EffectManager : SingleTon<EffectManager>
     public int milkEffectMaxCount = 0;
     public int activeMilkNum = 0;
 
+    [Header("Danger Effect")]
+    public GameObject dangerPrefab;
+    public GameObject dangerGo;
+    ParticleSystem dangerParticle;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -113,7 +118,7 @@ public class EffectManager : SingleTon<EffectManager>
             }
             if (coinEffectList[activeCoinNum].gameObject.activeInHierarchy == true)
             {
-                GameManager.Instance.GetCoin(100);
+                GameManager.Instance.UpdateNowGetCoin(100);
             }
             else
             {
@@ -162,6 +167,28 @@ public class EffectManager : SingleTon<EffectManager>
                 milkEffectList[activeMilkNum].SetMilkEffect(item, _pos);
             }
         }        
+    }
+    #endregion
+
+    #region Danger Effect
+    public void SetDangerEffect(Vector2 _pos)
+    {
+        if (dangerGo == null)
+        {
+            dangerGo = Instantiate(dangerPrefab, parent);
+            dangerParticle = dangerGo.GetComponent<ParticleSystem>();
+            dangerGo.SetActive(false);
+        }
+
+        dangerGo.transform.position = new Vector3(_pos.x, -4.8f, 0);
+
+        dangerGo.SetActive(true);
+
+        if (dangerParticle != null)
+        {
+            dangerParticle.Stop();
+            dangerParticle.Play();
+        }
     }
     #endregion
 }

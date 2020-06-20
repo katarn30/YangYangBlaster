@@ -7,6 +7,9 @@ using System;
 public class GoogleAdmobManager : SingleTon<GoogleAdmobManager>
 {
     private RewardBasedVideoAd rewardBasedVideo;
+    AdRequest request;
+    string adUnitId = null;
+    Action rewardAction = null;
 
     private void Awake()
     {
@@ -40,15 +43,15 @@ public class GoogleAdmobManager : SingleTon<GoogleAdmobManager>
     private void RequestRewardBasedVideo()
     {
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-6643434665197243/3193534858";
+        adUnitId = "ca-app-pub-6643434665197243/3193534858";
 #elif UNITY_IPHONE
-            string adUnitId = "ca-app-pub-3940256099942544/1712485313";
+            adUnitId = "ca-app-pub-3940256099942544/1712485313";
 #else
-            string adUnitId = "unexpected_platform";
+            adUnitId = "unexpected_platform";
 #endif
 
         // Create an empty ad request.
-        AdRequest request = new AdRequest.Builder().Build();
+        request = new AdRequest.Builder().Build();
         // Load the rewarded video ad with the request.
         this.rewardBasedVideo.LoadAd(request, adUnitId);
     }
@@ -78,6 +81,8 @@ public class GoogleAdmobManager : SingleTon<GoogleAdmobManager>
     public void HandleRewardBasedVideoClosed(object sender, EventArgs args)
     {
         MonoBehaviour.print("HandleRewardBasedVideoClosed event received");
+
+        this.rewardBasedVideo.LoadAd(request, adUnitId);
     }
 
     public void HandleRewardBasedVideoRewarded(object sender, Reward args)
@@ -87,6 +92,12 @@ public class GoogleAdmobManager : SingleTon<GoogleAdmobManager>
         MonoBehaviour.print(
             "HandleRewardBasedVideoRewarded event received for "
                         + amount.ToString() + " " + type);
+
+        if (rewardAction != null)
+        {
+            rewardAction.Invoke();
+            rewardAction = null;
+        }
     }
 
     public void HandleRewardBasedVideoLeftApplication(object sender, EventArgs args)
@@ -94,11 +105,27 @@ public class GoogleAdmobManager : SingleTon<GoogleAdmobManager>
         MonoBehaviour.print("HandleRewardBasedVideoLeftApplication event received");
     }
 
-    public void ShowReward()
+    public void ShowReward(Action _action = null)
     {
-        if (rewardBasedVideo.IsLoaded())
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            rewardBasedVideo.Show();
+            if (rewardBasedVideo.IsLoaded())
+            {
+                rewardAction = _action;
+
+                rewardBasedVideo.Show();
+            }
         }
+        else if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.OSXEditor)
+        {
+            rewardAction = _action;
+
+            if (rewardAction != null)
+            {
+                rewardAction.Invoke();
+                rewardAction = null;
+            }
+        }
+        
     }
 }

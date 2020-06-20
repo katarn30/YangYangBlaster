@@ -122,7 +122,7 @@ public class Boss : MonoBehaviour
                     nowAttackTime = 0;
 
                     SetChangeState(BossState.attack);
-
+                    EffectManager.Instance.SetDangerEffect(transform.position);
                     StartCoroutine(attackDellay());
                 }
             }            
@@ -131,7 +131,7 @@ public class Boss : MonoBehaviour
 
     IEnumerator attackDellay()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
 
         transform.DOMoveY(-4.0f, 0.4f).OnComplete(
             () =>
@@ -154,7 +154,7 @@ public class Boss : MonoBehaviour
                 animator.SetTrigger("Idle");
                 break;
             case BossState.attack:
-                animator.SetTrigger("Attack");
+                animator.SetTrigger("Attack");                
                 break;
         }
     }
@@ -201,7 +201,7 @@ public class Boss : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Bullet"))
+        if (other.CompareTag("Bullet") || other.CompareTag("CriticalBullet"))
         {
             if (monsterHp > 0)
             {
@@ -232,7 +232,7 @@ public class Boss : MonoBehaviour
                     EffectManager.Instance.SetCoinEffect(transform.position);
                     EffectManager.Instance.SetMilkEffect(transform.position);
 
-                    GameManager.Instance.UpdateScore(1000);
+                    GameManager.Instance.UpdateNowStageScore(1000);
                     GameManager.Instance.StageClear();
 
                     transform.DOPause();

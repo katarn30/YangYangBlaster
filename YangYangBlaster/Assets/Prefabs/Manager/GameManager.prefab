@@ -48,29 +48,32 @@ MonoBehaviour:
   state: 0
   minScreenPos: {x: 0, y: 0}
   maxScreenPos: {x: 0, y: 0}
+  gameOverCount: 0
+  nowStageScore: 0
+  nowStageCoin: 0
   isGameOver: 0
   isStageClear: 0
+  isSlowMode: 0
+  isFrezeMode: 0
+  isSpeedMode: 0
+  isPowerMode: 0
+  isMoneyMode: 0
+  isShieldMode: 0
+  isGiantMode: 1
   slowTime: 0
   slowDurationTime: 0
-  isSlowMode: 0
   frezeTime: 0
   frezeDurationTime: 0
-  isFrezeMode: 0
   speedTime: 0
   speedDurationTime: 0
-  isSpeedMode: 0
   powerTime: 0
   powerDurationTime: 0
-  isPowerMode: 0
   moneyTime: 0
   moneyDurationTime: 0
-  isMoneyMode: 0
   shieldTime: 0
   shieldDurationTime: 0
-  isShieldMode: 0
   giantTime: 0
-  giantDurationTime: 0
-  isGiantMode: 0
+  giantDurationTime: 10
 --- !u!1 &5565395047701367346
 GameObject:
   m_ObjectHideFlags: 0

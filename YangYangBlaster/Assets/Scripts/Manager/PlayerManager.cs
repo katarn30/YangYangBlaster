@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public enum PlayerState
 {
@@ -28,6 +29,8 @@ public class PlayerManager : SingleTon<PlayerManager>
     public ParticleSystem bulleParticle;
     public ParticleSystem deadParticle;
     public ParticleSystem getItemParticle;
+    public ParticleSystem buffParticle;
+    public GameObject shieldParticle;
 
     private void Awake()
     {
@@ -38,18 +41,24 @@ public class PlayerManager : SingleTon<PlayerManager>
     public void SetLobbyInit()
     {
         playerSprite.gameObject.SetActive(false);
+
         bulleParticle.gameObject.SetActive(false);
         getItemParticle.gameObject.SetActive(false);
         deadParticle.gameObject.SetActive(false);
+        buffParticle.gameObject.SetActive(false);
+        shieldParticle.SetActive(false);
     }
 
     //인게임 상태로 바뀔때
     public void SetInGameInit()
-    {        
+    {
         playerSprite.gameObject.SetActive(true);
+
         bulleParticle.gameObject.SetActive(true);
         getItemParticle.gameObject.SetActive(true);
         deadParticle.gameObject.SetActive(true);
+        buffParticle.gameObject.SetActive(true);
+        //shieldParticle.SetActive(true);
 
         if (originHp == 0)
         {
@@ -63,15 +72,39 @@ public class PlayerManager : SingleTon<PlayerManager>
         transform.position = new Vector2(0, transform.position.y);
         attackSpeed = GameDataManager.Instance.userData.leaderData.attackSpeed;
 
-        ChangeAniState(PlayerState.Idle);        
+        ChangeAniState(PlayerState.Idle);
     }
 
     // Update is called once per frame
+    public void PlayerUpdate()
+    {        
+        if (GameManager.Instance.isShieldMode == true || GameManager.Instance.isGiantMode == true)
+        {
+            shieldParticle.SetActive(true);
+        }
+        else if (GameManager.Instance.isShieldMode == false && GameManager.Instance.isGiantMode == false)
+        {
+            shieldParticle.SetActive(false);
+        }
+
+        if (GameManager.Instance.isGiantMode == true)
+        {
+            //-0.21
+            playerSprite.transform.DOLocalMoveY(0.84f, 0.4f);
+            playerSprite.transform.DOScale(new Vector3(2, 2, 0), 0.4f);
+        }
+        else
+        {
+            playerSprite.transform.DOLocalMoveY(-0.21f, 0.4f);
+            playerSprite.transform.DOScale(new Vector3(0.7f, 0.7f, 0), 0.4f);
+        }
+    }
+
     public void PlayerShot()
     {
         if (GameManager.Instance.isSpeedMode == true)
         {
-            attackSpeed = GameDataManager.Instance.userData.leaderData.attackSpeed - 0.4f;
+            attackSpeed = GameDataManager.Instance.userData.leaderData.attackSpeed - 0.04f;
         }
         else
         {
@@ -88,8 +121,10 @@ public class PlayerManager : SingleTon<PlayerManager>
             SoundManager.Instance.PlayerBulletSound();
         }
 
-        ChangeAniState(PlayerState.Attack);        
+        ChangeAniState(PlayerState.Attack);
     }
+
+    
 
     public void ChangeAniState(PlayerState _playerState)
     {
@@ -131,6 +166,12 @@ public class PlayerManager : SingleTon<PlayerManager>
             if (GameManager.Instance.isStageClear == true)
                 return;
 
+            if (GameManager.Instance.isGameOver == true)
+                return;
+
+            if (GameManager.Instance.isShieldMode == true || GameManager.Instance.isGiantMode == true)
+                return;
+
             playerHp = playerHp - 1;
 
             if (playerHp <= 0)
@@ -141,6 +182,12 @@ public class PlayerManager : SingleTon<PlayerManager>
             }
             
             Handheld.Vibrate();
+        }
+        else if (other.gameObject.CompareTag("Milk"))
+        {
+            SoundManager.Instance.CoinSound();
+            buffParticle.Stop();
+            buffParticle.Play();
         }
         else if (other.gameObject.CompareTag("Coin"))
         {

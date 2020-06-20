@@ -59,3 +59,5 @@ MonoBehaviour:
   milkEffectList: []
   milkEffectMaxCount: 10
   activeMilkNum: 0
+  dangerPrefab: {fileID: 8699606449548947795, guid: 9cee667b33d760541a3065c5bd568cda,
+    type: 3}

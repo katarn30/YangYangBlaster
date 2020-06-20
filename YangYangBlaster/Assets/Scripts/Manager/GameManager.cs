@@ -19,37 +19,59 @@ public class GameManager : SingleTon<GameManager>
     [HideInInspector]
     public Vector2 maxScreenPos;
 
+    public int gameOverCount = 0;
+
+    public int nowStageScore = 0;
+    public int nowStageCoin = 0;
+
     public bool isGameOver = false;
     public bool isStageClear = false;
 
     [Header("InGameMode")]
-    public float slowTime = 0.0f;
-    public float slowDurationTime = 0.0f;
     public bool isSlowMode = false;
-
-    public float frezeTime = 0.0f;
-    public float frezeDurationTime = 0.0f;
     public bool isFrezeMode = false;
-
-    public float speedTime = 0.0f;
-    public float speedDurationTime = 0.0f;
     public bool isSpeedMode = false;
-
-    public float powerTime = 0.0f;
-    public float powerDurationTime = 0.0f;
     public bool isPowerMode = false;
-
-    public float moneyTime = 0.0f;
-    public float moneyDurationTime = 0.0f;
     public bool isMoneyMode = false;
-
-    public float shieldTime = 0.0f;
-    public float shieldDurationTime = 0.0f;
     public bool isShieldMode = false;
-
-    public float giantTime = 0.0f;
-    public float giantDurationTime = 0.0f;
     public bool isGiantMode = false;
+
+    #region GameMode Value
+    [HideInInspector]
+    public float slowTime = 0.0f;
+    [HideInInspector]
+    public float slowDurationTime = 0.0f;    
+
+    [HideInInspector]
+    public float frezeTime = 0.0f;
+    [HideInInspector]
+    public float frezeDurationTime = 0.0f;
+
+    [HideInInspector]
+    public float speedTime = 0.0f;
+    [HideInInspector]
+    public float speedDurationTime = 0.0f;
+
+    [HideInInspector]
+    public float powerTime = 0.0f;
+    [HideInInspector]
+    public float powerDurationTime = 0.0f;
+
+    [HideInInspector]
+    public float moneyTime = 0.0f;
+    [HideInInspector]
+    public float moneyDurationTime = 0.0f;
+
+    [HideInInspector]
+    public float shieldTime = 0.0f;
+    [HideInInspector]
+    public float shieldDurationTime = 0.0f;
+
+    //[HideInInspector]
+    public float giantTime = 0.0f;
+    //[HideInInspector]
+    public float giantDurationTime = 0.0f;
+    #endregion
 
     private void Awake()
     {
@@ -96,6 +118,8 @@ public class GameManager : SingleTon<GameManager>
                     PlayerManager.Instance.ChangeAniState(PlayerState.Idle);
                 }
 
+                PlayerManager.Instance.PlayerUpdate();
+
                 MercenaryManager.Instance.MercenaryMovePoint();
 
                 UIManager.Instance.InGameUIUpdate();
@@ -111,6 +135,12 @@ public class GameManager : SingleTon<GameManager>
 
     public void SetMilkMode()
     {
+        if (isGameOver == true)
+            return;
+
+        if (isStageClear == true)
+            return;
+
         if (isSlowMode == true)
         {
             slowTime = slowTime + Time.deltaTime;
@@ -264,6 +294,9 @@ public class GameManager : SingleTon<GameManager>
             MonsterManager.Instance.monsterHp = MonsterManager.Instance.monsterHp + 2;            
         }
 
+        nowStageScore = 0;
+        nowStageCoin = 0;
+
         isGameOver = false;
         isStageClear = false;
 
@@ -274,6 +307,28 @@ public class GameManager : SingleTon<GameManager>
         frezeTime = 0.0f;
         frezeDurationTime = 0.0f;
         isFrezeMode = false;
+
+        speedTime = 0.0f;
+        speedDurationTime = 0.0f;
+        isSpeedMode = false;
+
+        powerTime = 0.0f;
+        powerDurationTime = 0.0f;
+        isPowerMode = false;
+
+        moneyTime = 0.0f;
+        moneyDurationTime = 0.0f;
+        isMoneyMode = false;
+
+        shieldTime = 0.0f;
+        shieldDurationTime = 0.0f;
+        isShieldMode = false;
+
+        giantTime = 0.0f;
+        giantDurationTime = 0.0f;
+        isGiantMode = false;
+
+        gameOverCount = 0;
 
         minScreenPos = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         maxScreenPos = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
@@ -295,9 +350,34 @@ public class GameManager : SingleTon<GameManager>
         }                
     }
 
+    public void SetContinueInGame()
+    {
+        Debug.Log("Set ContinueInGame");
+
+        isGameOver = false;
+        isStageClear = false;
+
+        minScreenPos = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
+        maxScreenPos = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
+
+        PlayerManager.Instance.SetInGameInit();
+        BulletManager.Instance.SetInGameInit();
+        UIManager.Instance.SetInGameUI();
+
+        if (isBossStage() == true)
+        {
+            SoundManager.Instance.StageBossBGMSound();
+        }
+        else
+        {
+            SoundManager.Instance.StageBGMSound();
+        }
+    }
+
     public void GameOver()
     {
         isGameOver = true;
+        gameOverCount = gameOverCount + 1;
 
         UIManager.Instance.inGameUI.GameOverUI();        
     }
@@ -309,9 +389,39 @@ public class GameManager : SingleTon<GameManager>
         UIManager.Instance.inGameUI.StageClearUI();        
     }
 
+    public void UpdateNowStageScore(int _score)
+    {
+        nowStageScore = nowStageScore + _score;
+    }
+
+    public void UpdateNowGetCoin(int _coin)
+    {
+        nowStageCoin = nowStageCoin + _coin;
+
+        UIManager.Instance.inGameUI.SetCoinUI();
+    }
+
+    public void ResultVideoReward()
+    {
+        GetCoin(nowStageCoin * 2);
+        UpdateScore(nowStageScore);
+
+        nowStageScore = 0;
+        nowStageCoin = 0;
+    }
+
+    public void ResultReward()
+    {
+        GetCoin(nowStageCoin);
+        UpdateScore(nowStageScore);
+
+        nowStageScore = 0;
+        nowStageCoin = 0;
+    }
+
     public void UpdateScore(int _score)
     {
-        GameDataManager.Instance.userData.score = GameDataManager.Instance.userData.score + _score;        
+        GameDataManager.Instance.userData.score = GameDataManager.Instance.userData.score + _score;
     }
 
     public void GetCoin(int _coin)
