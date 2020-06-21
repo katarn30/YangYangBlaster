@@ -91,7 +91,7 @@ public class UIManager : SingleTon<UIManager>
         SetMainCanvasScale(lobbyUI.GetComponent<CanvasScaler>());
     }
 
-    public void SetInGameUI()
+    public void SetInGameUI(bool _isContinue = false)
     {        
         if (createIngameUI == null)
         {
@@ -116,7 +116,7 @@ public class UIManager : SingleTon<UIManager>
         }
 
         inGameUI.gameObject.SetActive(true);
-        inGameUI.OnInitialized();
+        inGameUI.OnInitialized(_isContinue);
 
         SetMainCanvasScale(inGameUI.GetComponent<CanvasScaler>());
     }

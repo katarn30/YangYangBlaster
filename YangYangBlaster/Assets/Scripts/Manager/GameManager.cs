@@ -318,9 +318,6 @@ public class GameManager : SingleTon<GameManager>
             MonsterManager.Instance.monsterHp = MonsterManager.Instance.monsterHp + 2;            
         }
 
-        nowStageScore = 0;
-        nowStageCoin = 0;
-
         isGameOver = false;
         isStageClear = false;
         isBossReady = false;
@@ -381,13 +378,14 @@ public class GameManager : SingleTon<GameManager>
 
         isGameOver = false;
         isStageClear = false;
+        SetMilkItem(GameDataManager.Instance.userData.milkItemList[6]);
 
         minScreenPos = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         maxScreenPos = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
 
         PlayerManager.Instance.SetInGameInit();
         BulletManager.Instance.SetInGameInit();
-        UIManager.Instance.SetInGameUI();
+        UIManager.Instance.SetInGameUI(true);
 
         if (isBossStage() == true)
         {

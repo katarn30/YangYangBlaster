@@ -52,12 +52,13 @@ MonoBehaviour:
   coinPrefab: {fileID: -2295724647634282891, guid: b93af28cf5c4a72418afe1817c5cc89a,
     type: 3}
   coinEffectList: []
-  coinEffectMaxCount: 60
+  coinEffectMaxCount: 30
   activeCoinNum: 0
   milkPrefab: {fileID: 6299609249032091635, guid: ca48f031d1a61204b8e477b3a70f5204,
     type: 3}
   milkEffectList: []
-  milkEffectMaxCount: 10
+  milkEffectMaxCount: 5
   activeMilkNum: 0
   dangerPrefab: {fileID: 8699606449548947795, guid: 9cee667b33d760541a3065c5bd568cda,
     type: 3}
+  dangerGo: {fileID: 0}

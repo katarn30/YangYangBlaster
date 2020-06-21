@@ -23,10 +23,12 @@ public class InGameUIController : MonoBehaviour
     public CanvasGroup bossWarringUI;    
 
     public GameObject resultUI;
+    public GameObject resultOkButton;
+    public GameObject resultHomeButton;
     public Text resultScoreText;
     public Text resultCoinText;
 
-    public void OnInitialized()
+    public void OnInitialized(bool _isContinue = false)
     {
         continueUI.SetActive(false);
         resultUI.SetActive(false);
@@ -38,7 +40,10 @@ public class InGameUIController : MonoBehaviour
         
         if (GameManager.Instance.isBossStage() == true)
         {
-            BossWarringUI();
+            if (_isContinue == false)
+            {
+                BossWarringUI();
+            }            
             SetBossStageGaugeUI();
         }
         else
@@ -72,18 +77,28 @@ public class InGameUIController : MonoBehaviour
 
         if (GameManager.Instance.gameOverCount > 1)
         {
-            StageClearUI();
+            StageClearUI();            
         }
         else
         {
             continueUI.SetActive(true);
         }
+
+        resultHomeButton.SetActive(true);
+        resultOkButton.SetActive(false);
     }
 
     public void StageClearUI()
     {
         resultUI.SetActive(true);
         resultScoreText.text = GameManager.Instance.nowStageScore.ToString();
+
+        if (GameManager.Instance.isStageClear)
+        {
+            resultHomeButton.SetActive(false);
+            resultOkButton.SetActive(true);
+        }
+        
         //resultCoinText.text = GameManager.Instance.nowStageCoin.ToString();
     }
 
@@ -116,7 +131,21 @@ public class InGameUIController : MonoBehaviour
 
     public void ResultVideoButton()
     {
-        GoogleAdmobManager.Instance.ShowReward(GameManager.Instance.ResultVideoReward);
+        GoogleAdmobManager.Instance.ShowReward(ResultVideo);
+    }
+
+    void ResultVideo()
+    {
+        if (GameManager.Instance.isStageClear)
+        {
+            GameManager.Instance.ResultVideoReward();
+            GameManager.Instance.SetInGame();
+        }
+        else
+        {
+            GameManager.Instance.ResultVideoReward();
+            GameManager.Instance.ChangeGameState(GameManager.GameState.Lobby);
+        }        
     }
 
     public void ResultOkButton()

@@ -95,6 +95,8 @@ public class LobbyUIController : MonoBehaviour
 
     public void GameStartButton()
     {
+        GameManager.Instance.nowStageScore = 0;
+        GameManager.Instance.nowStageCoin = 0;
         GameManager.Instance.ChangeGameState(GameManager.GameState.InGame);
     }
 
