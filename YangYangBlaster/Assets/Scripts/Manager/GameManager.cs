@@ -313,7 +313,7 @@ public class GameManager : SingleTon<GameManager>
         {
             GameDataManager.Instance.userData.stageNum = GameDataManager.Instance.userData.stageNum + 1;       
             
-            MonsterManager.Instance.monsterStageCount = MonsterManager.Instance.monsterStageCount + 5;
+            MonsterManager.Instance.monsterStageCount = 8;
             MonsterManager.Instance.regenTime = MonsterManager.Instance.regenTime - 0.01f;
             MonsterManager.Instance.monsterHp = MonsterManager.Instance.monsterHp + 2;            
         }
