@@ -33,15 +33,15 @@ public struct UpgradePlayer
     public int powerPrice;
 
     public int attackSpeedLevel;
-    public int attackSpeedIncrease;
+    public float attackSpeedIncrease;
     public int attackSpeedPrice;
 
     public int criticalLevel;
-    public int criticalIncrease;
+    public float criticalIncrease;
     public int criticalPrice;
 
     public int buffDurationLevel;
-    public int buffDurationIncrease;
+    public float buffDurationIncrease;
     public int buffDurationPrice;
 
     public int freeCoinLevel;
@@ -579,11 +579,11 @@ public class GameDataManager : SingleTon<GameDataManager>
         return result;
     }
 
-    public int GetPlayerUpgradeAttackSpeed()
+    public float GetPlayerUpgradeAttackSpeed()
     {
-        int result = 0;
+        float result = 0;
 
-        result = 100 + userData.upgradePlayer.attackSpeedLevel * userData.upgradePlayer.attackSpeedIncrease;
+        result = userData.upgradePlayer.attackSpeedLevel * userData.upgradePlayer.attackSpeedIncrease;
 
         return result;
     }
@@ -606,9 +606,9 @@ public class GameDataManager : SingleTon<GameDataManager>
         return result;
     }
 
-    public int GetPlayerUpgradeCritical()
+    public float GetPlayerUpgradeCritical()
     {
-        int result = 0;
+        float result = 0;
 
         result = userData.upgradePlayer.criticalLevel * userData.upgradePlayer.criticalIncrease;
 
@@ -624,16 +624,16 @@ public class GameDataManager : SingleTon<GameDataManager>
         return result;
     }
 
-    public int GetPlayerUpgradeSkill()
+    public float GetPlayerUpgradeMilkSKill()
     {
-        int result = 0;
+        float result = 0;
 
-        result = 100 + userData.upgradePlayer.buffDurationLevel * userData.upgradePlayer.buffDurationIncrease;
+        result = userData.upgradePlayer.buffDurationLevel * userData.upgradePlayer.buffDurationIncrease;
 
         return result;
     }
 
-    public int GetPlayerUpgradeSkillPrice()
+    public int GetPlayerUpgradeMilkSkillPrice()
     {
         int result = 0;
 

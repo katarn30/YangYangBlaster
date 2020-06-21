@@ -8,9 +8,11 @@ using UnityEngine.UI;
 public class UIManager : SingleTon<UIManager>
 {
     [Header("Create Prefab")]
+    public GameObject createLoadingUI;
     public GameObject createlobbyUI;
     public GameObject createIngameUI;
 
+    public LoadingUIController loadingUI;
     public LobbyUIController lobbyUI;
     public InGameUIController inGameUI;
 
@@ -28,6 +30,36 @@ public class UIManager : SingleTon<UIManager>
     {
         
     }
+
+    public void SetLoadingUI()
+    {
+        if (createLoadingUI == null)
+        {
+            Debug.LogError("UIManager CreateIngameUI is Null !!");
+            return;
+        }
+
+        if (loadingUI == null)
+        {
+            GameObject go = Instantiate(createLoadingUI, transform);
+            loadingUI = go.GetComponent<LoadingUIController>();
+        }
+
+        if (lobbyUI != null)
+        {
+            lobbyUI.gameObject.SetActive(false);
+        }
+
+        if (inGameUI != null)
+        {
+            inGameUI.gameObject.SetActive(false);
+        }
+
+        loadingUI.SetLoadingUI();
+
+        SetMainCanvasScale(loadingUI.GetComponent<CanvasScaler>());
+    }
+
 
     public void SetLobbyUI()
     {
@@ -47,6 +79,11 @@ public class UIManager : SingleTon<UIManager>
         {
             inGameUI.gameObject.SetActive(false);
         }
+
+        if (loadingUI != null)
+        {
+            loadingUI.gameObject.SetActive(false);
+        }        
 
         lobbyUI.gameObject.SetActive(true);
         lobbyUI.OnInitialized();
@@ -71,6 +108,11 @@ public class UIManager : SingleTon<UIManager>
         if (lobbyUI != null)
         {
             lobbyUI.gameObject.SetActive(false);
+        }
+
+        if (loadingUI != null)
+        {
+            loadingUI.gameObject.SetActive(false);
         }
 
         inGameUI.gameObject.SetActive(true);

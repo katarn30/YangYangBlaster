@@ -44,10 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aca75c8acd5214418c8eccf24af7d82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  createLoadingUI: {fileID: 2326048214232875302, guid: f4fe9edd4eeb47c438f51a2d10dd72eb,
+    type: 3}
   createlobbyUI: {fileID: 2326048214232875302, guid: 35d10008b4dc47d4c8f2f96aea97599e,
     type: 3}
   createIngameUI: {fileID: 6958420023184648272, guid: 47d447f2b82da9d43b641f0efa2c5dc1,
     type: 3}
+  loadingUI: {fileID: 0}
   lobbyUI: {fileID: 0}
   inGameUI: {fileID: 0}
 --- !u!1 &7067673152437033880

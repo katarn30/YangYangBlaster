@@ -2,17 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LoadingManager : MonoBehaviour
+public class LoadingManager : SingleTon<LoadingManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<GameObject> loadingManagerList = new List<GameObject>();
+
+    private void Awake()
     {
-        
+        DontDestroyOnLoad(this);
     }
 
-    // Update is called once per frame
-    void Update()
+    public IEnumerator SetLoading()
     {
+        for (int i = 0; i < loadingManagerList.Count; i++)
+        {
+            UIManager.Instance.loadingUI.UpdateLoadingBar(i, loadingManagerList.Count);
+
+            yield return new WaitForSeconds(0.2f);
+
+            Instantiate(loadingManagerList[i].gameObject);            
+        }
+
+        UIManager.Instance.loadingUI.UpdateLoadingBar(loadingManagerList.Count, loadingManagerList.Count);
+
+        yield return new WaitForSeconds(0.2f);
+
         
     }
 }

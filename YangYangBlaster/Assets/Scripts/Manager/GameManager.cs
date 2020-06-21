@@ -7,6 +7,7 @@ public class GameManager : SingleTon<GameManager>
 {
     public enum GameState
     {
+        Loading,
         Lobby,
         InGame
     }
@@ -26,6 +27,7 @@ public class GameManager : SingleTon<GameManager>
 
     public bool isGameOver = false;
     public bool isStageClear = false;
+    public bool isBossReady = false;
 
     [Header("InGameMode")]
     public bool isSlowMode = false;
@@ -78,8 +80,17 @@ public class GameManager : SingleTon<GameManager>
         DontDestroyOnLoad(this);
     }
 
+    IEnumerator Start()
+    {
+        ChangeGameState(GameState.Loading);
+
+        yield return LoadingManager.Instance.SetLoading();
+
+        GameManagerInit();
+    }
+
     // Start is called before the first frame update
-    void Start()
+    public void GameManagerInit()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         Application.targetFrameRate = 60;
@@ -87,7 +98,7 @@ public class GameManager : SingleTon<GameManager>
         GameDataManager.Instance.SetUserData();
         LoginManager.Instance.DoAutoLogin();
 
-        ChangeGameState(state);
+        ChangeGameState(GameState.Lobby);
     }
 
     // Update is called once per frame
@@ -95,6 +106,9 @@ public class GameManager : SingleTon<GameManager>
     {
         if (state == GameState.InGame)
         {
+            if (isBossStage() && isBossReady == false)
+                return;
+
             if (isGameOver == true || isStageClear == true)
             {
                 PlayerManager.Instance.ChangeAniState(PlayerState.Idle);
@@ -145,7 +159,7 @@ public class GameManager : SingleTon<GameManager>
         {
             slowTime = slowTime + Time.deltaTime;
 
-            if (slowTime >= slowDurationTime)
+            if (slowTime >= slowDurationTime + GameDataManager.Instance.GetPlayerUpgradeMilkSKill())
             {
                 Debug.Log("Slow End");
                 isSlowMode = false;
@@ -157,7 +171,7 @@ public class GameManager : SingleTon<GameManager>
         {
             frezeTime = frezeTime + Time.deltaTime;
 
-            if (frezeTime >= frezeDurationTime)
+            if (frezeTime >= frezeDurationTime + GameDataManager.Instance.GetPlayerUpgradeMilkSKill())
             {
                 Debug.Log("Freze End");
                 isFrezeMode = false;
@@ -169,7 +183,7 @@ public class GameManager : SingleTon<GameManager>
         {
             speedTime = speedTime + Time.deltaTime;
 
-            if (speedTime >= speedDurationTime)
+            if (speedTime >= speedDurationTime + GameDataManager.Instance.GetPlayerUpgradeMilkSKill())
             {
                 Debug.Log("Speed End");
                 isSpeedMode = false;
@@ -181,7 +195,7 @@ public class GameManager : SingleTon<GameManager>
         {
             shieldTime = shieldTime + Time.deltaTime;
 
-            if (shieldTime >= shieldDurationTime)
+            if (shieldTime >= shieldDurationTime + GameDataManager.Instance.GetPlayerUpgradeMilkSKill())
             {
                 Debug.Log("Shield End");
                 isShieldMode = false;
@@ -193,7 +207,7 @@ public class GameManager : SingleTon<GameManager>
         {
             moneyTime = moneyTime + Time.deltaTime;
 
-            if (moneyTime >= moneyDurationTime)
+            if (moneyTime >= moneyDurationTime + GameDataManager.Instance.GetPlayerUpgradeMilkSKill())
             {
                 Debug.Log("Money End");
                 isMoneyMode = false;
@@ -205,7 +219,7 @@ public class GameManager : SingleTon<GameManager>
         {
             giantTime = giantTime + Time.deltaTime;
 
-            if (giantTime >= giantDurationTime)
+            if (giantTime >= giantDurationTime + GameDataManager.Instance.GetPlayerUpgradeMilkSKill())
             {
                 Debug.Log("Giant End");
                 isGiantMode = false;
@@ -217,7 +231,7 @@ public class GameManager : SingleTon<GameManager>
         {
             powerTime = powerTime + Time.deltaTime;
 
-            if (powerTime >= powerDurationTime)
+            if (powerTime >= powerDurationTime + GameDataManager.Instance.GetPlayerUpgradeMilkSKill())
             {
                 Debug.Log("Power End");
                 isPowerMode = false;
@@ -232,6 +246,9 @@ public class GameManager : SingleTon<GameManager>
 
         switch (state)
         {
+            case GameState.Loading:
+                SetLoading();
+                break;
             case GameState.Lobby:
                 SetLobby();
                 break;
@@ -240,6 +257,13 @@ public class GameManager : SingleTon<GameManager>
                 break;
         }
     }
+
+    #region Loading
+    public void SetLoading()
+    {
+        UIManager.Instance.SetLoadingUI();
+    }
+    #endregion
 
     #region Lobby
     public void SetLobby()
@@ -299,6 +323,7 @@ public class GameManager : SingleTon<GameManager>
 
         isGameOver = false;
         isStageClear = false;
+        isBossReady = false;
 
         slowTime = 0.0f;
         slowDurationTime = 0.0f;

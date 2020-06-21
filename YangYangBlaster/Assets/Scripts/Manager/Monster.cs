@@ -202,7 +202,18 @@ public class Monster : MonoBehaviour
 
             if (monsterHp > 0)
             {
-                monsterHp = monsterHp - (int)BulletManager.Instance.bulletDamage;                
+                int damage = 0;
+
+                if (other.CompareTag("CriticalBullet") || GameManager.Instance.isPowerMode)
+                {
+                    damage = ((int)BulletManager.Instance.bulletDamage * 2);
+                }
+                else
+                {
+                    damage = (int)BulletManager.Instance.bulletDamage;
+                }
+
+                monsterHp = monsterHp - damage;
 
                 if (isPuchScaleEffect == false)
                 {

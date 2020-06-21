@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 
 public class InGameUIController : MonoBehaviour
@@ -19,6 +20,7 @@ public class InGameUIController : MonoBehaviour
     public Text continueCountText;
     float nowContinueTime = 0.0f;
 
+    public CanvasGroup bossWarringUI;    
 
     public GameObject resultUI;
     public Text resultScoreText;
@@ -36,6 +38,7 @@ public class InGameUIController : MonoBehaviour
         
         if (GameManager.Instance.isBossStage() == true)
         {
+            BossWarringUI();
             SetBossStageGaugeUI();
         }
         else
@@ -126,5 +129,17 @@ public class InGameUIController : MonoBehaviour
     {
         GameManager.Instance.ResultReward();
         GameManager.Instance.ChangeGameState(GameManager.GameState.Lobby);
+    }
+
+    public void BossWarringUI()
+    {
+        bossWarringUI.gameObject.SetActive(true);
+
+        bossWarringUI.DOFade(0, 0.6f).SetLoops(6, LoopType.Yoyo).OnComplete(
+            () =>
+            {
+                bossWarringUI.gameObject.SetActive(false);
+                GameManager.Instance.isBossReady = true;
+            });
     }
 }

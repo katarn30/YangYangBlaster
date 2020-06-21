@@ -40,8 +40,8 @@ public class LeaderCatShopController : MonoBehaviour
         criticalCoinText.text = GameDataManager.Instance.GetPlayerUpgradeCriticalPrice().ToString();
 
         skillLevelText.text = string.Format("Lv.{0}", GameDataManager.Instance.userData.upgradePlayer.buffDurationLevel.ToString());
-        skillText.text = string.Format("{0}%", GameDataManager.Instance.GetPlayerUpgradeSkill().ToString());
-        skillCoinText.text = GameDataManager.Instance.GetPlayerUpgradeSkillPrice().ToString();
+        skillText.text = string.Format("{0}%", GameDataManager.Instance.GetPlayerUpgradeMilkSKill().ToString());
+        skillCoinText.text = GameDataManager.Instance.GetPlayerUpgradeMilkSkillPrice().ToString();
 
         freeCoinLevelText.text = string.Format("Lv.{0}", GameDataManager.Instance.userData.upgradePlayer.freeCoinLevel.ToString());
         freeCoinText.text = string.Format("{0}%", GameDataManager.Instance.GetPlayerUpgradeFreeCoin().ToString());
@@ -97,14 +97,14 @@ public class LeaderCatShopController : MonoBehaviour
 
     public void SkillButton()
     {
-        if (GameDataManager.Instance.isUpgrade(GameDataManager.Instance.GetPlayerUpgradeSkillPrice()) == false)
+        if (GameDataManager.Instance.isUpgrade(GameDataManager.Instance.GetPlayerUpgradeMilkSkillPrice()) == false)
             return;
 
-        GameDataManager.Instance.SetUpgradeSkillDamage(GameDataManager.Instance.GetPlayerUpgradeSkillPrice());
+        GameDataManager.Instance.SetUpgradeSkillDamage(GameDataManager.Instance.GetPlayerUpgradeMilkSkillPrice());
 
         skillLevelText.text = string.Format("Lv.{0}", GameDataManager.Instance.userData.upgradePlayer.buffDurationLevel.ToString());
-        skillText.text = string.Format("{0}%", GameDataManager.Instance.GetPlayerUpgradeSkill().ToString());
-        skillCoinText.text = GameDataManager.Instance.GetPlayerUpgradeSkillPrice().ToString();
+        skillText.text = string.Format("{0}%", GameDataManager.Instance.GetPlayerUpgradeMilkSKill().ToString());
+        skillCoinText.text = GameDataManager.Instance.GetPlayerUpgradeMilkSkillPrice().ToString();
 
         UIManager.Instance.lobbyUI.UpdateCoinText();
     }

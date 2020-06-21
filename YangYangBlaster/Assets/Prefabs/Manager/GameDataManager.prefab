@@ -52,13 +52,13 @@ MonoBehaviour:
       powerIncrease: 10
       powerPrice: 200
       attackSpeedLevel: 1
-      attackSpeedIncrease: 5
+      attackSpeedIncrease: 0.01
       attackSpeedPrice: 200
       criticalLevel: 1
-      criticalIncrease: 2
+      criticalIncrease: 0.1
       criticalPrice: 200
       buffDurationLevel: 1
-      buffDurationIncrease: 1
+      buffDurationIncrease: 0.5
       buffDurationPrice: 200
       freeCoinLevel: 1
       freeCoinIncrease: 400
@@ -97,7 +97,7 @@ MonoBehaviour:
     - type: 6
       milkSprite: {fileID: 21300000, guid: 9a7fab3474d575e46bbdf4922a007cd5, type: 3}
       milkLevel: 1
-      milkDuration: 5
+      milkDuration: 6
       milkInfo: Become invincible for the duration.
     leaderData:
       name: 
@@ -183,9 +183,34 @@ MonoBehaviour:
     level: 0
     price: 100
     mercenaryGetType: 0
-    bulletImage: {fileID: 21300000, guid: 4ec063cee31e9f1459f8d5517c32c8a1, type: 3}
-    runtimeAnimator: {fileID: 0}
-    uiRuntimeAnimator: {fileID: 0}
+    bulletImage: {fileID: 21300000, guid: fb6f7e27e66218449aafc7413eb5c3d1, type: 3}
+    runtimeAnimator: {fileID: 22100000, guid: f6d92b2db1eed1c42846dafbb7b8f3b0, type: 2}
+    uiRuntimeAnimator: {fileID: 22100000, guid: dd7d156e051aa414d9fd1f7c301b4b19,
+      type: 2}
+  - name: COWBOY
+    damage: 1
+    moveSpeed: 3
+    attackSpeed: 1
+    catImage: {fileID: 21300000, guid: ed6789e074f7ea74c8115e0223368ed2, type: 3}
+    level: 0
+    price: 100
+    mercenaryGetType: 0
+    bulletImage: {fileID: 21300000, guid: bf89af1cceee0e94eb3e47cace36b9eb, type: 3}
+    runtimeAnimator: {fileID: 22100000, guid: caa42bc8eabfccc499b5ceffd90048a0, type: 2}
+    uiRuntimeAnimator: {fileID: 22100000, guid: a241bf91f5eaf824e99b671dce711216,
+      type: 2}
+  - name: FISHERMAN
+    damage: 1
+    moveSpeed: 3
+    attackSpeed: 1
+    catImage: {fileID: 21300000, guid: 3635608b407191047a644e287db4eccb, type: 3}
+    level: 0
+    price: 100
+    mercenaryGetType: 0
+    bulletImage: {fileID: 21300000, guid: 0119a19eae32f62489d7b08a9b60483e, type: 3}
+    runtimeAnimator: {fileID: 22100000, guid: 00d792936b32a4d4f930bf5524f228db, type: 2}
+    uiRuntimeAnimator: {fileID: 22100000, guid: 70b255773b6c0724eab2e2e47db6a7fb,
+      type: 2}
   stageDataList: []
   BossDataList:
   - name: 

@@ -45,7 +45,10 @@ public class Boss : MonoBehaviour
     public Color deadColor = Color.white;
 
     private void Update()
-    {       
+    {
+        if (GameManager.Instance.isBossReady == false)
+            return;
+
         if (isDead == true)
         {            
             return;
@@ -205,7 +208,18 @@ public class Boss : MonoBehaviour
         {
             if (monsterHp > 0)
             {
-                monsterHp = monsterHp - 1;
+                int damage = 0;
+
+                if (other.CompareTag("CriticalBullet") || GameManager.Instance.isPowerMode)
+                {
+                    damage = ((int)BulletManager.Instance.bulletDamage * 2);
+                }
+                else
+                {
+                    damage = (int)BulletManager.Instance.bulletDamage;
+                }
+
+                monsterHp = monsterHp - damage;
                 
                 if (isPuchScaleEffect == false)
                 {
