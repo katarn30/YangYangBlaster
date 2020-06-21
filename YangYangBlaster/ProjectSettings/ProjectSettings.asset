@@ -763,10 +763,10 @@ PlayerSettings:
     m_VersionCode: 1
     m_VersionName: 
   apiCompatibilityLevel: 6
-  cloudProjectId: 
+  cloudProjectId: beccf5cd-5f2b-4631-95b4-865576938475
   framebufferDepthMemorylessMode: 0
-  projectName: 
-  organizationId: 
+  projectName: YangYangBlaster
+  organizationId: jun-jae-kyaung
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
