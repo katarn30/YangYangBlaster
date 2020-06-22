@@ -45,8 +45,8 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
         if (channel == null || client == null)
         {
             // 서버 연결
-            string localHost = "127.0.0.1:20051";
-            string inhouseHost = "183.99.10.187:20051";
+            string localHost = "183.99.10.187:20051";
+            string inhouseHost = "ec2-18-218-253-188.us-east-2.compute.amazonaws.com:20051";
             string liveHost = "";
 
 #if UNITY_EDITOR

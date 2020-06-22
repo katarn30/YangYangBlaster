@@ -1,0 +1,7 @@
+EC2
+ec2-18-218-253-188.us-east-2.compute.amazonaws.com
+Administrator / &34jPk7W69h?A.I-GeCHt5-3JM5.9Pm6
+
+RDS
+database-1.cegoso5nooht.us-east-2.rds.amazonaws.com
+satel / asA!$EFb%&JEFAi210frihejd;1!#!F
