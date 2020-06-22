@@ -20,7 +20,7 @@ namespace yyb
 {
     bool InitCache()
     {
-        std::string host = "127.0.0.1";
+        std::string host = "ec2-3-19-58-107.us-east-2.compute.amazonaws.com";
         short port = 6379;
 
         Cache::Instance().Init(host, port);
@@ -38,10 +38,10 @@ namespace yyb
         const size_t poolSize = 
             static_cast<size_t>(std::thread::hardware_concurrency()) * 2;
         std::string db = "YYB";
-        std::string host = "192.168.1.5";
+        std::string host = "database-1.cegoso5nooht.us-east-2.rds.amazonaws.com";
         short port = 3306;
         std::string user = "satel";
-        std::string password = "369369";
+        std::string password = "asA!$EFb%&JEFAi210frihejd;1!#!F";
 
         DB::Instance().Init(poolSize, db, host, port, user, password);
         
