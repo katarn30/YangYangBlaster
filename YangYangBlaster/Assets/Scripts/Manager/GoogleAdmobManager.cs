@@ -45,7 +45,7 @@ public class GoogleAdmobManager : SingleTon<GoogleAdmobManager>
 #if UNITY_ANDROID
         adUnitId = "ca-app-pub-6643434665197243/3193534858";
 #elif UNITY_IPHONE
-            adUnitId = "ca-app-pub-3940256099942544/1712485313";
+            adUnitId = "ca-app-pub-6643434665197243/7825373417";
 #else
             adUnitId = "unexpected_platform";
 #endif

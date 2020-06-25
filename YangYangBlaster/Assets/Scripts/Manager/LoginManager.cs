@@ -23,7 +23,8 @@ public class LoginManager : SingleTon<LoginManager>
     {
         DontDestroyOnLoad(this);
 
-        //if (Application.platform == RuntimePlatform.Android)
+        #if UNITY_ANDROID
+        if (Application.platform == RuntimePlatform.Android)
         {
             PlayGamesPlatform.InitializeInstance(new PlayGamesClientConfiguration.Builder()
                 .RequestIdToken()
@@ -32,7 +33,7 @@ public class LoginManager : SingleTon<LoginManager>
             PlayGamesPlatform.DebugLogEnabled = true;
             PlayGamesPlatform.Activate();
         }
-
+        #endif
         //DoAutoLogin();
     }
 
@@ -75,8 +76,9 @@ public class LoginManager : SingleTon<LoginManager>
                 NonCertLogin();
                 return;
             }
-
+#if UNITY_ANDROID
             GoogleLogin();
+#endif
         }
         else if (LoginRequest.Types.LOGIN_TYPE.Facebook == loginType)
         {
@@ -99,6 +101,7 @@ public class LoginManager : SingleTon<LoginManager>
         RpcLogin(loginType, loginKey, nickName, "");
     }
 
+#if UNITY_ANDROID
     public void GoogleLogin()
     {
         GameDataManager.Instance.userData.loginType = LoginRequest.Types.LOGIN_TYPE.Google;
@@ -131,6 +134,7 @@ public class LoginManager : SingleTon<LoginManager>
             Debug.Log("You already logged in");
         }
     }
+#endif
 
     public void RpcLogin(LoginRequest.Types.LOGIN_TYPE loginType,
         string loginKey, string nickName, string idToken)
@@ -192,8 +196,10 @@ public class LoginManager : SingleTon<LoginManager>
 
     public void OnLogout()
     {
+#if UNITY_ANDROID
         PlayGamesPlatform.Instance.SignOut();
-
+#endif
         Debug.Log("Logout : " + Social.localUser.userName);
     }
+
 }

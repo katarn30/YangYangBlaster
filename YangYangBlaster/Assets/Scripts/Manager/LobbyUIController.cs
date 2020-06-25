@@ -90,7 +90,9 @@ public class LobbyUIController : MonoBehaviour
 
     public void LoginButton()
     {
+#if UNITY_ANDROID
         LoginManager.Instance.GoogleLogin();
+#endif
     }
 
     public void GameStartButton()
