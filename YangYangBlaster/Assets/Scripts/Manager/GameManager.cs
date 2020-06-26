@@ -93,11 +93,16 @@ public class GameManager : SingleTon<GameManager>
     public void GameManagerInit()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        Screen.SetResolution(9, 16, true);
+
         Application.targetFrameRate = 60;
 
         GameDataManager.Instance.SetUserData();
-        LoginManager.Instance.DoAutoLogin();
-
+        if(Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            LoginManager.Instance.DoAutoLogin();
+        }
+       
         ChangeGameState(GameState.Lobby);
     }
 

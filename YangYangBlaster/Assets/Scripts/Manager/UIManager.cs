@@ -126,24 +126,19 @@ public class UIManager : SingleTon<UIManager>
         float mobile_w = Screen.width - 720;
         float mobile_h = Screen.height - 1280;
 
-        Debug.Log(mobile_w + " : " + mobile_h);
-
         if (mobile_w <= 0 && mobile_h <= 0)
         {
-            Debug.Log("Normal");
             _canvasScaler.matchWidthOrHeight = 0.5f;          
         }
         else
         {
             if (mobile_w > mobile_h)
             {
-                Debug.Log("hight");
                 //가로가 길어짐
                 _canvasScaler.matchWidthOrHeight = 1;
             }
             else
             {
-                Debug.Log("width");
                 //세로가 길어짐
                 _canvasScaler.matchWidthOrHeight = 0f;
             }
