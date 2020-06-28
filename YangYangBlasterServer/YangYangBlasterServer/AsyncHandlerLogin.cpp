@@ -28,6 +28,9 @@ namespace yyb
 			if (request.idtoken().empty())
 			{
 				reply.set_error(ERROR_CODE_EMPTY_ID_TOKEN);
+
+				std::cout << "Login failed ERROR_CODE_EMPTY_ID_TOKEN" << std::endl;
+
 				return;
 			}
 
@@ -35,6 +38,9 @@ namespace yyb
 			if (false == CallGoogleVerifyOauth2Token(request.idtoken(), sub))
 			{
 				reply.set_error(ERROR_CODE_GOOGLE_AUTH_FAILED);
+
+				std::cout << "Login failed ERROR_CODE_GOOGLE_AUTH_FAILED" << std::endl;
+
 				return;
 			}
 		}
@@ -46,6 +52,9 @@ namespace yyb
 			if (request.nickname().empty())
 			{
 				reply.set_error(ERROR_CODE_EMPTY_NICKNAME);
+
+				std::cout << "Login failed ERROR_CODE_EMPTY_NICKNAME" << std::endl;
+
 				return;
 			}
 
@@ -54,6 +63,9 @@ namespace yyb
 			{
 				reply.set_error(
 					ERROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS);
+
+				std::cout << "Login failed ERROR_CODE_NICKNAME_HAVE_SPECIAL_CHARACTERS" << std::endl;
+
 				return;
 			}
 
@@ -61,6 +73,9 @@ namespace yyb
 			if (IsNickNameDuplication(request.nickname()))
 			{
 				reply.set_error(ERROR_CODE_DUP_NICKNAME);
+
+				std::cout << "Login failed ERROR_CODE_DUP_NICKNAME" << std::endl;
+
 				return;
 			}
 
@@ -69,6 +84,9 @@ namespace yyb
 				"KR", 0, sub, user))
 			{
 				reply.set_error(ERROR_CODE_UNABLE_TO_CREATE_USER);
+
+				std::cout << "Login failed ERROR_CODE_UNABLE_TO_CREATE_USER" << std::endl;
+
 				return;
 			}
 		}
@@ -82,6 +100,9 @@ namespace yyb
 				{
 					reply.set_error(
 						ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY);
+
+					std::cout << "Login failed ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY" << std::endl;
+
 					return;
 				}
 
@@ -91,6 +112,9 @@ namespace yyb
 				{
 					reply.set_error(
 						ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE);
+
+					std::cout << "Login failed ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE" << std::endl;
+
 					return;
 				}
 
@@ -99,6 +123,9 @@ namespace yyb
 				{
 					reply.set_error(
 						ERROR_CODE_FAILED_TO_GET_USER);
+
+					std::cout << "Login failed ERROR_CODE_FAILED_TO_GET_USER" << std::endl;
+
 					return;
 				}
 			}
@@ -109,6 +136,9 @@ namespace yyb
 				{
 					reply.set_error(
 						ERROR_CODE_FAILED_TO_GET_USER);
+
+					std::cout << "Login failed ERROR_CODE_FAILED_TO_GET_USER" << std::endl;
+
 					return;
 				}
 			}
@@ -120,6 +150,9 @@ namespace yyb
 			{
 				reply.set_error(
 					ERROR_CODE_FAILED_TO_GET_USER);
+
+				std::cout << "Login failed ERROR_CODE_FAILED_TO_GET_USER" << std::endl;
+
 				return;
 			}
 
@@ -135,6 +168,9 @@ namespace yyb
 					{
 						reply.set_error(
 							ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE);
+
+						std::cout << "Login failed ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE" << std::endl;
+
 						return;
 					}
 
@@ -143,6 +179,9 @@ namespace yyb
 					{
 						reply.set_error(
 							ERROR_CODE_FAILED_TO_GET_USER);
+
+						std::cout << "Login failed ERROR_CODE_FAILED_TO_GET_USER" << std::endl;
+
 						return;
 					}
 				}
@@ -151,6 +190,9 @@ namespace yyb
 					// 로그인 타입이 다름. (ex: 이전 구글, 지금 페북)
 					reply.set_error(
 						ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT);
+
+					std::cout << "Login failed ERROR_CODE_LOGIN_TYPE_IS_DIFFERENT" << std::endl;
+
 					return;
 				}
 			}
@@ -166,6 +208,9 @@ namespace yyb
 		reply.set_nickname(user.nickName_);
 		reply.set_loginkey(user.loginKey_);
 		reply.set_accesskey(user.accessKey_);
+
+		std::cout << "Logged in user : " + user.nickName_ << std::endl;
+
 		return;
 	}
 
@@ -180,67 +225,67 @@ namespace yyb
 		std::cout << __FUNCTION__ << " : " << status_ << std::endl;
 		std::cout << idToken << std::endl;
 
-		if (false == Python::Instance().GoogleVerifyOauth2Token(idToken, oustSub))
+		/*if (false == Python::Instance().GoogleVerifyOauth2Token(idToken, oustSub))
 		{
 			return false;
-		}
+		}*/
 
 		//return true;
 
-		//try
-		//{
-		//	std::string host = "oauth2.googleapis.com";//"https://oauth2.googleapis.com/tokeninfo?id_token="
-		//		//+ idToken;
+		try
+		{
+			std::string host = "localhost";//"oauth2.googleapis.com";//"https://oauth2.googleapis.com/tokeninfo?id_token="
+				//+ idToken;
 
-		//	boost::asio::io_context ioc;
-		//	boost::asio::ip::tcp::resolver resolver(ioc);
-		//	boost::beast::tcp_stream stream(ioc);
-		//	auto const results = resolver.resolve(host, "443");
-		//	stream.connect(results);
+			boost::asio::io_context ioc;
+			boost::asio::ip::tcp::resolver resolver(ioc);
+			boost::beast::tcp_stream stream(ioc);
+			auto const results = resolver.resolve(host, "3000");
+			stream.connect(results);
 
-		//	int version = 10;
+			int version = 10;
 
-		//	boost::beast::http::request<boost::beast::http::string_body> req
-		//	{
-		//		boost::beast::http::verb::get, "/tokeninfo?id_token=" 
-		//		+ idToken, version
-		//	};
-		//	req.set(boost::beast::http::field::host, host);
-		//	req.set(boost::beast::http::field::user_agent, BOOST_BEAST_VERSION_STRING);
+			boost::beast::http::request<boost::beast::http::string_body> req
+			{
+				boost::beast::http::verb::get, "/auth" , version
+			};
+			req.set(boost::beast::http::field::authorization, idToken);
+			req.set(boost::beast::http::field::host, host);
+			req.set(boost::beast::http::field::user_agent, BOOST_BEAST_VERSION_STRING);
 
-		//	boost::beast::http::write(stream, req);
+			boost::beast::http::write(stream, req);
 
-		//	boost::beast::flat_buffer buffer;
+			boost::beast::flat_buffer buffer;
 
-		//	// Declare a container to hold the response
-		//	boost::beast::http::response<boost::beast::http::dynamic_body> res;
+			// Declare a container to hold the response
+			boost::beast::http::response<boost::beast::http::dynamic_body> res;
 
-		//	// Receive the HTTP response
-		//	boost::beast::http::read(stream, buffer, res);
+			// Receive the HTTP response
+			boost::beast::http::read(stream, buffer, res);
 
-		//	// Write the message to standard out
-		//	std::cout << res << std::endl;
+			// Write the message to standard out
+			std::cout << res << std::endl;
 
-		//	// Gracefully close the socket
-		//	boost::beast::error_code ec;
-		//	stream.socket().shutdown(boost::asio::ip::tcp::socket::shutdown_both, ec);
+			// Gracefully close the socket
+			boost::beast::error_code ec;
+			stream.socket().shutdown(boost::asio::ip::tcp::socket::shutdown_both, ec);
 
-		//	// not_connected happens sometimes
-		//	// so don't bother reporting it.
-		//	//
-		//	if (ec && ec != boost::beast::errc::not_connected)
-		//		throw boost::beast::system_error{ ec };
-		//}
-		//catch (std::exception const& e)
-		//{
-		//	std::cerr << "Standard error: " << e.what() << std::endl;
-		//	return false;
-		//}
-		//catch (...)
-		//{
-		//	std::cerr << "Some other error" << std::endl;
-		//	return false;
-		//}
+			// not_connected happens sometimes
+			// so don't bother reporting it.
+			//
+			if (ec && ec != boost::beast::errc::not_connected)
+				throw boost::beast::system_error{ ec };
+		}
+		catch (std::exception const& e)
+		{
+			std::cerr << "Standard error: " << e.what() << std::endl;
+			return false;
+		}
+		catch (...)
+		{
+			std::cerr << "Some other error" << std::endl;
+			return false;
+		}
 
 		return true;
 	}

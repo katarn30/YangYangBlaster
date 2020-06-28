@@ -64,8 +64,6 @@ public class LoginManager : SingleTon<LoginManager>
 
     public void DoAutoLogin()
     {
-        GameDataManager.Instance.LoadUserDataLoginParts();
-
         var loginType = GameDataManager.Instance.userData.loginType;
         var loginKey = GameDataManager.Instance.userData.loginKey;
 

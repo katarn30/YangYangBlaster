@@ -334,6 +334,7 @@ public class GameDataManager : SingleTon<GameDataManager>
     {
         var request = new GameDataRequest();
 
+        request.Stage = new Stage();
         request.Stage.StageNum = userData.stageNum;
         request.Stage.StageScore = userData.score;
 
@@ -354,6 +355,7 @@ public class GameDataManager : SingleTon<GameDataManager>
     {
         var request = new GameDataRequest();
 
+        request.UpgradePlayer = new Yyb.UpgradePlayer();
         request.UpgradePlayer.PowerLevel = userData.upgradePlayer.powerLevel;
         request.UpgradePlayer.AttackSpeedLevel = userData.upgradePlayer.attackSpeedLevel;
         request.UpgradePlayer.CriticalLevel = userData.upgradePlayer.criticalLevel;
@@ -375,7 +377,7 @@ public class GameDataManager : SingleTon<GameDataManager>
 
     public void SetUserData()
     {
-        //LoadUserDataLoginParts();
+        LoadUserDataLoginParts();
 
         //userData.nickName = "멍뭉이는멍뭉";
         if (userData.loginKey.Equals("") && userData.nickName.Equals(""))
@@ -665,6 +667,8 @@ public class GameDataManager : SingleTon<GameDataManager>
         userData.userCurrency.userCoin = userData.userCurrency.userCoin - _price;
 
         userData.upgradePlayer.powerLevel++;
+
+        SaveGameDataUpgradePlayer();
     }
 
     public void SetUpgradeAttackSpeed(int _price)
@@ -672,6 +676,8 @@ public class GameDataManager : SingleTon<GameDataManager>
         userData.userCurrency.userCoin = userData.userCurrency.userCoin - _price;
 
         userData.upgradePlayer.attackSpeedLevel++;
+
+        SaveGameDataUpgradePlayer();
     }
 
     public void SetUpgradeCritical(int _price)
@@ -679,6 +685,8 @@ public class GameDataManager : SingleTon<GameDataManager>
         userData.userCurrency.userCoin = userData.userCurrency.userCoin - _price;
 
         userData.upgradePlayer.criticalLevel++;
+
+        SaveGameDataUpgradePlayer();
     }
 
     public void SetUpgradeSkillDamage(int _price)
@@ -686,6 +694,8 @@ public class GameDataManager : SingleTon<GameDataManager>
         userData.userCurrency.userCoin = userData.userCurrency.userCoin - _price;
 
         userData.upgradePlayer.buffDurationLevel++;
+
+        SaveGameDataUpgradePlayer();
     }
 
     public void SetUpgradeFreeCoin(int _price)
@@ -693,6 +703,8 @@ public class GameDataManager : SingleTon<GameDataManager>
         userData.userCurrency.userCoin = userData.userCurrency.userCoin - _price;
 
         userData.upgradePlayer.freeCoinLevel++;
+
+        SaveGameDataUpgradePlayer();
     }
 
     public bool isUpgrade(int _price)

@@ -42,23 +42,29 @@ namespace yyb
 				}
 			}
 
-			if (false == UpdateStage(tran, user->GetUsn(), request.stage()))
+			if (request.has_stage())
 			{
-				if (false == InsertStage(tran, user->GetUsn(), request.stage()))
+				if (false == UpdateStage(tran, user->GetUsn(), request.stage()))
 				{
-					reply.set_error(ERROR_CODE_FAILED_TO_SAVE_STAGE);
-					return;
+					if (false == InsertStage(tran, user->GetUsn(), request.stage()))
+					{
+						reply.set_error(ERROR_CODE_FAILED_TO_SAVE_STAGE);
+						return;
+					}
 				}
 			}
 
-			if (false == UpdateUpgradePlayer(tran, user->GetUsn(),
-				request.upgradeplayer()))
+			if (request.has_upgradeplayer())
 			{
-				if (false == InsertUpgradePlayer(tran, user->GetUsn(),
+				if (false == UpdateUpgradePlayer(tran, user->GetUsn(),
 					request.upgradeplayer()))
 				{
-					reply.set_error(ERROR_CODE_FAILED_TO_SAVE_UPGRADE_PLAYER);
-					return;
+					if (false == InsertUpgradePlayer(tran, user->GetUsn(),
+						request.upgradeplayer()))
+					{
+						reply.set_error(ERROR_CODE_FAILED_TO_SAVE_UPGRADE_PLAYER);
+						return;
+					}
 				}
 			}
 

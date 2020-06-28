@@ -55,9 +55,9 @@ namespace yyb
 
 	void UserManager::CheckUserAll()
 	{
-		std::lock_guard<std::mutex> lock(mtx_);
-
 		int now = std::time(nullptr);
+
+		std::lock_guard<std::mutex> lock(mtx_);
 
 		auto userIter = users_.begin();
 		for (userIter; userIter != users_.end();)
@@ -79,7 +79,7 @@ namespace yyb
 			}
 			else
 			{
-				++userIter;
+				userIter = users_.erase(userIter);
 			}
 		}
 	}
