@@ -79,7 +79,7 @@ public class GameManager : SingleTon<GameManager>
     public void GameManagerInit()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        Screen.SetResolution(9, 16, true);
+        //Screen.SetResolution(9, 16, true);
 
         Application.targetFrameRate = 60;
 
