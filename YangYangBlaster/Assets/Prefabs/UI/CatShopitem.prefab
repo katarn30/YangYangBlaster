@@ -176,6 +176,7 @@ MonoBehaviour:
   catName: {fileID: 864440669344971185}
   catImage: {fileID: 864440669539111539}
   levelText: {fileID: 864440667529492353}
+  priceImage: {fileID: 864440667672440665}
   priceText: {fileID: 864440667695751744}
   selectEffect: {fileID: 583385966555818194}
   buttonList:

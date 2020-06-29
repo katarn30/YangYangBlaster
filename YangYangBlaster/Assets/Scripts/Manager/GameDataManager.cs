@@ -624,11 +624,20 @@ public class GameDataManager : SingleTon<GameDataManager>
         return result;
     }
 
-    public float GetPlayerUpgradeMilkSKill()
+    public float GetPlayerUpgradeBuffSKill()
     {
         float result = 0;
 
-        result = userData.upgradePlayer.buffDurationLevel * userData.upgradePlayer.buffDurationIncrease;
+        result = (userData.upgradePlayer.buffDurationLevel * userData.upgradePlayer.buffDurationIncrease);
+
+        return result;
+    }
+
+    public float GetPlayerUpgradeMilkSKill(MilkType _type)
+    {
+        float result = 0;
+
+        result = userData.milkItemList[(int)_type].milkDuration + (userData.upgradePlayer.buffDurationLevel * userData.upgradePlayer.buffDurationIncrease);
 
         return result;
     }
@@ -646,7 +655,7 @@ public class GameDataManager : SingleTon<GameDataManager>
     {
         int result = 0;
 
-        result = 100 + userData.upgradePlayer.freeCoinLevel * userData.upgradePlayer.freeCoinIncrease;
+        result = freeCoin + (userData.upgradePlayer.freeCoinLevel * userData.upgradePlayer.freeCoinIncrease);
 
         return result;
     }

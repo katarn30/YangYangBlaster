@@ -75,7 +75,7 @@ MonoBehaviour:
       milkDuration: 2
       milkInfo: The monster pauses for the duration.
     - type: 2
-      milkSprite: {fileID: 21300000, guid: 816bd94a366063e46974550a246ba92b, type: 3}
+      milkSprite: {fileID: 21300000, guid: 83bfe439599887c45986154c8b03c574, type: 3}
       milkLevel: 1
       milkDuration: 3
       milkInfo: attack, movement speed is increased for the duration.

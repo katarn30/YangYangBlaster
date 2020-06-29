@@ -126,7 +126,7 @@ public class LobbyUIController : MonoBehaviour
 
     public void UpdateFreeCoinText()
     {
-        freeCoinText.text = GameDataManager.Instance.freeCoin.ToString();
+        freeCoinText.text = GameDataManager.Instance.GetPlayerUpgradeFreeCoin().ToString();
     }
 
     public void UpdateStageText()

@@ -13,6 +13,7 @@ public class InGameUIController : MonoBehaviour
     public Text stageText;
     public Text nextStageText;
     public Image stageGauge;
+    public BuffInfoController buffInfoController;
 
     [Header("CENTER")]
     public GameObject continueUI;
@@ -37,7 +38,9 @@ public class InGameUIController : MonoBehaviour
 
         SetCoinUI();
         StageUI();
-        
+
+        buffInfoController.SetBuffInfo();
+
         if (GameManager.Instance.isBossStage() == true)
         {
             if (_isContinue == false)
@@ -104,7 +107,7 @@ public class InGameUIController : MonoBehaviour
 
     public void SetCoinUI()
     {
-        coinText.text = GameManager.Instance.nowStageCoin.ToString();
+        coinText.text = GameDataManager.Instance.userData.userCurrency.userCoin.ToString();
         resultCoinText.text = GameManager.Instance.nowStageCoin.ToString();
     }
 

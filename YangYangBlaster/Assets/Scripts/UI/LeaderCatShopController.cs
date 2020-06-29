@@ -40,7 +40,7 @@ public class LeaderCatShopController : MonoBehaviour
         criticalCoinText.text = GameDataManager.Instance.GetPlayerUpgradeCriticalPrice().ToString();
 
         skillLevelText.text = string.Format("Lv.{0}", GameDataManager.Instance.userData.upgradePlayer.buffDurationLevel.ToString());
-        skillText.text = string.Format("{0}%", GameDataManager.Instance.GetPlayerUpgradeMilkSKill().ToString());
+        skillText.text = string.Format("{0}%", GameDataManager.Instance.GetPlayerUpgradeBuffSKill().ToString());
         skillCoinText.text = GameDataManager.Instance.GetPlayerUpgradeMilkSkillPrice().ToString();
 
         freeCoinLevelText.text = string.Format("Lv.{0}", GameDataManager.Instance.userData.upgradePlayer.freeCoinLevel.ToString());
@@ -103,7 +103,7 @@ public class LeaderCatShopController : MonoBehaviour
         GameDataManager.Instance.SetUpgradeSkillDamage(GameDataManager.Instance.GetPlayerUpgradeMilkSkillPrice());
 
         skillLevelText.text = string.Format("Lv.{0}", GameDataManager.Instance.userData.upgradePlayer.buffDurationLevel.ToString());
-        skillText.text = string.Format("{0}%", GameDataManager.Instance.GetPlayerUpgradeMilkSKill().ToString());
+        skillText.text = string.Format("{0}%", GameDataManager.Instance.GetPlayerUpgradeBuffSKill().ToString());
         skillCoinText.text = GameDataManager.Instance.GetPlayerUpgradeMilkSkillPrice().ToString();
 
         UIManager.Instance.lobbyUI.UpdateCoinText();

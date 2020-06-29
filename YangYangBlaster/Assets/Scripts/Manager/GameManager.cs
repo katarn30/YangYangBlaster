@@ -41,38 +41,24 @@ public class GameManager : SingleTon<GameManager>
     #region GameMode Value
     [HideInInspector]
     public float slowTime = 0.0f;
-    [HideInInspector]
-    public float slowDurationTime = 0.0f;    
 
     [HideInInspector]
     public float frezeTime = 0.0f;
-    [HideInInspector]
-    public float frezeDurationTime = 0.0f;
 
     [HideInInspector]
     public float speedTime = 0.0f;
-    [HideInInspector]
-    public float speedDurationTime = 0.0f;
 
     [HideInInspector]
     public float powerTime = 0.0f;
-    [HideInInspector]
-    public float powerDurationTime = 0.0f;
 
     [HideInInspector]
     public float moneyTime = 0.0f;
-    [HideInInspector]
-    public float moneyDurationTime = 0.0f;
 
     [HideInInspector]
     public float shieldTime = 0.0f;
-    [HideInInspector]
-    public float shieldDurationTime = 0.0f;
 
-    //[HideInInspector]
+    [HideInInspector]
     public float giantTime = 0.0f;
-    //[HideInInspector]
-    public float giantDurationTime = 0.0f;
     #endregion
 
     private void Awake()
@@ -164,10 +150,14 @@ public class GameManager : SingleTon<GameManager>
         {
             slowTime = slowTime + Time.deltaTime;
 
-            if (slowTime >= slowDurationTime + GameDataManager.Instance.GetPlayerUpgradeMilkSKill())
+            UIManager.Instance.inGameUI.buffInfoController.UpdateBuffUI(slowTime, GameDataManager.Instance.GetPlayerUpgradeMilkSKill(MilkType.SLOW), MilkType.SLOW);
+
+            if (slowTime >= GameDataManager.Instance.GetPlayerUpgradeMilkSKill(MilkType.SLOW))
             {
                 Debug.Log("Slow End");
                 isSlowMode = false;
+                UIManager.Instance.inGameUI.buffInfoController.DisableBuffInfo(MilkType.SLOW);
+
                 slowTime = 0;
             }
         }
@@ -176,10 +166,14 @@ public class GameManager : SingleTon<GameManager>
         {
             frezeTime = frezeTime + Time.deltaTime;
 
-            if (frezeTime >= frezeDurationTime + GameDataManager.Instance.GetPlayerUpgradeMilkSKill())
+            UIManager.Instance.inGameUI.buffInfoController.UpdateBuffUI(frezeTime, GameDataManager.Instance.GetPlayerUpgradeMilkSKill(MilkType.FREZE), MilkType.FREZE);
+
+            if (frezeTime >= GameDataManager.Instance.GetPlayerUpgradeMilkSKill(MilkType.FREZE))
             {
                 Debug.Log("Freze End");
                 isFrezeMode = false;
+                UIManager.Instance.inGameUI.buffInfoController.DisableBuffInfo(MilkType.FREZE);
+
                 frezeTime = 0;
             }
         }
@@ -188,10 +182,14 @@ public class GameManager : SingleTon<GameManager>
         {
             speedTime = speedTime + Time.deltaTime;
 
-            if (speedTime >= speedDurationTime + GameDataManager.Instance.GetPlayerUpgradeMilkSKill())
+            UIManager.Instance.inGameUI.buffInfoController.UpdateBuffUI(speedTime, GameDataManager.Instance.GetPlayerUpgradeMilkSKill(MilkType.SPEED), MilkType.SPEED);
+
+            if (speedTime >= GameDataManager.Instance.GetPlayerUpgradeMilkSKill(MilkType.SPEED))
             {
                 Debug.Log("Speed End");
                 isSpeedMode = false;
+                UIManager.Instance.inGameUI.buffInfoController.DisableBuffInfo(MilkType.SPEED);
+
                 speedTime = 0;
             }
         }
@@ -200,10 +198,14 @@ public class GameManager : SingleTon<GameManager>
         {
             shieldTime = shieldTime + Time.deltaTime;
 
-            if (shieldTime >= shieldDurationTime + GameDataManager.Instance.GetPlayerUpgradeMilkSKill())
+            UIManager.Instance.inGameUI.buffInfoController.UpdateBuffUI(shieldTime, GameDataManager.Instance.GetPlayerUpgradeMilkSKill(MilkType.SHIELD), MilkType.SHIELD);
+
+            if (shieldTime >= GameDataManager.Instance.GetPlayerUpgradeMilkSKill(MilkType.SHIELD))
             {
                 Debug.Log("Shield End");
                 isShieldMode = false;
+                UIManager.Instance.inGameUI.buffInfoController.DisableBuffInfo(MilkType.SHIELD);
+
                 shieldTime = 0;
             }
         }
@@ -212,10 +214,14 @@ public class GameManager : SingleTon<GameManager>
         {
             moneyTime = moneyTime + Time.deltaTime;
 
-            if (moneyTime >= moneyDurationTime + GameDataManager.Instance.GetPlayerUpgradeMilkSKill())
+            UIManager.Instance.inGameUI.buffInfoController.UpdateBuffUI(moneyTime, GameDataManager.Instance.GetPlayerUpgradeMilkSKill(MilkType.MONEY), MilkType.MONEY);
+
+            if (moneyTime >= GameDataManager.Instance.GetPlayerUpgradeMilkSKill(MilkType.MONEY))
             {
                 Debug.Log("Money End");
                 isMoneyMode = false;
+                UIManager.Instance.inGameUI.buffInfoController.DisableBuffInfo(MilkType.MONEY);
+
                 moneyTime = 0;
             }
         }
@@ -224,10 +230,14 @@ public class GameManager : SingleTon<GameManager>
         {
             giantTime = giantTime + Time.deltaTime;
 
-            if (giantTime >= giantDurationTime + GameDataManager.Instance.GetPlayerUpgradeMilkSKill())
+            UIManager.Instance.inGameUI.buffInfoController.UpdateBuffUI(giantTime, GameDataManager.Instance.GetPlayerUpgradeMilkSKill(MilkType.GIANT), MilkType.GIANT);
+
+            if (giantTime >= GameDataManager.Instance.GetPlayerUpgradeMilkSKill(MilkType.GIANT))
             {
                 Debug.Log("Giant End");
                 isGiantMode = false;
+                UIManager.Instance.inGameUI.buffInfoController.DisableBuffInfo(MilkType.GIANT);
+
                 giantTime = 0;
             }
         }
@@ -236,10 +246,14 @@ public class GameManager : SingleTon<GameManager>
         {
             powerTime = powerTime + Time.deltaTime;
 
-            if (powerTime >= powerDurationTime + GameDataManager.Instance.GetPlayerUpgradeMilkSKill())
+            UIManager.Instance.inGameUI.buffInfoController.UpdateBuffUI(powerTime, GameDataManager.Instance.GetPlayerUpgradeMilkSKill(MilkType.POWER), MilkType.POWER);
+
+            if (powerTime >= GameDataManager.Instance.GetPlayerUpgradeMilkSKill(MilkType.POWER))
             {
                 Debug.Log("Power End");
                 isPowerMode = false;
+                UIManager.Instance.inGameUI.buffInfoController.DisableBuffInfo(MilkType.POWER);
+
                 powerTime = 0;
             }
         }
@@ -328,31 +342,24 @@ public class GameManager : SingleTon<GameManager>
         isBossReady = false;
 
         slowTime = 0.0f;
-        slowDurationTime = 0.0f;
         isSlowMode = false;
 
         frezeTime = 0.0f;
-        frezeDurationTime = 0.0f;
         isFrezeMode = false;
 
         speedTime = 0.0f;
-        speedDurationTime = 0.0f;
         isSpeedMode = false;
 
         powerTime = 0.0f;
-        powerDurationTime = 0.0f;
         isPowerMode = false;
 
         moneyTime = 0.0f;
-        moneyDurationTime = 0.0f;
         isMoneyMode = false;
 
         shieldTime = 0.0f;
-        shieldDurationTime = 0.0f;
         isShieldMode = false;
 
         giantTime = 0.0f;
-        giantDurationTime = 0.0f;
         isGiantMode = false;
 
         gameOverCount = 0;
@@ -426,6 +433,8 @@ public class GameManager : SingleTon<GameManager>
     {
         nowStageCoin = nowStageCoin + _coin;
 
+        GameDataManager.Instance.userData.userCurrency.userCoin += _coin;
+
         UIManager.Instance.inGameUI.SetCoinUI();
     }
 
@@ -476,44 +485,37 @@ public class GameManager : SingleTon<GameManager>
         if (_item.type == MilkType.SLOW)
         {
             isSlowMode = true;
-            slowTime = 0;
-            slowDurationTime = _item.milkDuration;            
+            slowTime = 0;           
         }
         else if (_item.type == MilkType.FREZE)
         {
             isFrezeMode = true;
             frezeTime = 0;
-            frezeDurationTime = _item.milkDuration;
         }
         else if (_item.type == MilkType.GIANT)
         {
             isGiantMode = true;
             giantTime = 0;
-            giantDurationTime = _item.milkDuration;
         }
         else if (_item.type == MilkType.MONEY)
         {
             isMoneyMode = true;
             moneyTime = 0;
-            moneyDurationTime = _item.milkDuration;
         }
         else if (_item.type == MilkType.POWER)
         {
             isPowerMode = true;
             powerTime = 0;
-            powerDurationTime = _item.milkDuration;
         }
         else if (_item.type == MilkType.SHIELD)
         {
             isShieldMode = true;
             shieldTime = 0;
-            shieldDurationTime = _item.milkDuration;
         }
         else if (_item.type == MilkType.SPEED)
         {
             isSpeedMode = true;
             speedTime = 0;
-            speedDurationTime = _item.milkDuration;
         }
     }
     #endregion
