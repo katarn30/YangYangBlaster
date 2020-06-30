@@ -1,6 +1,8 @@
+/proto/protoc.exe
 /YangYangBlasterServer/.gitattributes
-/YangYangBlasterServer/.vs
+/YangYangBlasterServer/.vscode
 /YangYangBlasterServer/External/
-/YangYangBlasterServer/YangYangBlasterServer/x64
-/YangYangBlasterServer/x64
-/YangYangBlasterServer/proto/google
+/YangYangBlasterServer/bin/*
+/YangYangBlasterServer/pkg/*
+/YangYangBlasterServer/src/github.com
+/YangYangBlasterServer/src/google.golang.org

@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
-using Yyb;
-using Grpc.Health.V1;
+using Msg;
 
 public class LoginManager : SingleTon<LoginManager>
 {
@@ -64,8 +63,6 @@ public class LoginManager : SingleTon<LoginManager>
 
     public void DoAutoLogin()
     {
-        GameDataManager.Instance.LoadUserDataLoginParts();
-
         var loginType = GameDataManager.Instance.userData.loginType;
         var loginKey = GameDataManager.Instance.userData.loginKey;
 
@@ -139,59 +136,63 @@ public class LoginManager : SingleTon<LoginManager>
     public void RpcLogin(LoginRequest.Types.LOGIN_TYPE loginType,
         string loginKey, string nickName, string idToken)
     {
-        // 로그인
-        LoginRequest request = new LoginRequest();
-        request.LoginType = loginType;
-        //request.Usn = usn;//Social.localUser.userName == null ? "null" : Social.localUser.userName;
-        request.LoginKey = loginKey;
-        request.NickName = nickName;
-        request.IdToken = idToken;
+        LoginModel.Instance.CTosLoginRequest(loginType, loginKey, nickName, idToken);
 
-        // 요청
-        RpcServiceManager.Instance.Login(request, (LoginReply reply) =>
-        {
-            // 응답
-            Debug.Log("LoginReply : " + reply.ToString());
+        return;
 
-            if (ERROR_CODE.Ok == reply.Error)
-            {
-                Debug.Log("Ok");
+        //// 로그인
+        //LoginRequest request = new LoginRequest();
+        //request.LoginType = loginType;
+        ////request.Usn = usn;//Social.localUser.userName == null ? "null" : Social.localUser.userName;
+        //request.LoginKey = loginKey;
+        //request.NickName = nickName;
+        //request.IdToken = idToken;
 
-                GameDataManager.Instance.userData.loginKey = reply.LoginKey;
-                GameDataManager.Instance.userData.accessKey = reply.AccessKey;
-                GameDataManager.Instance.userData.nickName = reply.NickName;
-                //usn_ = reply.Usn;
+        //// 요청
+        //RpcServiceManager.Instance.Login(request, (LoginReply reply) =>
+        //{
+        //    // 응답
+        //    Debug.Log("LoginReply : " + reply.ToString());
 
-                GameDataManager.Instance.SaveUserDataLoginParts();
-                GameDataManager.Instance.LoadGameData();
+        //    if (ERROR_CODE.Ok == reply.Error)
+        //    {
+        //        Debug.Log("Ok");
 
-                // 헬스체크 시작
-                HealthCheckRequest healthCheckRequest = new HealthCheckRequest();
-                healthCheckRequest.Service = "yyb";
+        //        GameDataManager.Instance.userData.loginKey = reply.LoginKey;
+        //        GameDataManager.Instance.userData.accessKey = reply.AccessKey;
+        //        GameDataManager.Instance.userData.nickName = reply.NickName;
+        //        //usn_ = reply.Usn;
 
-                // 요청
-                RpcServiceManager.Instance.Check(healthCheckRequest, 
-                    (HealthCheckResponse HealthCheckReply) =>
-                {
-                    // 응답
-                    Debug.Log("Check Response : " + HealthCheckReply.ToString());
-                });
+        //        GameDataManager.Instance.SaveUserDataLoginParts();
+        //        GameDataManager.Instance.LoadGameData();
 
-                // 요청
-                RpcServiceManager.Instance.Watch(healthCheckRequest, 
-                    (HealthCheckResponse HealthCheckReply) =>
-                {
-                    // 응답
-                    Debug.Log("Watch Response : " + HealthCheckReply.ToString());
-                });
-            }
-            else
-            {
-                Debug.Log(reply.Error);
+        //        //// 헬스체크 시작
+        //        //HealthCheckRequest healthCheckRequest = new HealthCheckRequest();
+        //        //healthCheckRequest.Service = "yyb";
 
-                DeletePlayerPrefs();
-            }
-        });
+        //        //// 요청
+        //        //RpcServiceManager.Instance.Check(healthCheckRequest, 
+        //        //    (HealthCheckResponse HealthCheckReply) =>
+        //        //{
+        //        //    // 응답
+        //        //    Debug.Log("Check Response : " + HealthCheckReply.ToString());
+        //        //});
+
+        //        //// 요청
+        //        //RpcServiceManager.Instance.Watch(healthCheckRequest, 
+        //        //    (HealthCheckResponse HealthCheckReply) =>
+        //        //{
+        //        //    // 응답
+        //        //    Debug.Log("Watch Response : " + HealthCheckReply.ToString());
+        //        //});
+        //    }
+        //    else
+        //    {
+        //        Debug.Log(reply.Error);
+
+        //        DeletePlayerPrefs();
+        //    }
+        //});
     }
 
     public void OnLogout()

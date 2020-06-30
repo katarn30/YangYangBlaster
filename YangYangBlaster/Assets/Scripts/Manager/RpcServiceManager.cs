@@ -1,18 +1,17 @@
-﻿using Grpc.Health.V1;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Yyb;
-using Grpc.Core;
+using Msg;
+//using Grpc.Core;
 using System.Threading.Tasks;
 using System.Threading;
 
 public class RpcServiceManager : SingleTon<RpcServiceManager>
 {
-    private Grpc.Core.Channel channel;
-    private RpcService.RpcServiceClient client;
-    private Health.HealthClient health;
+    //private Grpc.Core.Channel channel;
+    //private RpcService.RpcServiceClient client;
+    //private Health.HealthClient health;
     private Thread healthCheckThread;
     private Thread healthWatchThread;
     private bool running = true;
@@ -42,32 +41,32 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
 
     public void Run()
     {
-        if (channel == null || client == null)
-        {
-            // 서버 연결
-            string localHost = "183.99.10.187:20051";
-            string inhouseHost = "ec2-18-218-253-188.us-east-2.compute.amazonaws.com:20051";
-            string liveHost = "";
+//        if (channel == null || client == null)
+//        {
+//            // 서버 연결
+//            string localHost = "183.99.10.187:20051";
+//            string inhouseHost = "ec2-18-218-253-188.us-east-2.compute.amazonaws.com:20051";
+//            string liveHost = "";
 
-#if UNITY_EDITOR
-            string host = localHost;
-#else
-            string host = inhouseHost;
-#endif
-            channel = new Grpc.Core.Channel(host, Grpc.Core.ChannelCredentials.Insecure);
-            client = new RpcService.RpcServiceClient(channel);
-            health = new Health.HealthClient(channel);
-        }
+//#if UNITY_EDITOR
+//            string host = localHost;
+//#else
+//            string host = inhouseHost;
+//#endif
+//            channel = new Grpc.Core.Channel(host, Grpc.Core.ChannelCredentials.Insecure);
+//            client = new RpcService.RpcServiceClient(channel);
+//            health = new Health.HealthClient(channel);
+//        }
     }
 
     protected override void OnApplicationQuit()
     {
         running = false;
 
-        if (null != channel)
-        {
-            channel.ShutdownAsync().Wait(1);
-        }
+        //if (null != channel)
+        //{
+        //    channel.ShutdownAsync().Wait(1);
+        //}
 
         if (null != healthCheckThread)
         {
@@ -86,43 +85,43 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
     public delegate void RPCHandler<T>(T reply);
 
     // HealthCheck - Check
-    public void Check(HealthCheckRequest request, RPCHandler<HealthCheckResponse> handler)
-    {
-        healthCheckThread = new Thread(() =>
-        {
-            int intervalTime = 60 * 1000;//Time.time + (10.0f * 60.0f);
+    //public void Check(HealthCheckRequest request, RPCHandler<HealthCheckResponse> handler)
+    //{
+    //    healthCheckThread = new Thread(() =>
+    //    {
+    //        int intervalTime = 60 * 1000;//Time.time + (10.0f * 60.0f);
 
-            try
-            {
-                while (running)
-                {
-                    //if (Time.time < intervalTime)
-                    //{
-                    //    continue;
-                    //}
+    //        //try
+    //        //{
+    //        //    while (running)
+    //        //    {
+    //        //        //if (Time.time < intervalTime)
+    //        //        //{
+    //        //        //    continue;
+    //        //        //}
 
-                    var metaData = new Metadata
-                    {
-                        { "access_key", GameDataManager.Instance.userData.accessKey }
-                    };
+    //        //        var metaData = new Metadata
+    //        //        {
+    //        //            { "access_key", GameDataManager.Instance.userData.accessKey }
+    //        //        };
 
-                    var reply = health.Check(request, metaData);
+    //        //        var reply = health.Check(request, metaData);
 
-                    handler(reply);
+    //        //        handler(reply);
 
-                    Thread.Sleep(intervalTime);
-                }
-            }
-            catch (Grpc.Core.RpcException e)
-            {
-                Debug.LogError("RPC failed " + e);
-            }
-        });
+    //        //        Thread.Sleep(intervalTime);
+    //        //    }
+    //        //}
+    //        //catch (Grpc.Core.RpcException e)
+    //        //{
+    //        //    Debug.LogError("RPC failed " + e);
+    //        //}
+    //    });
 
 
-        healthCheckThread.Start();
-        //StartCoroutine(coCheck(request, handler));
-    }
+    //    healthCheckThread.Start();
+    //    //StartCoroutine(coCheck(request, handler));
+    //}
 
     //IEnumerator coCheck(HealthCheckRequest request, RPCHandler<HealthCheckResponse> handler)
     //{
@@ -154,44 +153,44 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
     //}
 
     // HealthCheck - Watch
-    public void Watch(HealthCheckRequest request, 
-        RPCHandler<HealthCheckResponse> handler)
-    {
-        //coWatch(request, handler);
+    //public void Watch(HealthCheckRequest request, 
+    //    RPCHandler<HealthCheckResponse> handler)
+    //{
+    //    //coWatch(request, handler);
 
-        //await task;
-        //StartCoroutine(coWatch(request, handler));
-        //await coWatch(request, handler);
+    //    //await task;
+    //    //StartCoroutine(coWatch(request, handler));
+    //    //await coWatch(request, handler);
 
-        healthWatchThread = new Thread(async () =>
-        {
-            try
-            {
-                while (running)
-                {
-                    var metaData = new Metadata
-                    {
-                        { "access_key", GameDataManager.Instance.userData.accessKey }
-                    };
+    //    healthWatchThread = new Thread(async () =>
+    //    {
+    //        //try
+    //        //{
+    //        //    while (running)
+    //        //    {
+    //        //        var metaData = new Metadata
+    //        //        {
+    //        //            { "access_key", GameDataManager.Instance.userData.accessKey }
+    //        //        };
 
-                    using (var call = health.Watch(request, metaData))
-                    {
-                        while (await call.ResponseStream.MoveNext())
-                        {
-                            HealthCheckResponse reply = call.ResponseStream.Current;
-                            handler(reply);
-                        }
-                    }
-                }
-            }
-            catch (Grpc.Core.RpcException e)
-            {
-                Debug.LogError("RPC failed " + e);
-            }
-        });
+    //        //        using (var call = health.Watch(request, metaData))
+    //        //        {
+    //        //            while (await call.ResponseStream.MoveNext())
+    //        //            {
+    //        //                HealthCheckResponse reply = call.ResponseStream.Current;
+    //        //                handler(reply);
+    //        //            }
+    //        //        }
+    //        //    }
+    //        //}
+    //        //catch (Grpc.Core.RpcException e)
+    //        //{
+    //        //    Debug.LogError("RPC failed " + e);
+    //        //}
+    //    });
 
-        healthWatchThread.Start();
-    }
+    //    healthWatchThread.Start();
+    //}
 
     //void coWatch(HealthCheckRequest request, 
     //    RPCHandler<HealthCheckResponse> handler)
@@ -227,21 +226,21 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
     }
     IEnumerator coRpcServiceExample(RpcServiceExampleRequest request, RPCHandler<RpcServiceExampleReply> handler)
     {
-        try
-        {
-            var metaData = new Metadata
-            {
-                { "access_key", GameDataManager.Instance.userData.accessKey }
-            };
+        //try
+        //{
+        //    var metaData = new Metadata
+        //    {
+        //        { "access_key", GameDataManager.Instance.userData.accessKey }
+        //    };
 
-            var reply = client.RpcServiceExample(request, metaData);
+        //    var reply = client.RpcServiceExample(request, metaData);
 
-            handler(reply);
-        }
-        catch (Grpc.Core.RpcException e)
-        {
-            Debug.LogError("RPC failed " + e);
-        }
+        //    handler(reply);
+        //}
+        //catch (Grpc.Core.RpcException e)
+        //{
+        //    Debug.LogError("RPC failed " + e);
+        //}
 
         yield return null;
     }
@@ -253,68 +252,68 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
     }
     IEnumerator coLogin(LoginRequest request, RPCHandler<LoginReply> handler)
     {
-        try
-        {
-            var reply = client.Login(request);
+        //try
+        //{
+        //    var reply = client.Login(request);
 
-            handler(reply);
-        }
-        catch (Grpc.Core.RpcException e)
-        {
-            Debug.LogError("RPC failed " + e);
-        }
+        //    handler(reply);
+        //}
+        //catch (Grpc.Core.RpcException e)
+        //{
+        //    Debug.LogError("RPC failed " + e);
+        //}
         
         yield return null;
     }
 
     // LoadGameData
-    public void LoadGameData(GameDataRequest request, RPCHandler<GameDataReply> handler)
+    public void LoadGameData(LoadGameDataRequest request, RPCHandler<LoadGameDataReply> handler)
     {
         StartCoroutine(coLoadGameData(request, handler));
     }
-    IEnumerator coLoadGameData(GameDataRequest request, RPCHandler<GameDataReply> handler)
+    IEnumerator coLoadGameData(LoadGameDataRequest request, RPCHandler<LoadGameDataReply> handler)
     {
-        try
-        {
-            var metaData = new Metadata
-            {
-                { "access_key", GameDataManager.Instance.userData.accessKey }
-            };
+        //try
+        //{
+        //    var metaData = new Metadata
+        //    {
+        //        { "access_key", GameDataManager.Instance.userData.accessKey }
+        //    };
 
-            var reply = client.LoadGameData(request, metaData);
+        //    var reply = client.LoadGameData(request, metaData);
 
-            handler(reply);
-        }
-        catch (Grpc.Core.RpcException e)
-        {
-            Debug.LogError("RPC failed " + e);
-        }
+        //    handler(reply);
+        //}
+        //catch (Grpc.Core.RpcException e)
+        //{
+        //    Debug.LogError("RPC failed " + e);
+        //}
 
         yield return null;
     }
 
     // SaveGameData
-    public void SaveGameData(GameDataRequest request, RPCHandler<GameDataReply> handler)
+    public void SaveGameData(SaveGameDataRequest request, RPCHandler<SaveGameDataReply> handler)
     {
         StartCoroutine(coSaveGameData(request, handler));
     }
-    IEnumerator coSaveGameData(GameDataRequest request, RPCHandler<GameDataReply> handler)
+    IEnumerator coSaveGameData(SaveGameDataRequest request, RPCHandler<SaveGameDataReply> handler)
     {
-        try
-        {
-            var metaData = new Metadata
-            {
-                { "access_key", GameDataManager.Instance.userData.accessKey }
-            };
+        //try
+        //{
+        //    var metaData = new Metadata
+        //    {
+        //        { "access_key", GameDataManager.Instance.userData.accessKey }
+        //    };
 
-            var reply = client.SaveGameData(request, metaData);
+        //    var reply = client.SaveGameData(request, metaData);
 
-            handler(reply);
-        }
-        catch (Grpc.Core.RpcException e)
-        {
-            Debug.LogError("RPC failed " + e);
-        }
+        //    handler(reply);
+        //}
+        //catch (Grpc.Core.RpcException e)
+        //{
+        //    Debug.LogError("RPC failed " + e);
+        //}
 
         yield return null;
     }
@@ -326,21 +325,21 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
     }
     IEnumerator coRanking(RankingRequest request, RPCHandler<RankingReply> handler)
     {
-        try
-        {
-            var metaData = new Metadata
-            {
-                { "access_key", GameDataManager.Instance.userData.accessKey }
-            };
+        //try
+        //{
+        //    var metaData = new Metadata
+        //    {
+        //        { "access_key", GameDataManager.Instance.userData.accessKey }
+        //    };
 
-            var reply = client.Ranking(request, metaData);
+        //    var reply = client.Ranking(request, metaData);
 
-            handler(reply);
-        }
-        catch (Grpc.Core.RpcException e)
-        {
-            Debug.LogError("RPC failed " + e);
-        }
+        //    handler(reply);
+        //}
+        //catch (Grpc.Core.RpcException e)
+        //{
+        //    Debug.LogError("RPC failed " + e);
+        //}
 
         yield return null;
     }
@@ -352,21 +351,21 @@ public class RpcServiceManager : SingleTon<RpcServiceManager>
     }
     IEnumerator coRankingList(RankingListRequest request, RPCHandler<RankingListReply> handler)
     {
-        try
-        {
-            var metaData = new Metadata
-            {
-                { "access_key", GameDataManager.Instance.userData.accessKey }
-            };
+        //try
+        //{
+        //    var metaData = new Metadata
+        //    {
+        //        { "access_key", GameDataManager.Instance.userData.accessKey }
+        //    };
 
-            var reply = client.RankingList(request, metaData);
+        //    var reply = client.RankingList(request, metaData);
 
-            handler(reply);
-        }
-        catch (Grpc.Core.RpcException e)
-        {
-            Debug.LogError("RPC failed " + e);
-        }
+        //    handler(reply);
+        //}
+        //catch (Grpc.Core.RpcException e)
+        //{
+        //    Debug.LogError("RPC failed " + e);
+        //}
 
         yield return null;
     }
