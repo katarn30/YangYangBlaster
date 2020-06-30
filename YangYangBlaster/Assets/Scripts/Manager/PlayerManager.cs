@@ -181,7 +181,10 @@ public class PlayerManager : SingleTon<PlayerManager>
                 GameManager.Instance.GameOver();
             }
             
-            Handheld.Vibrate();
+            if (GameSettingManager.Instance.isVibration == true)
+            {
+                Handheld.Vibrate();
+            }            
         }
         else if (other.gameObject.CompareTag("Milk"))
         {

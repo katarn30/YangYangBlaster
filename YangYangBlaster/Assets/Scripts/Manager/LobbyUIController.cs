@@ -11,6 +11,7 @@ public class LobbyUIController : MonoBehaviour
     public ShopController shopController;
     public DeckUIController deckUIController;
     public MilkShopController milkShopController;
+    public OptionUIController optionUIController;
 
     [Header("TOP UI")]
     public Text scoreText;
@@ -146,6 +147,11 @@ public class LobbyUIController : MonoBehaviour
             UpdateFreeCoinText();
             UpdateCoinText();
         }
+    }
+
+    public void OptionButton()
+    {
+        optionUIController.gameObject.SetActive(true);
     }
 
     public void ShowRewardButton()

@@ -95,7 +95,25 @@ public class SoundManager : SingleTon<SoundManager>
     }
     #endregion
 
-    #region GameMute
+    #region GameVolume&Mute
+    public void SoundVolume(bool _isOn)
+    {
+        if (_isOn == true)
+        {
+            bgm.volume = 1;
+            playerSound.volume = 1;
+            monsterSound.volume = 1;
+            etcSound.volume = 1;
+        }
+        else
+        {
+            bgm.volume = 0;
+            playerSound.volume = 0;
+            monsterSound.volume = 0;
+            etcSound.volume = 0;
+        }
+    }
+
     public void BGMMute(bool _mute)
     {
         bgm.mute = _mute;
