@@ -1,0 +1,154 @@
+syntax = "proto3";
+
+package msg;
+option go_package = ".;msg";
+
+enum ERROR_CODE {
+    OK = 0;
+    EMPTY_NICKNAME = 1;
+    DUP_NICKNAME = 2;
+    NICKNAME_HAVE_SPECIAL_CHARACTERS = 3;
+    UNABLE_TO_CREATE_USER = 4;
+    FAILED_TO_GET_USER = 5;
+    GOOGLE_AUTH_FAILED = 6;
+    EMPTY_ID_TOKEN = 7;
+    FAILED_TO_UPDATE_LOGIN_KEY = 8;
+    FAILED_TO_CHANGE_LOGIN_TYPE = 9;
+    LOGIN_TYPE_IS_DIFFERENT = 10;
+    ACCESS_KEY_HAS_EXPIRED = 11;
+    SYSTME = 12;
+    FAILED_TO_SAVE_ITEM = 13;
+    FAILED_TO_SAVE_MERCENARY = 14;
+    FAILED_TO_SAVE_STAGE = 15;
+    FAILED_TO_SAVE_UPGRADE_PLAYER = 16;
+    FAILED_TO_LOAD_ITEM = 17;
+    FAILED_TO_LOAD_MERCENARY = 18;
+    FAILED_TO_LOAD_STAGE = 19;
+    FAILED_TO_LOAD_UPGRADE_PLAYER = 20;
+}
+
+enum ITEM_TYPE {
+    NONE = 0;
+    GOLD = 1000;
+    RUBY = 1001;
+    PIECE_KNIGHT = 1002;
+    PIECE_PIRATE = 1003;
+    PIECE_STAR = 1004;
+    PIECE_SCIENTIST = 1005;
+    PIECE_STUDENT = 1006;
+}
+
+enum ITEM_CATEGORY {
+    NORMAL = 0;
+    CURRENCY = 1;
+}
+
+message RpcServiceExampleRequest {
+    int32 arg1 = 1;
+    float arg2 = 2;
+    string arg3 = 3;
+    bool arg4 = 4;
+    repeated int32 arg5 = 5;
+}
+
+message RpcServiceExampleReply {
+    ERROR_CODE error = 1;
+}
+
+message Empty {}
+
+message PushNotification {
+    string payload = 1;
+}
+
+message LoginRequest {
+    enum LOGIN_TYPE {
+        NON_CERT = 0;
+        GOOGLE = 1;
+        FACEBOOK = 2;
+    }
+
+    LOGIN_TYPE loginType = 1;
+    string loginKey = 2;
+    string idToken = 3;
+    string nickName = 4;
+}
+
+message LoginReply {
+    ERROR_CODE error = 1;
+    int32 usn = 2;
+    string nickName = 3;
+    string loginKey = 4;
+    string accessKey = 5;
+}
+
+message Item {
+    string itemName = 1;
+    ITEM_TYPE itemType = 2;
+    ITEM_CATEGORY itemCategory = 3;
+    int64 itemCount = 4;
+}
+
+message Mercenary {
+    string mercenaryName = 1;
+    int32 mercenaryLevel = 2;
+}
+
+message Stage {
+    int32 stageNum = 1;
+    int64 stageScore = 2; 
+}
+
+message UpgradePlayer {
+    int32 powerLevel = 1;
+    int32 attackSpeedLevel = 2;
+    int32 criticalLevel = 3;
+    int32 buffDurationLevel = 4;
+    int32 freeCoinLevel = 5;
+}
+
+message LoadGameDataRequest {
+}
+
+message LoadGameDataReply {
+    ERROR_CODE error = 1;
+    repeated Item items = 2;
+    repeated Mercenary mercenaries = 3;
+    Stage stage = 4;
+    UpgradePlayer upgradePlayer = 5;
+}
+
+message SaveGameDataRequest {
+    repeated Item items = 2;
+    repeated Mercenary mercenaries = 3;
+    Stage stage = 4;
+    UpgradePlayer upgradePlayer = 5;
+}
+
+message SaveGameDataReply {
+    ERROR_CODE error = 1;
+}
+
+message RankingRequest {
+    int64 score = 1;
+}
+
+message RankingReply {
+    ERROR_CODE error = 1;
+}
+
+message RankingListRequest {
+
+}
+
+message RankingListReply {
+    message Ranking {
+        string nickName = 1;
+        int32 rank = 2;
+        int32 score = 3;
+	}
+
+    ERROR_CODE error = 1;
+    Ranking myRanking = 2;
+    repeated Ranking rankings = 3;
+}
