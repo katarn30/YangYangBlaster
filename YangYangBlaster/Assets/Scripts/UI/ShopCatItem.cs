@@ -9,8 +9,9 @@ public class ShopCatItem : MonoBehaviour
 
     public int index;
     public Text catName;
-    public Image catImage;
+    public Image catImage;    
     public Text levelText;
+    public Image priceImage;
     public Text priceText;    
     public GameObject selectEffect;
     public List<GameObject> buttonList = new List<GameObject>();
@@ -26,7 +27,12 @@ public class ShopCatItem : MonoBehaviour
         catName.text = mercenaryData.name;
         catImage.sprite = mercenaryData.catImage;
         levelText.text = string.Format("Lv.{0}", mercenaryData.level);
-        priceText.text = string.Format("{0} {1}", mercenaryData.price, "K");
+        if (mercenaryData.price == 0)
+        {
+            priceImage.gameObject.SetActive(false);            
+        }
+
+        priceText.text = string.Format("{0}", mercenaryData.price);
 
         animator.runtimeAnimatorController = mercenaryData.uiRuntimeAnimator;
 

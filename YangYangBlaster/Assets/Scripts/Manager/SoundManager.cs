@@ -94,4 +94,18 @@ public class SoundManager : SingleTon<SoundManager>
         etcSound.Play();
     }
     #endregion
+
+    #region GameMute
+    public void BGMMute(bool _mute)
+    {
+        bgm.mute = _mute;
+    }
+
+    public void OtherMute(bool _mute)
+    {
+        playerSound.mute = _mute;
+        monsterSound.mute = _mute;
+        etcSound.mute = _mute;
+    }
+    #endregion
 }
