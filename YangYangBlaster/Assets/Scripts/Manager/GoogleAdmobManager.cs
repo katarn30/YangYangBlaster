@@ -50,6 +50,9 @@ public class GoogleAdmobManager : SingleTon<GoogleAdmobManager>
             adUnitId = "unexpected_platform";
 #endif
 
+        string AndroidKey = "ca-app-pub-6643434665197243~2072024875";
+        string IOSKey = "ca-app-pub-6643434665197243~5914360097";
+
         // Create an empty ad request.
         request = new AdRequest.Builder().Build();
         // Load the rewarded video ad with the request.
