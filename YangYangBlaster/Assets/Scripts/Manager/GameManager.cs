@@ -70,6 +70,7 @@ public class GameManager : SingleTon<GameManager>
     {
         ChangeGameState(GameState.Loading);
 
+        Net.NetManager.Instance.Connect();
         yield return LoadingManager.Instance.SetLoading();
 
         GameManagerInit();
@@ -88,7 +89,6 @@ public class GameManager : SingleTon<GameManager>
             || Application.platform == RuntimePlatform.IPhonePlayer
             || Application.platform == RuntimePlatform.WindowsEditor)
         {
-            Net.NetManager.Instance.Connect();
             LoginManager.Instance.DoAutoLogin();
         }
        
