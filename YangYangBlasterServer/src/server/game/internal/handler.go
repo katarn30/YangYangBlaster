@@ -13,7 +13,7 @@ import (
 )
 
 func init() {
-	// 向当前模块（game 模块）注册 Hello 消息的消息处理函数 handleHello
+	// 현재 모듈(게임 모듈)에 Hello 소식을 등록하는 소식 처리 함수 handleHello
 	handler(&msg.TosChat{}, handleTosChat)
 	handler(&msg.LoadGameDataRequest{}, handleLoadGameDataRequest)
 	handler(&msg.SaveGameDataRequest{}, handleSaveGameDataRequest)
@@ -23,12 +23,12 @@ func handler(m interface{}, h interface{}) {
 	skeleton.RegisterChanRPC(reflect.TypeOf(m), h)
 }
 func handleTosChat(args []interface{}) {
-	// 收到的 Hello 消息
+	// 받은 Hello 소식
 	m := args[0].(*msg.TosChat)
-	// 消息的发送者
+	// 소식의 발송자
 	a := args[1].(gate.Agent)
 
-	// 输出收到的消息的内容
+	// 받은 소식의 내용을 출력하다
 	log.Debug("hello %v", m.Name)
 	fmt.Println("hello %v", m.Name)
 	var err gate.Agent = nil
@@ -36,7 +36,7 @@ func handleTosChat(args []interface{}) {
 		fmt.Println(" != nil")
 	}
 
-	//给发送者回应一个 Hello 消息
+	//보낸 사람에게 하나의 Hello 메시지 응답
 	a.WriteMsg(&msg.TocChat{
 		Name:    m.Name,
 		Content: m.Content,
@@ -103,25 +103,57 @@ func handleLoadGameDataRequest(args []interface{}) {
 	}
 
 	for _, mercenary := range mercenaries {
+		var fixedMercenaryLevel int32 = int32(mercenary.MercenaryLevel)
+		if 0 == fixedMercenaryLevel {
+			fixedMercenaryLevel = 1
+		}
+
 		var msgMercenary = msg.Mercenary{
 			MercenaryName:  mercenary.MercenaryName,
-			MercenaryLevel: int32(mercenary.MercenaryLevel),
+			MercenaryLevel: fixedMercenaryLevel,
 		}
 
 		msgMercenaries = append(msgMercenaries, &msgMercenary)
 	}
 
+	var fixedStageNum int32 = int32(stage.StageNum)
+	if 0 == fixedStageNum {
+		fixedStageNum = 1
+	}
+
 	msgStage = &msg.Stage{
-		StageNum:   int32(stage.StageNum),
+		StageNum:   fixedStageNum,
 		StageScore: int64(stage.StageScore),
 	}
 
+	var fixedPowerLevel int32 = int32(upgradePlayer.PowerLevel)
+	var fixedAttackSpeedLevel int32 = int32(upgradePlayer.AttackSpeedLevel)
+	var fixedCriticalLevel int32 = int32(upgradePlayer.CriticalLevel)
+	var fixedBuffDurationLevel int32 = int32(upgradePlayer.BuffDurationLevel)
+	var fixedFreeCoinLevel int32 = int32(upgradePlayer.FreeCoinLevel)
+
+	if 0 == fixedPowerLevel {
+		fixedPowerLevel = 1
+	}
+	if 0 == fixedAttackSpeedLevel {
+		fixedAttackSpeedLevel = 1
+	}
+	if 0 == fixedCriticalLevel {
+		fixedCriticalLevel = 1
+	}
+	if 0 == fixedBuffDurationLevel {
+		fixedBuffDurationLevel = 1
+	}
+	if 0 == fixedFreeCoinLevel {
+		fixedFreeCoinLevel = 1
+	}
+
 	msgUpgradePlayer = &msg.UpgradePlayer{
-		PowerLevel:        int32(upgradePlayer.PowerLevel),
-		AttackSpeedLevel:  int32(upgradePlayer.AttackSpeedLevel),
-		CriticalLevel:     int32(upgradePlayer.CriticalLevel),
-		BuffDurationLevel: int32(upgradePlayer.BuffDurationLevel),
-		FreeCoinLevel:     int32(upgradePlayer.FreeCoinLevel),
+		PowerLevel:        fixedPowerLevel,
+		AttackSpeedLevel:  fixedAttackSpeedLevel,
+		CriticalLevel:     fixedCriticalLevel,
+		BuffDurationLevel: fixedBuffDurationLevel,
+		FreeCoinLevel:     fixedFreeCoinLevel,
 	}
 
 	var reply = msg.LoadGameDataReply{
@@ -164,31 +196,63 @@ func handleSaveGameDataRequest(args []interface{}) {
 	}
 
 	for _, mercenary := range m.Mercenaries {
+		var fixedMercenaryLevel uint = uint(mercenary.MercenaryLevel)
+		if 0 == fixedMercenaryLevel {
+			fixedMercenaryLevel = 1
+		}
+
 		var dbMercenary = Mercenary{
 			Usn:            user.Usn,
 			MercenaryName:  mercenary.MercenaryName,
-			MercenaryLevel: uint(mercenary.MercenaryLevel),
+			MercenaryLevel: fixedMercenaryLevel,
 		}
 
 		dbMercenaries = append(dbMercenaries, dbMercenary)
 	}
 
 	if m.Stage != nil {
+		var fixedStageNum uint = uint(m.Stage.StageNum)
+		if 0 == fixedStageNum {
+			fixedStageNum = 1
+		}
+
 		dbStage = Stage{
 			Usn:        user.Usn,
-			StageNum:   uint(m.Stage.StageNum),
+			StageNum:   fixedStageNum,
 			StageScore: uint64(m.Stage.StageScore),
 		}
 	}
 
 	if m.UpgradePlayer != nil {
+		var fixedPowerLevel uint = uint(m.UpgradePlayer.PowerLevel)
+		var fixedAttackSpeedLevel uint = uint(m.UpgradePlayer.AttackSpeedLevel)
+		var fixedCriticalLevel uint = uint(m.UpgradePlayer.CriticalLevel)
+		var fixedBuffDurationLevel uint = uint(m.UpgradePlayer.BuffDurationLevel)
+		var fixedFreeCoinLevel uint = uint(m.UpgradePlayer.FreeCoinLevel)
+
+		if 0 == fixedPowerLevel {
+			fixedPowerLevel = 1
+		}
+		if 0 == fixedAttackSpeedLevel {
+			fixedAttackSpeedLevel = 1
+		}
+		if 0 == fixedCriticalLevel {
+			fixedCriticalLevel = 1
+		}
+		if 0 == fixedBuffDurationLevel {
+			fixedBuffDurationLevel = 1
+		}
+		if 0 == fixedFreeCoinLevel {
+			fixedFreeCoinLevel = 1
+		}
+
 		dbUpgradePlayer = UpgradePlayer{
 			Usn:               user.Usn,
-			PowerLevel:        uint(m.UpgradePlayer.PowerLevel),
-			AttackSpeedLevel:  uint(m.UpgradePlayer.AttackSpeedLevel),
-			CriticalLevel:     uint(m.UpgradePlayer.CriticalLevel),
-			BuffDurationLevel: uint(m.UpgradePlayer.BuffDurationLevel),
-			FreeCoinLevel:     uint(m.UpgradePlayer.FreeCoinLevel),
+			PowerLevel:        fixedPowerLevel,
+			AttackSpeedLevel:  fixedAttackSpeedLevel,
+			CriticalLevel:     fixedCriticalLevel,
+			BuffDurationLevel: fixedBuffDurationLevel,
+			FreeCoinLevel:     fixedFreeCoinLevel,
 		}
 	}
 

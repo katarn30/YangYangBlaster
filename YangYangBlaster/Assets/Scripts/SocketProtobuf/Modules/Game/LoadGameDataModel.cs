@@ -69,6 +69,10 @@ public class LoadGameDataModel : BaseModel<LoadGameDataModel>
             GameDataManager.Instance.userData.upgradePlayer.criticalLevel = reply.UpgradePlayer.CriticalLevel;
             GameDataManager.Instance.userData.upgradePlayer.buffDurationLevel = reply.UpgradePlayer.BuffDurationLevel;
             GameDataManager.Instance.userData.upgradePlayer.freeCoinLevel = reply.UpgradePlayer.FreeCoinLevel;
+
+            GameObject gameObject = GameObject.Find("LobbyCanvas(Clone)");
+            gameObject.SendMessage("UpdateCoinText");
+            gameObject.SendMessage("UpdateScoreText");
         }
         else
         {

@@ -517,8 +517,8 @@ public class GameDataManager : SingleTon<GameDataManager>
 
         userData.userCurrency.userCoin = userData.userCurrency.userCoin - catPrice;
 
-        SaveGameDataItem();
         SaveGameDataMercenary();
+        SaveGameDataItem();
     }
 
     public void SelectMercenary(MercenaryData _mercenaryData)
@@ -721,6 +721,7 @@ public class GameDataManager : SingleTon<GameDataManager>
         userData.upgradePlayer.powerLevel++;
 
         SaveGameDataUpgradePlayer();
+        SaveGameDataItem();
     }
 
     public void SetUpgradeAttackSpeed(int _price)
@@ -730,6 +731,7 @@ public class GameDataManager : SingleTon<GameDataManager>
         userData.upgradePlayer.attackSpeedLevel++;
 
         SaveGameDataUpgradePlayer();
+        SaveGameDataItem();
     }
 
     public void SetUpgradeCritical(int _price)
@@ -739,6 +741,7 @@ public class GameDataManager : SingleTon<GameDataManager>
         userData.upgradePlayer.criticalLevel++;
 
         SaveGameDataUpgradePlayer();
+        SaveGameDataItem();
     }
 
     public void SetUpgradeSkillDamage(int _price)
@@ -748,6 +751,7 @@ public class GameDataManager : SingleTon<GameDataManager>
         userData.upgradePlayer.buffDurationLevel++;
 
         SaveGameDataUpgradePlayer();
+        SaveGameDataItem();
     }
 
     public void SetUpgradeFreeCoin(int _price)
@@ -757,6 +761,7 @@ public class GameDataManager : SingleTon<GameDataManager>
         userData.upgradePlayer.freeCoinLevel++;
 
         SaveGameDataUpgradePlayer();
+        SaveGameDataItem();
     }
 
     public bool isUpgrade(int _price)

@@ -8,7 +8,11 @@ import (
 var aud = "436238547875-ao5qlaml57b66s8l0s2l5i7lftoa6dc7.apps.googleusercontent.com"
 
 func CallGoogleVerifyOauth2Token(idToken string) (string, bool) {
-	tokenInfo := GoogleIdTokenVerifier.VerifyGoogleIDToken(idToken, nil, aud)
+
+	bytes := GoogleIdTokenVerifier.GetCertsFromURL()
+	certs := GoogleIdTokenVerifier.GetCerts(bytes)
+
+	tokenInfo := GoogleIdTokenVerifier.VerifyGoogleIDToken(idToken, certs, aud)
 	if tokenInfo == nil {
 		return "", false
 	}
