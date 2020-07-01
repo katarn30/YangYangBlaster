@@ -29,6 +29,8 @@ public class InGameUIController : MonoBehaviour
     public Text resultScoreText;
     public Text resultCoinText;
 
+    public OptionUIController optionUIController;
+
     public void OnInitialized(bool _isContinue = false)
     {
         continueUI.SetActive(false);
@@ -161,6 +163,12 @@ public class InGameUIController : MonoBehaviour
     {
         GameManager.Instance.ResultReward();
         GameManager.Instance.ChangeGameState(GameManager.GameState.Lobby);
+    }
+
+    public void OptionButton()
+    {
+        optionUIController.gameObject.SetActive(true);
+        GameManager.Instance.isPause = true;
     }
 
     public void BossWarringUI()

@@ -95,6 +95,8 @@ public class GoogleAdmobManager : SingleTon<GoogleAdmobManager>
 
         if (rewardAction != null)
         {
+            SoundManager.Instance.SoundVolume(true);
+
             rewardAction.Invoke();
             rewardAction = null;
         }
@@ -111,6 +113,8 @@ public class GoogleAdmobManager : SingleTon<GoogleAdmobManager>
         {
             if (rewardBasedVideo.IsLoaded())
             {
+                SoundManager.Instance.SoundVolume(false);
+
                 rewardAction = _action;
 
                 rewardBasedVideo.Show();
@@ -122,6 +126,7 @@ public class GoogleAdmobManager : SingleTon<GoogleAdmobManager>
 
             if (rewardAction != null)
             {
+                SoundManager.Instance.SoundVolume(true);
                 rewardAction.Invoke();
                 rewardAction = null;
             }

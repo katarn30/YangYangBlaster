@@ -28,6 +28,7 @@ public class GameManager : SingleTon<GameManager>
     public bool isGameOver = false;
     public bool isStageClear = false;
     public bool isBossReady = false;
+    public bool isPause = false;
 
     [Header("InGameMode")]
     public bool isSlowMode = false;
@@ -148,6 +149,17 @@ public class GameManager : SingleTon<GameManager>
 
         if (isStageClear == true)
             return;
+
+        if (isPause == false)
+        {
+            Time.timeScale = 1;
+        }
+
+        if (isPause == true)
+        {
+            Time.timeScale = 0;
+            return;
+        }
 
         if (isSlowMode == true)
         {
@@ -345,6 +357,7 @@ public class GameManager : SingleTon<GameManager>
         isGameOver = false;
         isStageClear = false;
         isBossReady = false;
+        isPause = false;
 
         slowTime = 0.0f;
         isSlowMode = false;

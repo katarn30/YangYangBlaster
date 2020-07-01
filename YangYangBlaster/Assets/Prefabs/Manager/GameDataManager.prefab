@@ -50,24 +50,24 @@ MonoBehaviour:
     upgradePlayer:
       powerLevel: 1
       powerIncrease: 10
-      powerPrice: 200
+      powerPrice: 400
       attackSpeedLevel: 1
       attackSpeedIncrease: 0.01
-      attackSpeedPrice: 200
+      attackSpeedPrice: 500
       criticalLevel: 1
       criticalIncrease: 0.1
-      criticalPrice: 200
+      criticalPrice: 250
       buffDurationLevel: 1
       buffDurationIncrease: 0.5
-      buffDurationPrice: 200
+      buffDurationPrice: 1000
       freeCoinLevel: 1
-      freeCoinIncrease: 400
-      freeCoinPrice: 200
+      freeCoinIncrease: 500
+      freeCoinPrice: 1200
     milkItemList:
     - type: 0
       milkSprite: {fileID: 21300000, guid: e2f5e03ae2793e643885a661a8389a55, type: 3}
       milkLevel: 1
-      milkDuration: 2
+      milkDuration: 3
       milkInfo: The monster slows down for the duration.
     - type: 1
       milkSprite: {fileID: 21300000, guid: 816bd94a366063e46974550a246ba92b, type: 3}
@@ -87,7 +87,7 @@ MonoBehaviour:
     - type: 4
       milkSprite: {fileID: 21300000, guid: 3ca4420baf2da3b449881c458e6533fb, type: 3}
       milkLevel: 1
-      milkDuration: 2
+      milkDuration: 4
       milkInfo: During the duration, the earned coins increase.
     - type: 5
       milkSprite: {fileID: 21300000, guid: 66870979ea05f644eaaa2076c4db30ad, type: 3}
@@ -97,7 +97,7 @@ MonoBehaviour:
     - type: 6
       milkSprite: {fileID: 21300000, guid: 9a7fab3474d575e46bbdf4922a007cd5, type: 3}
       milkLevel: 1
-      milkDuration: 6
+      milkDuration: 4
       milkInfo: Become invincible for the duration.
     leaderData:
       name: 
