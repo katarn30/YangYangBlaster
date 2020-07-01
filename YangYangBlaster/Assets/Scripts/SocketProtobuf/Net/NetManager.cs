@@ -22,10 +22,9 @@ namespace Net
         private void Awake()
         {
             //_instance = this;
-            Init();
+            //Init();
             //
-            SendConnect();
-
+            //SendConnect();
         }
 
         private Dictionary<Type, TocHandler> _handlerDic;
@@ -45,6 +44,13 @@ namespace Net
         void Start()
         {
             //Init();
+        }
+
+        public void Connect()
+        {
+            Init();
+
+            SendConnect();
         }
 
         public void Init()

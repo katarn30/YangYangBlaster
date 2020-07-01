@@ -39,7 +39,7 @@ type UpgradePlayer struct {
 func GetItems(tx *gorm.DB, usn uint, outItems *[]Item) error {
 
 	//var items []Item
-	//db.AutoMigrate(&UserTest{})
+	//tx.AutoMigrate(&Item{})
 
 	err := tx.Where("usn = ?", usn).Find(outItems).Error
 	if nil != err {
@@ -112,9 +112,11 @@ func UpdateItems(tx *gorm.DB, items *[]Item) error {
 	//db := mysql.MysqlDB()
 
 	for _, item := range *items {
-		ctx := tx.Model(&item).
+		outItem := Item{}
+
+		ctx := tx.Model(&outItem).
 			Where("usn = ? AND item_type = ?", item.Usn, item.ItemType).
-			Updates(item)
+			Updates(&item)
 
 		err := ctx.Error
 		if nil != err {
@@ -124,7 +126,7 @@ func UpdateItems(tx *gorm.DB, items *[]Item) error {
 
 		affected := ctx.RowsAffected
 		if affected <= 0 {
-			err = tx.Create(item).Error
+			err = tx.Create(&item).Error
 
 			if nil != err {
 				fmt.Println(err)
@@ -141,9 +143,11 @@ func UpdateMercenaries(tx *gorm.DB, mercenaries *[]Mercenary) error {
 	//db := mysql.MysqlDB()
 
 	for _, mercenary := range *mercenaries {
-		ctx := tx.Model(&mercenary).
+		outMercenary := Mercenary{}
+
+		ctx := tx.Model(&outMercenary).
 			Where("usn = ? AND mercenary_name = ?", mercenary.Usn, mercenary.MercenaryName).
-			Updates(mercenary)
+			Updates(&mercenary)
 
 		err := ctx.Error
 		if nil != err {
@@ -153,7 +157,7 @@ func UpdateMercenaries(tx *gorm.DB, mercenaries *[]Mercenary) error {
 
 		affected := ctx.RowsAffected
 		if affected <= 0 {
-			err = tx.Create(mercenary).Error
+			err = tx.Create(&mercenary).Error
 
 			if nil != err {
 				fmt.Println(err)
@@ -168,10 +172,14 @@ func UpdateMercenaries(tx *gorm.DB, mercenaries *[]Mercenary) error {
 func UpdateStage(tx *gorm.DB, stage *Stage) error {
 
 	//db := mysql.MysqlDB()
+	outStage := Stage{}
 
-	ctx := tx.Model(stage).
+	ctx := tx.Model(&outStage).
 		Where("usn = ?", stage.Usn).
-		Updates(stage)
+		Updates(&Stage{
+			StageNum:   stage.StageNum,
+			StageScore: stage.StageScore,
+		})
 
 	err := ctx.Error
 	if nil != err {
@@ -195,8 +203,9 @@ func UpdateStage(tx *gorm.DB, stage *Stage) error {
 func UpdateUpgradePlayer(tx *gorm.DB, upgradePlayer *UpgradePlayer) error {
 
 	//db := mysql.MysqlDB()
+	outUpgradePlayer := UpgradePlayer{}
 
-	ctx := tx.Model(upgradePlayer).
+	ctx := tx.Model(&outUpgradePlayer).
 		Where("usn = ?", upgradePlayer.Usn).
 		Updates(upgradePlayer) //.RowsAffected
 

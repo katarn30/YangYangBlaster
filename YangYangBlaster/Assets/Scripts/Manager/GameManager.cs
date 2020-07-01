@@ -71,6 +71,7 @@ public class GameManager : SingleTon<GameManager>
     {
         ChangeGameState(GameState.Loading);
 
+        Net.NetManager.Instance.Connect();
         yield return LoadingManager.Instance.SetLoading();
 
         GameManagerInit();
@@ -344,8 +345,10 @@ public class GameManager : SingleTon<GameManager>
         
         if (isStageClear == true)
         {
-            GameDataManager.Instance.userData.stageNum = GameDataManager.Instance.userData.stageNum + 1;       
-            
+            GameDataManager.Instance.userData.stageNum = GameDataManager.Instance.userData.stageNum + 1;
+            GameDataManager.Instance.SaveGameDataStage();
+
+
             MonsterManager.Instance.monsterStageCount = 8;
             MonsterManager.Instance.regenTime = MonsterManager.Instance.regenTime - 0.01f;
             MonsterManager.Instance.monsterHp = MonsterManager.Instance.monsterHp + 2;            
@@ -449,6 +452,8 @@ public class GameManager : SingleTon<GameManager>
         nowStageCoin = nowStageCoin + _coin;
 
         GameDataManager.Instance.userData.userCurrency.userCoin += _coin;
+        // 게임 플레이중에서 먹은 코인이라 DB저장하면 안댐
+        //GameDataManager.Instance.SaveGameDataItem();
 
         UIManager.Instance.inGameUI.SetCoinUI();
     }
@@ -474,11 +479,13 @@ public class GameManager : SingleTon<GameManager>
     public void UpdateScore(int _score)
     {
         GameDataManager.Instance.userData.score = GameDataManager.Instance.userData.score + _score;
+        GameDataManager.Instance.SaveGameDataStage();
     }
 
     public void GetCoin(int _coin)
     {
         GameDataManager.Instance.userData.userCurrency.userCoin += _coin;
+        GameDataManager.Instance.SaveGameDataItem();
 
         UIManager.Instance.inGameUI.SetCoinUI();
     }

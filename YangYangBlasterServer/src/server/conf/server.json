@@ -2,5 +2,10 @@
 	"LogLevel": "debug",
 	"LogPath": "log",
 	"TCPAddr": "0.0.0.0:20051",
-	"MaxConnNum": 20000
+	"MaxConnNum": 20000,
+	"DBHost": "database-1.cegoso5nooht.us-east-2.rds.amazonaws.com",
+	"DBPort": 3306,
+	"DBUser": "satel",
+	"DBPassword": "asA!$EFb%&JEFAi210frihejd;1!#!F",
+	"DBDatabase": "YYB"
 }

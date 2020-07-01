@@ -2,8 +2,9 @@ package conf
 
 import (
 	"encoding/json"
-	"github.com/name5566/leaf/log"
 	"io/ioutil"
+
+	"github.com/name5566/leaf/log"
 )
 
 var Server struct {
@@ -16,6 +17,11 @@ var Server struct {
 	MaxConnNum  int
 	ConsolePort int
 	ProfilePath string
+	DBHost      string
+	DBPort      int
+	DBUser      string
+	DBPassword  string
+	DBDatabase  string
 }
 
 func init() {
