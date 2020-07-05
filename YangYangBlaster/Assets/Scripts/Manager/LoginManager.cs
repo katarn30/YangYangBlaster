@@ -4,6 +4,8 @@ using UnityEngine;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using Msg;
+using UnityEngine.SocialPlatforms;
+using UnityEngine.SocialPlatforms.GameCenter;
 
 public class LoginManager : SingleTon<LoginManager>
 {
@@ -22,17 +24,7 @@ public class LoginManager : SingleTon<LoginManager>
     {
         DontDestroyOnLoad(this);
 
-        #if UNITY_ANDROID
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            PlayGamesPlatform.InitializeInstance(new PlayGamesClientConfiguration.Builder()
-                .RequestIdToken()
-                .RequestServerAuthCode(false)
-                .Build());
-            PlayGamesPlatform.DebugLogEnabled = true;
-            PlayGamesPlatform.Activate();
-        }
-        #endif
+        LoginInitalize();
         //DoAutoLogin();
     }
 
@@ -55,6 +47,115 @@ public class LoginManager : SingleTon<LoginManager>
     //    PlayerPrefs.SetInt(PREFIX_PREFS + "login_type", (int)loginType_);
     //    PlayerPrefs.SetString(PREFIX_PREFS + "nick_name", nickName_);
     //}
+
+    public void LoginInitalize()
+    {
+#if UNITY_ANDROID
+       GoogleInit();
+ 
+#elif UNITY_IOS
+        IOSInit();
+#endif
+    }
+
+    public void LoginDo()
+    {
+#if UNITY_ANDROID
+        GoogleLogin();
+#elif UNITY_IOS
+        IOSLogin();
+#endif
+    }
+
+#if UNITY_ANDROID
+    void GoogleInit()
+    {
+        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
+           .EnableSavedGames()
+           .Build();
+
+        PlayGamesPlatform.InitializeInstance(config);
+
+        PlayGamesPlatform.DebugLogEnabled = true;
+
+        PlayGamesPlatform.Activate();
+    }
+
+    void GoogleLogin()
+    {
+        GameDataManager.Instance.userData.loginType = LoginRequest.Types.LOGIN_TYPE.Google;
+
+        var loginType = GameDataManager.Instance.userData.loginType;
+        var loginKey = GameDataManager.Instance.userData.loginKey;
+        var nickName = GameDataManager.Instance.userData.nickName;
+
+        PlayGamesPlatform.Instance.Authenticate((bool success) =>
+        {
+            if (success)
+            {
+                Debug.Log("Login : " + Social.localUser.userName);
+                // to do ...
+                // 구글 플레이 게임 서비스 로그인 성공 처리
+                string idToken = ((PlayGamesLocalUser)Social.localUser).GetIdToken() == null ?
+                "" : ((PlayGamesLocalUser)Social.localUser).GetIdToken();
+
+                RpcLogin(loginType, loginKey, nickName, idToken);
+            }
+            else
+            {
+                // to do ...
+                // 구글 플레이 게임 서비스 로그인 실패 처리
+                Debug.Log("Fail");
+            }
+        });
+    }
+#endif
+
+#if UNITY_IOS
+    void IOSInit()
+    {
+        GameCenterPlatform.ShowDefaultAchievementCompletionBanner(true);
+    }
+
+    void IOSLogin()
+    {
+        //GameDataManager.Instance.userData.loginType = LoginRequest.Types.LOGIN_TYPE.Google;
+
+        var loginType = GameDataManager.Instance.userData.loginType;
+        var loginKey = GameDataManager.Instance.userData.loginKey;
+        var nickName = GameDataManager.Instance.userData.nickName;
+
+        Social.localUser.Authenticate((bool success) =>
+        {
+            if (success)
+            {
+                Debug.Log("Login : " + Social.localUser.userName);
+                // to do ...
+                // 로그인 성공 처리
+                NonCertLogin();
+            }
+            else
+            {
+                // to do ...
+                // 로그인 실패 처리
+                Debug.Log("Fail");
+            }
+        });
+    }
+#endif
+
+
+    public void Login()
+    {
+#if UNITY_ANDROID
+        
+#elif UNITY_IOS
+        
+#endif
+        
+
+        
+    }
 
     public void DeletePlayerPrefs()
     {
@@ -195,7 +296,7 @@ public class LoginManager : SingleTon<LoginManager>
         //});
     }
 
-    public void OnLogout()
+    public void Logout()
     {
 #if UNITY_ANDROID
         PlayGamesPlatform.Instance.SignOut();

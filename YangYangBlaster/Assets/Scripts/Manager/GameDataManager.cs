@@ -149,6 +149,10 @@ public class GameDataManager : SingleTon<GameDataManager>
 
     public const string PREFIX_PREFS = "yyb_";
 
+    [Header("Version")]
+    public string androidVersion;
+    public string iosVersion;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -774,6 +778,39 @@ public class GameDataManager : SingleTon<GameDataManager>
         }
 
         return result;
+    }
+    #endregion
+
+    #region VersionInfo
+    public bool isVersionCheck(string _version)
+    {
+        bool result = true;
+        string ver = string.Format("{0}({1})", Application.version, Application.identifier);
+
+        if (Application.platform != RuntimePlatform.WindowsEditor && Application.platform != RuntimePlatform.OSXEditor)
+        {
+            if (_version != ver)
+            {
+                result = false;
+            }
+        }
+
+        return result;
+    }
+
+    public void CheckUpdateVersion(string _version)
+    {
+        if (isVersionCheck(_version) == false)
+        {
+            if (Application.platform == RuntimePlatform.Android)
+            {
+                Application.OpenURL("market://details?id=com.TongTongStudio.YangYangBlaster");
+            }
+            else if (Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                Application.OpenURL("itms-apps://itunes.apple.com/app/id1520506681");
+            }
+        }
     }
     #endregion
 }

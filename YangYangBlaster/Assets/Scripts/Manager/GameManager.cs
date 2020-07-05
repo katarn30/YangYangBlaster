@@ -99,6 +99,17 @@ public class GameManager : SingleTon<GameManager>
     // Update is called once per frame
     void Update()
     {
+        if (isPause == false)
+        {
+            Time.timeScale = 1;
+        }
+
+        if (isPause == true)
+        {
+            Time.timeScale = 0;
+            return;
+        }
+
         if (state == GameState.InGame)
         {
             if (isBossStage() && isBossReady == false)
@@ -148,18 +159,7 @@ public class GameManager : SingleTon<GameManager>
             return;
 
         if (isStageClear == true)
-            return;
-
-        if (isPause == false)
-        {
-            Time.timeScale = 1;
-        }
-
-        if (isPause == true)
-        {
-            Time.timeScale = 0;
-            return;
-        }
+            return;        
 
         if (isSlowMode == true)
         {

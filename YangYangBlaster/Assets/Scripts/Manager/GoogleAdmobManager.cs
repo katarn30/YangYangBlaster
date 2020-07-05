@@ -10,7 +10,7 @@ public class GoogleAdmobManager : SingleTon<GoogleAdmobManager>
     AdRequest request;
     string adUnitId = null;
     Action rewardAction = null;
-
+    public bool isTestAdmob = false;
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -43,12 +43,29 @@ public class GoogleAdmobManager : SingleTon<GoogleAdmobManager>
     private void RequestRewardBasedVideo()
     {
 #if UNITY_ANDROID
-        adUnitId = "ca-app-pub-6643434665197243/3193534858";
+        if (isTestAdmob == true)
+        {
+            adUnitId = "ca-app-pub-3940256099942544/5224354917";
+        }
+        else
+        {
+            adUnitId = "ca-app-pub-6643434665197243/3193534858";
+        }
 #elif UNITY_IPHONE
+        if (isTestAdmob == true)
+        {
+            adUnitId = "ca-app-pub-3940256099942544/1712485313";
+        }
+        else
+        {        
             adUnitId = "ca-app-pub-6643434665197243/7825373417";
+        }            
 #else
             adUnitId = "unexpected_platform";
 #endif
+
+        string AndroidKey = "ca-app-pub-6643434665197243~2072024875";
+        string IOSKey = "ca-app-pub-6643434665197243~5914360097";
 
         // Create an empty ad request.
         request = new AdRequest.Builder().Build();
