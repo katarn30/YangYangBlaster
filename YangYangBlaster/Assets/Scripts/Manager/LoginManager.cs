@@ -81,7 +81,7 @@ public class LoginManager : SingleTon<LoginManager>
         PlayGamesPlatform.Activate();
     }
 
-    void GoogleLogin()
+    public void GoogleLogin()
     {
         GameDataManager.Instance.userData.loginType = LoginRequest.Types.LOGIN_TYPE.Google;
 
@@ -121,26 +121,26 @@ public class LoginManager : SingleTon<LoginManager>
     {
         //GameDataManager.Instance.userData.loginType = LoginRequest.Types.LOGIN_TYPE.Google;
 
-        var loginType = GameDataManager.Instance.userData.loginType;
-        var loginKey = GameDataManager.Instance.userData.loginKey;
-        var nickName = GameDataManager.Instance.userData.nickName;
+        //var loginType = GameDataManager.Instance.userData.loginType;
+        //var loginKey = GameDataManager.Instance.userData.loginKey;
+        //var nickName = GameDataManager.Instance.userData.nickName;
 
-        Social.localUser.Authenticate((bool success) =>
-        {
-            if (success)
-            {
-                Debug.Log("Login : " + Social.localUser.userName);
-                // to do ...
-                // 로그인 성공 처리
-                NonCertLogin();
-            }
-            else
-            {
-                // to do ...
-                // 로그인 실패 처리
-                Debug.Log("Fail");
-            }
-        });
+        //Social.localUser.Authenticate((bool success) =>
+        //{
+        //    if (success)
+        //    {
+        //        Debug.Log("Login : " + Social.localUser.userName);
+        //        // to do ...
+        //        // 로그인 성공 처리
+        //        NonCertLogin();
+        //    }
+        //    else
+        //    {
+        //        // to do ...
+        //        // 로그인 실패 처리
+        //        Debug.Log("Fail");
+        //    }
+        //});
     }
 #endif
 
@@ -199,40 +199,6 @@ public class LoginManager : SingleTon<LoginManager>
         RpcLogin(loginType, loginKey, nickName, "");
     }
 
-#if UNITY_ANDROID
-    public void GoogleLogin()
-    {
-        GameDataManager.Instance.userData.loginType = LoginRequest.Types.LOGIN_TYPE.Google;
-
-        var loginType = GameDataManager.Instance.userData.loginType;
-        var loginKey = GameDataManager.Instance.userData.loginKey;
-        var nickName = GameDataManager.Instance.userData.nickName;
-
-        if (!Social.localUser.authenticated)
-        {
-            Social.localUser.Authenticate((bool bSuccess) =>
-            {
-                if (bSuccess)
-                {
-                    Debug.Log("Login : " + Social.localUser.userName);
-
-                    string idToken = ((PlayGamesLocalUser)Social.localUser).GetIdToken() == null ?
-                    "" : ((PlayGamesLocalUser)Social.localUser).GetIdToken();
-
-                    RpcLogin(loginType, loginKey, nickName, idToken);
-                }
-                else
-                {
-                    Debug.Log("Fail");
-                }
-            });
-        }
-        else
-        {
-            Debug.Log("You already logged in");
-        }
-    }
-#endif
 
     public void RpcLogin(LoginRequest.Types.LOGIN_TYPE loginType,
         string loginKey, string nickName, string idToken)

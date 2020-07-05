@@ -3,11 +3,14 @@ package internal
 import (
 	"crypto/md5"
 	"encoding/hex"
+	"fmt"
 	"reflect"
 	"server/common"
 	"server/game"
 	"server/msg"
+	"server/mysql"
 
+	"github.com/jinzhu/gorm"
 	"github.com/name5566/leaf/gate"
 	"github.com/name5566/leaf/log"
 )
@@ -115,25 +118,40 @@ func handleLoginRequest(args []interface{}) {
 			return
 		}
 		user = u
-		log.Debug(user.NickName)
+		log.Debug("Created user : %v", user.NickName)
+		fmt.Println("Created user : ", user.NickName)
 	} else if m.LoginType == msg.LoginRequest_GOOGLE {
 		// 비인증 -> 구글로그인으로 바꿀때
 		if sub != "" && sub != m.LoginKey {
-			if false == common.UpdateUserLoginKey(m.LoginKey, sub) {
-				a.WriteMsg(&msg.LoginReply{Error: msg.ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY})
-				log.Debug("Login failed ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY")
-				return
-			}
 
-			// DB의 로그인 타입 갱신
-			if false == common.UpdateUserLoginType(uint(m.LoginType), m.LoginKey) {
-				a.WriteMsg(&msg.LoginReply{Error: msg.ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE})
-				log.Debug("Login failed ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE")
+			db := mysql.MysqlDB()
+
+			err := db.Transaction(func(tx *gorm.DB) error {
+				// do some database operations in the transaction (use 'tx' from this point, not 'db')
+				if err := common.UpdateUserLoginType(tx, uint(m.LoginType), m.LoginKey); err != nil {
+					// return any error will rollback
+					a.WriteMsg(&msg.LoginReply{Error: msg.ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE})
+					log.Debug("Login failed ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE")
+					return err
+				}
+
+				if err := common.UpdateUserLoginKey(tx, m.LoginKey, sub); err != nil {
+					// return any error will rollback
+					a.WriteMsg(&msg.LoginReply{Error: msg.ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY})
+					log.Debug("Login failed ERROR_CODE_FAILED_TO_UPDATE_LOGIN_KEY")
+					return err
+				}
+
+				// return nil will commit
+				return nil
+			})
+
+			if err != nil {
 				return
 			}
 
 			// 유저 정보 획득
-			u, ok := common.GetUser(m.LoginKey)
+			u, ok := common.GetUser(sub)
 			if !ok {
 				a.WriteMsg(&msg.LoginReply{Error: msg.ERROR_CODE_FAILED_TO_GET_USER})
 				log.Debug("Login failed ERROR_CODE_FAILED_TO_GET_USER")
@@ -166,7 +184,9 @@ func handleLoginRequest(args []interface{}) {
 			// 그런데 DB의 로그인 타입이 비인증 타입이면
 			if uint(msg.LoginRequest_NON_CERT) == user.LoginType {
 				// DB의 로그인 타입 갱신
-				if false == common.UpdateUserLoginType(uint(m.LoginType), m.LoginKey) {
+				db := mysql.MysqlDB()
+
+				if err := common.UpdateUserLoginType(db, uint(m.LoginType), m.LoginKey); err != nil {
 					a.WriteMsg(&msg.LoginReply{Error: msg.ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE})
 					log.Debug("Login failed ERROR_CODE_FAILED_TO_CHANGE_LOGIN_TYPE")
 					return
@@ -201,5 +221,6 @@ func handleLoginRequest(args []interface{}) {
 
 	a.WriteMsg(&reply)
 	log.Debug("Logged in user : ...")
+	fmt.Println("Logged in user : ", user.NickName)
 	return
 }
