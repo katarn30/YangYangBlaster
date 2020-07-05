@@ -128,6 +128,29 @@ public class EffectManager : SingleTon<EffectManager>
             coinEffectList[activeCoinNum].SetCoinEffect(_pos);
         }        
     }
+
+    public void SetCoinBossEffect(Vector2 _pos)
+    {
+        for (int i = 0; i < 15; i++)
+        {
+            activeCoinNum = activeCoinNum + 1;
+
+            if (activeCoinNum >= coinEffectList.Count)
+            {
+                activeCoinNum = 0;
+            }
+            if (coinEffectList[activeCoinNum].gameObject.activeInHierarchy == true)
+            {
+                GameManager.Instance.UpdateNowGetCoin(100);
+            }
+            else
+            {
+                coinEffectList[activeCoinNum].gameObject.SetActive(true);
+            }
+
+            coinEffectList[activeCoinNum].SetCoinEffect(_pos);
+        }
+    }
     #endregion
 
     #region Milk

@@ -164,4 +164,14 @@ public class LobbyUIController : MonoBehaviour
     {
         ServerTestManager.Instance.ServerTest();
     }
+
+    public void ShowLeaderBoardUI()
+    {
+        AchievementManager.Instance.ShowLeaderboard();
+    }
+
+    public void ShowAchievementUI()
+    {
+        AchievementManager.Instance.ShowAchievement();
+    }
 }

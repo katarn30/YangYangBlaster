@@ -66,4 +66,4 @@ MonoBehaviour:
   monster: {fileID: 6028230092614303458, guid: e3ced1efa66a51245a007bb3634f3ae7, type: 3}
   boss: {fileID: 2607388319443178513, guid: cf4016cc4bf927348ac507de7f313b62, type: 3}
   isBossStage: 1
-  regenTime: 3
+  regenTime: 3.5

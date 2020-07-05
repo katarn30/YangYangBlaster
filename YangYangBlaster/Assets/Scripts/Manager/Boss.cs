@@ -243,10 +243,10 @@ public class Boss : MonoBehaviour
                     SoundManager.Instance.MonsterDeadSound();
 
                     EffectManager.Instance.SetBubbleEffect(transform.position, transform.localScale, deadColor);
-                    EffectManager.Instance.SetCoinEffect(transform.position);
-                    EffectManager.Instance.SetMilkEffect(transform.position);
+                    EffectManager.Instance.SetCoinBossEffect(transform.position);
+                    //EffectManager.Instance.SetMilkEffect(transform.position);
 
-                    GameManager.Instance.UpdateNowStageScore(1000);
+                    GameManager.Instance.UpdateNowStageScore(2000);
                     GameManager.Instance.StageClear();
 
                     transform.DOPause();
