@@ -24,17 +24,7 @@ public class LoginManager : SingleTon<LoginManager>
     {
         DontDestroyOnLoad(this);
 
-        #if UNITY_ANDROID
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            PlayGamesPlatform.InitializeInstance(new PlayGamesClientConfiguration.Builder()
-                .RequestIdToken()
-                .RequestServerAuthCode(false)
-                .Build());
-            PlayGamesPlatform.DebugLogEnabled = true;
-            PlayGamesPlatform.Activate();
-        }
-        #endif
+        LoginInitalize();
         //DoAutoLogin();
     }
 
@@ -61,33 +51,76 @@ public class LoginManager : SingleTon<LoginManager>
     public void LoginInitalize()
     {
 #if UNITY_ANDROID
- 
-        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
-            .EnableSavedGames()
-            .Build();
- 
-        PlayGamesPlatform.InitializeInstance(config);
- 
-        PlayGamesPlatform.DebugLogEnabled = true;
- 
-        PlayGamesPlatform.Activate();
+       GoogleInit();
  
 #elif UNITY_IOS
-
-        GameCenterPlatform.ShowDefaultAchievementCompletionBanner(true);
-
+        IOSInit();
 #endif
-
-        Login();
     }
 
-    public void Login()
+    public void LoginDo()
     {
 #if UNITY_ANDROID
-        GameDataManager.Instance.userData.loginType = LoginRequest.Types.LOGIN_TYPE.Google;
+        GoogleLogin();
 #elif UNITY_IOS
-        
+        IOSLogin();
 #endif
+    }
+
+#if UNITY_ANDROID
+    void GoogleInit()
+    {
+        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
+           .EnableSavedGames()
+           .Build();
+
+        PlayGamesPlatform.InitializeInstance(config);
+
+        PlayGamesPlatform.DebugLogEnabled = true;
+
+        PlayGamesPlatform.Activate();
+    }
+
+    void GoogleLogin()
+    {
+        GameDataManager.Instance.userData.loginType = LoginRequest.Types.LOGIN_TYPE.Google;
+
+        var loginType = GameDataManager.Instance.userData.loginType;
+        var loginKey = GameDataManager.Instance.userData.loginKey;
+        var nickName = GameDataManager.Instance.userData.nickName;
+
+        PlayGamesPlatform.Instance.Authenticate((bool success) =>
+        {
+            if (success)
+            {
+                Debug.Log("Login : " + Social.localUser.userName);
+                // to do ...
+                // 구글 플레이 게임 서비스 로그인 성공 처리
+                string idToken = ((PlayGamesLocalUser)Social.localUser).GetIdToken() == null ?
+                "" : ((PlayGamesLocalUser)Social.localUser).GetIdToken();
+
+                RpcLogin(loginType, loginKey, nickName, idToken);
+            }
+            else
+            {
+                // to do ...
+                // 구글 플레이 게임 서비스 로그인 실패 처리
+                Debug.Log("Fail");
+            }
+        });
+    }
+#endif
+
+#if UNITY_IOS
+    void IOSInit()
+    {
+        GameCenterPlatform.ShowDefaultAchievementCompletionBanner(true);
+    }
+
+    void IOSLogin()
+    {
+        //GameDataManager.Instance.userData.loginType = LoginRequest.Types.LOGIN_TYPE.Google;
+
         var loginType = GameDataManager.Instance.userData.loginType;
         var loginKey = GameDataManager.Instance.userData.loginKey;
         var nickName = GameDataManager.Instance.userData.nickName;
@@ -96,19 +129,10 @@ public class LoginManager : SingleTon<LoginManager>
         {
             if (success)
             {
+                Debug.Log("Login : " + Social.localUser.userName);
                 // to do ...
                 // 로그인 성공 처리
-                Debug.Log("Login : " + Social.localUser.userName);
-#if UNITY_ANDROID
-                string idToken = ((PlayGamesLocalUser)Social.localUser).GetIdToken() == null ?
-                "" : ((PlayGamesLocalUser)Social.localUser).GetIdToken();
-
-                RpcLogin(loginType, loginKey, nickName, idToken);
-#elif UNITY_IOS
-#endif
-
-
-
+                NonCertLogin();
             }
             else
             {
@@ -117,6 +141,20 @@ public class LoginManager : SingleTon<LoginManager>
                 Debug.Log("Fail");
             }
         });
+    }
+#endif
+
+
+    public void Login()
+    {
+#if UNITY_ANDROID
+        
+#elif UNITY_IOS
+        
+#endif
+        
+
+        
     }
 
     public void DeletePlayerPrefs()
