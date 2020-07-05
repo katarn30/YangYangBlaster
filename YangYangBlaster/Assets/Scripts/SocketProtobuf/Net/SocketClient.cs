@@ -68,6 +68,29 @@ public class SocketClient
         }
     }
 
+    void SyncConnectServer(string host, int port)
+    {
+        client = null;
+        client = new TcpClient();
+        client.SendTimeout = 1000;
+        client.ReceiveTimeout = 1000;
+        client.NoDelay = true;
+        try
+        {
+            client.Connect(host, port);
+
+            if (client.Connected)
+            {
+                OnConnect(null);
+            }
+        }
+        catch (Exception e)
+        {
+            Close();
+            Debug.LogError(e.Message);
+        }
+    }
+
     /// <summary>
     /// 서버에 연결
     /// </summary>
@@ -255,6 +278,11 @@ public class SocketClient
         ConnectServer(AppConst.SocketAddress, AppConst.SocketPort);
     }
 
+    public void SendSyncConnect()
+    {
+        SyncConnectServer(AppConst.SocketAddress, AppConst.SocketPort);
+    }
+
     /// <summary>
     /// 소켓 메세지 보내기
     /// </summary>
@@ -262,5 +290,15 @@ public class SocketClient
     {
         SessionSend(buffer.ToBytes());
         buffer.Close();
+    }
+
+    public bool IsConnected()
+    {
+        if (client != null)
+        {
+            return client.Connected;
+        }
+
+        return false;
     }
 }

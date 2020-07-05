@@ -88,6 +88,12 @@ namespace Net
         /// </summary>
         public void SendMessage(IMessage obj)
         {
+            if (false == socketClient.IsConnected())
+            {
+                // block
+                socketClient.SendSyncConnect();
+            }
+
             if (!ProtoDic.ContainProtoType(obj.GetType()))
             {
                 Debug.LogError("알 수 없는 프로토콜 유형");

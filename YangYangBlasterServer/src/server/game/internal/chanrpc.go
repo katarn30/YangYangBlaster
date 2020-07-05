@@ -14,6 +14,7 @@ func init() {
 	skeleton.RegisterChanRPC("CloseAgent", rpcCloseAgent)
 	//skeleton.RegisterChanRPC("UserLogin", rpcUserLogin)
 	//skeleton.RegisterChanRPC("CreatePlayer", rpcCreatePlayer)
+	skeleton.RegisterChanRPC("LoginRequest", rpcLoginRequest)
 }
 
 func rpcNewAgent(args []interface{}) {
@@ -21,7 +22,7 @@ func rpcNewAgent(args []interface{}) {
 	a := args[0].(gate.Agent)
 	_ = a
 
-	a.SetUserData(common.User{})
+	//a.SetUserData(&common.User{})
 }
 
 func rpcCloseAgent(args []interface{}) {
@@ -29,7 +30,7 @@ func rpcCloseAgent(args []interface{}) {
 	a := args[0].(gate.Agent)
 	_ = a
 
-	a.SetUserData(nil)
+	//a.SetUserData(nil)
 }
 
 func rpcUserLogin(args []interface{}) {
@@ -70,4 +71,13 @@ func rpcCreatePlayer(args []interface{}) {
 		m := &msg.LoginFaild{Code: msg.LoginFaild_InnerError}
 		agent.WriteMsg(m)
 	}
+}
+
+func rpcLoginRequest(args []interface{}) {
+	agent := args[0].(gate.Agent)
+	user := args[1].(*common.User)
+	//playerID := args[1].(uint)
+	//log.Debug(agent)
+	fmt.Println(agent)
+	fmt.Println(user)
 }

@@ -1,11 +1,13 @@
 package common
 
 import (
+	"errors"
 	"fmt"
 	"server/mysql"
 	"time"
 
 	"github.com/google/uuid"
+	"github.com/jinzhu/gorm"
 )
 
 type User struct {
@@ -44,65 +46,68 @@ func CreateUser(loginType uint, marketPlatform uint,
 	accessKey := uuid.New().String()
 
 	db := mysql.MysqlDB()
-	var user = User{
-		LoginType:          loginType,
-		NickName:           nickName,
-		LoginKey:           loginKey,
-		CountryCode:        countryCode,
-		MarketPlatformType: marketPlatform,
-		AccessKey:          accessKey,
-		IsDeleted:          []uint8{0},
-	}
-	err := db.Create(&user).Error
+	user := new(User)
+	user.LoginType = loginType
+	user.NickName = nickName
+	user.LoginKey = loginKey
+	user.CountryCode = countryCode
+	user.MarketPlatformType = marketPlatform
+	user.AccessKey = accessKey
+	user.IsDeleted = []uint8{0}
+
+	err := db.Create(user).Error
 	if nil != err {
 		fmt.Println(err)
-		return &user, false
+		return user, false
 	}
 
-	return &user, true
+	return user, true
 }
 
 func GetUser(loginKey string) (*User, bool) {
 
-	var user User
+	user := new(User)
 	db := mysql.MysqlDB()
 	//db.AutoMigrate(&UserTest{})
 
-	err := db.Where("login_key = ?", loginKey).Limit(1).Find(&user).Error
+	err := db.Where("login_key = ?", loginKey).Limit(1).Find(user).Error
 	if nil != err {
 		fmt.Println(err)
-		return &user, false
+		return user, false
 	}
-	fmt.Println("NickName: ", user.NickName)
-	return &user, true
+
+	return user, true
 }
 
-func UpdateUserLoginKey(loginKey string, sub string) bool {
+func UpdateUserLoginKey(tx *gorm.DB, loginKey string, sub string) error {
 
 	var user User
-	db := mysql.MysqlDB()
-	err := db.Model(&user).
+	//db := mysql.MysqlDB()
+	ctx := tx.Model(&user).
 		Where("login_key = ? AND is_deleted = 0", loginKey).
 		Updates(User{LoginKey: sub})
-	if nil != err {
-		fmt.Println(err)
-		return false
+
+	affected := ctx.RowsAffected
+	if affected <= 0 {
+		return errors.New("RowsAffected 0")
 	}
 
-	return true
+	return ctx.Error
 }
 
-func UpdateUserLoginType(loginType uint, loginKey string) bool {
+func UpdateUserLoginType(tx *gorm.DB, loginType uint, loginKey string) error {
 
 	var user User
-	db := mysql.MysqlDB()
-	err := db.Model(&user).
+	//db := mysql.MysqlDB()
+
+	ctx := tx.Model(&user).
 		Where("login_key = ? AND is_deleted = 0", loginKey).
 		Updates(User{LoginType: loginType, LoginKey: loginKey})
-	if nil != err {
-		fmt.Println(err)
-		return false
+
+	affected := ctx.RowsAffected
+	if affected <= 0 {
+		return errors.New("RowsAffected 0")
 	}
 
-	return true
+	return ctx.Error
 }
