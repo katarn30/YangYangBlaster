@@ -58,6 +58,67 @@ public class LoginManager : SingleTon<LoginManager>
     //    PlayerPrefs.SetString(PREFIX_PREFS + "nick_name", nickName_);
     //}
 
+    public void LoginInitalize()
+    {
+#if UNITY_ANDROID
+ 
+        PlayGamesClientConfiguration config = new PlayGamesClientConfiguration.Builder()
+            .EnableSavedGames()
+            .Build();
+ 
+        PlayGamesPlatform.InitializeInstance(config);
+ 
+        PlayGamesPlatform.DebugLogEnabled = true;
+ 
+        PlayGamesPlatform.Activate();
+ 
+#elif UNITY_IOS
+
+        GameCenterPlatform.ShowDefaultAchievementCompletionBanner(true);
+
+#endif
+
+        Login();
+    }
+
+    public void Login()
+    {
+#if UNITY_ANDROID
+        GameDataManager.Instance.userData.loginType = LoginRequest.Types.LOGIN_TYPE.Google;
+#elif UNITY_IOS
+        
+#endif
+        var loginType = GameDataManager.Instance.userData.loginType;
+        var loginKey = GameDataManager.Instance.userData.loginKey;
+        var nickName = GameDataManager.Instance.userData.nickName;
+
+        Social.localUser.Authenticate((bool success) =>
+        {
+            if (success)
+            {
+                // to do ...
+                // 로그인 성공 처리
+                Debug.Log("Login : " + Social.localUser.userName);
+#if UNITY_ANDROID
+                string idToken = ((PlayGamesLocalUser)Social.localUser).GetIdToken() == null ?
+                "" : ((PlayGamesLocalUser)Social.localUser).GetIdToken();
+
+                RpcLogin(loginType, loginKey, nickName, idToken);
+#elif UNITY_IOS
+#endif
+
+
+
+            }
+            else
+            {
+                // to do ...
+                // 로그인 실패 처리
+                Debug.Log("Fail");
+            }
+        });
+    }
+
     public void DeletePlayerPrefs()
     {
         PlayerPrefs.DeleteAll();
@@ -135,13 +196,6 @@ public class LoginManager : SingleTon<LoginManager>
     }
 #endif
 
-#if UNITY_IOS
-    public void IOSLogin()
-    {
-        
-    }
-#endif
-
     public void RpcLogin(LoginRequest.Types.LOGIN_TYPE loginType,
         string loginKey, string nickName, string idToken)
     {
@@ -204,7 +258,7 @@ public class LoginManager : SingleTon<LoginManager>
         //});
     }
 
-    public void OnLogout()
+    public void Logout()
     {
 #if UNITY_ANDROID
         PlayGamesPlatform.Instance.SignOut();
