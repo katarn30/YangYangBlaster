@@ -4,6 +4,8 @@ using UnityEngine;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using Msg;
+using UnityEngine.SocialPlatforms;
+using UnityEngine.SocialPlatforms.GameCenter;
 
 public class LoginManager : SingleTon<LoginManager>
 {
@@ -130,6 +132,13 @@ public class LoginManager : SingleTon<LoginManager>
         {
             Debug.Log("You already logged in");
         }
+    }
+#endif
+
+#if UNITY_IOS
+    public void IOSLogin()
+    {
+        
     }
 #endif
 
