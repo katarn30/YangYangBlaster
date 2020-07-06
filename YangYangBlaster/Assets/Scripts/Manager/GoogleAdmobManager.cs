@@ -130,11 +130,17 @@ public class GoogleAdmobManager : SingleTon<GoogleAdmobManager>
         {
             if (rewardBasedVideo.IsLoaded())
             {
+                Debug.Log("Reward Video Load");
+
                 SoundManager.Instance.SoundVolume(false);
 
                 rewardAction = _action;
 
                 rewardBasedVideo.Show();
+            }
+            else
+            {
+                Debug.Log("Reward Video Not Load");
             }
         }
         else if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.OSXEditor)

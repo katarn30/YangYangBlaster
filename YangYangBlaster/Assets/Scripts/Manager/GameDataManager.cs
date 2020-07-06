@@ -785,7 +785,7 @@ public class GameDataManager : SingleTon<GameDataManager>
     public bool isVersionCheck(string _version)
     {
         bool result = true;
-        string ver = string.Format("{0}({1})", Application.version, Application.identifier);
+        string ver = string.Format("{0}_{1}", Application.version, Application.identifier);
 
         if (Application.platform != RuntimePlatform.WindowsEditor && Application.platform != RuntimePlatform.OSXEditor)
         {
