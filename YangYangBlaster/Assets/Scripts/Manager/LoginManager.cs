@@ -5,7 +5,9 @@ using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using Msg;
 using UnityEngine.SocialPlatforms;
+#if UNITY_IOS
 using UnityEngine.SocialPlatforms.GameCenter;
+#endif
 
 public class LoginManager : SingleTon<LoginManager>
 {
