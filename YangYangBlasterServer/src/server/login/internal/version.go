@@ -15,7 +15,7 @@ type Version struct {
 
 func GetVersionFile() Version {
 
-	cmd := exec.Command("curl", "https://raw.githubusercontent.com/agewsj/YangYangBlaster/master/version.json")
+	cmd := exec.Command("curl", "https://raw.githubusercontent.com/agewsj/YangYangBlaster/master/Version.json")
 
 	fmt.Println(cmd)
 
