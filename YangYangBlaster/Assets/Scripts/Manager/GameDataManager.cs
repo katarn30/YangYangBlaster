@@ -158,72 +158,81 @@ public class GameDataManager : SingleTon<GameDataManager>
         DontDestroyOnLoad(this);
     }
 
-    //protected override void OnApplicationQuit()
-    //{
-    //    SaveGameData();
-
-    //    base.OnApplicationQuit();
-    //}
-
     public void LoadGameData()
     {
         LoadGameDataModel.Instance.CTosLoadGameDataRequest();
+    }
 
-        //var request = new LoadGameDataRequest();
-        //RpcServiceManager.Instance.LoadGameData(request, (LoadGameDataReply reply)=>
-        //{
-        //    foreach (var item in reply.Items)
-        //    {
-        //        switch (item.ItemType)
-        //        {
-        //            case ITEM_TYPE.Gold:
-        //                userData.userCurrency.userCoin = item.ItemCount;
-        //                break;
-        //            case ITEM_TYPE.Ruby:
-        //                userData.userCurrency.userRubby = item.ItemCount;
-        //                break;
-        //            case ITEM_TYPE.PieceKnight:
-        //                userData.userCurrency.knightPiece = item.ItemCount;
-        //                break;
-        //            case ITEM_TYPE.PiecePirate:
-        //                userData.userCurrency.piratePiece = item.ItemCount;
-        //                break;
-        //            case ITEM_TYPE.PieceStar:
-        //                userData.userCurrency.starPiece = item.ItemCount;
-        //                break;
-        //            case ITEM_TYPE.PieceScientist:
-        //                userData.userCurrency.scientistPiece = item.ItemCount;
-        //                break;
-        //            case ITEM_TYPE.PieceStudent:
-        //                userData.userCurrency.studentPiece = item.ItemCount;
-        //                break;
-        //        }
-        //    }
+    public string GetItemName(ITEM_TYPE itemType)
+    {
+        switch (itemType)
+        {
+        case ITEM_TYPE.Gold:
+            return "코인";
+        case ITEM_TYPE.Ruby:
+            return "루비";
+        case ITEM_TYPE.PieceKnight:
+            return "기사 조각";
+        case ITEM_TYPE.PiecePirate:
+            return "해적 조각";
+        case ITEM_TYPE.PieceStar:
+            return "스타 조각";
+        case ITEM_TYPE.PieceScientist:
+            return "과학자 조각";
+        case ITEM_TYPE.PieceStudent:
+            return "학생 조각";
+        case ITEM_TYPE.PieceCowboy:
+            return "카우보이 조각";
+        case ITEM_TYPE.PieceFisherman:
+            return "낚시꾼 조각";
+        default:
+            return "모름";
+        }
+    }
 
-        //    if (null != userData.getMercenaryDataDic)
-        //    {
-        //        userData.getMercenaryDataDic.Clear();
+    public void SaveGameData(ITEM_TYPE itemType = ITEM_TYPE.None, long itemCount = 0, 
+        string mercenaryName = "", int mercenaryLevel = 0,
+        bool saveStage = false, bool saveUpgradePlayer = false)
+    {
+        var request = new SaveGameDataRequest();
 
-        //        foreach (var mercenary in reply.Mercenaries)
-        //        {
-        //            MercenaryData mercenaryData = new MercenaryData();
-        //            mercenaryData.name = mercenary.MercenaryName;
-        //            mercenaryData.level = mercenary.MercenaryLevel;
+        if (ITEM_TYPE.None != itemType)
+        {
+            Item item = new Item();
+            item.ItemType = itemType;
+            item.ItemName = GetItemName(itemType);
+            item.ItemCount = userData.userCurrency.userCoin;
 
-        //            userData.getMercenaryDataDic.Add(
-        //                mercenary.MercenaryName, mercenaryData);
-        //        }
-        //    }
+            request.Items.Add(item);
+        }
 
-        //    userData.stageNum = reply.Stage.StageNum;
-        //    userData.score = (int)reply.Stage.StageScore;
+        if (false == mercenaryName.Equals(""))
+        {
+            Mercenary mercenary = new Mercenary();
+            mercenary.MercenaryName = mercenaryName;
+            mercenary.MercenaryLevel = mercenaryLevel;
 
-        //    userData.upgradePlayer.powerLevel = reply.UpgradePlayer.PowerLevel;
-        //    userData.upgradePlayer.attackSpeedLevel = reply.UpgradePlayer.AttackSpeedLevel;
-        //    userData.upgradePlayer.criticalLevel = reply.UpgradePlayer.CriticalLevel;
-        //    userData.upgradePlayer.buffDurationLevel = reply.UpgradePlayer.BuffDurationLevel;
-        //    userData.upgradePlayer.freeCoinLevel = reply.UpgradePlayer.FreeCoinLevel;
-        //});
+            request.Mercenaries.Add(mercenary);
+        }
+
+        if (saveStage)
+        {
+            request.Stage = new Stage();
+            request.Stage.StageNum = userData.stageNum;
+            request.Stage.StageScore = userData.score;
+        }
+
+        if (saveUpgradePlayer)
+        {
+            request.UpgradePlayer = new Msg.UpgradePlayer();
+            request.UpgradePlayer.PowerLevel = userData.upgradePlayer.powerLevel;
+            request.UpgradePlayer.AttackSpeedLevel = userData.upgradePlayer.attackSpeedLevel;
+            request.UpgradePlayer.CriticalLevel = userData.upgradePlayer.criticalLevel;
+            request.UpgradePlayer.BuffDurationLevel = userData.upgradePlayer.buffDurationLevel;
+            request.UpgradePlayer.FreeCoinLevel = userData.upgradePlayer.freeCoinLevel;
+        }
+
+        SaveGameDataModel.Instance.CTosSaveGameDataRequest(request);
     }
 
     public void SaveGameDataItem()
@@ -295,84 +304,6 @@ public class GameDataManager : SingleTon<GameDataManager>
         }
 
         SaveGameDataModel.Instance.CTosSaveGameDataRequest(request);
-
-        //var request = new SaveGameDataRequest();
-
-        //if (0 < userData.userCurrency.userCoin)
-        //{
-        //    Item item = new Item();
-        //    item.ItemType = ITEM_TYPE.Gold;
-        //    item.ItemName = "코인";
-        //    item.ItemCount = userData.userCurrency.userCoin;
-
-        //    request.Items.Add(item);
-        //}
-        //if (0 < userData.userCurrency.userRubby)
-        //{
-        //    Item item = new Item();
-        //    item.ItemType = ITEM_TYPE.Ruby;
-        //    item.ItemName = "루비";
-        //    item.ItemCount = userData.userCurrency.userRubby;
-
-        //    request.Items.Add(item);
-        //}
-        //if (0 < userData.userCurrency.knightPiece)
-        //{
-        //    Item item = new Item();
-        //    item.ItemType = ITEM_TYPE.PieceKnight;
-        //    item.ItemName = "기사 조각";
-        //    item.ItemCount = userData.userCurrency.knightPiece;
-
-        //    request.Items.Add(item);
-        //}
-        //if (0 < userData.userCurrency.piratePiece)
-        //{
-        //    Item item = new Item();
-        //    item.ItemType = ITEM_TYPE.PiecePirate;
-        //    item.ItemName = "해적 조각";
-        //    item.ItemCount = userData.userCurrency.piratePiece;
-
-        //    request.Items.Add(item);
-        //}
-        //if (0 < userData.userCurrency.starPiece)
-        //{
-        //    Item item = new Item();
-        //    item.ItemType = ITEM_TYPE.PieceStar;
-        //    item.ItemName = "스타 조각";
-        //    item.ItemCount = userData.userCurrency.starPiece;
-
-        //    request.Items.Add(item);
-        //}
-        //if (0 < userData.userCurrency.scientistPiece)
-        //{
-        //    Item item = new Item();
-        //    item.ItemType = ITEM_TYPE.PieceScientist;
-        //    item.ItemName = "과학자 조각";
-        //    item.ItemCount = userData.userCurrency.scientistPiece;
-
-        //    request.Items.Add(item);
-        //}
-        //if (0 < userData.userCurrency.studentPiece)
-        //{
-        //    Item item = new Item();
-        //    item.ItemType = ITEM_TYPE.PieceStudent;
-        //    item.ItemName = "학생 조각";
-        //    item.ItemCount = userData.userCurrency.studentPiece;
-
-        //    request.Items.Add(item);
-        //}
-
-        //RpcServiceManager.Instance.SaveGameData(request, (SaveGameDataReply reply) =>
-        //{
-        //    if (ERROR_CODE.Ok == reply.Error)
-        //    {
-        //        Debug.Log("Ok");
-        //    }
-        //    else
-        //    {
-        //        Debug.Log(reply.Error);
-        //    }
-        //});
     }
 
     public void SaveGameDataMercenary()
@@ -423,7 +354,6 @@ public class GameDataManager : SingleTon<GameDataManager>
     {
         LoadUserDataLoginParts();
 
-        //userData.nickName = "멍뭉이는멍뭉";
         if (userData.loginKey.Equals("") && userData.nickName.Equals(""))
         {
             userData.nickName = GenerateTempUserNickName("user");
@@ -521,8 +451,16 @@ public class GameDataManager : SingleTon<GameDataManager>
 
         userData.userCurrency.userCoin = userData.userCurrency.userCoin - catPrice;
 
-        SaveGameDataMercenary();
-        SaveGameDataItem();
+        if (0 != catPrice)
+        {
+            MercenaryData m = GetMyMercenaryData(key);
+            SaveGameData(ITEM_TYPE.Gold, userData.userCurrency.userCoin, m.name, m.level);
+        }
+        else
+        {
+            MercenaryData m = GetMyMercenaryData(key);
+            SaveGameData(ITEM_TYPE.None, 0, m.name, m.level);
+        }
     }
 
     public void SelectMercenary(MercenaryData _mercenaryData)
@@ -724,8 +662,14 @@ public class GameDataManager : SingleTon<GameDataManager>
 
         userData.upgradePlayer.powerLevel++;
 
-        SaveGameDataUpgradePlayer();
-        SaveGameDataItem();
+        if (0 != _price)
+        {
+            SaveGameData(ITEM_TYPE.Gold, userData.userCurrency.userCoin, "", 0, false, true);
+        }
+        else
+        {
+            SaveGameDataUpgradePlayer();
+        }
     }
 
     public void SetUpgradeAttackSpeed(int _price)
@@ -734,8 +678,14 @@ public class GameDataManager : SingleTon<GameDataManager>
 
         userData.upgradePlayer.attackSpeedLevel++;
 
-        SaveGameDataUpgradePlayer();
-        SaveGameDataItem();
+        if (0 != _price)
+        {
+            SaveGameData(ITEM_TYPE.Gold, userData.userCurrency.userCoin, "", 0, false, true);
+        }
+        else
+        {
+            SaveGameDataUpgradePlayer();
+        }
     }
 
     public void SetUpgradeCritical(int _price)
@@ -744,8 +694,14 @@ public class GameDataManager : SingleTon<GameDataManager>
 
         userData.upgradePlayer.criticalLevel++;
 
-        SaveGameDataUpgradePlayer();
-        SaveGameDataItem();
+        if (0 != _price)
+        {
+            SaveGameData(ITEM_TYPE.Gold, userData.userCurrency.userCoin, "", 0, false, true);
+        }
+        else
+        {
+            SaveGameDataUpgradePlayer();
+        }
     }
 
     public void SetUpgradeSkillDamage(int _price)
@@ -754,8 +710,14 @@ public class GameDataManager : SingleTon<GameDataManager>
 
         userData.upgradePlayer.buffDurationLevel++;
 
-        SaveGameDataUpgradePlayer();
-        SaveGameDataItem();
+        if (0 != _price)
+        {
+            SaveGameData(ITEM_TYPE.Gold, userData.userCurrency.userCoin, "", 0, false, true);
+        }
+        else
+        {
+            SaveGameDataUpgradePlayer();
+        }
     }
 
     public void SetUpgradeFreeCoin(int _price)
@@ -764,8 +726,14 @@ public class GameDataManager : SingleTon<GameDataManager>
 
         userData.upgradePlayer.freeCoinLevel++;
 
-        SaveGameDataUpgradePlayer();
-        SaveGameDataItem();
+        if (0 != _price)
+        {
+            SaveGameData(ITEM_TYPE.Gold, userData.userCurrency.userCoin, "", 0, false, true);
+        }
+        else
+        {
+            SaveGameDataUpgradePlayer();
+        }
     }
 
     public bool isUpgrade(int _price)

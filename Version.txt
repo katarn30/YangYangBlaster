@@ -1,5 +1,0 @@
-Android Live : 1.0.1_1
-Android Test : 1.0.1_2
-
-IOS Live : 1.0.1_3
-IOS Test : 1.0.1_4

@@ -45,7 +45,8 @@ func handleAuth(args []interface{}) {
 			game.ChanRPC.Go("CreatePlayer", a, newAccount.PlayerID)
 			game.ChanRPC.Go("UserLogin", a, newAccount.PlayerID)
 		} else {
-			log.Debug("create account error ", m.Account)
+			log.Debug("create account error : %v", m.Account)
+			fmt.Println("create account error :", m.Account)
 			a.WriteMsg(&msg.LoginFaild{Code: msg.LoginFaild_InnerError})
 		}
 
@@ -62,6 +63,14 @@ func handleAuth(args []interface{}) {
 func handleLoginRequest(args []interface{}) {
 	m := args[0].(*msg.LoginRequest)
 	a := args[1].(gate.Agent)
+
+	// version 체크
+	version := GetVersionFile()
+	if m.Version != version.Android_Test {
+		a.WriteMsg(&msg.LoginReply{Error: msg.ERROR_CODE_THE_VERSION_DOES_NOT_MATCH})
+		log.Debug("Login failed ERROR_CODE_THE_VERSION_DOES_NOT_MATCH")
+		return
+	}
 
 	var sub string = ""
 	var user *common.User
@@ -220,7 +229,7 @@ func handleLoginRequest(args []interface{}) {
 	a.SetUserData(user)
 
 	a.WriteMsg(&reply)
-	log.Debug("Logged in user : ...")
+	log.Debug("Logged in user : %v", user.NickName)
 	fmt.Println("Logged in user : ", user.NickName)
 	return
 }
