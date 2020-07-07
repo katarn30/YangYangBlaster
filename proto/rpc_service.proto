@@ -25,6 +25,7 @@ enum ERROR_CODE {
     FAILED_TO_LOAD_MERCENARY = 18;
     FAILED_TO_LOAD_STAGE = 19;
     FAILED_TO_LOAD_UPGRADE_PLAYER = 20;
+    THE_VERSION_DOES_NOT_MATCH = 21;
 }
 
 enum ITEM_TYPE {
@@ -36,6 +37,8 @@ enum ITEM_TYPE {
     PIECE_STAR = 1004;
     PIECE_SCIENTIST = 1005;
     PIECE_STUDENT = 1006;
+    PIECE_COWBOY = 1007;
+    PIECE_FISHERMAN = 1008;
 }
 
 enum ITEM_CATEGORY {
@@ -72,6 +75,7 @@ message LoginRequest {
     string loginKey = 2;
     string idToken = 3;
     string nickName = 4;
+    string version = 5;
 }
 
 message LoginReply {

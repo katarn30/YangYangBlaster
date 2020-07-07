@@ -143,7 +143,11 @@ public class LobbyUIController : MonoBehaviour
         {
             GameDataManager.Instance.userData.userCurrency.userCoin = GameDataManager.Instance.userData.userCurrency.userCoin + GameDataManager.Instance.freeCoin;
             GameDataManager.Instance.SetFreeCoinInfo();
-            GameDataManager.Instance.SaveGameDataItem();
+
+            if (0 != GameDataManager.Instance.freeCoin)
+            {
+                GameDataManager.Instance.SaveGameData(Msg.ITEM_TYPE.Gold, GameDataManager.Instance.userData.userCurrency.userCoin);
+            }
 
             UpdateFreeCoinText();
             UpdateCoinText();

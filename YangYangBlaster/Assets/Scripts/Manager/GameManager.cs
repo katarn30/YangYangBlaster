@@ -487,13 +487,19 @@ public class GameManager : SingleTon<GameManager>
     public void UpdateScore(int _score)
     {
         GameDataManager.Instance.userData.score = GameDataManager.Instance.userData.score + _score;
-        GameDataManager.Instance.SaveGameDataStage();
+        if (0 != _score)
+        {
+            GameDataManager.Instance.SaveGameDataStage();
+        }
     }
 
     public void GetCoin(int _coin)
     {
         GameDataManager.Instance.userData.userCurrency.userCoin += _coin;
-        GameDataManager.Instance.SaveGameDataItem();
+        if (0 != _coin)
+        {
+            GameDataManager.Instance.SaveGameData(Msg.ITEM_TYPE.Gold, GameDataManager.Instance.userData.userCurrency.userCoin);
+        }
 
         UIManager.Instance.inGameUI.SetCoinUI();
     }
