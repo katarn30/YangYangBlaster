@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
+using GooglePlayGames;
 
 public class AchievementManager : SingleTon<AchievementManager>
 {
@@ -72,7 +73,7 @@ public class AchievementManager : SingleTon<AchievementManager>
         if (score >= 100)
         {
 #if UNITY_ANDROID
-            PlayGamesPlatform.Instance.ReportProgress(GPGSIds.achievement_100, 100f, null);
+            //PlayGamesPlatform.Instance.ReportProgress(GPGSIds.achievement_100, 100f, null);
 #elif UNITY_IOS
             Social.ReportProgress("Score_100", 100f, null);
 #endif
@@ -82,7 +83,7 @@ public class AchievementManager : SingleTon<AchievementManager>
     public void ReportAchievement(int score)
     {
 #if UNITY_ANDROID
- 
+        /*
         PlayGamesPlatform.Instance.ReportScore(score, GPGSIds.leaderboard_score, (bool success) =>
         {
             if (success)
@@ -96,7 +97,7 @@ public class AchievementManager : SingleTon<AchievementManager>
                 // 그에 따른 처리
             }
         });
- 
+        */
 #elif UNITY_IOS
 
         Social.ReportScore(score, "Leaderboard_ID", (bool success) =>

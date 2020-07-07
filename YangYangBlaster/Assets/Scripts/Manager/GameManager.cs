@@ -311,6 +311,7 @@ public class GameManager : SingleTon<GameManager>
 
         UIManager.Instance.SetLobbyUI();
         SoundManager.Instance.LobbyBGMSound();
+        StageManager.Instance.SetLobbyStage();
     }
 
     public void BuyMercenary(int _num)
@@ -399,7 +400,14 @@ public class GameManager : SingleTon<GameManager>
         else
         {
             SoundManager.Instance.StageBGMSound();
-        }                
+        }
+
+        float num = ((float)GameDataManager.Instance.userData.stageNum % 6);
+        if (num == 1)
+        {
+            StageManager.Instance.SetIngameStage();
+        }
+        
     }
 
     public void SetContinueInGame()
