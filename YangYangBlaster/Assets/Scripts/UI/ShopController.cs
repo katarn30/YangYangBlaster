@@ -19,7 +19,15 @@ public class ShopController : MonoBehaviour
                 GameObject go = Instantiate(catItemPrefab.gameObject, prefabParent);
 
                 ShopCatItem sc = go.GetComponent<ShopCatItem>();
-                sc.SetCatItem(i, GameDataManager.Instance.ReadMercenaryDataList[i]);
+
+                if (GameDataManager.Instance.isGetMercenaryCat(GameDataManager.Instance.ReadMercenaryDataList[i].name) == true)
+                {                    
+                    sc.SetCatItem(i, GameDataManager.Instance.GetMyMercenaryData(GameDataManager.Instance.ReadMercenaryDataList[i].name));
+                }
+                else
+                {
+                    sc.SetCatItem(i, GameDataManager.Instance.ReadMercenaryDataList[i]);
+                }
 
                 shopCatItemList.Add(sc);
             }
@@ -35,7 +43,7 @@ public class ShopController : MonoBehaviour
         for (int i = 0; i < shopCatItemList.Count; i++)
         {
             if (GameDataManager.Instance.isGetMercenaryCat(shopCatItemList[i].catName.text) == true)
-            {
+            {                
                 shopCatItemList[i].SetCatItem(i, GameDataManager.Instance.GetMyMercenaryData(shopCatItemList[i].catName.text));
             }
             else

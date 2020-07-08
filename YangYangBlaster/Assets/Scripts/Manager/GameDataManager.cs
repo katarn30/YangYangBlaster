@@ -529,6 +529,22 @@ public class GameDataManager : SingleTon<GameDataManager>
         return isResult;
     }
 
+    public MercenaryData GetReadMercenaryData(string _name)
+    {
+        MercenaryData data = new MercenaryData();
+
+        for (int i = 0; i < ReadMercenaryDataList.Count; i++)
+        {
+            if (ReadMercenaryDataList[i].name == _name)
+            {
+                data = ReadMercenaryDataList[i];
+                break;
+            }
+        }
+
+        return data;
+    }
+
     public MercenaryData GetMyMercenaryData(string _name)
     {
         return userData.getMercenaryDataDic[_name];
