@@ -766,34 +766,19 @@ public class GameDataManager : SingleTon<GameDataManager>
     #endregion
 
     #region VersionInfo
-    public bool isVersionCheck(string _version)
+    public void CheckUpdateVersion()
     {
-        bool result = true;
-        string ver = string.Format("{0}_{1}", Application.version, Application.identifier);
-
-        if (Application.platform != RuntimePlatform.WindowsEditor && Application.platform != RuntimePlatform.OSXEditor)
+        if (Application.platform == RuntimePlatform.Android)
         {
-            if (_version != ver)
-            {
-                result = false;
-            }
+            Application.OpenURL("market://details?id=com.TongTongStudio.YangYangBlaster");
         }
-
-        return result;
-    }
-
-    public void CheckUpdateVersion(string _version)
-    {
-        if (isVersionCheck(_version) == false)
+        else if (Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            if (Application.platform == RuntimePlatform.Android)
-            {
-                Application.OpenURL("market://details?id=com.TongTongStudio.YangYangBlaster");
-            }
-            else if (Application.platform == RuntimePlatform.IPhonePlayer)
-            {
-                Application.OpenURL("itms-apps://itunes.apple.com/app/id1520506681");
-            }
+            Application.OpenURL("itms-apps://itunes.apple.com/app/id1520506681");
+        }
+        else
+        {
+            Application.OpenURL("market://details?id=com.TongTongStudio.YangYangBlaster");
         }
     }
     #endregion

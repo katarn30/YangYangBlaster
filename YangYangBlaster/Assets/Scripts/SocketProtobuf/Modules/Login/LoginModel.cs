@@ -48,7 +48,7 @@ public class LoginModel : BaseModel<LoginModel>
         else
         {
             Debug.Log(reply.Error);
-
+            GameDataManager.Instance.CheckUpdateVersion();
             //DeletePlayerPrefs();
         }
     }
@@ -61,7 +61,7 @@ public class LoginModel : BaseModel<LoginModel>
         request.LoginType = loginType;
         request.NickName = nickName;
         request.IdToken = idToken;
-        request.Version = "1.0.1_2";
+        request.Version = string.Format("{0}_{1}", Application.version, Application.identifier);
 
         SendTos(request);
     }
