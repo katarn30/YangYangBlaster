@@ -61,7 +61,7 @@ public class LoginModel : BaseModel<LoginModel>
         request.LoginType = loginType;
         request.NickName = nickName;
         request.IdToken = idToken;
-        request.Version = string.Format("{0}_{1}", Application.version, Application.identifier);
+        request.Version = string.Format("{0}_{1}", Application.version, GameDataManager.Instance.GetBundleVersion());
 
         SendTos(request);
     }
