@@ -47,32 +47,34 @@ public class LoginModel : BaseModel<LoginModel>
         }
         else if (ERROR_CODE.TheVersionDoesNotMatch == reply.Error)
         {
+            Debug.Log(reply.Error);
+
             // 버전체크 실패
         }
         else
         {
             Debug.Log(reply.Error);
-
+            GameDataManager.Instance.CheckUpdateVersion();
             //DeletePlayerPrefs();
         }
     }
 
     public void CTosLoginRequest(Msg.LoginRequest.Types.LOGIN_TYPE loginType, 
-        string loginKey, string nickName, string idToken, string version, bool test, bool live)
+        string loginKey, string nickName, string idToken)
     {
         LoginRequest request = new LoginRequest();
         request.LoginKey = loginKey;
         request.LoginType = loginType;
         request.NickName = nickName;
         request.IdToken = idToken;
-        request.Version = version;
+        request.Version = string.Format("{0}_{1}", Application.version, Application.identifier);
 #if UNITY_ANDROID
         request.Device = "android";
 #elif UNITY_IOS
         request.Device = "ios";
 #endif
-        request.Test = test;
-        request.Live = live;
+        request.Test = true;
+        request.Live = true;
 
         SendTos(request);
     }

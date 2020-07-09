@@ -67,14 +67,14 @@ func handleLoginRequest(args []interface{}) {
 	// version 체크
 	version := GetVersionFile()
 	if m.Device == "android" {
-		if (m.Test && m.Version != version.Android_Test) ||
+		if (m.Test && m.Version != version.Android_Test) &&
 			(m.Live && m.Version != version.Android_Live) {
 			a.WriteMsg(&msg.LoginReply{Error: msg.ERROR_CODE_THE_VERSION_DOES_NOT_MATCH})
 			log.Debug("Login failed ERROR_CODE_THE_VERSION_DOES_NOT_MATCH")
 			return
 		}
 	} else if m.Device == "ios" {
-		if (m.Test && m.Version != version.IOS_Test) ||
+		if (m.Test && m.Version != version.IOS_Test) &&
 			(m.Live && m.Version != version.IOS_Live) {
 			a.WriteMsg(&msg.LoginReply{Error: msg.ERROR_CODE_THE_VERSION_DOES_NOT_MATCH})
 			log.Debug("Login failed ERROR_CODE_THE_VERSION_DOES_NOT_MATCH")

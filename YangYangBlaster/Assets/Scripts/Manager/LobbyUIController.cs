@@ -141,7 +141,7 @@ public class LobbyUIController : MonoBehaviour
 
         if (sp.TotalSeconds <= 0)
         {
-            GameDataManager.Instance.userData.userCurrency.userCoin = GameDataManager.Instance.userData.userCurrency.userCoin + GameDataManager.Instance.freeCoin;
+            GameDataManager.Instance.userData.userCurrency.userCoin = GameDataManager.Instance.userData.userCurrency.userCoin + GameDataManager.Instance.GetPlayerUpgradeFreeCoin();
             GameDataManager.Instance.SetFreeCoinInfo();
 
             if (0 != GameDataManager.Instance.freeCoin)
