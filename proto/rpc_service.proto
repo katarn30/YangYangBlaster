@@ -76,6 +76,9 @@ message LoginRequest {
     string idToken = 3;
     string nickName = 4;
     string version = 5;
+    string device = 6;
+    bool test = 7;
+    bool live = 8;
 }
 
 message LoginReply {

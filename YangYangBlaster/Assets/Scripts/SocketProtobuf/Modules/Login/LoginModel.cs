@@ -12,7 +12,7 @@ public class LoginModel : BaseModel<LoginModel>
     private void STocLoginReply(object data)
     {
         LoginReply reply = data as LoginReply;
-
+        
         if (ERROR_CODE.Ok == reply.Error)
         {
             Debug.Log("Ok");
@@ -45,6 +45,12 @@ public class LoginModel : BaseModel<LoginModel>
             //    Debug.Log("Watch Response : " + HealthCheckReply.ToString());
             //});
         }
+        else if (ERROR_CODE.TheVersionDoesNotMatch == reply.Error)
+        {
+            Debug.Log(reply.Error);
+
+            // 버전체크 실패
+        }
         else
         {
             Debug.Log(reply.Error);
@@ -61,6 +67,15 @@ public class LoginModel : BaseModel<LoginModel>
         request.LoginType = loginType;
         request.NickName = nickName;
         request.IdToken = idToken;
+
+#if UNITY_ANDROID
+        request.Device = "android";
+#elif UNITY_IOS
+        request.Device = "ios";
+#endif
+        request.Test = true;
+        request.Live = true;
+
         request.Version = string.Format("{0}_{1}", Application.version, GameDataManager.Instance.GetBundleVersion());
 
         SendTos(request);
