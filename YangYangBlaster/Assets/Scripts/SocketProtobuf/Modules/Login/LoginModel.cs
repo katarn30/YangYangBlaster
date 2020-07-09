@@ -67,7 +67,7 @@ public class LoginModel : BaseModel<LoginModel>
         request.LoginType = loginType;
         request.NickName = nickName;
         request.IdToken = idToken;
-        request.Version = string.Format("{0}_{1}", Application.version, Application.identifier);
+
 #if UNITY_ANDROID
         request.Device = "android";
 #elif UNITY_IOS
@@ -75,6 +75,8 @@ public class LoginModel : BaseModel<LoginModel>
 #endif
         request.Test = true;
         request.Live = true;
+
+        request.Version = string.Format("{0}_{1}", Application.version, GameDataManager.Instance.GetBundleVersion());
 
         SendTos(request);
     }

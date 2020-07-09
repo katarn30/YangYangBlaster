@@ -781,5 +781,40 @@ public class GameDataManager : SingleTon<GameDataManager>
             Application.OpenURL("market://details?id=com.TongTongStudio.YangYangBlaster");
         }
     }
+
+    public string GetBundleVersion()
+    {
+    #if !UNITY_EDITOR
+    #if UNITY_ANDROID
+        return AndroidVersionCode().ToString();
+    #elif UNITY_IOS
+        return GetBundleVersion();
+    #endif
+    #endif
+        return "1";
+    }
+
+
+#if UNITY_ANDROID
+    AndroidJavaObject GetPackageInfo()
+    {
+        AndroidJavaClass up = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+        var ca = up.GetStatic<AndroidJavaObject>("currentActivity");
+        AndroidJavaObject packageManager = ca.Call<AndroidJavaObject>("getPackageManager");
+        return packageManager.Call<AndroidJavaObject>("getPackageInfo", Application.identifier, 0);
+    }
+
+    private int AndroidVersionCode()
+    {
+        using (var packageInfo = GetPackageInfo())
+        {
+            return packageInfo.Get<int>("versionCode");
+        }
+    }
+#elif UNITY_IOS
+    [DllImport ( "__Internal")]
+    extern string GetBundleVersion ();
+#endif
+
     #endregion
 }
