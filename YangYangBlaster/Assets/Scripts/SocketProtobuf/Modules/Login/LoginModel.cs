@@ -12,7 +12,7 @@ public class LoginModel : BaseModel<LoginModel>
     private void STocLoginReply(object data)
     {
         LoginReply reply = data as LoginReply;
-
+        
         if (ERROR_CODE.Ok == reply.Error)
         {
             Debug.Log("Ok");
@@ -45,6 +45,10 @@ public class LoginModel : BaseModel<LoginModel>
             //    Debug.Log("Watch Response : " + HealthCheckReply.ToString());
             //});
         }
+        else if (ERROR_CODE.TheVersionDoesNotMatch == reply.Error)
+        {
+            // 버전체크 실패
+        }
         else
         {
             Debug.Log(reply.Error);
@@ -54,14 +58,21 @@ public class LoginModel : BaseModel<LoginModel>
     }
 
     public void CTosLoginRequest(Msg.LoginRequest.Types.LOGIN_TYPE loginType, 
-        string loginKey, string nickName, string idToken)
+        string loginKey, string nickName, string idToken, string version, bool test, bool live)
     {
         LoginRequest request = new LoginRequest();
         request.LoginKey = loginKey;
         request.LoginType = loginType;
         request.NickName = nickName;
         request.IdToken = idToken;
-        request.Version = "1.0.1_2";
+        request.Version = version;
+#if UNITY_ANDROID
+        request.Device = "android";
+#elif UNITY_IOS
+        request.Device = "ios";
+#endif
+        request.Test = test;
+        request.Live = live;
 
         SendTos(request);
     }
