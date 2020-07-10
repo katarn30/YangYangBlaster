@@ -34,7 +34,7 @@ func GetVersionFile() Version {
 	json.Unmarshal([]byte(output), &version)
 
 	fmt.Println(string(output))
-	fmt.Println(version)
+	//fmt.Println(version)
 
 	return version
 }

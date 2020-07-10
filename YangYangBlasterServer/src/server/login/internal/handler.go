@@ -65,22 +65,39 @@ func handleLoginRequest(args []interface{}) {
 	a := args[1].(gate.Agent)
 
 	// version 체크
+	versionOk := false
 	version := GetVersionFile()
 	if m.Device == "android" {
-		if (m.Test && m.Version != version.Android_Test) &&
-			(m.Live && m.Version != version.Android_Live) {
-			a.WriteMsg(&msg.LoginReply{Error: msg.ERROR_CODE_THE_VERSION_DOES_NOT_MATCH})
-			log.Debug("Login failed ERROR_CODE_THE_VERSION_DOES_NOT_MATCH")
-			return
+		if m.Test {
+			if m.Version == version.Android_Test {
+				versionOk = true
+			}
+		}
+		if m.Live {
+			if m.Version == version.Android_Live {
+				versionOk = true
+			}
 		}
 	} else if m.Device == "ios" {
-		if (m.Test && m.Version != version.IOS_Test) &&
-			(m.Live && m.Version != version.IOS_Live) {
-			a.WriteMsg(&msg.LoginReply{Error: msg.ERROR_CODE_THE_VERSION_DOES_NOT_MATCH})
-			log.Debug("Login failed ERROR_CODE_THE_VERSION_DOES_NOT_MATCH")
-			return
+		if m.Test {
+			if m.Version == version.IOS_Test {
+				versionOk = true
+			}
+		}
+		if m.Live {
+			if m.Version == version.IOS_Live {
+				versionOk = true
+			}
 		}
 	}
+
+	if false == versionOk {
+		a.WriteMsg(&msg.LoginReply{Error: msg.ERROR_CODE_THE_VERSION_DOES_NOT_MATCH})
+		log.Debug("Login failed ERROR_CODE_THE_VERSION_DOES_NOT_MATCH")
+		return
+	}
+
+	fmt.Println(m.Device, m.Version)
 
 	// if m.Version != version.Android_Test {
 	// 	a.WriteMsg(&msg.LoginReply{Error: msg.ERROR_CODE_THE_VERSION_DOES_NOT_MATCH})
